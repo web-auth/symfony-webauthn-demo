@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attestation</title>
+</head>
+<body>
+<h1>Ajout d’une clé</h1>
+<p>Appuyez sur le bouton bleu</p>
+<script>
+    var publicKey = {{ publicKeyCredentialCreationOptions|json_encode|raw }};
+
+    function arrayToBase64String(a) {
+        return btoa(String.fromCharCode(...a));
+
+    };
+
+    publicKey.challenge = Uint8Array.from(window.atob(publicKey.challenge), c=>c.charCodeAt(0));
+    publicKey.user.id = Uint8Array.from(window.atob(publicKey.user.id), c=>c.charCodeAt(0));
+
+    /*if (publicKey.rp.id !== undefined) {
+        publicKey.rp.id = Uint8Array.from(window.atob(publicKey.rp.id), c=>c.charCodeAt(0));
+    }*/
+
+    if (publicKey.excludeCredentials !== undefined) {
+        publicKey.excludeCredentials = publicKey.excludeCredentials.map(function(data) {
+            return {
+                'type': data.type,
+                'id': Uint8Array.from(atob(data.id), c=>c.charCodeAt(0))
+            };
+        });
+    }
+
+    navigator.credentials.create({publicKey})
+        .then(function (data) {
+            var publicKeyCredential = {
+
+                id: data.id,
+                type: data.type,
+                rawId: arrayToBase64String(new Uint8Array(data.rawId)),
+                response: {
+                    clientDataJSON: arrayToBase64String(new Uint8Array(data.response.clientDataJSON)),
+                    attestationObject: arrayToBase64String(new Uint8Array(data.response.attestationObject))
+                }
+            };
+            window.location = '/foo/response?data='+btoa(JSON.stringify(publicKeyCredential));
+        }, function (error) {
+            console.log(error);
+        });
+</script>
+</body>
+</html>

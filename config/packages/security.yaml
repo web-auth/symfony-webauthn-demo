@@ -1,0 +1,57 @@
+security:
+    role_hierarchy:
+        ROLE_GUEST:
+        ROLE_USER:  ROLE_GUEST
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        default:
+            id: App\Security\UserProvider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            # activate different ways to authenticate
+            webauthn:
+                login_path: /login
+                login_check_path: /login
+                assertion_path: /login/assertion
+                assertion_check_path: /login/assertion
+                abort_path: /login/abort
+                remember_me_parameter: _remember_me
+                assertion_session_parameter: foo.bar
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+                secure: true
+                httponly: true
+                samesite: strict
+                remember_me_parameter: _remember_me
+                always_remember_me: false
+                name: REMEMBERME
+            logout:
+                path: /logout
+                target: /
+                handler: App\EventListener\LogoutHandler
+            switch_user: true
+
+            # http_basic: true
+            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: true
+            # https://symfony.com/doc/current/security/form_login_setup.html
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/logout,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
+        - { path: ^/login,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
+        - { path: ^/admin,  roles: 'ROLE_ADMIN', requires_channel: 'https' }
+        - { path: ^/profile, roles: ROLE_USER, requires_channel: 'https' }
+        - { path: ^/,       roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }

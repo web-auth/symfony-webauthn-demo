@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('signin') }}
+{% endblock %}
+
+{% block main_content %}
+    <div id="public-key-credential-request-options" data-public-key-credential-request-options="{{ publicKeyCredentialRequestOptions|json_encode(constant('JSON_UNESCAPED_SLASHES'))|e('html_attr') }}">
+    </div>
+    <div class="container">
+        <div class="row py-5">
+            <div class="col-md-10 ml-auto mr-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Registration form</h2>
+                        <div class="row">
+                            <div class="col-md-5 ml-auto">
+                                <div class="info info-horizontal">
+                                    <p class="lead">You should now be notified to tap your security device.</p>
+                                    <p class="text-muted">If you want to abort the authentication procedure, <a href="{{ path('app_login_abort') }}">please follow this link</a>.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-5 mr-auto">
+                                <img src="{{ asset('build/images/securitykey.min.svg') }}" alt="" class="img-fluid">
+                                <form method="post" id="assertion_form">
+                                    <input type="hidden" value="" name="_assertion" id="_assertion">
+                                    <input type="checkbox" name="_remember_me" id="_remember_me" style="display: none"{% if rememberMe %} checked{% endif %}>
+                                    <input type="hidden" name="_csrf_token" id="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('signin') }}
+    <script>
+        "use strict";
+
+        function arrayToBase64String(a) {
+            return btoa(String.fromCharCode(...a));
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var data = document.querySelector('#public-key-credential-request-options');
+            var publicKey = JSON.parse(data.dataset.publicKeyCredentialRequestOptions);
+
+            publicKey.challenge = Uint8Array.from(window.atob(publicKey.challenge), function(c){return c.charCodeAt(0);});
+
+            if (publicKey.allowCredentials !== undefined) {
+                publicKey.allowCredentials = publicKey.allowCredentials.map(function(data) {
+                    return {
+                        "type": data.type,
+                        "id": Uint8Array.from(atob(data.id), function(c){return c.charCodeAt(0);})
+                    };
+                });
+            }
+
+            navigator.credentials.get({publicKey})
+                .then(function (data) {
+                    var publicKeyCredential = {
+                        id: data.id,
+                        type: data.type,
+                        rawId: arrayToBase64String(new Uint8Array(data.rawId)),
+                        response: {
+                            authenticatorData: arrayToBase64String(new Uint8Array(data.response.authenticatorData)),
+                            clientDataJSON: arrayToBase64String(new Uint8Array(data.response.clientDataJSON)),
+                            signature: arrayToBase64String(new Uint8Array(data.response.signature)),
+                            userHandle: data.response.userHandle ? arrayToBase64String(new Uint8Array(data.response.userHandle)) : null
+                        }
+                    };
+
+                    var assertion = document.getElementById("_assertion");
+                    assertion.value = JSON.stringify(publicKeyCredential);
+                    document.getElementById("assertion_form").submit();
+                }, function (error) {
+                });
+        });
+    </script>
+{% endblock %}
