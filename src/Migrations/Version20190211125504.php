@@ -23,10 +23,6 @@ final class Version20190211125504 extends AbstractMigration
     public function down(Schema $schema) : void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-
-        $this->addSql('ALTER TABLE credential DROP FOREIGN KEY FK_57F1D4BA76ED395');
-        $this->addSql('DROP TABLE credential');
-        $this->addSql('DROP TABLE user');
+        $this->abortIf(true, 'Wildcats Never Quit');
     }
 }

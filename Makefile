@@ -54,7 +54,6 @@ db: .env vendor
 	-$(SYMFONY) doctrine:database:drop --if-exists --force
 	-$(SYMFONY) doctrine:database:create --if-not-exists
 	$(SYMFONY) doctrine:migrations:migrate --no-interaction --allow-no-migration
-	$(SYMFONY) doctrine:fixtures:load --no-interaction --purge-with-truncate
 
 migration: ## Generate a new doctrine migration
 migration: vendor

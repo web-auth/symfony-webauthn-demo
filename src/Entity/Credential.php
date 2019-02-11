@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Webauthn\AttestedCredentialData;
 
 /**
+ * @ORM\Table(name="credentials")
  * @ORM\Entity(repositoryClass="App\Repository\CredentialRepository")
  */
 class Credential
