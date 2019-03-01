@@ -1,5 +1,9 @@
 # Webauthn + Symfony 4 + Bootstrap 4 Demo
 
+**Live Demo**
+
+You will find this demo on a real server at https://webauthn.spomky-labs.com/
+
 **WORK IN PROGRESS**
 
 This is a simple demo application that can be used as a base for bigger projects.
