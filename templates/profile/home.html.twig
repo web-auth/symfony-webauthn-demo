@@ -45,12 +45,20 @@
                 <h2>Registered credentials - <a href="{{ path('app_device_registration') }}" class="btn btn-outline-primary"><i class="fas fa-plus-circle"></i>&nbsp;Add a new device</a></h2>
                 <dd>
                     {% for credential in credentials %}
-                        <dt>{{ credential.getAttestedCredentialData().credentialId|base64_encode }}</dt>
+                        <dt>
+                            {% if credential.getName() != ""  %}
+                                {{ credential.getName() }}&nbsp;<small>(ID: {{ credential.getAttestedCredentialData().credentialId|base64_encode }})    </small>
+                            {% else %}
+                                ID: {{ credential.getAttestedCredentialData().credentialId|base64_encode }}
+                            {% endif %}
+                        </dt>
                         <dd>
                             <ul>
+                                <li>Added at: {{ credential.getCreatedAt()|localizeddate('long', 'long') }}</li>
                                 <li>AAGUID: {{ credential.getAttestedCredentialData().aaguid|base64_encode }}</li>
                                 <li>Public Key: {{ credential.getAttestedCredentialData().credentialPublicKey|base64_encode }}</li>
                                 <li>Counter: {{ credential.getCounter() }}</li>
+                                <li>Attestation type: {{ credential.getAttestationType() }}</li>
                             </ul>
                         </dd>
                     {% endfor %}

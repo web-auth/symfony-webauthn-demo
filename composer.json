@@ -34,7 +34,7 @@
         "symfony/webpack-encore-bundle": "^1.1",
         "symfony/yaml": "4.2.*",
         "twig/extensions": "^1.5",
-        "web-auth/webauthn-framework": "^1.1@dev",
+        "web-auth/webauthn-framework": "dev-Doctrine",
         "zendframework/zend-diactoros": "^1.0"
     },
     "require-dev": {

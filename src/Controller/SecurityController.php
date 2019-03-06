@@ -198,7 +198,7 @@ final class SecurityController
 
     private function getPublicKeyCredentialCreationOptions(Request $request, RegisterUser $registerUser): PublicKeyCredentialCreationOptions
     {
-        $publicKeyCredentialCreationOptions = $request->getSession()->get(SecurityController::USER_REGISTRATION_REQUEST);
+        $publicKeyCredentialCreationOptions = $request->getSession()->get(self::USER_REGISTRATION_REQUEST);
         if (!$publicKeyCredentialCreationOptions instanceof PublicKeyCredentialCreationOptions) {
             $publicKeyCredentialCreationOptions = $this->publicKeyCredentialCreationOptionsFactory->create(
                 'default',

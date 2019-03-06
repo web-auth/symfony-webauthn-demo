@@ -11,12 +11,12 @@
 
 namespace App\Form\Handler;
 
-use App\Entity\Credential;
-use App\Entity\CredentialRepository;
+use App\Entity\PublicKeyCredentialSource;
 use App\Entity\User;
-use App\Entity\UserRepository;
 use App\Form\Data\RegisterPublicKey;
 use App\Form\Type\RegisterPublicKeyType;
+use App\Repository\PublicKeyCredentialSourceRepository;
+use App\Repository\UserRepository;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Symfony\Component\Form\FormError;
@@ -26,7 +26,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
 use Webauthn\PublicKeyCredentialCreationOptions;
-use Webauthn\PublicKeyCredentialDescriptorCollection;
 use Webauthn\PublicKeyCredentialLoader;
 
 class RegisterPublicKeyHandler
@@ -52,7 +51,7 @@ class RegisterPublicKeyHandler
     private $authenticatorAttestationResponseValidator;
 
     /**
-     * @var CredentialRepository
+     * @var PublicKeyCredentialSourceRepository
      */
     private $credentialRepository;
 
@@ -66,7 +65,7 @@ class RegisterPublicKeyHandler
      */
     private $logger;
 
-    public function __construct(LoggerInterface $logger, HttpMessageFactoryInterface $httpMessageFactory, PublicKeyCredentialLoader $publicKeyCredentialLoader, AuthenticatorAttestationResponseValidator $authenticatorAttestationResponseValidator, FormFactoryInterface $formFactory, UserRepository $userRepository, CredentialRepository $credentialRepository)
+    public function __construct(LoggerInterface $logger, HttpMessageFactoryInterface $httpMessageFactory, PublicKeyCredentialLoader $publicKeyCredentialLoader, AuthenticatorAttestationResponseValidator $authenticatorAttestationResponseValidator, FormFactoryInterface $formFactory, UserRepository $userRepository, PublicKeyCredentialSourceRepository $credentialRepository)
     {
         $this->formFactory = $formFactory;
         $this->userRepository = $userRepository;
@@ -118,14 +117,19 @@ class RegisterPublicKeyHandler
                 return false;
             }
 
-            $credential = new Credential(
-                $response->getAttestationObject()->getAuthData()->getAttestedCredentialData(),
-                $response->getAttestationObject()->getAuthData()->getSignCount(),
-                $user
+            $credential = new PublicKeyCredentialSource(
+                $publicKeyCredential->getRawId(),
+                $publicKeyCredential->getType(),
+                [],
+                $response->getAttestationObject()->getAttStmt()->getType(),
+                $response->getAttestationObject()->getAttStmt()->getTrustPath(),
+                $response->getAttestationObject()->getAuthData()->getAttestedCredentialData()->getAaguid(),
+                $response->getAttestationObject()->getAuthData()->getAttestedCredentialData()->getCredentialPublicKey(),
+                $user->getUserHandle(),
+                $response->getAttestationObject()->getAuthData()->getSignCount()
             );
             $this->credentialRepository->save($credential);
-
-            $user->addCredential($credential);
+            $user->addPublicKeyCredentialSource($credential);
             $this->userRepository->save($user);
 
             return true;

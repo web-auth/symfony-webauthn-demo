@@ -11,8 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace App\Entity;
+namespace App\Repository;
 
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
@@ -53,6 +54,20 @@ final class UserRepository implements ServiceEntityRepositoryInterface
             ->from(User::class, 'u')
             ->where('u.username = :username')
             ->setParameter(':username', $username)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function findOneById(string $id): ?User
+    {
+        $qb = $this->manager->createQueryBuilder();
+
+        return $qb->select('u')
+            ->from(User::class, 'u')
+            ->where('u.id = :id')
+            ->setParameter(':id', $id)
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()

@@ -51,9 +51,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             var data = document.querySelector('#public-key-credential-creation-options');
             var publicKey = JSON.parse(data.dataset.publicKeyCredentialCreationOptions);
-            console.log(publicKey);
-            console.log(publicKey.challenge);
-            //publicKey.challenge = Uint8Array.from(window.atob(publicKey.challenge), function(c){return c.charCodeAt(0);});
 
             publicKey.challenge = Uint8Array.from(window.atob(publicKey.challenge), function(c){return c.charCodeAt(0);});
             publicKey.user.id = Uint8Array.from(window.atob(publicKey.user.id), function(c){return c.charCodeAt(0);});

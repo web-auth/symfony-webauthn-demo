@@ -13,25 +13,22 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\CredentialRepository;
+use App\Entity\PublicKeyCredentialSource;
 use App\Entity\User;
 use App\Form\Data\RegisterPublicKey;
 use App\Form\Handler\RegisterPublicKeyHandler;
 use App\Form\Handler\RegisterUserHandler;
-use Assert\Assertion;
+use App\Repository\PublicKeyCredentialSourceRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Twig\Environment;
 use Webauthn\Bundle\Service\PublicKeyCredentialCreationOptionsFactory;
-use Webauthn\Bundle\Service\PublicKeyCredentialRequestOptionsFactory;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialUserEntity;
-use Webauthn\SecurityBundle\Model\CanHaveRegisteredSecurityDevices;
 use Webauthn\SecurityBundle\Security\WebauthnUtils;
 
 final class ProfileController
@@ -74,11 +71,11 @@ final class ProfileController
     private $publicKeyCredentialCreationOptionsFactory;
 
     /**
-     * @var CredentialRepository
+     * @var PublicKeyCredentialSourceRepository
      */
     private $credentialRepository;
 
-    public function __construct(PublicKeyCredentialCreationOptionsFactory $publicKeyCredentialCreationOptionsFactory, RouterInterface $router, RegisterUserHandler $registerUserHandler, RegisterPublicKeyHandler $registerPublicKeyHandler, Environment $twig, TokenStorageInterface $tokenStorage, WebauthnUtils $webauthnUtils, CredentialRepository $credentialRepository)
+    public function __construct(PublicKeyCredentialCreationOptionsFactory $publicKeyCredentialCreationOptionsFactory, RouterInterface $router, RegisterUserHandler $registerUserHandler, RegisterPublicKeyHandler $registerPublicKeyHandler, Environment $twig, TokenStorageInterface $tokenStorage, WebauthnUtils $webauthnUtils, PublicKeyCredentialSourceRepository $credentialRepository)
     {
         $this->twig = $twig;
         $this->tokenStorage = $tokenStorage;
@@ -94,8 +91,7 @@ final class ProfileController
     {
         $token = $this->tokenStorage->getToken();
         $user = $token->getUser();
-        $credentials = $this->getUserCredentials($user);
-
+        $credentials = $this->credentialRepository->allForUser($user);
         $page = $this->twig->render('profile/home.html.twig', [
             'token' => $token,
             'user' => $user,
@@ -120,12 +116,14 @@ final class ProfileController
                 'success',
                'A new security device has been added'
             );
+            $request->getSession()->remove(self::DEVICE_REGISTRATION_REQUEST);
 
             return new RedirectResponse(
-            //Add flash message
                 $this->router->generate('app_profile')
             );
         }
+        $request->getSession()->remove(self::DEVICE_REGISTRATION_REQUEST);
+        $publicKeyCredentialCreationOptions = $this->getPublicKeyCredentialCreationOptions($request, $user);
 
         $page = $this->twig->render('profile/device_registration.html.twig', [
             'form' => $form->createView(),
@@ -135,33 +133,17 @@ final class ProfileController
         return new Response($page);
     }
 
-    private function getUserCredentials(CanHaveRegisteredSecurityDevices $user): array
-    {
-        $credentialIds = [];
-        foreach ($user->getSecurityDeviceCredentialIds() as $id) {
-            /* @var PublicKeyCredentialDescriptor $id */
-            $credentialIds[] = $id->getId();
-        }
-
-        return  $this->credentialRepository->allFromTheList($credentialIds);
-    }
-
     private function getPublicKeyCredentialCreationOptions(Request $request, User $user): PublicKeyCredentialCreationOptions
     {
         $publicKeyCredentialCreationOptions = $request->getSession()->get(self::DEVICE_REGISTRATION_REQUEST);
 
         if (!$publicKeyCredentialCreationOptions instanceof PublicKeyCredentialCreationOptions) {
-            $excludedCredentials = [];
-            foreach ($user->getCredentials() as $credential) {
-                $excludedCredentials[] = new PublicKeyCredentialDescriptor(
-                    PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,
-                    $credential->getAttestedCredentialData()->getCredentialId(),
-                    []
-                );
-            }
+            $excludedCredentials = array_map(function (PublicKeyCredentialSource $credential) {
+                return $credential->getPublicKeyCredentialDescriptor();
+            }, $user->getPublicKeyCredentialSources());
             $publicKeyCredentialCreationOptions = $this->publicKeyCredentialCreationOptionsFactory->create(
                 'default',
-                new PublicKeyCredentialUserEntity($user->getUsername(),$user->getId(), $user->getDisplayName(), null),
+                new PublicKeyCredentialUserEntity($user->getUsername(), $user->getId(), $user->getDisplayName(), null),
                 $excludedCredentials
             );
             $request->getSession()->set(self::DEVICE_REGISTRATION_REQUEST, $publicKeyCredentialCreationOptions);

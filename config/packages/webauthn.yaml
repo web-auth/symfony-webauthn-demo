@@ -2,7 +2,7 @@ webauthn_security:
     http_message_factory: 'Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory'
 
 webauthn:
-    credential_repository: 'App\Entity\CredentialRepository'
+    credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
     token_binding_support_handler: 'Webauthn\TokenBinding\TokenBindingNotSupportedHandler'
     android_safetynet:
         enabled: true
@@ -24,9 +24,9 @@ webauthn:
                 user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED
                 #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED
                 #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_DISCOURAGED
-            #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE
+            attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE
             #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_DIRECT
-            attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT
+            #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT
             extensions: ~
             public_key_credential_parameters:
                 - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_ES256

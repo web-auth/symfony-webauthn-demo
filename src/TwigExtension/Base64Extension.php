@@ -13,13 +13,14 @@ namespace App\TwigExtension;
 
 use Twig\TwigFilter;
 
-class Base64Extension extends \Twig_Extension {
-
-    public function getFilters() {
-        return array(
-            new TwigFilter('base64_encode', array($this, 'encode')),
-            new TwigFilter('base64_decode', array($this, 'decode'))
-        );
+class Base64Extension extends \Twig_Extension
+{
+    public function getFilters()
+    {
+        return [
+            new TwigFilter('base64_encode', [$this, 'encode']),
+            new TwigFilter('base64_decode', [$this, 'decode']),
+        ];
     }
 
     public function encode($input)
@@ -29,7 +30,6 @@ class Base64Extension extends \Twig_Extension {
 
     public function decode($input)
     {
-        return base64_decode($input);
+        return base64_decode($input, true);
     }
-
 }

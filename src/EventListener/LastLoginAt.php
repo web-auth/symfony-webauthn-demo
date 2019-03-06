@@ -12,7 +12,7 @@
 namespace App\EventListener;
 
 use App\Entity\User;
-use App\Entity\UserRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class LastLoginAt

@@ -16,9 +16,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialDescriptorCollection;
 use Webauthn\SecurityBundle\Model\CanHaveRegisteredSecurityDevices;
 
@@ -27,7 +25,7 @@ use Webauthn\SecurityBundle\Model\CanHaveRegisteredSecurityDevices;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("username")
  */
-class User implements UserInterface, CanHaveRegisteredSecurityDevices
+class User implements CanHaveRegisteredSecurityDevices
 {
     /**
      * @ORM\Id
@@ -67,12 +65,23 @@ class User implements UserInterface, CanHaveRegisteredSecurityDevices
      */
     private $credentials;
 
+    /**
+     * @var PublicKeyCredentialSource[]
+     * @ORM\ManyToMany(targetEntity="App\Entity\PublicKeyCredentialSource")
+     * @ORM\JoinTable(name="users_user_handles",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="user_handle", referencedColumnName="id", unique=true)}
+     *      )
+     */
+    private $publicKeyCredentialSources;
+
     public function __construct(string $id, string $username, string $displayName, array $roles)
     {
         $this->id = $id;
         $this->username = $username;
         $this->roles = $roles;
         $this->credentials = new ArrayCollection();
+        $this->publicKeyCredentialSources = new ArrayCollection();
         $this->displayName = $displayName;
         $this->created_at = new \DateTimeImmutable();
     }
@@ -84,21 +93,12 @@ class User implements UserInterface, CanHaveRegisteredSecurityDevices
 
     public function getSecurityDeviceCredentialIds(): iterable
     {
-        $collection = new PublicKeyCredentialDescriptorCollection();
-        foreach ($this->credentials as $credential) {
-            /** @var Credential $credential */
-            $collection->add(new PublicKeyCredentialDescriptor(
-                PublicKeyCredentialDescriptor::CREDENTIAL_TYPE_PUBLIC_KEY,
-                $credential->getAttestedCredentialData()->getCredentialId(),
-                []
-            ));
+        $publicKeyCredentialDescriptors = [];
+        foreach ($this->publicKeyCredentialSources as $credential) {
+            $publicKeyCredentialDescriptors[] = $credential->getPublicKeyCredentialDescriptor();
         }
 
-        yield from $collection;
-    }
-
-    public function addCredential(Credential $credential): void
-    {
+        yield from $publicKeyCredentialDescriptors;
     }
 
     /**
@@ -114,6 +114,24 @@ class User implements UserInterface, CanHaveRegisteredSecurityDevices
         $this->credentials->removeElement($credential);
     }
 
+    /**
+     * @return PublicKeyCredentialSource[]
+     */
+    public function getPublicKeyCredentialSources(): array
+    {
+        return $this->publicKeyCredentialSources->getValues();
+    }
+
+    public function addPublicKeyCredentialSource(PublicKeyCredentialSource $credential): void
+    {
+        $this->publicKeyCredentialSources->add($credential);
+    }
+
+    public function removePublicKeyCredentialSource(PublicKeyCredentialSource $credential): void
+    {
+        $this->publicKeyCredentialSources->removeElement($credential);
+    }
+
     public function getUserHandle(): string
     {
         return $this->id;
@@ -121,7 +139,7 @@ class User implements UserInterface, CanHaveRegisteredSecurityDevices
 
     public function setPublicKeyCredentialDescriptorCollection(PublicKeyCredentialDescriptorCollection $credentials): void
     {
-        $this->credentials = $credentials;
+        $this->publicKeyCredentialSources = $credentials;
     }
 
     public function getRoles(): array

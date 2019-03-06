@@ -19,7 +19,14 @@ use Twig\Environment;
 
 final class HomeController
 {
+    /**
+     * @var Environment
+     */
     private $twig;
+
+    /**
+     * @var TokenStorageInterface
+     */
     private $tokenStorage;
 
     public function __construct(Environment $twig, TokenStorageInterface $tokenStorage)
