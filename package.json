@@ -21,8 +21,5 @@
         "watch": "encore dev --watch",
         "build": "encore production",
         "heroku-postbuild": "encore production"
-    },
-    "resolutions": {
-        "ajv": "6.8.1"
     }
 }
