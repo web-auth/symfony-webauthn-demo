@@ -3,7 +3,7 @@ webauthn_security:
 
 webauthn:
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
-    user_repository: 'App\Repository\UserRepository'
+    user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'
     token_binding_support_handler: 'Webauthn\TokenBinding\TokenBindingNotSupportedHandler'
     android_safetynet:
         enabled: true
