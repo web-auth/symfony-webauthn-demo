@@ -3,6 +3,7 @@ webauthn_security:
 
 webauthn:
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
+    user_repository: 'App\Repository\UserRepository'
     token_binding_support_handler: 'Webauthn\TokenBinding\TokenBindingNotSupportedHandler'
     android_safetynet:
         enabled: true
@@ -10,37 +11,48 @@ webauthn:
         http_client: 'httplug.client.app'
     creation_profiles:
         default:
+            public_key_credential_parameters: #Mandatory
+                - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_ES256 #Order is important. Preferred algorithms go first
+                - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
             rp:
                 name: 'Webauthn Demo'
-                id: '%env(RP_ID)%'
-                icon: null
-            challenge_length: 32
-            timeout: 60000
-            authenticator_selection_criteria:
-                attachment_mode: !php/const Webauthn\AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_NO_PREFERENCE
+                #id: '%env(RP_ID)%'
+                #icon: null
+            #challenge_length: 32
+            #timeout: 60000
+            #authenticator_selection_criteria:
+                #attachment_mode: !php/const Webauthn\AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_NO_PREFERENCE
                 #attachment_mode: !php/const Webauthn\AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_PLATFORM
                 #attachment_mode: !php/const Webauthn\AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_CROSS_PLATFORM
-                require_resident_key: false
-                user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED
+                #require_resident_key: false
+                #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED
                 #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED
                 #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_DISCOURAGED
             #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE
             #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_DIRECT
-            attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT
-            extensions: ~
-            public_key_credential_parameters:
-                - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_ES256
-                - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
+            #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT
+            #extensions: ~
     request_profiles:
-        default:
-            rp_id: '%env(RP_ID)%'
-            challenge_length: 32
-            timeout: 60000
-            user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED
+        default: ~
+            #rp_id: '%env(RP_ID)%'
+            #challenge_length: 32
+            #timeout: 60000
+            #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED
             #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_REQUIRED
             #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_DISCOURAGED
-            extensions:
-                txtAuthSimple: 'Hello World!'
-                uvm: true
-                loc: true
-                uvi: true
+            #extensions:
+                #txtAuthSimple: 'Hello World!'
+                #uvm: true
+                #loc: true
+                #uvi: true
+    transport_binding_profile: ## EXPERIMENTAL. For testing purpose only. See https://fidoalliance.org/specs/fido-v2.0-rd-20180702/fido-server-v2.0-rd-20180702.html#transport-binding-profile
+        creation:
+            default:
+                profile_name: 'default'
+                request_path: '/attestation/options'
+                response_path: '/attestation/result'
+        request:
+            default:
+                profile_name: 'default'
+                request_path: '/assertion/options'
+                response_path: '/assertion/result'

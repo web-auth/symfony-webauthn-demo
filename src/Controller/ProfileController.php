@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the appname project.
+ * This file is part of the Webauthn Demo project.
  *
- * (c) Romain Gautier <mail@romain.sh>
+ * (c) Florent Morselli
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,7 +27,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Twig\Environment;
 use Webauthn\Bundle\Service\PublicKeyCredentialCreationOptionsFactory;
 use Webauthn\PublicKeyCredentialCreationOptions;
-use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialUserEntity;
 use Webauthn\SecurityBundle\Security\WebauthnUtils;
 

@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the appname project.
+ * This file is part of the Webauthn Demo project.
  *
- * (c) Romain Gautier <mail@romain.sh>
+ * (c) Florent Morselli
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 use Webauthn\PublicKeyCredentialDescriptorCollection;
+use Webauthn\PublicKeyCredentialUserEntity;
 use Webauthn\SecurityBundle\Model\CanHaveRegisteredSecurityDevices;
 
 /**
@@ -25,7 +26,7 @@ use Webauthn\SecurityBundle\Model\CanHaveRegisteredSecurityDevices;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("username")
  */
-class User implements CanHaveRegisteredSecurityDevices
+class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSecurityDevices
 {
     /**
      * @ORM\Id
@@ -77,6 +78,7 @@ class User implements CanHaveRegisteredSecurityDevices
 
     public function __construct(string $id, string $username, string $displayName, array $roles)
     {
+        parent::__construct($username, $id, $displayName);
         $this->id = $id;
         $this->username = $username;
         $this->roles = $roles;
@@ -180,7 +182,7 @@ class User implements CanHaveRegisteredSecurityDevices
         $this->username = $username;
     }
 
-    public function getDisplayName(): ?string
+    public function getDisplayName(): string
     {
         return $this->displayName;
     }
