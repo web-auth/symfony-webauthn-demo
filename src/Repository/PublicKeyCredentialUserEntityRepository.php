@@ -32,7 +32,17 @@ final class PublicKeyCredentialUserEntityRepository implements BasePublicKeyCred
 
     public function findOneByUsername(string $username): ?PublicKeyCredentialUserEntity
     {
-        return $this->userRepository->find($username);
+        $user = $this->userRepository->find($username);
+        if (null === $user) {
+            return null;
+        }
+
+        return new PublicKeyCredentialUserEntity(
+            $user->getUsername(),
+            $user->getId(),
+            $user->getDisplayName(),
+            $user->getIcon()
+        );
     }
 
     public function createUserEntity(string $username, string $displayName, ?string $icon): PublicKeyCredentialUserEntity
