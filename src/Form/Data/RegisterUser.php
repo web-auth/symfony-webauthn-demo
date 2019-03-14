@@ -13,6 +13,7 @@ namespace App\Form\Data;
 
 use App\Validator\Constraints\UniqueUsername;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class RegisterUser
 {
@@ -50,5 +51,17 @@ class RegisterUser
     public function setDisplayName(string $displayName): void
     {
         $this->displayName = $displayName;
+    }
+
+    /**
+     * @Assert\Callback
+     */
+    public function validate(ExecutionContextInterface $context, $payload)
+    {
+        if (filter_var($this->username, FILTER_VALIDATE_EMAIL)) {
+            $context->buildViolation('The username should not be an e-amil address')
+                ->atPath('username')
+                ->addViolation();
+        }
     }
 }

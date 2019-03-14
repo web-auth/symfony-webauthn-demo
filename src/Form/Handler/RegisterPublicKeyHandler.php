@@ -128,7 +128,7 @@ class RegisterPublicKeyHandler
                 $user->getUserHandle(),
                 $response->getAttestationObject()->getAuthData()->getSignCount()
             );
-            $this->credentialRepository->save($credential);
+            $this->credentialRepository->saveCredentialSource($credential);
             $user->addPublicKeyCredentialSource($credential);
             $this->userRepository->save($user);
 

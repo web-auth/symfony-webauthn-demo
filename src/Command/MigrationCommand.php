@@ -99,7 +99,7 @@ class MigrationCommand extends Command
                 $credential->getCounter()
             );
             $user->addPublicKeyCredentialSource($publicKeyCredentialSource);
-            $this->publicKeyCredentialSourceRepository->save($publicKeyCredentialSource);
+            $this->publicKeyCredentialSourceRepository->saveCredentialSource($publicKeyCredentialSource);
             $this->userRepository->save($user);
             $progressBar->advance();
         }

@@ -6734,16 +6734,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.6.2",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7"
+                "reference": "70c59531da43afe598c66135e39cac39475a2f51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
-                "reference": "7d7342c8a4059fefb9b8d07db0cc14007021f9b7",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/70c59531da43afe598c66135e39cac39475a2f51",
+                "reference": "70c59531da43afe598c66135e39cac39475a2f51",
                 "shasum": ""
             },
             "require": {
@@ -6759,7 +6759,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6-dev"
+                    "dev-master": "2.7-dev"
                 }
             },
             "autoload": {
@@ -6797,7 +6797,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2019-01-14T15:00:48+00:00"
+            "time": "2019-03-12T18:48:26+00:00"
         },
         {
             "name": "web-auth/webauthn-framework",
@@ -6805,12 +6805,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "3ab6c41e8039f493476faf4deac909f990474aef"
+                "reference": "015ad78e2402bcbf99f1d7f689ac55460a13d069"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/3ab6c41e8039f493476faf4deac909f990474aef",
-                "reference": "3ab6c41e8039f493476faf4deac909f990474aef",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/015ad78e2402bcbf99f1d7f689ac55460a13d069",
+                "reference": "015ad78e2402bcbf99f1d7f689ac55460a13d069",
                 "shasum": ""
             },
             "require": {
@@ -6844,6 +6844,7 @@
                 "doctrine/dbal": "^2.9",
                 "doctrine/doctrine-bundle": "^1.10",
                 "doctrine/orm": "^2.6",
+                "nyholm/psr7": "^1.1",
                 "php-coveralls/php-coveralls": "^2.0",
                 "php-http/httplug": "^1.0",
                 "php-http/httplug-bundle": "^1.0",
@@ -6861,8 +6862,7 @@
                 "symfony/serializer": "^4.2",
                 "symfony/validator": "^4.2",
                 "symfony/var-dumper": "^4.2",
-                "thecodingmachine/phpstan-safe-rule": "^0.1.0",
-                "zendframework/zend-diactoros": "^2.1"
+                "thecodingmachine/phpstan-safe-rule": "^0.1.0"
             },
             "suggest": {
                 "php-http/httplug": "For Android SafetyNet support (highly recommended)",
@@ -6900,7 +6900,7 @@
             ],
             "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
             "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2019-03-11T23:07:24+00:00"
+            "time": "2019-03-13T12:42:53+00:00"
         },
         {
             "name": "web-token/jwt-core",
