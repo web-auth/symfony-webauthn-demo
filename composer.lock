@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "745ec2c15736dced7f55935897acbc6d",
+    "content-hash": "f9d9973d6c3ddd745cff05f2d2277f98",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -6800,17 +6800,17 @@
             "time": "2019-03-12T18:48:26+00:00"
         },
         {
-            "name": "web-auth/webauthn-framework",
-            "version": "v1.1.x-dev",
+            "name": "web-auth/cose-lib",
+            "version": "v1.1.0-alpha1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "015ad78e2402bcbf99f1d7f689ac55460a13d069"
+                "url": "https://github.com/web-auth/cose-lib.git",
+                "reference": "891c556cebca671f04c41309a477012172bfbbbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/015ad78e2402bcbf99f1d7f689ac55460a13d069",
-                "reference": "015ad78e2402bcbf99f1d7f689ac55460a13d069",
+                "url": "https://api.github.com/repos/web-auth/cose-lib/zipball/891c556cebca671f04c41309a477012172bfbbbc",
+                "reference": "891c556cebca671f04c41309a477012172bfbbbc",
                 "shasum": ""
             },
             "require": {
@@ -6820,55 +6820,9 @@
                 "ext-openssl": "*",
                 "fgrosse/phpasn1": "^2.1",
                 "php": "^7.1",
-                "psr/http-message": "^1.0",
-                "spomky-labs/base64url": "^2.0",
-                "spomky-labs/cbor-bundle": "^1.0",
-                "spomky-labs/cbor-php": "^1.0.2",
-                "symfony/config": "^4.2",
-                "symfony/dependency-injection": "^4.2",
-                "symfony/framework-bundle": "^4.2",
-                "symfony/psr-http-message-bridge": "^1.1",
-                "symfony/security-bundle": "^4.2",
-                "symfony/twig-bundle": "^4.2",
-                "thecodingmachine/safe": "^0.1",
-                "web-token/jwt-signature": "^1.3.1"
+                "thecodingmachine/safe": "^0.1"
             },
-            "replace": {
-                "web-authn/cose-lib": "self.version",
-                "web-authn/u2f-lib": "self.version",
-                "web-authn/webauthn-lib": "self.version",
-                "web-authn/webauthn-symfony-bundle": "self.version",
-                "web-authn/webauthn-symfony-security-bundle": "self.version"
-            },
-            "require-dev": {
-                "doctrine/dbal": "^2.9",
-                "doctrine/doctrine-bundle": "^1.10",
-                "doctrine/orm": "^2.6",
-                "nyholm/psr7": "^1.1",
-                "php-coveralls/php-coveralls": "^2.0",
-                "php-http/httplug": "^1.0",
-                "php-http/httplug-bundle": "^1.0",
-                "php-http/mock-client": "^1.0",
-                "phpstan/phpstan": "^0.11",
-                "phpstan/phpstan-beberlei-assert": "^0.11.0",
-                "phpstan/phpstan-deprecation-rules": "^0.11",
-                "phpstan/phpstan-phpunit": "^0.11",
-                "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpcov": "^5.0",
-                "phpunit/phpunit": "^7.5",
-                "ramsey/uuid": "^3.8",
-                "symfony/browser-kit": "^4.2",
-                "symfony/phpunit-bridge": "^4.2",
-                "symfony/serializer": "^4.2",
-                "symfony/validator": "^4.2",
-                "symfony/var-dumper": "^4.2",
-                "thecodingmachine/phpstan-safe-rule": "^0.1.0"
-            },
-            "suggest": {
-                "php-http/httplug": "For Android SafetyNet support (highly recommended)",
-                "php-http/httplug-bundle": "For Android SafetyNet support on a Symfony application (highly recommended)"
-            },
-            "type": "symfony-bundle",
+            "type": "library",
             "extra": {
                 "branch-alias": {
                     "v1.0": "1.0.x-dev",
@@ -6877,11 +6831,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Cose\\": "src/cose/src/",
-                    "U2F\\": "src/u2f/src/",
-                    "Webauthn\\": "src/webauthn/src/",
-                    "Webauthn\\Bundle\\": "src/symfony/src/",
-                    "Webauthn\\SecurityBundle\\": "src/symfony-security/src/"
+                    "Cose\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -6895,12 +6845,201 @@
                 },
                 {
                     "name": "All contributors",
-                    "homepage": "https://github.com/web-auth/webauthn-framework/contributors"
+                    "homepage": "https://github.com/web-auth/cose/contributors"
                 }
             ],
-            "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
-            "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2019-03-13T12:42:53+00:00"
+            "description": "CBOR Object Signing and Encryption (COSE) For PHP",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "COSE",
+                "RFC8152"
+            ],
+            "time": "2019-03-06T12:21:19+00:00"
+        },
+        {
+            "name": "web-auth/webauthn-lib",
+            "version": "v1.1.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/webauthn-lib.git",
+                "reference": "8a7fd04d2b9103145096bf0961bb6ff6a0afbec3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/8a7fd04d2b9103145096bf0961bb6ff6a0afbec3",
+                "reference": "8a7fd04d2b9103145096bf0961bb6ff6a0afbec3",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.0",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "php": "^7.1",
+                "php-http/httplug": "^1.0",
+                "psr/http-message": "^1.0",
+                "spomky-labs/base64url": "^2.0",
+                "spomky-labs/cbor-php": "^1.0.2",
+                "thecodingmachine/safe": "^0.1",
+                "web-auth/cose-lib": "^1.1"
+            },
+            "suggest": {
+                "php-http/httplug": "For Android SafetyNet support (highly recommended)"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webauthn\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-auth/webauthn-library/contributors"
+                }
+            ],
+            "description": "FIDO2/Webauthn Support For PHP",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "FIDO2",
+                "fido",
+                "u2f",
+                "webauthn"
+            ],
+            "time": "2019-03-18T20:16:07+00:00"
+        },
+        {
+            "name": "web-auth/webauthn-symfony-bundle",
+            "version": "v1.1.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
+                "reference": "579a60ec87c53df82c519796e33cc5d1a700c58e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/579a60ec87c53df82c519796e33cc5d1a700c58e",
+                "reference": "579a60ec87c53df82c519796e33cc5d1a700c58e",
+                "shasum": ""
+            },
+            "require": {
+                "php-http/httplug-bundle": "^1.0",
+                "spomky-labs/cbor-bundle": "^1.0",
+                "spomky-labs/cbor-php": "^1.0.2",
+                "symfony/config": "^4.2",
+                "symfony/dependency-injection": "^4.2",
+                "symfony/framework-bundle": "^4.2",
+                "web-auth/webauthn-lib": "^1.1",
+                "web-token/jwt-signature": "^1.3"
+            },
+            "suggest": {
+                "php-http/httplug-bundle": "For Android SafetyNet support on a Symfony application (highly recommended)",
+                "web-auth/webauthn-symfony-security-bundle": "For firewall features"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webauthn\\Bundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-auth/webauthn-symfony-bundle/contributors"
+                }
+            ],
+            "description": "FIDO2/Webauthn Security Bundle For Symfony",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "FIDO2",
+                "fido",
+                "u2f",
+                "webauthn"
+            ],
+            "time": "2019-03-18T21:05:20+00:00"
+        },
+        {
+            "name": "web-auth/webauthn-symfony-security-bundle",
+            "version": "v1.1.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/webauthn-symfony-security-bundle.git",
+                "reference": "5a4785469d0192efb1532318b170d011d8368c94"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-security-bundle/zipball/5a4785469d0192efb1532318b170d011d8368c94",
+                "reference": "5a4785469d0192efb1532318b170d011d8368c94",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/psr-http-message-bridge": "^1.1",
+                "symfony/security-bundle": "^4.2",
+                "web-auth/webauthn-symfony-bundle": "^1.1"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webauthn\\SecurityBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-auth/webauthn-symfony-security-bundle/contributors"
+                }
+            ],
+            "description": "FIDO2/Webauthn Security Bundle For Symfony",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "FIDO2",
+                "fido",
+                "u2f",
+                "webauthn"
+            ],
+            "time": "2019-03-18T21:29:10+00:00"
         },
         {
             "name": "web-token/jwt-core",
@@ -8501,7 +8640,10 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "web-auth/webauthn-framework": 20
+        "web-auth/cose-lib": 15,
+        "web-auth/webauthn-lib": 15,
+        "web-auth/webauthn-symfony-bundle": 15,
+        "web-auth/webauthn-symfony-security-bundle": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,

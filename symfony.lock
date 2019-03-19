@@ -110,6 +110,9 @@
     "nikic/php-parser": {
         "version": "v4.2.0"
     },
+    "ocramius/package-versions": {
+        "version": "1.4.0"
+    },
     "ocramius/proxy-manager": {
         "version": "2.2.2"
     },
@@ -503,29 +506,41 @@
     "twig/twig": {
         "version": "v2.6.2"
     },
+    "web-auth/cose-lib": {
+        "version": "v1.1.0-alpha1"
+    },
     "web-auth/webauthn-framework": {
         "version": "v1.1.x-dev"
     },
+    "web-auth/webauthn-lib": {
+        "version": "v1.1.0-alpha1"
+    },
+    "web-auth/webauthn-symfony-bundle": {
+        "version": "v1.1.0-alpha1"
+    },
+    "web-auth/webauthn-symfony-security-bundle": {
+        "version": "v1.1.0-alpha1"
+    },
     "web-token/jwt-core": {
-        "version": "v1.3.1"
+        "version": "v1.3.2"
     },
     "web-token/jwt-signature": {
-        "version": "v1.3.1"
+        "version": "v1.3.2"
     },
     "web-token/jwt-signature-algorithm-ecdsa": {
-        "version": "v1.3.1"
+        "version": "v1.3.2"
     },
     "web-token/jwt-signature-algorithm-eddsa": {
-        "version": "v1.3.1"
+        "version": "v1.3.2"
     },
     "web-token/jwt-signature-algorithm-hmac": {
-        "version": "v1.3.1"
+        "version": "v1.3.2"
     },
     "web-token/jwt-signature-algorithm-none": {
-        "version": "v1.3.1"
+        "version": "v1.3.2"
     },
     "web-token/jwt-signature-algorithm-rsa": {
-        "version": "v1.3.1"
+        "version": "v1.3.2"
     },
     "webmozart/assert": {
         "version": "1.4.0"

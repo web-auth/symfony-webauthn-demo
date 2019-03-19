@@ -34,7 +34,10 @@
         "symfony/webpack-encore-bundle": "^1.1",
         "symfony/yaml": "4.2.*",
         "twig/extensions": "^1.5",
-        "web-auth/webauthn-framework": "^1.1@dev",
+        "web-auth/cose-lib": "^1.1@alpha",
+        "web-auth/webauthn-lib": "^1.1@alpha",
+        "web-auth/webauthn-symfony-bundle": "^1.1@alpha",
+        "web-auth/webauthn-symfony-security-bundle": "^1.1@alpha",
         "zendframework/zend-diactoros": "^1.0"
     },
     "require-dev": {

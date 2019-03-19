@@ -5,7 +5,7 @@ FROM php:7.3-fpm-alpine
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV APCU_VERSION 5.1.12
+ENV APCU_VERSION 5.1.17
 
 RUN apk add --no-cache \
         ca-certificates \
