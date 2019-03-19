@@ -20,13 +20,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Webauthn\PublicKeyCredentialDescriptorCollection;
 use Webauthn\PublicKeyCredentialUserEntity;
 use Webauthn\SecurityBundle\Model\CanHaveRegisteredSecurityDevices;
+use Webauthn\SecurityBundle\Model\HasUserHandle;
 
 /**
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("username")
  */
-class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSecurityDevices
+class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSecurityDevices, HasUserHandle
 {
     /**
      * @ORM\Id
