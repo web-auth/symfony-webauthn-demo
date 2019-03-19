@@ -37,7 +37,7 @@ final class HomeController
 
     public function home(): Response
     {
-        $page = $this->twig->render('home.html.twig', [
+        $page = $this->twig->render('home_react.html.twig', [
             'token' => $this->tokenStorage->getToken(),
         ]);
 
