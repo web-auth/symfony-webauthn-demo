@@ -22,6 +22,7 @@ Encore.setOutputPath("public/build/")
 
 const config = Encore.getWebpackConfig();
 config.resolve.alias.assets = path.resolve(__dirname, "./assets/assets");
+config.resolve.alias.store = path.resolve(__dirname, "./assets/store");
 config.resolve.alias.components = path.resolve(
     __dirname,
     "./assets/components"

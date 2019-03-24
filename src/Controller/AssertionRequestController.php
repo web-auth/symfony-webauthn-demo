@@ -1,27 +1,32 @@
 <?php
+
 declare(strict_types=1);
+
 /*
- * The MIT License (MIT)
+ * This file is part of the Webauthn Demo project.
  *
- * Copyright (c) 2014-2018 Spomky-Labs
+ * (c) Florent Morselli
  *
- * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
+
 namespace App\Controller;
+
+use App\Dto\ServerPublicKeyCredentialRequestOptionsRequest;
+use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Assert\Assertion;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use App\Dto\ServerPublicKeyCredentialRequestOptionsRequest;
-use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Webauthn\Bundle\Service\PublicKeyCredentialRequestOptionsFactory;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
+
 final class AssertionRequestController
 {
     private const SESSION_PARAMETER = '__WEBAUTHN__ASSERTION__REQUEST__';
@@ -59,6 +64,7 @@ final class AssertionRequestController
         $this->userEntityRepository = $userEntityRepository;
         $this->credentialSourceRepository = $credentialSourceRepository;
     }
+
     public function __invoke(Request $request): Response
     {
         try {
@@ -78,28 +84,34 @@ final class AssertionRequestController
                 $publicKeyCredentialRequestOptions->jsonSerialize()
             );
             $request->getSession()->set(self::SESSION_PARAMETER, ['options' => $publicKeyCredentialRequestOptions, 'userEntity' => $userEntity]);
+
             return new JsonResponse($data);
         } catch (\Throwable $throwable) {
             return new JsonResponse(['status' => 'failed', 'errorMessage' => $throwable->getMessage()], 400);
         }
     }
+
     /**
      * @return PublicKeyCredentialDescriptor[]
      */
     private function getCredentials(PublicKeyCredentialUserEntity $userEntity): array
     {
         $credentialSources = $this->credentialSourceRepository->findAllForUserEntity($userEntity);
+
         return array_map(function (PublicKeyCredentialSource $credential) {
             return $credential->getPublicKeyCredentialDescriptor();
         }, $credentialSources);
     }
+
     private function getUserEntity(ServerPublicKeyCredentialRequestOptionsRequest $creationOptionsRequest): PublicKeyCredentialUserEntity
     {
         $username = $creationOptionsRequest->username;
         $userEntity = $this->userEntityRepository->findOneByUsername($username);
         Assertion::notNull($userEntity, 'User not found');
+
         return $userEntity;
     }
+
     private function getServerPublicKeyCredentialRequestOptionsRequest(string $content): ServerPublicKeyCredentialRequestOptionsRequest
     {
         $data = $this->serializer->deserialize($content, ServerPublicKeyCredentialRequestOptionsRequest::class, 'json');
@@ -112,6 +124,7 @@ final class AssertionRequestController
             }
             throw new \RuntimeException(implode("\n", $messages));
         }
+
         return $data;
     }
 }

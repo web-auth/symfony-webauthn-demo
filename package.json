@@ -49,6 +49,8 @@
         "babel-loader": "^8.0.5",
         "eslint-config-prettier": "^4.1.0",
         "eslint-plugin-prettier": "^3.0.1",
-        "eslint-plugin-react": "^7.12.4"
+        "eslint-plugin-react": "^7.12.4",
+        "react-redux": "^6.0.1",
+        "redux": "^4.0.1"
     }
 }

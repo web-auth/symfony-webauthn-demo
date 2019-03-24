@@ -3,7 +3,9 @@ import React, { Component } from "react";
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
 
-import { withSnackbar } from "notistack";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { enqueueSnackbar } from "store/snackbarActions";
 
 // @material-ui/icons
 import { Lock, Face } from "@material-ui/icons";
@@ -25,7 +27,6 @@ import {
   handlePublicKeyCreationOptions,
   handlePublicKeyCreationResult
 } from "components/PublicKeyCreation/PublicKeyCreation.jsx";
-import PublicKeyCreationError from "components/PublicKeyCreation/PublicKeyCreationError.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
@@ -38,14 +39,7 @@ class RegisterPage extends Component {
     isFormValid: false,
     username: "",
     displayname: "",
-    isErrorModalOpened: false,
     isDeviceInteractionEnabled: false
-  };
-  handleErrorModalClose = () => {
-    this.setState({
-      isDeviceInteractionEnabled: false,
-      isErrorModalOpened: false
-    });
   };
 
   componentDidMount = () => {
@@ -77,8 +71,12 @@ class RegisterPage extends Component {
       },
       this.handlePublicKeyCreationOptions__,
       () => {
+        this.props.enqueueSnackbar({
+          message:
+            "An error occurred during the registration process. Please try again later."
+        });
         this.setState({
-          isErrorModalOpened: true
+          isDeviceInteractionEnabled: false
         });
       }
     );
@@ -137,28 +135,43 @@ class RegisterPage extends Component {
           publicKeyCredential,
           json => {
             if (json.status !== undefined && "ok" === json.status) {
-              this.props.enqueueSnackbar(
-                "Your account have been successfully created!"
-              );
+              this.props.enqueueSnackbar({
+                message: "Your account have been successfully created!"
+              });
+              this.setState({
+                isDeviceInteractionEnabled: false
+              });
               this.setState({
                 isDeviceInteractionEnabled: false
               });
             } else {
+              this.props.enqueueSnackbar({
+                message:
+                  "An error occurred during the registration process. Please try again later."
+              });
               this.setState({
-                isErrorModalOpened: true
+                isDeviceInteractionEnabled: false
               });
             }
           },
           () => {
+            this.props.enqueueSnackbar({
+              message:
+                "An error occurred during the registration process. Please try again later."
+            });
             this.setState({
-              isErrorModalOpened: true
+              isDeviceInteractionEnabled: false
             });
           }
         );
       },
       () => {
+        this.props.enqueueSnackbar({
+          message:
+            "An error occurred during the registration process. Please try again later."
+        });
         this.setState({
-          isErrorModalOpened: true
+          isDeviceInteractionEnabled: false
         });
       }
     );
@@ -173,10 +186,6 @@ class RegisterPage extends Component {
           <h4>Create an account</h4>
         </CardHeader>
         <CardBody>
-          <PublicKeyCreationError
-            isOpened={this.state.isErrorModalOpened}
-            handleClose={this.handleErrorModalClose}
-          />
           <p>
             Want to see how Webauthn will make you a better life? Just create an
             account by filling the form below.
@@ -240,10 +249,6 @@ class RegisterPage extends Component {
             <h4>Create an account</h4>
           </CardHeader>
           <CardBody>
-            <PublicKeyCreationError
-              isOpened={this.state.isErrorModalOpened}
-              handleClose={this.handleErrorModalClose}
-            />
             <p>
               You should now be notified to tap your security device (button,
               bluetooth, NFC, fingerprint…).
@@ -287,4 +292,10 @@ class RegisterPage extends Component {
   }
 }
 
-export default withSnackbar(withStyles(loginPageStyle)(RegisterPage));
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ enqueueSnackbar }, dispatch);
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withStyles(loginPageStyle)(RegisterPage));

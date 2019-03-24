@@ -55,6 +55,8 @@ class RegisterUser
 
     /**
      * @Assert\Callback
+     *
+     * @param mixed $payload
      */
     public function validate(ExecutionContextInterface $context, $payload)
     {

@@ -3,17 +3,18 @@
 declare(strict_types=1);
 
 /*
- * The MIT License (MIT)
+ * This file is part of the Webauthn Demo project.
  *
- * Copyright (c) 2014-2018 Spomky-Labs
+ * (c) Florent Morselli
  *
- * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 namespace App\Controller;
 
 use App\Dto\ServerPublicKeyCredentialCreationOptionsRequest;
+use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Assert\Assertion;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webauthn\AuthenticatorSelectionCriteria;
-use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Webauthn\Bundle\Service\PublicKeyCredentialCreationOptionsFactory;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialSource;
