@@ -1,0 +1,37 @@
+function handlePublicKeyCreationOptions(
+  data,
+  successCallback,
+  failureCallback
+) {
+  fetch("/api/attestation/options", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => successCallback(json))
+    .catch(err => failureCallback(err));
+}
+
+function handlePublicKeyCreationResult(data, successCallback, failureCallback) {
+  fetch("/api/attestation/result", {
+    method: "POST",
+    credentials: "same-origin",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+    .then(response => {
+      return response.json();
+    })
+    .then(json => successCallback(json))
+    .catch(err => failureCallback(err));
+}
+
+export { handlePublicKeyCreationOptions, handlePublicKeyCreationResult };

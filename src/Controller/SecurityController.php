@@ -27,7 +27,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\User\UserInterface;
 use Twig\Environment;
 use Webauthn\Bundle\Service\PublicKeyCredentialCreationOptionsFactory;
-use Webauthn\Bundle\Service\PublicKeyCredentialRequestOptionsFactory;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialUserEntity;
 use Webauthn\SecurityBundle\Security\WebauthnUtils;
@@ -71,12 +70,8 @@ final class SecurityController
      * @var PublicKeyCredentialCreationOptionsFactory
      */
     private $publicKeyCredentialCreationOptionsFactory;
-    /**
-     * @var PublicKeyCredentialRequestOptionsFactory
-     */
-    private $publicKeyCredentialRequestOptionsFactory;
 
-    public function __construct(PublicKeyCredentialRequestOptionsFactory $publicKeyCredentialRequestOptionsFactory, PublicKeyCredentialCreationOptionsFactory $publicKeyCredentialCreationOptionsFactory, RouterInterface $router, RegisterUserHandler $registerUserHandler, RegisterPublicKeyHandler $registerPublicKeyHandler, Environment $twig, TokenStorageInterface $tokenStorage, WebauthnUtils $webauthnUtils)
+    public function __construct(PublicKeyCredentialCreationOptionsFactory $publicKeyCredentialCreationOptionsFactory, RouterInterface $router, RegisterUserHandler $registerUserHandler, RegisterPublicKeyHandler $registerPublicKeyHandler, Environment $twig, TokenStorageInterface $tokenStorage, WebauthnUtils $webauthnUtils)
     {
         $this->twig = $twig;
         $this->tokenStorage = $tokenStorage;
@@ -85,7 +80,6 @@ final class SecurityController
         $this->registerPublicKeyHandler = $registerPublicKeyHandler;
         $this->router = $router;
         $this->publicKeyCredentialCreationOptionsFactory = $publicKeyCredentialCreationOptionsFactory;
-        $this->publicKeyCredentialRequestOptionsFactory = $publicKeyCredentialRequestOptionsFactory;
     }
 
     public function login(): Response

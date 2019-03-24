@@ -11,45 +11,31 @@ declare(strict_types=1);
  * of the MIT license.  See the LICENSE file for details.
  */
 
+use App\Controller\AttestationRequestController;
+use App\Controller\AttestationResponseController;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use App\Controller\HomeController;
-use App\Controller\SecurityController;
-use App\Controller\ProfileController;
 
 $routes = new RouteCollection();
 
-// Security
-$routes->add('app_login', new Route('/login', [
-    '_controller' => [SecurityController::class, 'login'],
-]));
-$routes->add('app_login_assertion', new Route('/login/assertion', [
-    '_controller' => [SecurityController::class, 'assertion'],
-]));
-$routes->add('app_logout', new Route('/logout', [
-    '_controller' => [SecurityController::class, 'logout'],
-]));
-$routes->add('app_login_abort', new Route('/login/abort', [
-    '_controller' => [SecurityController::class, 'abort'],
-]));
-$routes->add('app_register_user', new Route('/register', [
-    '_controller' => [SecurityController::class, 'registerUser'],
-]));
-$routes->add('app_register_public_key', new Route('/register/attestation', [
-    '_controller' => [SecurityController::class, 'registerPublicKey'],
-]));
+// Authentication API
+$routes->add('api_attestation_request', new Route('/api/attestation/options',
+    ['_controller' => AttestationRequestController::class],
+    [],[],null,[],['POST']
+));
+$routes->add('api_attestation_response', new Route('/api/attestation/result',
+    ['_controller' => AttestationResponseController::class],
+    [],[],null,[],['POST']
+));
 
 // Home
-$routes->add('app_home', new Route('/', [
-    '_controller' => [HomeController::class, 'home'],
-]));
-
-// Profile
-$routes->add('app_profile', new Route('/profile', [
-    '_controller' => [ProfileController::class, 'profile'],
-]));
-$routes->add('app_device_registration', new Route('/profile/register_device', [
-    '_controller' => [ProfileController::class, 'creation'],
-]));
+$routes->add('app_home', new Route('/{reactRouting}',
+    [
+        '_controller' => [HomeController::class, 'home'],
+        'reactRouting' => null
+    ],
+    ['reactRouting' => '.*']
+));
 
 return $routes;

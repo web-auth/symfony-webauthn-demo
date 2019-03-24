@@ -1,8 +1,8 @@
-var Encore = require('@symfony/webpack-encore');
+const Encore = require("@symfony/webpack-encore");
+const path = require("path");
 
-Encore
-    .setOutputPath('public/build/')
-    .setPublicPath('/build')
+Encore.setOutputPath("public/build/")
+    .setPublicPath("/build")
 
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
@@ -12,11 +12,20 @@ Encore
 
     .enableReactPreset()
 
-    .addEntry('react', './assets/js/index.js')
+    .addEntry("react", "./assets/index.js")
+
+    .enableSassLoader()
 
     .configureBabel(function(babelConfig) {
-        babelConfig.plugins.push('@babel/plugin-proposal-class-properties');
-    })
-;
+        babelConfig.plugins.push("@babel/plugin-proposal-class-properties");
+    });
 
-module.exports = Encore.getWebpackConfig();
+const config = Encore.getWebpackConfig();
+config.resolve.alias.assets = path.resolve(__dirname, "./assets/assets");
+config.resolve.alias.components = path.resolve(
+    __dirname,
+    "./assets/components"
+);
+config.resolve.alias.views = path.resolve(__dirname, "./assets/views");
+
+module.exports = config;
