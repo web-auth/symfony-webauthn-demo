@@ -15,7 +15,7 @@ use App\Controller\AttestationRequestController;
 use App\Controller\AttestationResponseController;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
-use App\Controller\HomeController;
+use App\Controller\HomepageController;
 
 $routes = new RouteCollection();
 
@@ -32,7 +32,7 @@ $routes->add('api_attestation_response', new Route('/api/attestation/result',
 // Home
 $routes->add('app_home', new Route('/{reactRouting}',
     [
-        '_controller' => [HomeController::class, 'home'],
+        '_controller' => [HomepageController::class, 'home'],
         'reactRouting' => null
     ],
     ['reactRouting' => '.*']

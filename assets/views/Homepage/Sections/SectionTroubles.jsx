@@ -13,12 +13,12 @@ class SectionTroubles extends Component {
     return (
       <div className={classes.sections}>
         <div className={classes.container}>
+          <div className={classes.title}>
+            <h2>Have you troubles with password?</h2>
+          </div>
           <div id="troubles">
             <GridContainer>
               <GridItem xs={6} sm={6} className={classes.centered}>
-                <div className={classes.title}>
-                  <h2>Have you troubles with password?</h2>
-                </div>
                 <ul>
                   <li>Do you remember it?</li>
                   <li>Is your password secured enough?</li>
@@ -28,9 +28,9 @@ class SectionTroubles extends Component {
                   <li>
                     Have you been{" "}
                     <a
-                        href="https://haveibeenpwned.com/"
-                        rel="noopener noreferrer"
-                        target="_blank"
+                      href="https://haveibeenpwned.com/"
+                      rel="noopener noreferrer"
+                      target="_blank"
                     >
                       PAWNED
                     </a>{" "}

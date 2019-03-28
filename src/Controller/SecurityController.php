@@ -13,13 +13,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Form\Data\RegisterPublicKey;
-use App\Form\Data\RegisterUser;
 use App\Form\Handler\RegisterPublicKeyHandler;
 use App\Form\Handler\RegisterUserHandler;
-use Ramsey\Uuid\Uuid;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\RouterInterface;
@@ -27,8 +22,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Component\Security\Core\User\UserInterface;
 use Twig\Environment;
 use Webauthn\Bundle\Service\PublicKeyCredentialCreationOptionsFactory;
-use Webauthn\PublicKeyCredentialCreationOptions;
-use Webauthn\PublicKeyCredentialUserEntity;
 use Webauthn\SecurityBundle\Security\WebauthnUtils;
 
 final class SecurityController
@@ -124,83 +117,5 @@ final class SecurityController
     public function logout(): Response
     {
         return new Response('Logout');
-    }
-
-    public function registerUser(Request $request): Response
-    {
-        $request->getSession()->remove(self::USER_REGISTRATION_DATA);
-        $request->getSession()->remove(self::USER_REGISTRATION_REQUEST);
-        $data = new RegisterUser();
-        $form = $this->registerUserHandler->prepare($data);
-        if ($this->registerUserHandler->process($request, $form)) {
-            $request->getSession()->set(self::USER_REGISTRATION_DATA, $form->getData());
-
-            return new RedirectResponse(
-                $this->router->generate('app_register_public_key')
-            );
-        }
-
-        $page = $this->twig->render('security/register_user.html.twig', [
-            'form' => $form->createView(),
-        ]);
-
-        return new Response($page);
-    }
-
-    public function registerPublicKey(Request $request): Response
-    {
-        $registerUser = $request->getSession()->get(self::USER_REGISTRATION_DATA);
-        if (!$registerUser instanceof RegisterUser) {
-            return new RedirectResponse(
-                $this->router->generate('app_register_user')
-            );
-        }
-
-        $data = new RegisterPublicKey();
-        $form = $this->registerPublicKeyHandler->prepare($data);
-        $publicKeyCredentialCreationOptions = $this->getPublicKeyCredentialCreationOptions($request, $registerUser);
-        $user = $this->getUser($publicKeyCredentialCreationOptions);
-        if ($this->registerPublicKeyHandler->process($request, $form, $publicKeyCredentialCreationOptions, $user)) {
-            $request->getSession()->getFlashBag()->add(
-                'success',
-                sprintf('The account with username "%s" has correctly been created and security device is now associated to that account', $registerUser->getUsername())
-            );
-
-            return new RedirectResponse(
-                //Add flash message
-                $this->router->generate('app_home')
-            );
-        }
-
-        $page = $this->twig->render('security/register_user_attestation.html.twig', [
-            'form' => $form->createView(),
-            'publicKeyCredentialCreationOptions' => $publicKeyCredentialCreationOptions,
-        ]);
-
-        return new Response($page);
-    }
-
-    private function getUser(PublicKeyCredentialCreationOptions $publicKeyCredentialCreationOptions): User
-    {
-        return new User(
-            $publicKeyCredentialCreationOptions->getUser()->getId(),
-            $publicKeyCredentialCreationOptions->getUser()->getName(),
-            $publicKeyCredentialCreationOptions->getUser()->getDisplayName(),
-            []
-        );
-    }
-
-    private function getPublicKeyCredentialCreationOptions(Request $request, RegisterUser $registerUser): PublicKeyCredentialCreationOptions
-    {
-        $publicKeyCredentialCreationOptions = $request->getSession()->get(self::USER_REGISTRATION_REQUEST);
-        if (!$publicKeyCredentialCreationOptions instanceof PublicKeyCredentialCreationOptions) {
-            $publicKeyCredentialCreationOptions = $this->publicKeyCredentialCreationOptionsFactory->create(
-                'default',
-                new PublicKeyCredentialUserEntity($registerUser->getUsername(), Uuid::uuid4()->toString(), $registerUser->getDisplayName(), null)
-            );
-            $request->getSession()->set(self::USER_REGISTRATION_REQUEST, $publicKeyCredentialCreationOptions);
-        }
-
-        return $publicKeyCredentialCreationOptions;
     }
 }

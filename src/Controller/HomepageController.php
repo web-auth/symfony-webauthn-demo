@@ -16,10 +16,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
-final class HomeController extends AbstractController
+final class HomepageController extends AbstractController
 {
     public function home(): Response
     {
-        return $this->render('home_react.html.twig');
+        return $this->render('homepage.html.twig');
     }
 }
