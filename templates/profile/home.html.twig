@@ -55,10 +55,22 @@
                         <dd>
                             <ul>
                                 <li>Added at: {{ credential.getCreatedAt()|localizeddate('long', 'long') }}</li>
-                                <li>AAGUID: {{ credential.getAttestedCredentialData().aaguid|base64_encode }}</li>
+                                <li>AAGUID: {{ credential.getAttestedCredentialData().aaguid|uuid }}</li>
                                 <li>Public Key: {{ credential.getAttestedCredentialData().credentialPublicKey|base64_encode }}</li>
                                 <li>Counter: {{ credential.getCounter() }}</li>
                                 <li>Attestation type: {{ credential.getAttestationType() }}</li>
+                                <li>
+                                    Trust path:
+                                        {% if credential.trustPath is isEmptyTrustPath %}empty{% endif %}
+                                        {% if credential.trustPath is isEcdaaKeyIdTrustPath %}{{ credential.trustPath.getEcdaaKeyId()|base64_encode }}{% endif %}
+                                        {% if credential.trustPath is isCertificateTrustPath %}
+                                            <ul>
+                                                {% for certificate in credential.trustPath.getCertificates() %}
+                                                <li><pre>{{ certificate }}</pre></li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                </li>
                             </ul>
                         </dd>
                     {% endfor %}

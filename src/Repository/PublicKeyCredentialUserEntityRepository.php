@@ -45,6 +45,21 @@ final class PublicKeyCredentialUserEntityRepository implements BasePublicKeyCred
         );
     }
 
+    public function findOneByUserHandle(string $userHandle): ?PublicKeyCredentialUserEntity
+    {
+        $user = $this->userRepository->findOneByUserHandle($userHandle);
+        if (null === $user) {
+            return null;
+        }
+
+        return new PublicKeyCredentialUserEntity(
+            $user->getUsername(),
+            $user->getId(),
+            $user->getDisplayName(),
+            $user->getIcon()
+        );
+    }
+
     public function createUserEntity(string $username, string $displayName, ?string $icon): PublicKeyCredentialUserEntity
     {
         return new PublicKeyCredentialUserEntity($username, Uuid::uuid4()->toString(), $displayName, $icon);

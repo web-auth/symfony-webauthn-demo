@@ -11,9 +11,10 @@
 
 namespace App\TwigExtension;
 
+use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class Base64Extension extends \Twig_Extension
+class Base64Extension extends AbstractExtension
 {
     public function getFilters()
     {

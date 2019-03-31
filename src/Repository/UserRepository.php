@@ -46,14 +46,28 @@ final class UserRepository implements ServiceEntityRepositoryInterface
         $this->manager->flush();
     }
 
+    public function findOneByUserHandle(string $userHandle): ?User
+    {
+        $qb = $this->manager->createQueryBuilder();
+
+        return $qb->select('u')
+            ->from(User::class, 'u')
+            ->where('u.user_handle = :user_handle')
+            ->setParameter(':user_handle', $userHandle)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     public function find(string $username): ?User
     {
         $qb = $this->manager->createQueryBuilder();
 
         return $qb->select('u')
             ->from(User::class, 'u')
-            ->where('u.username = :username')
-            ->setParameter(':username', $username)
+            ->where('u.name = :name')
+            ->setParameter(':name', $username)
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()

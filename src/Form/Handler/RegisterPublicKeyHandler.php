@@ -125,7 +125,7 @@ class RegisterPublicKeyHandler
                 $response->getAttestationObject()->getAttStmt()->getTrustPath(),
                 $response->getAttestationObject()->getAuthData()->getAttestedCredentialData()->getAaguid(),
                 $response->getAttestationObject()->getAuthData()->getAttestedCredentialData()->getCredentialPublicKey(),
-                $user->getUserHandle(),
+                $user->getId(),
                 $response->getAttestationObject()->getAuthData()->getSignCount()
             );
             $this->credentialRepository->saveCredentialSource($credential);

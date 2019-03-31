@@ -11,16 +11,24 @@
 
 namespace App\TwigExtension;
 
+use Twig\Extension\AbstractExtension;
 use Symfony\Component\Security\Core\Authentication\Token\RememberMeToken;
+use Twig\TwigTest;
 use Webauthn\SecurityBundle\Security\Authentication\Token\WebauthnToken;
+use Webauthn\TrustPath\CertificateTrustPath;
+use Webauthn\TrustPath\EcdaaKeyIdTrustPath;
+use Webauthn\TrustPath\EmptyTrustPath;
 
-class IsInstanceOf extends \Twig_Extension
+class IsInstanceOf extends AbstractExtension
 {
     public function getTests()
     {
         return [
-            new \Twig_SimpleTest('isWebauthnToken', [$this, 'isWebauthnToken']),
-            new \Twig_SimpleTest('isRememberMeToken', [$this, 'isRememberMeToken']),
+            new TwigTest('isWebauthnToken', [$this, 'isWebauthnToken']),
+            new TwigTest('isRememberMeToken', [$this, 'isRememberMeToken']),
+            new TwigTest('isCertificateTrustPath', [$this, 'isCertificateTrustPath']),
+            new TwigTest('isEcdaaKeyIdTrustPath', [$this, 'isEcdaaKeyIdTrustPath']),
+            new TwigTest('isEmptyTrustPath', [$this, 'isEmptyTrustPath']),
         ];
     }
 
@@ -38,5 +46,29 @@ class IsInstanceOf extends \Twig_Extension
     public function isRememberMeToken($var): bool
     {
         return $var instanceof RememberMeToken;
+    }
+
+    /**
+     * @param mixed $var
+     */
+    public function isCertificateTrustPath($var): bool
+    {
+        return $var instanceof CertificateTrustPath;
+    }
+
+    /**
+     * @param mixed $var
+     */
+    public function isEcdaaKeyIdTrustPath($var): bool
+    {
+        return $var instanceof EcdaaKeyIdTrustPath;
+    }
+
+    /**
+     * @param mixed $var
+     */
+    public function isEmptyTrustPath($var): bool
+    {
+        return $var instanceof EmptyTrustPath;
     }
 }
