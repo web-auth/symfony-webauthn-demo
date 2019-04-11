@@ -19,12 +19,12 @@ use App\Controller\HomepageController;
 
 $routes = new RouteCollection();
 
-// Authentication API
-$routes->add('api_attestation_request', new Route('/api/attestation/options',
+// Registration API
+$routes->add('api_attestation_request', new Route('/register/options',
     ['_controller' => AttestationRequestController::class],
     [],[],null,[],['POST']
 ));
-$routes->add('api_attestation_response', new Route('/api/attestation/result',
+$routes->add('api_attestation_response', new Route('/register',
     ['_controller' => AttestationResponseController::class],
     [],[],null,[],['POST']
 ));
@@ -35,7 +35,7 @@ $routes->add('app_home', new Route('/{reactRouting}',
         '_controller' => [HomepageController::class, 'home'],
         'reactRouting' => null
     ],
-    ['reactRouting' => '.*']
+    ['reactRouting' => '^(?!_).*$']
 ));
 
 return $routes;

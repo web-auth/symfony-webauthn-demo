@@ -17,28 +17,10 @@ security:
         main:
             anonymous: true
             # activate different ways to authenticate
-            webauthn:
-                login_path: /login
-                login_check_path: /login
-                assertion_path: /login/assertion
-                assertion_check_path: /login/assertion
-                abort_path: /login/abort
-                remember_me_parameter: _remember_me
-                assertion_session_parameter: foo.bar
-            remember_me:
-                secret:   '%kernel.secret%'
-                lifetime: 604800 # 1 week in seconds
-                path:     /
-                secure: true
-                httponly: true
-                samesite: strict
-                remember_me_parameter: _remember_me
-                always_remember_me: false
-                name: REMEMBERME
+            webauthn_json:
+                profile: 'default'
             logout:
                 path: /logout
-                target: /
-                handler: App\EventListener\LogoutHandler
             switch_user: true
 
             # http_basic: true
@@ -52,6 +34,7 @@ security:
     access_control:
         - { path: ^/logout,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
         - { path: ^/login,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
+        - { path: ^/register,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
         - { path: ^/admin,  roles: 'ROLE_ADMIN', requires_channel: 'https' }
         - { path: ^/profile, roles: ROLE_USER, requires_channel: 'https' }
         - { path: ^/,       roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }

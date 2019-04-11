@@ -13,51 +13,27 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\User;
+use App\Entity\UserEntity;
+use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Ramsey\Uuid\Uuid;
-use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository as BasePublicKeyCredentialUserEntityRepository;
+use Webauthn\Bundle\Repository\AbstractPublicKeyCredentialUserEntityRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
 
-final class PublicKeyCredentialUserEntityRepository implements BasePublicKeyCredentialUserEntityRepository
+final class PublicKeyCredentialUserEntityRepository extends AbstractPublicKeyCredentialUserEntityRepository
 {
     /**
-     * @var UserRepository
+     * @var EntityManagerInterface
      */
-    private $userRepository;
+    private $manager;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(ManagerRegistry $registry)
     {
-        $this->userRepository = $userRepository;
-    }
-
-    public function findOneByUsername(string $username): ?PublicKeyCredentialUserEntity
-    {
-        $user = $this->userRepository->find($username);
-        if (null === $user) {
-            return null;
-        }
-
-        return new PublicKeyCredentialUserEntity(
-            $user->getUsername(),
-            $user->getId(),
-            $user->getDisplayName(),
-            $user->getIcon()
-        );
+        parent::__construct($registry, UserEntity::class);
     }
 
     public function createUserEntity(string $username, string $displayName, ?string $icon): PublicKeyCredentialUserEntity
     {
-        return new PublicKeyCredentialUserEntity($username, Uuid::uuid4()->toString(), $displayName, $icon);
-    }
-
-    public function saveUserEntity(PublicKeyCredentialUserEntity $userEntity): void
-    {
-        $user = new User(
-            $userEntity->getId(),
-            $userEntity->getName(),
-            $userEntity->getDisplayName(),
-            []
-        );
-        $this->userRepository->save($user);
+        return new UserEntity($username, Uuid::uuid4()->toString(), $displayName, $icon);
     }
 }

@@ -13,16 +13,16 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Dto\ServerPublicKeyCredentialCreationOptionsRequest;
-use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Assert\Assertion;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Webauthn\AuthenticatorSelectionCriteria;
+use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository;
 use Webauthn\Bundle\Service\PublicKeyCredentialCreationOptionsFactory;
+use Webauthn\ConformanceToolset\Dto\ServerPublicKeyCredentialCreationOptionsRequest;
 use Webauthn\PublicKeyCredentialDescriptor;
 use Webauthn\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
@@ -30,8 +30,6 @@ use Webauthn\PublicKeyCredentialUserEntity;
 
 final class AttestationRequestController
 {
-    private const SESSION_PARAMETER = '__WEBAUTHN__ATTESTATION__REQUEST__';
-
     /**
      * @var SerializerInterface
      */
@@ -43,6 +41,11 @@ final class AttestationRequestController
     private $publicKeyCredentialCreationOptionsFactory;
 
     /**
+     * @var string
+     */
+    private $profile;
+
+    /**
      * @var ValidatorInterface
      */
     private $validator;
@@ -51,11 +54,14 @@ final class AttestationRequestController
      * @var PublicKeyCredentialUserEntityRepository
      */
     private $userEntityRepository;
-
     /**
      * @var PublicKeyCredentialSourceRepository
      */
     private $credentialSourceRepository;
+    /**
+     * @var string
+     */
+    private $sessionParameterName;
 
     public function __construct(SerializerInterface $serializer, ValidatorInterface $validator, PublicKeyCredentialUserEntityRepository $userEntityRepository, PublicKeyCredentialSourceRepository $credentialSourceRepository, PublicKeyCredentialCreationOptionsFactory $publicKeyCredentialCreationOptionsFactory)
     {
@@ -64,9 +70,11 @@ final class AttestationRequestController
         $this->publicKeyCredentialCreationOptionsFactory = $publicKeyCredentialCreationOptionsFactory;
         $this->userEntityRepository = $userEntityRepository;
         $this->credentialSourceRepository = $credentialSourceRepository;
+        $this->profile = 'default';
+        $this->sessionParameterName = 'API_REGISTRATION_OPTIONS';
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request): JsonResponse
     {
         try {
             Assertion::eq('json', $request->getContentType(), 'Only JSON content type allowed');
@@ -77,10 +85,10 @@ final class AttestationRequestController
             $excludedCredentials = $this->getCredentials($userEntity);
             $authenticatorSelection = $creationOptionsRequest->authenticatorSelection;
             if (\is_array($authenticatorSelection)) {
-                $authenticatorSelection = AuthenticatorSelectionCriteria::createFromJson($authenticatorSelection);
+                $authenticatorSelection = AuthenticatorSelectionCriteria::createFromArray($authenticatorSelection);
             }
             $publicKeyCredentialCreationOptions = $this->publicKeyCredentialCreationOptionsFactory->create(
-                'default',
+                $this->profile,
                 $userEntity,
                 $excludedCredentials,
                 $authenticatorSelection,
@@ -90,7 +98,7 @@ final class AttestationRequestController
                 ['status' => 'ok', 'errorMessage' => ''],
                 $publicKeyCredentialCreationOptions->jsonSerialize()
             );
-            $request->getSession()->set(self::SESSION_PARAMETER, $publicKeyCredentialCreationOptions);
+            $request->getSession()->set($this->sessionParameterName, $publicKeyCredentialCreationOptions);
 
             return new JsonResponse($data);
         } catch (\Throwable $throwable) {
@@ -131,7 +139,7 @@ final class AttestationRequestController
             foreach ($errors as $error) {
                 $messages[] = $error->getPropertyPath().': '.$error->getMessage();
             }
-            throw new \RuntimeException(implode("\n", $messages));
+            throw new RuntimeException(implode("\n", $messages));
         }
 
         return $data;

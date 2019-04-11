@@ -13,23 +13,22 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\PublicKeyCredentialSource;
-use App\Repository\PublicKeyCredentialUserEntityRepository;
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Assert\Assertion;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
+use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialLoader;
+use App\Entity\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 
 final class AttestationResponseController
 {
-    private const SESSION_PARAMETER = '__WEBAUTHN__ATTESTATION__REQUEST__';
-
     /**
      * @var PublicKeyCredentialUserEntityRepository
      */
@@ -54,17 +53,28 @@ final class AttestationResponseController
      * @var HttpMessageFactoryInterface
      */
     private $httpMessageFactory;
+    /**
+     * @var string
+     */
+    private $sessionParameterName;
 
-    public function __construct(HttpMessageFactoryInterface $httpMessageFactory, PublicKeyCredentialLoader $publicKeyCredentialLoader, AuthenticatorAttestationResponseValidator $attestationResponseValidator, PublicKeyCredentialUserEntityRepository $userEntityRepository, PublicKeyCredentialSourceRepository $credentialSourceRepository)
+    /**
+     * @var UserRepository
+     */
+    private $userRepository;
+
+    public function __construct(HttpMessageFactoryInterface $httpMessageFactory, PublicKeyCredentialLoader $publicKeyCredentialLoader, AuthenticatorAttestationResponseValidator $attestationResponseValidator, PublicKeyCredentialUserEntityRepository $userEntityRepository, PublicKeyCredentialSourceRepository $credentialSourceRepository, UserRepository $userRepository)
     {
         $this->attestationResponseValidator = $attestationResponseValidator;
         $this->userEntityRepository = $userEntityRepository;
         $this->credentialSourceRepository = $credentialSourceRepository;
         $this->publicKeyCredentialLoader = $publicKeyCredentialLoader;
         $this->httpMessageFactory = $httpMessageFactory;
+        $this->sessionParameterName = 'API_REGISTRATION_OPTIONS';
+        $this->userRepository = $userRepository;
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request): JsonResponse
     {
         try {
             $psr7Request = $this->httpMessageFactory->createRequest($request);
@@ -74,29 +84,24 @@ final class AttestationResponseController
             $publicKeyCredential = $this->publicKeyCredentialLoader->load($content);
             $response = $publicKeyCredential->getResponse();
             Assertion::isInstanceOf($response, AuthenticatorAttestationResponse::class, 'Invalid response');
-            /** @var PublicKeyCredentialCreationOptions $publicKeyCredentialCreationOptions */
-            $publicKeyCredentialCreationOptions = $request->getSession()->get(self::SESSION_PARAMETER);
-            $request->getSession()->remove(self::SESSION_PARAMETER);
+            $publicKeyCredentialCreationOptions = $request->getSession()->get($this->sessionParameterName);
+            $request->getSession()->remove($this->sessionParameterName);
             Assertion::isInstanceOf($publicKeyCredentialCreationOptions, PublicKeyCredentialCreationOptions::class, 'Unable to find the public key credential creation options');
             $this->attestationResponseValidator->check($response, $publicKeyCredentialCreationOptions, $psr7Request);
             $this->userEntityRepository->saveUserEntity($publicKeyCredentialCreationOptions->getUser());
-            $credential = new PublicKeyCredentialSource(
-                $publicKeyCredential->getRawId(),
-                $publicKeyCredential->getType(),
-                [],
-                $response->getAttestationObject()->getAttStmt()->getType(),
-                $response->getAttestationObject()->getAttStmt()->getTrustPath(),
-                $response->getAttestationObject()->getAuthData()->getAttestedCredentialData()->getAaguid(),
-                $response->getAttestationObject()->getAuthData()->getAttestedCredentialData()->getCredentialPublicKey(),
-                $publicKeyCredentialCreationOptions->getUser()->getId(),
-                $response->getAttestationObject()->getAuthData()->getSignCount()
+            $credentialSource = PublicKeyCredentialSource::createFromPublicKeyCredential(
+                $publicKeyCredential,
+                $publicKeyCredentialCreationOptions->getUser()->getId()
             );
+            $this->credentialSourceRepository->saveCredentialSource($credentialSource);
 
-            $this->credentialSourceRepository->saveCredentialSource($credential);
+            $user = new User();
+            $user->setUsername($publicKeyCredentialCreationOptions->getUser()->getName());
+            $this->userRepository->save($user);
 
             return new JsonResponse(['status' => 'ok', 'errorMessage' => '']);
         } catch (\Throwable $throwable) {
-            return new JsonResponse(['status' => 'failed', 'errorMessage' => $throwable->getMessage(), 'errorCode' => $throwable->getCode(), 'errorFile' => $throwable->getFile(), 'errorLine' => $throwable->getLine()], 400);
+            return new JsonResponse(['status' => 'failed', 'errorMessage' => $throwable->getMessage()], 400);
         }
     }
 }

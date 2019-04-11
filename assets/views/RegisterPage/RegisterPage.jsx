@@ -154,7 +154,7 @@ class RegisterPage extends Component {
               });
             }
           },
-          () => {
+            () => {
             this.props.enqueueSnackbar({
               message:
                 "An error occurred during the registration process. Please try again later."
@@ -165,7 +165,7 @@ class RegisterPage extends Component {
           }
         );
       },
-      () => {
+        () => {
         this.props.enqueueSnackbar({
           message:
             "An error occurred during the registration process. Please try again later."

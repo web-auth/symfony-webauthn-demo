@@ -1,14 +1,14 @@
-webauthn_security:
-    http_message_factory: 'Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory'
+webauthn_json_security:
+    http_message_factory: 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory'
 
 webauthn:
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
-    #user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'
+    user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'
     token_binding_support_handler: 'Webauthn\TokenBinding\TokenBindingNotSupportedHandler'
-    #android_safetynet:
-    #    enabled: true
-    #    api_key: '%env(API_KEY)%'
-    #    http_client: 'httplug.client.app'
+    android_safetynet:
+        enabled: true
+        api_key: '%env(API_KEY)%'
+        http_client: 'httplug.client.app'
     creation_profiles:
         default:
             public_key_credential_parameters: #Mandatory
@@ -16,7 +16,7 @@ webauthn:
                 - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
             rp:
                 name: 'Webauthn Demo'
-                #id: '%env(RP_ID)%'
+                id: '%env(RP_ID)%'
                 #icon: null
             #challenge_length: 32
             #timeout: 60000
@@ -33,8 +33,8 @@ webauthn:
             #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT
             #extensions: ~
     request_profiles:
-        default: ~
-            #rp_id: '%env(RP_ID)%'
+        default:
+            rp_id: '%env(RP_ID)%'
             #challenge_length: 32
             #timeout: 60000
             #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED

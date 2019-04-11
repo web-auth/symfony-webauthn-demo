@@ -28,16 +28,19 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Security\UserProvider: ~
-    App\Form\Type\RegisterUserType: ~
-    App\Form\Handler\RegisterUserHandler: ~
     App\Validator\Constraints\UniqueUsernameValidator: ~
-    Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory:
-    Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface:
-        class: Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory
     App\EventListener\LastLoginAt:
         tags:
             - { name: 'kernel.event_listener', event: 'security.interactive_login' }
-    App\EventListener\FlashMessageOnSuccessfulLogin:
-        tags:
-            - { name: 'kernel.event_listener', event: 'security.interactive_login' }
-    App\EventListener\LogoutHandler: ~
+
+    Nyholm\Psr7\Factory\Psr17Factory: ~
+
+    Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface:
+        alias: 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory'
+
+    Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory:
+        arguments:
+            - '@Nyholm\Psr7\Factory\Psr17Factory'
+            - '@Nyholm\Psr7\Factory\Psr17Factory'
+            - '@Nyholm\Psr7\Factory\Psr17Factory'
+            - '@Nyholm\Psr7\Factory\Psr17Factory'

@@ -8,6 +8,7 @@
         "ext-iconv": "*",
         "doctrine/doctrine-migrations-bundle": "^1.3",
         "nelmio/cors-bundle": "^1.5",
+        "nyholm/psr7": "^1.1",
         "php-http/curl-client": "^1.7",
         "php-http/httplug-bundle": "^1.14",
         "ramsey/uuid": "^3.8",
@@ -22,7 +23,7 @@
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "^1.0",
         "symfony/process": "4.2.*",
-        "symfony/psr-http-message-bridge": "^1.1",
+        "symfony/psr-http-message-bridge": "^1.2",
         "symfony/security-bundle": "4.2.*",
         "symfony/security-csrf": "^4.0",
         "symfony/serializer-pack": "^1.0",
@@ -34,11 +35,7 @@
         "symfony/webpack-encore-bundle": "^1.1",
         "symfony/yaml": "4.2.*",
         "twig/extensions": "^1.5",
-        "web-auth/cose-lib": "^1.1@alpha",
-        "web-auth/webauthn-lib": "^1.1@alpha",
-        "web-auth/webauthn-symfony-bundle": "^1.1@alpha",
-        "web-auth/webauthn-symfony-security-bundle": "^1.1@alpha",
-        "zendframework/zend-diactoros": "^1.0"
+        "web-auth/webauthn-framework": "dev-JsonFirewall"
     },
     "require-dev": {
         "symfony/debug-pack": "^1.0",

@@ -15,22 +15,22 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Webauthn\PublicKeyCredentialDescriptorCollection;
-use Webauthn\PublicKeyCredentialUserEntity;
-use Webauthn\SecurityBundle\Model\CanHaveRegisteredSecurityDevices;
 
 /**
  * @ORM\Table(name="users")
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity("username")
  */
-class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSecurityDevices
+class User implements UserInterface
 {
     /**
      * @ORM\Id
      * @ORM\Column(type="string", length=255)
+     * @ORM\GeneratedValue(strategy="NONE")
      */
     private $id;
 
@@ -39,12 +39,6 @@ class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSec
      * @Assert\Length(max = 100)
      */
     private $username;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max = 100)
-     */
-    private $displayName;
 
     /**
      * @ORM\Column(type="array")
@@ -59,32 +53,12 @@ class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSec
     /**
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
-    private $last_login_at = null;
+    private $last_login_at;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Credential", mappedBy="user")
-     */
-    private $credentials;
-
-    /**
-     * @var PublicKeyCredentialSource[]
-     * @ORM\ManyToMany(targetEntity="App\Entity\PublicKeyCredentialSource")
-     * @ORM\JoinTable(name="users_user_handles",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="user_handle", referencedColumnName="id", unique=true)}
-     *      )
-     */
-    private $publicKeyCredentialSources;
-
-    public function __construct(string $id, string $username, string $displayName, array $roles)
+    public function __construct()
     {
-        parent::__construct($username, $id, $displayName);
-        $this->id = $id;
-        $this->username = $username;
-        $this->roles = $roles;
-        $this->credentials = new ArrayCollection();
-        $this->publicKeyCredentialSources = new ArrayCollection();
-        $this->displayName = $displayName;
+        $this->id = Uuid::uuid4()->toString();
+        $this->roles = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
     }
 
@@ -93,83 +67,19 @@ class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSec
         return $this->id;
     }
 
-    public function getSecurityDeviceCredentialIds(): iterable
-    {
-        $publicKeyCredentialDescriptors = [];
-        foreach ($this->publicKeyCredentialSources as $credential) {
-            $publicKeyCredentialDescriptors[] = $credential->getPublicKeyCredentialDescriptor();
-        }
-
-        yield from $publicKeyCredentialDescriptors;
-    }
-
-    /**
-     * @return Credential[]
-     */
-    public function getCredentials(): array
-    {
-        return $this->credentials->getValues();
-    }
-
-    public function removeCredential(Credential $credential): void
-    {
-        $this->credentials->removeElement($credential);
-    }
-
-    /**
-     * @return PublicKeyCredentialSource[]
-     */
-    public function getPublicKeyCredentialSources(): array
-    {
-        return $this->publicKeyCredentialSources->getValues();
-    }
-
-    public function addPublicKeyCredentialSource(PublicKeyCredentialSource $credential): void
-    {
-        $this->publicKeyCredentialSources->add($credential);
-    }
-
-    public function removePublicKeyCredentialSource(PublicKeyCredentialSource $credential): void
-    {
-        $this->publicKeyCredentialSources->removeElement($credential);
-    }
-
-    public function getUserHandle(): string
-    {
-        return $this->id;
-    }
-
-    public function setPublicKeyCredentialDescriptorCollection(PublicKeyCredentialDescriptorCollection $credentials): void
-    {
-        $this->publicKeyCredentialSources = $credentials;
-    }
-
     public function getRoles(): array
     {
         return array_unique($this->roles + ['ROLE_USER']);
     }
 
-    public function addRole(string $role): void
-    {
-        if (!\in_array($role, $this->getRoles(), true)) {
-            $this->roles[] = $role;
-        }
-    }
-
-    public function removeRole(string $role): void
-    {
-        $key = array_search($role, $this->roles, true);
-        if (false !== $key) {
-            unset($this->roles[$key]);
-        }
-    }
-
     public function getPassword()
     {
+        return '';
     }
 
     public function getSalt()
     {
+        return '';
     }
 
     public function getUsername(): ?string
@@ -180,16 +90,6 @@ class User extends PublicKeyCredentialUserEntity implements CanHaveRegisteredSec
     public function setUsername(string $username): void
     {
         $this->username = $username;
-    }
-
-    public function getDisplayName(): string
-    {
-        return $this->displayName;
-    }
-
-    public function setDisplayName(string $displayName): void
-    {
-        $this->displayName = $displayName;
     }
 
     public function getCreatedAt(): \DateTimeImmutable

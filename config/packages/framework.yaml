@@ -9,6 +9,7 @@ framework:
     session:
         handler_id: ~
         cookie_secure: auto
+        cookie_httponly: true
         cookie_samesite: lax
 
     #esi: true
