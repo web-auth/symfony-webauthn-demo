@@ -33,6 +33,8 @@ import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 import image from "assets/img/bg7.jpg";
 import securitykey from "assets/img/securitykey.min.svg";
 
+import { withRouter } from "react-router";
+
 class RegisterPage extends Component {
   state = {
     cardAnimation: "cardHidden",
@@ -43,7 +45,6 @@ class RegisterPage extends Component {
   };
 
   componentDidMount = () => {
-    // we add a hidden class to the card and after 700 ms we delete it and the transition appears
     setTimeout(() => {
       this.setState({ cardAnimation: "" });
     }, 400);
@@ -70,15 +71,7 @@ class RegisterPage extends Component {
         displayName: this.state.displayname
       },
       this.handlePublicKeyCreationOptions__,
-      () => {
-        this.props.enqueueSnackbar({
-          message:
-            "An error occurred during the registration process. Please try again later."
-        });
-        this.setState({
-          isDeviceInteractionEnabled: false
-        });
-      }
+      this.registrationFailureHandler
     );
   };
 
@@ -116,8 +109,9 @@ class RegisterPage extends Component {
       );
     }
 
-    navigator.credentials.create({ publicKey: publicKeyCreationOptions }).then(
-      data => {
+    navigator.credentials
+      .create({ publicKey: publicKeyCreationOptions })
+      .then(data => {
         const publicKeyCredential = {
           id: data.id,
           type: data.type,
@@ -133,48 +127,35 @@ class RegisterPage extends Component {
         };
         handlePublicKeyCreationResult(
           publicKeyCredential,
-          json => {
-            if (json.status !== undefined && "ok" === json.status) {
-              this.props.enqueueSnackbar({
-                message: "Your account have been successfully created!"
-              });
-              this.setState({
-                isDeviceInteractionEnabled: false
-              });
-              this.setState({
-                isDeviceInteractionEnabled: false
-              });
-            } else {
-              this.props.enqueueSnackbar({
-                message:
-                  "An error occurred during the registration process. Please try again later."
-              });
-              this.setState({
-                isDeviceInteractionEnabled: false
-              });
-            }
-          },
-            () => {
-            this.props.enqueueSnackbar({
-              message:
-                "An error occurred during the registration process. Please try again later."
-            });
-            this.setState({
-              isDeviceInteractionEnabled: false
-            });
-          }
+          this.registrationSuccessHandler,
+          this.registrationFailureHandler
         );
-      },
-        () => {
-        this.props.enqueueSnackbar({
-          message:
-            "An error occurred during the registration process. Please try again later."
-        });
-        this.setState({
-          isDeviceInteractionEnabled: false
-        });
-      }
-    );
+      })
+      .catch(this.registrationFailureHandler);
+  };
+
+  registrationFailureHandler = () => {
+    this.props.enqueueSnackbar({
+      message:
+        "An error occurred during the registration process. Please try again later."
+    });
+    this.setState({
+      isDeviceInteractionEnabled: false
+    });
+  };
+
+  registrationSuccessHandler = json => {
+    if (json.status !== undefined && "ok" === json.status) {
+      this.props.enqueueSnackbar({
+        message: "Your account have been successfully created!"
+      });
+      this.setState({
+        isDeviceInteractionEnabled: false
+      });
+      this.props.history.push("/");
+    } else {
+      this.registrationFailureHandler();
+    }
   };
 
   render() {
@@ -295,7 +276,9 @@ class RegisterPage extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ enqueueSnackbar }, dispatch);
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(withStyles(loginPageStyle)(RegisterPage));
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(withStyles(loginPageStyle)(RegisterPage))
+);

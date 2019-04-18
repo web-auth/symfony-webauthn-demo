@@ -1,9 +1,5 @@
-function handlePublicKeyCreationOptions(
-  data,
-  successCallback,
-  failureCallback
-) {
-  fetch("/api/register/options", {
+function handlePublicKeyRequestOptions(data, successCallback, failureCallback) {
+  fetch("/api/login/options", {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -18,8 +14,8 @@ function handlePublicKeyCreationOptions(
     .catch(err => failureCallback(err));
 }
 
-function handlePublicKeyCreationResult(data, successCallback, failureCallback) {
-  fetch("/api/register", {
+function handlePublicKeyRequestResult(data, successCallback, failureCallback) {
+  fetch("/api/login", {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -30,8 +26,9 @@ function handlePublicKeyCreationResult(data, successCallback, failureCallback) {
     .then(response => {
       return response.json();
     })
+    .then(json => console.log(json))
     .then(json => successCallback(json))
     .catch(err => failureCallback(err));
 }
 
-export { handlePublicKeyCreationOptions, handlePublicKeyCreationResult };
+export { handlePublicKeyRequestOptions, handlePublicKeyRequestResult };

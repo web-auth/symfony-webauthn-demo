@@ -95,8 +95,26 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "lcobucci/jwt": {
+        "version": "3.2.5"
+    },
+    "lexik/jwt-authentication-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "509b1542f3180a1cfe248ade8b7bf5092c2d4127"
+        },
+        "files": [
+            "config/packages/lexik_jwt_authentication.yaml"
+        ]
+    },
     "monolog/monolog": {
         "version": "1.24.0"
+    },
+    "namshi/jose": {
+        "version": "7.2.3"
     },
     "nelmio/cors-bundle": {
         "version": "1.5",
@@ -127,6 +145,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.2.2"
+    },
+    "paragonie/sodium_compat": {
+        "version": "v1.9.1"
     },
     "php-http/cache-plugin": {
         "version": "1.6.0"
@@ -209,6 +230,9 @@
             "ref": "fb7e19da7f013d0d422fa9bce16f5c510e27609b"
         }
     },
+    "spomky-labs/aes-key-wrap": {
+        "version": "v5.0.0"
+    },
     "spomky-labs/base64url": {
         "version": "v2.0.1"
     },
@@ -217,6 +241,18 @@
     },
     "spomky-labs/cbor-php": {
         "version": "v1.0.3"
+    },
+    "spomky-labs/lexik-jose-bridge": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "db8bcdca64743ea7413cf9f40cd9c29786401136"
+        },
+        "files": [
+            "config/packages/spomky_labs_lexik_jose_bridge_bundle.yaml"
+        ]
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.1.3"
@@ -536,8 +572,44 @@
     "web-auth/webauthn-symfony-security-bundle": {
         "version": "v1.1.0-alpha1"
     },
+    "web-token/jwt-bundle": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-checker": {
+        "version": "v1.3.3"
+    },
     "web-token/jwt-core": {
         "version": "v1.3.2"
+    },
+    "web-token/jwt-encryption": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-aescbc": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-aesgcm": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-aesgcmkw": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-aeskw": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-dir": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-ecdh-es": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-pbes2": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-encryption-algorithm-rsa": {
+        "version": "v1.3.3"
+    },
+    "web-token/jwt-key-mgmt": {
+        "version": "v1.3.3"
     },
     "web-token/jwt-signature": {
         "version": "v1.3.2"
@@ -556,6 +628,9 @@
     },
     "web-token/jwt-signature-algorithm-rsa": {
         "version": "v1.3.2"
+    },
+    "web-token/jwt-util-ecc": {
+        "version": "v1.3.3"
     },
     "webmozart/assert": {
         "version": "1.4.0"

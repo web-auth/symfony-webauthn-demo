@@ -35,7 +35,7 @@
         "symfony/webpack-encore-bundle": "^1.1",
         "symfony/yaml": "4.2.*",
         "twig/extensions": "^1.5",
-        "web-auth/webauthn-framework": "dev-JsonFirewall"
+        "web-auth/webauthn-framework": "^1.2@dev"
     },
     "require-dev": {
         "symfony/debug-pack": "^1.0",
@@ -88,7 +88,7 @@
     },
     "extra": {
         "symfony": {
-            "allow-contrib": false,
+            "allow-contrib": true,
             "require": "4.2.*"
         }
     }

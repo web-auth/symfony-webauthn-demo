@@ -34,6 +34,23 @@ import profilePageStyle from "assets/jss/material-kit-react/views/profilePage.js
 
 class ProfilePage extends React.Component {
   render() {
+    fetch("/api/profile", {
+      method: "GET",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        return response.json();
+      })
+      .then(json => {
+        console.log(json);
+      })
+      .catch(err => {
+        console.log(err.json());
+      });
+
     const { classes, ...rest } = this.props;
     const imageClasses = classNames(
       classes.imgRaised,

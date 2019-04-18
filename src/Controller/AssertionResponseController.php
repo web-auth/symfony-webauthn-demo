@@ -15,23 +15,11 @@ namespace App\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-final class SecurityController
+final class AssertionResponseController
 {
     /** This route is intercepted by the firewall and never reached */
-    public function options(): JsonResponse
-    {
-        return new JsonResponse(['options']);
-    }
-
-    /** This route is intercepted by the firewall and never reached */
-    public function login(): JsonResponse
+    public function __invoke(): JsonResponse
     {
         return new JsonResponse(['login']);
-    }
-
-    /** This route is intercepted by the firewall and never reached */
-    public function logout(): JsonResponse
-    {
-        return new JsonResponse(['logout']);
     }
 }

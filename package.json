@@ -50,5 +50,8 @@
         "not dead",
         "not ie <= 11",
         "not op_mini all"
-    ]
+    ],
+    "dependencies": {
+        "uuid-parse": "^1.1.0"
+    }
 }

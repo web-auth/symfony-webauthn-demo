@@ -69,7 +69,7 @@ class User implements UserInterface
 
     public function getRoles(): array
     {
-        return array_unique($this->roles + ['ROLE_USER']);
+        return array_unique($this->roles->toArray() + ['ROLE_USER']);
     }
 
     public function getPassword()

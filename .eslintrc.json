@@ -1,11 +1,11 @@
 {
-  "extends": "eslint:recommended",
-  "env": {
-    "browser": true
-  },
-  "rules": {
-    "quotes": [2, "single"],
-    "no-console": "warn"
-  },
-  "parser": "babel-eslint"
+    "extends": "eslint:recommended",
+    "env": {
+        "browser": true
+    },
+    "rules": {
+        "quotes": [4, "single"],
+        "no-console": "warn"
+    },
+    "parser": "babel-eslint"
 }

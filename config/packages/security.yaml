@@ -1,7 +1,5 @@
 security:
     role_hierarchy:
-        ROLE_GUEST:
-        ROLE_USER:  ROLE_GUEST
         ROLE_ADMIN: ROLE_USER
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
@@ -16,11 +14,13 @@ security:
             security: false
         main:
             anonymous: true
-            # activate different ways to authenticate
+
             webauthn_json:
+                login_path: /api/login
+                options_path: /api/login/options
                 profile: 'default'
             logout:
-                path: /logout
+                path: /api/logout
             switch_user: true
 
             # http_basic: true
@@ -32,9 +32,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/logout,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
-        - { path: ^/login,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
-        - { path: ^/register,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
-        - { path: ^/admin,  roles: 'ROLE_ADMIN', requires_channel: 'https' }
-        - { path: ^/profile, roles: ROLE_USER, requires_channel: 'https' }
+        - { path: ^/api/logout,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
+        - { path: ^/api/login,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
+        - { path: ^/api/register,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
+        - { path: ^/api/profile, roles: ROLE_USER, requires_channel: 'https' }
         - { path: ^/,       roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
