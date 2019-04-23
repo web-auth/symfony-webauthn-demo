@@ -1,24 +1,24 @@
-import { LOGIN, LOGOUT } from "./actions";
+import { LOGIN, LOGOUT } from './actions'
 
 const defaultState = {
-  authentication: null
-};
+    authentication: null,
+}
 
 export default (state = defaultState, action) => {
-  switch (action.type) {
-    case LOGIN:
-      return {
-        ...state,
-        authentication: action.authenticationData
-      };
+    switch (action.type) {
+        case LOGIN:
+            return {
+                ...state,
+                authentication: action.authenticationData,
+            }
 
-    case LOGOUT:
-      return {
-        ...state,
-        authentication: null
-      };
+        case LOGOUT:
+            return {
+                ...state,
+                authentication: null,
+            }
 
-    default:
-      return state;
-  }
-};
+        default:
+            return state
+    }
+}

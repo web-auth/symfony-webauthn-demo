@@ -1,8 +1,8 @@
-const Encore = require("@symfony/webpack-encore");
-const path = require("path");
+const Encore = require('@symfony/webpack-encore')
+const path = require('path')
 
-Encore.setOutputPath("public/build/")
-    .setPublicPath("/build")
+Encore.setOutputPath('public/build/')
+    .setPublicPath('/build')
 
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
@@ -12,21 +12,18 @@ Encore.setOutputPath("public/build/")
 
     .enableReactPreset()
 
-    .addEntry("react", "./assets/index.js")
+    .addEntry('react', './assets/index.jsx')
 
     .enableSassLoader()
 
-    .configureBabel(function(babelConfig) {
-        babelConfig.plugins.push("@babel/plugin-proposal-class-properties");
-    });
+    .configureBabel(babelConfig => {
+        babelConfig.plugins.push('@babel/plugin-proposal-class-properties')
+    })
 
-const config = Encore.getWebpackConfig();
-config.resolve.alias.assets = path.resolve(__dirname, "./assets/assets");
-config.resolve.alias.store = path.resolve(__dirname, "./assets/store");
-config.resolve.alias.components = path.resolve(
-    __dirname,
-    "./assets/components"
-);
-config.resolve.alias.views = path.resolve(__dirname, "./assets/views");
+const config = Encore.getWebpackConfig()
+config.resolve.alias.assets = path.resolve(__dirname, './assets/assets')
+config.resolve.alias.store = path.resolve(__dirname, './assets/store')
+config.resolve.alias.components = path.resolve(__dirname, './assets/components')
+config.resolve.alias.views = path.resolve(__dirname, './assets/views')
 
-module.exports = config;
+module.exports = config

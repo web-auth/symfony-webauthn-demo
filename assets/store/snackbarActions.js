@@ -1,14 +1,14 @@
-import { ENQUEUE_SNACKBAR, REMOVE_SNACKBAR } from "./actions";
+import { ENQUEUE_SNACKBAR, REMOVE_SNACKBAR } from './actions'
 
 export const enqueueSnackbar = notification => ({
-  type: ENQUEUE_SNACKBAR,
-  notification: {
-    key: new Date().getTime() + Math.random(),
-    ...notification
-  }
-});
+    notification: {
+        key: new Date().getTime() + Math.random(),
+        ...notification,
+    },
+    type: ENQUEUE_SNACKBAR,
+})
 
 export const removeSnackbar = key => ({
-  type: REMOVE_SNACKBAR,
-  key
-});
+    key,
+    type: REMOVE_SNACKBAR,
+})

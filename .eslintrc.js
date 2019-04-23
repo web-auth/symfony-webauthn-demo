@@ -12,10 +12,26 @@ module.exports = {
             jsx: true
         }
     },
+    rules: {
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error"
+    },
     plugins: ["react"],
     extends: [
-        "eslint:recommended",
-        "plugin:react/recommended",
+        "eslint:all",
+        "plugin:react/all",
         "plugin:prettier/recommended"
-    ]
+    ],
+    settings: {
+        react: {
+            pragma: "React",
+            version: "detect"
+        },
+        propWrapperFunctions: [
+            "forbidExtraProps",
+            { property: "freeze", object: "Object" },
+            { property: "myFavoriteWrapper" }
+        ],
+        linkComponents: ["Hyperlink", { name: "Link", linkAttribute: "to" }]
+    }
 };

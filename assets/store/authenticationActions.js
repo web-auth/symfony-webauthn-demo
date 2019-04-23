@@ -1,10 +1,10 @@
-import { LOGIN, LOGOUT } from "./actions";
+import { LOGIN, LOGOUT } from './actions'
 
 export const login = authenticationData => ({
-  type: LOGIN,
-  authentication: authenticationData
-});
+    authentication: authenticationData,
+    type: LOGIN,
+})
 
 export const logout = () => ({
-  type: LOGOUT
-});
+    type: LOGOUT,
+})
