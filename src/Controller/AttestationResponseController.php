@@ -3,16 +3,17 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Webauthn Demo project.
+ * The MIT License (MIT)
  *
- * (c) Florent Morselli
+ * Copyright (c) 2014-2019 Spomky-Labs
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
  */
 
 namespace App\Controller;
 
+use App\Entity\PublicKeyCredentialSource;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Assert\Assertion;
@@ -24,7 +25,6 @@ use Webauthn\AuthenticatorAttestationResponseValidator;
 use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialLoader;
-use App\Entity\PublicKeyCredentialSource;
 use Webauthn\PublicKeyCredentialSourceRepository;
 
 final class AttestationResponseController

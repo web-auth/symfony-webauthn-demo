@@ -44,3 +44,7 @@ services:
             - '@Nyholm\Psr7\Factory\Psr17Factory'
             - '@Nyholm\Psr7\Factory\Psr17Factory'
             - '@Nyholm\Psr7\Factory\Psr17Factory'
+
+    App\Provider\PublicKeyCredentialFakeUserEntityProvider:
+        autowire: true
+        autoconfigure: true

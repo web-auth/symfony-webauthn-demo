@@ -6,6 +6,7 @@ COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV APCU_VERSION 5.1.17
+ENV XDEBUG_VERSION 2.7.1
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -32,13 +33,17 @@ RUN docker-php-ext-install -j$(nproc) \
         intl \
 		bcmath \
 		gmp \
-        zip
+        zip \
+        pdo_mysql
 RUN pecl install apcu-${APCU_VERSION}
+RUN pecl install xdebug-${XDEBUG_VERSION}
 RUN pecl clear-cache
 RUN docker-php-ext-enable apcu
 RUN docker-php-ext-enable opcache
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-enable xdebug
 RUN echo "short_open_tag = off" >> /usr/local/etc/php/php.ini
+RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini
+RUN echo "xdebug.remote_port=9000" >> /usr/local/etc/php/php.ini
 RUN echo "date.timezone = Europe/Paris" >> /usr/local/etc/php/conf.d/symfony.ini
 RUN echo "opcache.max_accelerated_files = 20000" >> /usr/local/etc/php/conf.d/symfony.ini
 RUN echo "realpath_cache_size=4096K" >> /usr/local/etc/php/conf.d/symfony.ini

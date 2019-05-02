@@ -1,6 +1,3 @@
-webauthn_json_security:
-    http_message_factory: 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory'
-
 webauthn:
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
     user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'

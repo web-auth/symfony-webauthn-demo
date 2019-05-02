@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Webauthn Demo project.
+ * The MIT License (MIT)
  *
- * (c) Florent Morselli
+ * Copyright (c) 2014-2019 Spomky-Labs
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
  */
 
 namespace App\Controller;

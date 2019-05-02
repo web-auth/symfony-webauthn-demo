@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Webauthn Demo project.
+ * The MIT License (MIT)
  *
- * (c) Florent Morselli
+ * Copyright (c) 2014-2019 Spomky-Labs
  *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
+ * This software may be modified and distributed under the terms
+ * of the MIT license.  See the LICENSE file for details.
  */
 
 namespace App\Controller;
@@ -17,7 +17,6 @@ use App\Entity\User;
 use App\Entity\UserEntity;
 use App\Repository\PublicKeyCredentialSourceRepository;
 use App\Repository\PublicKeyCredentialUserEntityRepository;
-use function Safe\json_encode;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Webauthn\JsonSecurityBundle\Security\Authentication\Token\WebauthnToken;
@@ -43,7 +42,6 @@ final class ProfileController
         $this->keyCredentialSourceRepository = $keyCredentialSourceRepository;
         $this->keyCredentialUserEntityRepository = $keyCredentialUserEntityRepository;
     }
-
 
     public function __invoke(): JsonResponse
     {
