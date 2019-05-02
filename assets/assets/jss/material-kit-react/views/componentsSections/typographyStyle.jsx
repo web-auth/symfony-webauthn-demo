@@ -15,8 +15,7 @@ const typographyStyle = {
     ...title,
     marginTop: "30px",
     minHeight: "32px",
-    textDecoration: "none",
-    textAlign: "center"
+    textDecoration: "none"
   },
   typo: {
     paddingLeft: "25%",
@@ -38,10 +37,6 @@ const typographyStyle = {
     width: "260px"
   },
   marginLeft: {
-    marginLeft: "auto !important"
-  },
-  centered: {
-    marginRight: "auto !important",
     marginLeft: "auto !important"
   },
   ...imagesStyles

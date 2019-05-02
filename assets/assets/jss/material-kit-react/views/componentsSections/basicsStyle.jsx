@@ -10,8 +10,7 @@ const basicsStyle = {
     ...title,
     marginTop: "30px",
     minHeight: "32px",
-    textDecoration: "none",
-    textAlign: "center"
+    textDecoration: "none"
   },
   space50: {
     height: "50px",

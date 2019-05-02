@@ -4,10 +4,10 @@ import Notifier from 'components/Notifier/Notifier'
 
 import { Route, Router, Switch } from 'react-router-dom'
 
-import Homepage from 'views/Homepage/Homepage.jsx'
-import ProfilePage from 'views/ProfilePage/ProfilePage.jsx'
-import RegisterPage from 'views/RegisterPage/RegisterPage.jsx'
-import LoginPage from 'views/LoginPage/LoginPage.jsx'
+import Homepage from 'app/views/Homepage/Homepage.jsx'
+import ProfilePage from 'app/views/ProfilePage/ProfilePage.jsx'
+import RegisterPage from 'app/views/RegisterPage/RegisterPage.jsx'
+import LoginPage from 'app/views/LoginPage/LoginPage.jsx'
 import { createBrowserHistory } from 'history'
 
 const hist = createBrowserHistory(),
