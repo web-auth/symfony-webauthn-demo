@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import Notifier from 'components/Notifier/Notifier'
+import Notifier from 'app/components/Notifier/Notifier'
 
 import { Route, Router, Switch } from 'react-router-dom'
 

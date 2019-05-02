@@ -26,12 +26,12 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import {
   handlePublicKeyCreationOptions,
   handlePublicKeyCreationResult
-} from "components/PublicKeyCreation/PublicKeyCreation.jsx";
+} from "app/components/PublicKeyCreation/PublicKeyCreation.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
 import image from "assets/img/bg7.jpg";
-import securitykey from "assets/img/securitykey.min.svg";
+import securitykey from "app/img/securitykey.min.svg";
 
 import { withRouter } from "react-router";
 

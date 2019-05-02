@@ -30,7 +30,7 @@ class Homepage extends Component {
           }}
           {...rest}
         />
-        <Parallax image={require("assets/img/header.jpg")}>
+        <Parallax image={require("app/img/header.jpg")}>
           <div className={classes.container}>
             <GridContainer>
               <GridItem>

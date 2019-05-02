@@ -6,7 +6,7 @@ import basicsStyle from "assets/jss/material-kit-react/views/componentsSections/
 import GridContainer from "components/Grid/GridContainer.jsx";
 import GridItem from "components/Grid/GridItem.jsx";
 
-import holdingKey from "assets/img/holding-key.jpg";
+import holdingKey from "app/img/holding-key.jpg";
 
 class SectionSolution extends Component {
   render() {

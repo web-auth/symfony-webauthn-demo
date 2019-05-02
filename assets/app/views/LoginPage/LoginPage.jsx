@@ -21,7 +21,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import {
   handlePublicKeyRequestOptions,
   handlePublicKeyRequestResult
-} from "components/PublicKeyRequest/PublicKeyRequest.jsx";
+} from "app/components/PublicKeyRequest/PublicKeyRequest.jsx";
 
 import loginPageStyle from "assets/jss/material-kit-react/views/loginPage.jsx";
 
