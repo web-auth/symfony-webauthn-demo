@@ -5,7 +5,7 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { enqueueSnackbar } from "store/snackbarActions";
+import { enqueueSnackbar } from "store/actions/snackbarActions";
 
 // @material-ui/icons
 import { Lock, Face } from "@material-ui/icons";

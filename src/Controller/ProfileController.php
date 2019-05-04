@@ -19,7 +19,7 @@ use App\Repository\PublicKeyCredentialSourceRepository;
 use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
-use Webauthn\JsonSecurityBundle\Security\Authentication\Token\WebauthnToken;
+use Webauthn\Bundle\Security\Authentication\Token\WebauthnToken;
 
 final class ProfileController
 {
@@ -65,7 +65,7 @@ final class ProfileController
             'userForAuthentication' => $token->getCredentials(),
             'user' => $userEntity,
             'created_at' => $user->getCreatedAt()->format('c'),
-            'last_login_at' => $user->getLastLoginAt() ? $user->getLastLoginAt()->format('c') : 'never logged in',
+            'last_login_at' => $user->getLastLoginAt() ? $user->getLastLoginAt()->format('c') : null,
             'credentials' => $credentials,
         ]);
     }

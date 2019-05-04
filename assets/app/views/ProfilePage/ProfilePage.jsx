@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from 'react-redux'
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // @material-ui/icons
-import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
-import Favorite from "@material-ui/icons/Favorite";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import Security from "@material-ui/icons/Security";
+import Fingerprint from "@material-ui/icons/Fingerprint";
 // core components
 import Header from "app/components/Header/Header.jsx";
 import Footer from "app/components/Footer/Footer.jsx";
@@ -32,32 +33,17 @@ import work5 from "assets/img/examples/clem-onojegaw.jpg";
 
 import profilePageStyle from "assets/jss/material-kit-react/views/profilePage.jsx";
 
-class ProfilePage extends React.Component {
+class ProfilePage extends Component {
   render() {
-    fetch("/api/profile", {
-      method: "GET",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => {
-        return response.json();
-      })
-      .then(json => {
-        console.log(json);
-      })
-      .catch(err => {
-        console.log(err.json());
-      });
-
-    const { classes, ...rest } = this.props;
+    const { classes, authenticationData, ...rest } = this.props;
     const imageClasses = classNames(
       classes.imgRaised,
       classes.imgRoundedCircle,
       classes.imgFluid
     );
     const navImageClasses = classNames(classes.imgRounded, classes.imgGallery);
+
+    console.log(authenticationData)
     return (
       <div>
         <Header
@@ -79,30 +65,18 @@ class ProfilePage extends React.Component {
                 <GridItem xs={12} sm={12} md={6}>
                   <div className={classes.profile}>
                     <div>
-                      <img src={profile} alt="..." className={imageClasses} />
+                      <img src={profile} alt="Avatar" className={imageClasses} />
                     </div>
                     <div className={classes.name}>
-                      <h3 className={classes.title}>Christian Louboutin</h3>
-                      <h6>DESIGNER</h6>
-                      <Button justIcon link className={classes.margin5}>
-                        <i className={"fab fa-twitter"} />
-                      </Button>
-                      <Button justIcon link className={classes.margin5}>
-                        <i className={"fab fa-instagram"} />
-                      </Button>
-                      <Button justIcon link className={classes.margin5}>
-                        <i className={"fab fa-facebook"} />
-                      </Button>
+                      <h3 className={classes.title}>{authenticationData.userEntity.displayName}</h3>
                     </div>
                   </div>
                 </GridItem>
               </GridContainer>
               <div className={classes.description}>
                 <p>
-                  An artist of considerable range, Chet Faker — the name taken
-                  by Melbourne-raised, Brooklyn-based Nick Murphy — writes,
-                  performs and records all of his own music, giving it a warm,
-                  intimate feel with a solid groove structure.{" "}
+                    This is your profile page. You will find all the data collected by this demo.<br/>
+                    You can also list, add or remove security devices.
                 </p>
               </div>
               <GridContainer justify="center">
@@ -112,8 +86,8 @@ class ProfilePage extends React.Component {
                     color="primary"
                     tabs={[
                       {
-                        tabButton: "Studio",
-                        tabIcon: Camera,
+                        tabButton: "Profile",
+                        tabIcon: AccountCircle,
                         tabContent: (
                           <GridContainer justify="center">
                             <GridItem xs={12} sm={12} md={4}>
@@ -144,8 +118,8 @@ class ProfilePage extends React.Component {
                         )
                       },
                       {
-                        tabButton: "Work",
-                        tabIcon: Palette,
+                        tabButton: "Session",
+                        tabIcon: Security,
                         tabContent: (
                           <GridContainer justify="center">
                             <GridItem xs={12} sm={12} md={4}>
@@ -181,8 +155,8 @@ class ProfilePage extends React.Component {
                         )
                       },
                       {
-                        tabButton: "Favorite",
-                        tabIcon: Favorite,
+                        tabButton: "Credentials",
+                        tabIcon: Fingerprint,
                         tabContent: (
                           <GridContainer justify="center">
                             <GridItem xs={12} sm={12} md={4}>
@@ -230,4 +204,9 @@ class ProfilePage extends React.Component {
   }
 }
 
-export default withStyles(profilePageStyle)(ProfilePage);
+function mapStateToProps(state) {
+    const { auth } = state
+    return { authenticationData: auth.data }
+}
+
+export default connect(mapStateToProps)(withStyles(profilePageStyle)(ProfilePage));

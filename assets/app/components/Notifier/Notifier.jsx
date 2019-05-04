@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { withSnackbar } from "notistack";
-import { removeSnackbar } from "store/snackbarActions";
+import { removeSnackbar } from "store/actions/snackbarActions";
 
 class Notifier extends Component {
   displayed = [];

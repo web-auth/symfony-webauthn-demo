@@ -1,4 +1,4 @@
-import { ENQUEUE_SNACKBAR, REMOVE_SNACKBAR } from './actions'
+import { ENQUEUE_SNACKBAR, REMOVE_SNACKBAR } from './actionTypes'
 
 export const enqueueSnackbar = notification => ({
     notification: {

@@ -1,5 +1,6 @@
-import React from "react";
-import { enqueueSnackbar } from "store/snackbarActions";
+import React, { Component } from "react";
+import { enqueueSnackbar } from "store/actions/snackbarActions";
+import { authSuccess } from "store/actions/authenticationActions";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -31,7 +32,7 @@ import { connect } from "react-redux";
 
 import { withRouter } from "react-router";
 
-class LoginPage extends React.Component {
+class LoginPage extends Component {
   state = {
     cardAnimation: "cardHidden",
     isFormValid: false,
@@ -123,7 +124,7 @@ class LoginPage extends React.Component {
       .catch(this.loginFailureHandler);
   };
 
-  loginFailureHandler = () => {
+  loginFailureHandler = (err) => {
     this.props.enqueueSnackbar({
       message:
         "An error occurred during the login process. Please try again later."
@@ -138,6 +139,7 @@ class LoginPage extends React.Component {
       this.props.enqueueSnackbar({
         message: "Your are now logged in!"
       });
+      this.props.authSuccess(json);
       this.setState({
         isDeviceInteractionEnabled: false
       });
@@ -215,8 +217,9 @@ class LoginPage extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ enqueueSnackbar }, dispatch);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ enqueueSnackbar, authSuccess }, dispatch);
+}
 
 export default withRouter(
   connect(

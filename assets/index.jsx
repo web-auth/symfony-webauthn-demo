@@ -7,8 +7,8 @@ import 'assets/scss/material-kit-react.scss?v=1.4.0'
 
 import { combineReducers, createStore } from 'redux'
 import { Provider } from 'react-redux'
-import snackbarReducer from 'store/snackbarReducer'
-import authenticationReducer from 'store/authenticationReducer'
+import snackbarReducer from 'store/reducers/snackbarReducer'
+import authenticationReducer from 'store/reducers/authenticationReducer'
 import App from './App'
 
 const store = createStore(
