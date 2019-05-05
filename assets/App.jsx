@@ -18,16 +18,16 @@ const hist = createBrowserHistory(),
             <Fragment>
                 <AuthenticationChecker />
                 <Notifier />
-                <Router history={hist}>
+                <Router history={ hist }>
                     <Switch>
-                        <ProtectedRoute path="/profile" exact component={ProfilePage} />
+                        <ProtectedRoute path="/profile" exact component={ ProfilePage } />
                         <Route
-                            component={RegisterPage}
+                            component={ RegisterPage }
                             exact
                             path="/register"
                         />
-                        <Route component={LoginPage} exact path="/login" />
-                        <Route path="/" exact component={Homepage} />
+                        <Route component={ LoginPage } exact path="/login" />
+                        <Route path="/" exact component={ Homepage } />
                         <Redirect to='/' />
                     </Switch>
                 </Router>
@@ -35,9 +35,9 @@ const hist = createBrowserHistory(),
         )
     }
 
-function mapStateToProps(state) {
+function mapStateToProps( state ) {
     const { auth } = state
     return { authentication: auth }
 }
 
-export default connect(mapStateToProps)(App)
+export default connect( mapStateToProps )( App )
