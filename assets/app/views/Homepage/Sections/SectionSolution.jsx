@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import basicsStyle from 'assets/jss/material-kit-react/views/componentsSections/typographyStyle.jsx';
@@ -10,20 +10,20 @@ import holdingKey from 'app/img/holding-key.jpg';
 
 class SectionSolution extends Component {
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
         return (
-            <div className={ classes.sections }>
-                <div className={ classes.container }>
-                    <div className={ classes.title }>
+            <div className={classes.sections}>
+                <div className={classes.container}>
+                    <div className={classes.title}>
                         <h2>Easy + Secure</h2>
                     </div>
                     <div id="solution">
                         <GridContainer justify="center">
-                            <GridItem xs={ 6 } sm={ 6 } className={ classes.centered }>
+                            <GridItem xs={6} sm={6} className={classes.centered}>
                                 <img
-                                    src={ holdingKey }
+                                    src={holdingKey}
                                     alt="..."
-                                    className={ classes.imgRounded + ' ' + classes.imgFluid }
+                                    className={classes.imgRounded + ' ' + classes.imgFluid}
                                 />
                                 <h3>No password? No troubles.</h3>
                                 <p>
@@ -41,10 +41,10 @@ class SectionSolution extends Component {
                         <GridContainer />
                     </div>
                 </div>
-                <div className={ classes.space50 } />
+                <div className={classes.space50} />
             </div>
         );
     }
 }
 
-export default withStyles( basicsStyle )( SectionSolution );
+export default withStyles(basicsStyle)(SectionSolution);

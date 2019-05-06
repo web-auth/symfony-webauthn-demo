@@ -1,5 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
+import React, {Component, Fragment} from 'react';
+import {connect} from 'react-redux';
 // nodejs library that concatenates classes
 import classNames from 'classnames';
 // @material-ui/core components
@@ -26,24 +26,24 @@ class ProfilePage extends Component {
         profile: null,
     };
     componentDidMount = () => {
-        fetch( '/api/profile', {
+        fetch('/api/profile', {
             method: 'GET',
             credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json',
             },
-        } )
-            .then( response => {
+        })
+            .then(response => {
                 return response.json();
-            } )
-            .then( json => {
-                if ( json.status !== 'error' ) {
-                    this.setState( { profile: json } )
+            })
+            .then(json => {
+                if (json.status !== 'error') {
+                    this.setState({profile: json})
                 }
-            } );
+            });
     }
     render() {
-        const { classes, authenticationData, ...rest } = this.props;
+        const {classes, authenticationData, ...rest} = this.props;
         const imageClasses = classNames(
             classes.imgRaised,
             classes.imgRoundedCircle,
@@ -51,9 +51,9 @@ class ProfilePage extends Component {
         );
 
         let credentials = 'No credentials have been registered.'
-        if ( this.state.profile !== null ) {
-            credentials = this.state.profile.credentials.map( ( item, id ) => (
-                <Fragment key={ item.publicKeyCredentialId }>
+        if (this.state.profile !== null) {
+            credentials = this.state.profile.credentials.map((item, id) => (
+                <Fragment key={item.publicKeyCredentialId}>
                     <dt>ID: <pre>{ item.publicKeyCredentialId }</pre></dt>
                     <dd>
                         <ul>
@@ -65,7 +65,7 @@ class ProfilePage extends Component {
                         </ul>
                     </dd>
                 </Fragment>
-            ) )
+            ))
         }
 
         return (
@@ -73,37 +73,37 @@ class ProfilePage extends Component {
                 <Header
                     color="transparent"
                     brand="Webauthn Demo"
-                    rightLinks={ <HeaderLinks /> }
+                    rightLinks={<HeaderLinks />}
                     fixed
-                    changeColorOnScroll={ {
+                    changeColorOnScroll={{
                         height: 200,
                         color: 'white',
-                    } }
-                    { ...rest }
+                    }}
+                    {...rest}
                 />
-                <Parallax small filter image={ require( 'assets/img/profile-bg.jpg' ) } />
-                <div className={ classNames( classes.main, classes.mainRaised ) }>
+                <Parallax small filter image={require('assets/img/profile-bg.jpg')} />
+                <div className={classNames(classes.main, classes.mainRaised)}>
                     <div>
-                        <div className={ classes.container }>
+                        <div className={classes.container}>
                             <GridContainer justify="center">
-                                <GridItem xs={ 12 } sm={ 12 } md={ 6 }>
-                                    <div className={ classes.profile }>
+                                <GridItem xs={12} sm={12} md={6}>
+                                    <div className={classes.profile}>
                                         <div>
                                             <img
-                                                src={ profile }
+                                                src={profile}
                                                 alt="Avatar"
-                                                className={ imageClasses }
+                                                className={imageClasses}
                                             />
                                         </div>
-                                        <div className={ classes.name }>
-                                            <h3 className={ classes.title }>
+                                        <div className={classes.name}>
+                                            <h3 className={classes.title}>
                                                 { authenticationData.userEntity.displayName }
                                             </h3>
                                         </div>
                                     </div>
                                 </GridItem>
                             </GridContainer>
-                            <div className={ classes.description }>
+                            <div className={classes.description}>
                                 <p>
                   This is your profile page. You will find all the data
                   collected by this demo.
@@ -112,11 +112,11 @@ class ProfilePage extends Component {
                                 </p>
                             </div>
                             <GridContainer justify="center">
-                                <GridItem xs={ 12 } sm={ 12 } md={ 8 } className={ null }>
+                                <GridItem xs={12} sm={12} md={8} className={null}>
                                     <NavPills
                                         alignCenter
                                         color="primary"
-                                        tabs={ [
+                                        tabs={[
                                             {
                                                 tabButton: 'Profile',
                                                 tabIcon: AccountCircle,
@@ -158,7 +158,7 @@ class ProfilePage extends Component {
                                                     </GridItem>
                                                 </GridContainer>,
                                             },
-                                        ] }
+                                        ]}
                                     />
                                 </GridItem>
                             </GridContainer>
@@ -171,11 +171,11 @@ class ProfilePage extends Component {
     }
 }
 
-function mapStateToProps( state ) {
-    const { auth } = state;
-    return { authenticationData: auth.data };
+function mapStateToProps(state) {
+    const {auth} = state;
+    return {authenticationData: auth.data};
 }
 
-export default connect( mapStateToProps )(
-    withStyles( profilePageStyle )( ProfilePage )
+export default connect(mapStateToProps)(
+    withStyles(profilePageStyle)(ProfilePage)
 );

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import classNames from 'classnames';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Header from 'app/components/Header/Header.jsx';
@@ -16,27 +16,27 @@ import componentsStyle from 'assets/jss/material-kit-react/views/components.jsx'
 
 class Homepage extends Component {
     render() {
-        const { classes, ...rest } = this.props;
+        const {classes, ...rest} = this.props;
         return (
             <div>
                 <Header
                     brand="Webauthn Demo"
-                    rightLinks={ <HeaderLinks /> }
+                    rightLinks={<HeaderLinks />}
                     fixed
                     color="transparent"
-                    changeColorOnScroll={ {
+                    changeColorOnScroll={{
                         height: 400,
                         color: 'white',
-                    } }
-                    { ...rest }
+                    }}
+                    {...rest}
                 />
-                <Parallax image={ require( 'app/img/header.jpg' ) }>
-                    <div className={ classes.container }>
+                <Parallax image={require('app/img/header.jpg')}>
+                    <div className={classes.container}>
                         <GridContainer>
                             <GridItem>
-                                <div className={ classes.brand }>
-                                    <h1 className={ classes.title }>WEBAUTHN + SYMFONY =💖</h1>
-                                    <h3 className={ classes.subtitle }>
+                                <div className={classes.brand}>
+                                    <h1 className={classes.title}>WEBAUTHN + PHP =💖</h1>
+                                    <h3 className={classes.subtitle}>
                     Get rid of the user passwords and quickly build an
                     application supporting Webauthn without any effort.
                                     </h3>
@@ -46,7 +46,7 @@ class Homepage extends Component {
                     </div>
                 </Parallax>
 
-                <div className={ classNames( classes.main, classes.mainRaised ) }>
+                <div className={classNames(classes.main, classes.mainRaised)}>
                     <SectionTroubles />
                     <SectionSolution />
                     <SectionDownload />
@@ -57,4 +57,4 @@ class Homepage extends Component {
     }
 }
 
-export default withStyles( componentsStyle )( Homepage );
+export default withStyles(componentsStyle)(Homepage);

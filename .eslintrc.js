@@ -20,6 +20,7 @@ module.exports = {
         'plugin:react/recommended',
     ],
     rules: {
+        'code': 120,
         quotes: [ 'error', 'single' ],
         'no-console': 'warn',
         'react/jsx-uses-react': 'error',
@@ -95,7 +96,7 @@ module.exports = {
                 },
             },
         ],
-        'object-curly-spacing': [ 'error', 'always' ],
+        'object-curly-spacing': [ 'error', 'never' ],
         'object-property-newline': [ 'error' ],
         'semi-spacing': [
             'error',
@@ -113,11 +114,8 @@ module.exports = {
             },
         ],
         'space-in-parens': [
-            'warn',
-            'always',
-            {
-                exceptions: [ 'empty' ],
-            },
+            'error',
+            'never',
         ],
         'space-unary-ops': [
             'error',
@@ -125,7 +123,7 @@ module.exports = {
                 words: true,
                 nonwords: false,
                 overrides: {
-                    '!': true,
+                    '!': false,
                 },
             },
         ],
@@ -133,8 +131,8 @@ module.exports = {
         'react/jsx-curly-spacing': [
             'error',
             {
-                when: 'always',
-                children: true,
+                when: 'never',
+                children: false,
             },
         ],
         'react/jsx-wrap-multilines': [ 'error' ],

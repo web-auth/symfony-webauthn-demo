@@ -3,35 +3,35 @@ function handlePublicKeyCreationOptions(
     successCallback,
     failureCallback
 ) {
-    fetch( '/api/register/options', {
+    fetch('/api/register/options', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify( data ),
-    } )
-        .then( response => {
+        body: JSON.stringify(data),
+    })
+        .then(response => {
             return response.json();
-        } )
-        .then( json => successCallback( json ) )
-        .catch( err => failureCallback( err ) );
+        })
+        .then(json => successCallback(json))
+        .catch(err => failureCallback(err));
 }
 
-function handlePublicKeyCreationResult( data, successCallback, failureCallback ) {
-    fetch( '/api/register', {
+function handlePublicKeyCreationResult(data, successCallback, failureCallback) {
+    fetch('/api/register', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify( data ),
-    } )
-        .then( response => {
+        body: JSON.stringify(data),
+    })
+        .then(response => {
             return response.json();
-        } )
-        .then( json => successCallback( json ) )
-        .catch( err => failureCallback( err ) );
+        })
+        .then(json => successCallback(json))
+        .catch(err => failureCallback(err));
 }
 
 export {

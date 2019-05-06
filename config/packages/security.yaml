@@ -20,6 +20,7 @@ security:
                 fake_user_entity_provider: 'App\Provider\PublicKeyCredentialFakeUserEntityProvider'
             logout:
                 path: /api/logout
+                success_handler: App\Security\LogoutSuccessHandler
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

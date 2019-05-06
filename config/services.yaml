@@ -28,6 +28,8 @@ services:
     # please note that last definitions always *replace* previous ones
 
     App\Security\UserProvider: ~
+    App\Security\LogoutSuccessHandler: ~
+    App\Security\AuthenticationSuccessHandler: ~
     App\Validator\Constraints\UniqueUsernameValidator: ~
     App\EventListener\LastLoginAt:
         tags:

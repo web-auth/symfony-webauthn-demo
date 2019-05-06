@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Route, Redirect} from 'react-router-dom';
 
 class ProtectedRoute extends Component {
     render() {
-        const { isAuthenticated, ...props } = this.props;
+        const {isAuthenticated, ...props} = this.props;
         let route = <Redirect to="/" />;
-        if ( isAuthenticated ) {
-            route = <Route { ...props } />;
+        if (isAuthenticated) {
+            route = <Route {...props} />;
         }
         return route;
     }
 }
 
-function mapStateToProps( state ) {
-    const { auth } = state;
+function mapStateToProps(state) {
+    const {auth} = state;
     let isAuthenticated = false;
-    if ( auth !== undefined && auth.data !== undefined && auth.data !== null ) {
+    if (auth !== undefined && auth.data !== undefined && auth.data !== null) {
         isAuthenticated = true;
     }
-    return { isAuthenticated };
+    return {isAuthenticated};
 }
 
-export default connect( mapStateToProps )( ProtectedRoute );
+export default connect(mapStateToProps)(ProtectedRoute);

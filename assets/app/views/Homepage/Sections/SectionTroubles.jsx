@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 
 import GridContainer from 'components/Grid/GridContainer.jsx';
@@ -8,16 +8,16 @@ import basicsStyle from 'assets/jss/material-kit-react/views/componentsSections/
 
 class SectionTroubles extends Component {
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
         return (
-            <div className={ classes.sections }>
-                <div className={ classes.container }>
-                    <div className={ classes.title }>
+            <div className={classes.sections}>
+                <div className={classes.container}>
+                    <div className={classes.title}>
                         <h2>Have you troubles with password?</h2>
                     </div>
                     <div id="troubles">
                         <GridContainer justify="center">
-                            <GridItem xs={ 6 } sm={ 6 } className={ classes.centered }>
+                            <GridItem xs={6} sm={6} className={classes.centered}>
                                 <ul>
                                     <li>Do you remember it?</li>
                                     <li>Is your password secured enough?</li>
@@ -43,10 +43,10 @@ class SectionTroubles extends Component {
                         <GridContainer />
                     </div>
                 </div>
-                <div className={ classes.space50 } />
+                <div className={classes.space50} />
             </div>
         );
     }
 }
 
-export default withStyles( basicsStyle )( SectionTroubles );
+export default withStyles(basicsStyle)(SectionTroubles);

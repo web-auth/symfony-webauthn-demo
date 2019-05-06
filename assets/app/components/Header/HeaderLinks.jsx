@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -23,96 +23,96 @@ import Button from 'components/CustomButtons/Button.jsx';
 
 import headerLinksStyle from 'assets/jss/material-kit-react/components/headerLinksStyle.jsx';
 
-function HeaderLinks( { ...props } ) {
-    const { classes, isAuthenticated } = props;
+function HeaderLinks({...props}) {
+    const {classes, isAuthenticated} = props;
 
-    if ( isAuthenticated ) {
+    if (isAuthenticated) {
         return (
-            <List className={ classes.list }>
-                <ListItem className={ classes.listItem }>
+            <List className={classes.list}>
+                <ListItem className={classes.listItem}>
                     <Button
                         to="/"
                         color="transparent"
-                        component={ Link }
-                        className={ classes.navLink }
+                        component={Link}
+                        className={classes.navLink}
                     >
-                        <Home className={ classes.icons } /> Homepage
+                        <Home className={classes.icons} /> Homepage
                     </Button>
                 </ListItem>
-                <ListItem className={ classes.listItem }>
+                <ListItem className={classes.listItem}>
                     <CustomDropdown
                         noLiPadding
                         buttonText="Profile"
-                        buttonProps={ {
+                        buttonProps={{
                             className: classes.navLink,
                             color: 'transparent',
-                        } }
-                        buttonIcon={ AccountCircle }
-                        dropdownList={ [
-                            <Link to="/profile" className={ classes.dropdownLink }>
+                        }}
+                        buttonIcon={AccountCircle}
+                        dropdownList={[
+                            <Link to="/profile" className={classes.dropdownLink}>
                 Show profile
                             </Link>,
-                            <Link to="/logout" className={ classes.dropdownLink }>
+                            <Link to="/logout" className={classes.dropdownLink}>
                 Logout
                             </Link>,
-                        ] }
+                        ]}
                     />
                 </ListItem>
-                <ListItem className={ classes.listItem }>
+                <ListItem className={classes.listItem}>
                     <Button
                         href="https://github.com/web-auth"
                         color="transparent"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={ classes.navLink }
+                        className={classes.navLink}
                     >
-                        <Launch className={ classes.icons } /> Download
+                        <Launch className={classes.icons} /> Download
                     </Button>
                 </ListItem>
             </List>
         );
     } else {
         return (
-            <List className={ classes.list }>
-                <ListItem className={ classes.listItem }>
+            <List className={classes.list}>
+                <ListItem className={classes.listItem}>
                     <Button
                         to="/"
                         color="transparent"
-                        component={ Link }
-                        className={ classes.navLink }
+                        component={Link}
+                        className={classes.navLink}
                     >
-                        <Home className={ classes.icons } /> Homepage
+                        <Home className={classes.icons} /> Homepage
                     </Button>
                 </ListItem>
-                <ListItem className={ classes.listItem }>
+                <ListItem className={classes.listItem}>
                     <Button
                         to="/login"
                         color="transparent"
-                        component={ Link }
-                        className={ classes.navLink }
+                        component={Link}
+                        className={classes.navLink}
                     >
-                        <AccountCircle className={ classes.icons } /> Sign in
+                        <AccountCircle className={classes.icons} /> Sign in
                     </Button>
                 </ListItem>
-                <ListItem className={ classes.listItem }>
+                <ListItem className={classes.listItem}>
                     <Button
                         to="/register"
                         color="transparent"
-                        component={ Link }
-                        className={ classes.navLink }
+                        component={Link}
+                        className={classes.navLink}
                     >
-                        <PersonAdd className={ classes.icons } /> Sign up
+                        <PersonAdd className={classes.icons} /> Sign up
                     </Button>
                 </ListItem>
-                <ListItem className={ classes.listItem }>
+                <ListItem className={classes.listItem}>
                     <Button
                         href="https://github.com/web-auth"
                         color="transparent"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={ classes.navLink }
+                        className={classes.navLink}
                     >
-                        <Launch className={ classes.icons } /> Download
+                        <Launch className={classes.icons} /> Download
                     </Button>
                 </ListItem>
             </List>
@@ -120,15 +120,15 @@ function HeaderLinks( { ...props } ) {
     }
 }
 
-function mapStateToProps( state ) {
-    const { auth } = state;
+function mapStateToProps(state) {
+    const {auth} = state;
     let isAuthenticated = false;
-    if ( auth !== undefined && auth.data !== undefined && auth.data !== null ) {
+    if (auth !== undefined && auth.data !== undefined && auth.data !== null) {
         isAuthenticated = true;
     }
-    return { isAuthenticated };
+    return {isAuthenticated};
 }
 
-export default connect( mapStateToProps )(
-    withStyles( headerLinksStyle )( HeaderLinks )
+export default connect(mapStateToProps)(
+    withStyles(headerLinksStyle)(HeaderLinks)
 );

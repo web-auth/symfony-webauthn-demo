@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
-import { enqueueSnackbar } from 'app/store/actions/snackbarActions';
-import { authSuccess } from 'app/store/actions/authenticationActions';
+import React, {Component} from 'react';
+import {enqueueSnackbar} from 'app/store/actions/snackbarActions';
+import {authSuccess} from 'app/store/actions/authenticationActions';
 // @material-ui/core components
 import withStyles from '@material-ui/core/styles/withStyles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 // @material-ui/icons
 import Lock from '@material-ui/icons/Lock';
 // core components
-import Header from 'app/components/Header/Header.jsx';
-import HeaderLinks from 'app/components/Header/HeaderLinks.jsx';
-import Footer from 'app/components/Footer/Footer.jsx';
-import GridContainer from 'components/Grid/GridContainer.jsx';
-import GridItem from 'components/Grid/GridItem.jsx';
+import SecurityLayout from 'app/layouts/SecurityLayout/SecurityLayout.jsx';
 import Button from 'components/CustomButtons/Button.jsx';
-import Card from 'components/Card/Card.jsx';
 import CardBody from 'components/Card/CardBody.jsx';
 import CardHeader from 'components/Card/CardHeader.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
@@ -26,11 +21,11 @@ import {
 
 import loginPageStyle from 'assets/jss/material-kit-react/views/loginPage.jsx';
 
-import image from 'assets/img/bg7.jpg';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 
-import { withRouter } from 'react-router';
+import {withRouter} from 'react-router';
+import SecurityKey from 'app/img/securitykey.min.svg';
 
 class LoginPage extends Component {
   state = {
@@ -41,25 +36,32 @@ class LoginPage extends Component {
   };
 
   handleUsernameChanged = event => {
-      this.setState( {
+      event.preventDefault()
+      this.setState({
           username: event.target.value,
           isFormValid: event.target.value !== '',
-      } );
+      });
   };
 
   cardAnimation = () => {
-      this.setState( { cardAnimation: '' } );
+      this.setState({cardAnimation: ''});
   };
 
   componentDidMount = () => {
-      setTimeout( this.cardAnimation, 700 );
+      setTimeout(this.cardAnimation, 700);
   };
 
-  handleFormValidation = () => {
+    handleKeyPressed = event => {
+        if (event.which === 13) {
+            this.handleFormValidation(event)
+        }
+    };
+
+  handleFormValidation = event => {
+      event.preventDefault()
       handlePublicKeyRequestOptions(
           {
               username: this.state.username,
-              displayName: this.state.displayname,
           },
           this.handlePublicKeyRequestOptions__,
           this.loginFailureHandler
@@ -67,50 +69,50 @@ class LoginPage extends Component {
   };
 
   handlePublicKeyRequestOptions__ = publicKeyRequestOptions => {
-      this.setState( {
+      this.setState({
           isDeviceInteractionEnabled: true,
-      } );
-      function arrayToBase64String( a ) {
-          return btoa( String.fromCharCode( ...a ) );
+      });
+      function arrayToBase64String(a) {
+          return btoa(String.fromCharCode(...a));
       }
 
       publicKeyRequestOptions.challenge = Uint8Array.from(
-          window.atob( publicKeyRequestOptions.challenge ),
+          window.atob(publicKeyRequestOptions.challenge),
           c => {
-              return c.charCodeAt( 0 );
+              return c.charCodeAt(0);
           }
       );
-      if ( publicKeyRequestOptions.allowCredentials !== undefined ) {
+      if (publicKeyRequestOptions.allowCredentials !== undefined) {
           publicKeyRequestOptions.allowCredentials = publicKeyRequestOptions.allowCredentials.map(
               data => {
                   return {
                       type: data.type,
-                      id: Uint8Array.from( atob( data.id ), c => {
-                          return c.charCodeAt( 0 );
-                      } ),
+                      id: Uint8Array.from(atob(data.id), c => {
+                          return c.charCodeAt(0);
+                      }),
                   };
               }
           );
       }
       navigator.credentials
-          .get( { publicKey: publicKeyRequestOptions } )
-          .then( data => {
+          .get({publicKey: publicKeyRequestOptions})
+          .then(data => {
               const publicKeyCredential = {
                   id: data.id,
                   type: data.type,
-                  rawId: arrayToBase64String( new Uint8Array( data.rawId ) ),
+                  rawId: arrayToBase64String(new Uint8Array(data.rawId)),
                   response: {
                       authenticatorData: arrayToBase64String(
-                          new Uint8Array( data.response.authenticatorData )
+                          new Uint8Array(data.response.authenticatorData)
                       ),
                       clientDataJSON: arrayToBase64String(
-                          new Uint8Array( data.response.clientDataJSON )
+                          new Uint8Array(data.response.clientDataJSON)
                       ),
                       signature: arrayToBase64String(
-                          new Uint8Array( data.response.signature )
+                          new Uint8Array(data.response.signature)
                       ),
                       userHandle: data.response.userHandle
-                          ? arrayToBase64String( new Uint8Array( data.response.userHandle ) )
+                          ? arrayToBase64String(new Uint8Array(data.response.userHandle))
                           : null,
                   },
               };
@@ -119,116 +121,101 @@ class LoginPage extends Component {
                   this.loginSuccessHandler,
                   this.loginFailureHandler
               );
-          } )
-          .catch( this.loginFailureHandler );
+          })
+          .catch(this.loginFailureHandler);
   };
 
   loginFailureHandler = () => {
-      this.props.enqueueSnackbar( {
+      this.props.enqueueSnackbar({
           message:
         'An error occurred during the login process. Please try again later.',
-      } );
-      this.setState( {
+      });
+      this.setState({
           isDeviceInteractionEnabled: false,
-      } );
+      });
   };
 
   loginSuccessHandler = json => {
-      if ( json.status !== undefined && json.status === 'ok' ) {
-          this.props.enqueueSnackbar( {
+      if (json.status !== undefined && json.status === 'ok') {
+          this.props.enqueueSnackbar({
               message: 'Your are now logged in!',
-          } );
-          this.props.authSuccess( json );
-          this.setState( {
+          });
+          this.props.authSuccess(json);
+          this.setState({
               isDeviceInteractionEnabled: false,
-          } );
-          this.props.history.push( '/' );
+          });
+          this.props.history.push('/');
       } else {
           this.loginFailureHandler();
       }
   };
 
   render() {
-      const { classes, ...rest } = this.props;
-      return (
-          <div>
-              <Header
-                  absolute
-                  color="transparent"
-                  brand="Webauthn Demo"
-                  rightLinks={ <HeaderLinks /> }
-                  { ...rest }
-              />
-              <div
-                  className={ classes.pageHeader }
-                  style={ {
-                      backgroundImage: 'url(' + image + ')',
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'top center',
-                  } }
-              >
-                  <div className={ classes.container }>
-                      <GridContainer justify="center">
-                          <GridItem xs={ 12 } sm={ 12 } md={ 4 }>
-                              <Card className={ classes[this.state.cardAnimation] }>
-                                  <form className={ classes.form }>
-                                      <CardHeader color="primary" className={ classes.cardHeader }>
-                                          <h4>Login</h4>
-                                      </CardHeader>
-                                      <CardBody>
-                                          <CustomInput
-                                              labelText="Username..."
-                                              id="first"
-                                              formControlProps={ {
-                                                  fullWidth: true,
-                                              } }
-                                              inputProps={ {
-                                                  onChange: event => this.handleUsernameChanged( event ),
-                                                  type: 'text',
-                                                  endAdornment: (
-                                                      <InputAdornment position="end">
-                                                          <Lock className={ classes.inputIconsColor } />
-                                                      </InputAdornment>
-                                                  ),
-                                              } }
-                                          />
-                                      </CardBody>
-                                      <CardFooter className={ classes.cardFooter }>
-                                          <Button
-                                              simple
-                                              color="primary"
-                                              size="lg"
-                                              disabled={ ! this.state.isFormValid }
-                                              onClick={ this.handleFormValidation }
-                                          >
-                        Get started
-                                          </Button>
-                                      </CardFooter>
-                                  </form>
-                              </Card>
-                          </GridItem>
-                      </GridContainer>
-                  </div>
-                  <Footer whiteFont />
+      const {classes, ...rest} = this.props;
+      let cardBody = (
+          <form className={classes.form}>
+              <CardHeader color="primary" className={classes.cardHeader}>
+                  <h4>Authentication</h4>
+              </CardHeader>
+              <CardBody>
+                  <p>
+                      Please enter your username and submit the form.
+                  </p>
+                  <CustomInput
+                      labelText="Username"
+                      id="username"
+                      formControlProps={{
+                          fullWidth: true,
+                      }}
+                      inputProps={{
+                          onKeyPress: event => this.handleKeyPressed(event),
+                          onChange: event => this.handleUsernameChanged(event),
+                          type: 'text',
+                          value: this.state.username,
+                          endAdornment: (
+                              <InputAdornment position="end">
+                                  <Lock className={classes.inputIconsColor} />
+                              </InputAdornment>
+                          ),
+                      }}
+                  />
+              </CardBody>
+              <CardFooter className={classes.cardFooter}>
+                  <Button simple color="primary" size="lg" disabled={!this.state.isFormValid} onClick={event => this.handleFormValidation(event)}>
+                      Submit
+                  </Button>
+              </CardFooter>
+          </form>
+      );
+      if (this.state.isDeviceInteractionEnabled) {
+          cardBody = (
+              <div>
+                  <CardHeader color="primary" className={classes.cardHeader}>
+                      <h4>Authentication</h4>
+                  </CardHeader>
+                  <CardBody>
+                      <p>
+                          You should now be notified to tap your security device (button,
+                          bluetooth, NFC, fingerprint…).
+                      </p>
+                      <img src={SecurityKey} alt="Tap your device" width="100%" />
+                  </CardBody>
               </div>
-          </div>
+          );
+      }
+      return (
+          <SecurityLayout>
+              { cardBody }
+          </SecurityLayout>
       );
   }
 }
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators(
-        {
-            enqueueSnackbar,
-            authSuccess,
-        },
-        dispatch
-    );
+    return bindActionCreators({
+        enqueueSnackbar,
+        authSuccess,
+    }, dispatch);
 };
 
-export default withRouter(
-    connect(
-        null,
-        mapDispatchToProps
-    )( withStyles( loginPageStyle )( LoginPage ) )
-);
+export default withRouter(connect(null, mapDispatchToProps)(withStyles(loginPageStyle)(LoginPage)));
