@@ -563,9 +563,6 @@
     "zendframework/zend-code": {
         "version": "3.3.1"
     },
-    "zendframework/zend-diactoros": {
-        "version": "1.8.6"
-    },
     "zendframework/zend-eventmanager": {
         "version": "3.2.1"
     }

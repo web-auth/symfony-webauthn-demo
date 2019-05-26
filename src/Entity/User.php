@@ -36,18 +36,6 @@ class User extends PublicKeyCredentialUserEntity implements UserInterface, CanHa
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max = 100)
-     */
-    protected $name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max = 100)
-     */
-    protected $displayName;
-
-    /**
      * @ORM\Column(type="array")
      */
     protected $roles;
