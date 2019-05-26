@@ -38,7 +38,8 @@
         "web-auth/cose-lib": "^1.1",
         "web-auth/webauthn-lib": "^1.1",
         "web-auth/webauthn-symfony-bundle": "^1.1",
-        "web-auth/webauthn-symfony-security-bundle": "^1.1"
+        "web-auth/webauthn-symfony-security-bundle": "^1.1",
+        "zendframework/zend-diactoros": "^1.0"
     },
     "require-dev": {
         "symfony/debug-pack": "^1.0",
