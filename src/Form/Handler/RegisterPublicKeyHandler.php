@@ -90,6 +90,11 @@ class RegisterPublicKeyHandler
             $data = $form->getData();
             $assertion = $data->getAttestation();
             try {
+                $this->logger->info(\Safe\sprintf(
+                    'Assertion: %s. Request was: %s.',
+                    $assertion,
+                    json_encode($publicKeyCredentialCreationOptions)
+                ));
                 $publicKeyCredential = $this->publicKeyCredentialLoader->load($assertion);
                 $response = $publicKeyCredential->getResponse();
                 if (!$response instanceof AuthenticatorAttestationResponse) {

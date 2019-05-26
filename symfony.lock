@@ -110,6 +110,18 @@
     "nikic/php-parser": {
         "version": "v4.2.0"
     },
+    "nyholm/psr7": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "5e29a795c9996269c4cea2e87eeb3052c33cf98e"
+        },
+        "files": [
+            "config/packages/nyholm_psr7.yaml"
+        ]
+    },
     "ocramius/package-versions": {
         "version": "1.4.0"
     },
@@ -166,6 +178,9 @@
     },
     "psr/container": {
         "version": "1.0.0"
+    },
+    "psr/http-factory": {
+        "version": "1.0.1"
     },
     "psr/http-message": {
         "version": "1.0.1"
@@ -538,6 +553,9 @@
     },
     "web-token/jwt-signature-algorithm-rsa": {
         "version": "v1.3.2"
+    },
+    "web-token/jwt-util-ecc": {
+        "version": "v1.3.8"
     },
     "webmozart/assert": {
         "version": "1.4.0"
