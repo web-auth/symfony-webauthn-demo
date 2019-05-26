@@ -90,7 +90,7 @@ class RegisterPublicKeyHandler
             $data = $form->getData();
             $assertion = $data->getAttestation();
             try {
-                $this->logger->info(\Safe\sprintf(
+                $this->logger->error(\Safe\sprintf(
                     'Assertion: %s. Request was: %s.',
                     $assertion,
                     json_encode($publicKeyCredentialCreationOptions)
