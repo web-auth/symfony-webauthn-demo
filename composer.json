@@ -39,7 +39,7 @@
         "web-auth/webauthn-lib": "^1.1",
         "web-auth/webauthn-symfony-bundle": "^1.1",
         "web-auth/webauthn-symfony-security-bundle": "^1.1",
-        "zendframework/zend-diactoros": "^1.0"
+        "zendframework/zend-diactoros": "^2.1"
     },
     "require-dev": {
         "symfony/debug-pack": "^1.0",
