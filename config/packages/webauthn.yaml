@@ -13,7 +13,7 @@ webauthn:
         default:
             public_key_credential_parameters: #Mandatory
                 - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_ES256 #Order is important. Preferred algorithms go first
-                #- !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
+                - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
             rp:
                 name: 'Webauthn Demo'
                 #id: '%env(RP_ID)%'
