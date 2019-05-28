@@ -9,6 +9,7 @@
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "nelmio/cors-bundle": "^1.5",
         "nyholm/psr7": "^1.1",
+        "php-http/curl-client": "^2.0",
         "php-http/httplug-bundle": "^1.14",
         "ramsey/uuid": "^3.8",
         "sensio/framework-extra-bundle": "^5.2",

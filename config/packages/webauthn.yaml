@@ -5,10 +5,10 @@ webauthn:
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
     user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'
     token_binding_support_handler: 'Webauthn\TokenBinding\TokenBindingNotSupportedHandler'
-#    android_safetynet:
-#        enabled: true
-#        api_key: '%env(API_KEY)%'
-#        http_client: 'Psr\Http\Client\ClientInterface'
+    android_safetynet:
+        enabled: true
+        api_key: '%env(API_KEY)%'
+        http_client: 'httplug.client.app'
     creation_profiles:
         default:
             public_key_credential_parameters: #Mandatory
@@ -16,7 +16,7 @@ webauthn:
                 - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
             rp:
                 name: 'Webauthn Demo'
-                #id: '%env(RP_ID)%'
+                id: '%env(RP_ID)%'
                 #icon: null
             #challenge_length: 32
             #timeout: 60000
