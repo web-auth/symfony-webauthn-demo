@@ -33,7 +33,7 @@ services:
     App\Validator\Constraints\UniqueUsernameValidator: ~
     Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory:
     Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface:
-        class: Symfony\Bridge\PsrHttpMessage\Factory\DiactorosFactory
+        class: Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory
     App\EventListener\LastLoginAt:
         tags:
             - { name: 'kernel.event_listener', event: 'security.interactive_login' }

@@ -305,6 +305,9 @@
             "ref": "5bb3a8c27df824d195fa68bb635d074854f8498f"
         }
     },
+    "symfony/http-client": {
+        "version": "4.4-dev"
+    },
     "symfony/http-foundation": {
         "version": "v4.2.3"
     },
@@ -367,6 +370,9 @@
     },
     "symfony/polyfill-php72": {
         "version": "v1.10.0"
+    },
+    "symfony/polyfill-php73": {
+        "version": "v1.11.0"
     },
     "symfony/process": {
         "version": "v4.2.3"
@@ -519,19 +525,16 @@
         "version": "v2.6.2"
     },
     "web-auth/cose-lib": {
-        "version": "v1.1.0-alpha1"
-    },
-    "web-auth/webauthn-framework": {
-        "version": "v1.1.x-dev"
+        "version": "v1.2.1"
     },
     "web-auth/webauthn-lib": {
-        "version": "v1.1.0-alpha1"
+        "version": "v1.2.1"
     },
     "web-auth/webauthn-symfony-bundle": {
         "version": "v1.1.0-alpha1"
     },
     "web-auth/webauthn-symfony-security-bundle": {
-        "version": "v1.1.0-alpha1"
+        "version": "v1.2.1"
     },
     "web-token/jwt-core": {
         "version": "v1.3.2"
