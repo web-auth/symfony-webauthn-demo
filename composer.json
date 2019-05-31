@@ -33,7 +33,7 @@
         "symfony/validator": "4.2.*",
         "symfony/web-link": "4.2.*",
         "symfony/webpack-encore-bundle": "^1.1",
-        "symfony/yaml": "4.2.*",
+        "symfony/yaml": "4.3.*",
         "twig/extensions": "^1.5",
         "web-auth/cose-lib": "^1.1",
         "web-auth/webauthn-lib": "^1.1",
