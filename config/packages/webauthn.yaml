@@ -16,7 +16,7 @@ webauthn:
                 - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
             rp:
                 name: 'Webauthn Demo'
-                id: '%env(RP_ID)%'
+                #id: '%env(RP_ID)%'
                 #icon: null
             #challenge_length: 32
             #timeout: 60000
