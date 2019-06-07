@@ -3703,16 +3703,16 @@
         },
         {
             "name": "symfony/contracts",
-            "version": "v1.1.1",
+            "version": "v1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/contracts.git",
-                "reference": "b6e291a08e6b002fb56aa6f3e2a2beb6674d2b2f"
+                "reference": "2d19b12caccbd80cf0c85624dc87b7021a0df1d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/contracts/zipball/b6e291a08e6b002fb56aa6f3e2a2beb6674d2b2f",
-                "reference": "b6e291a08e6b002fb56aa6f3e2a2beb6674d2b2f",
+                "url": "https://api.github.com/repos/symfony/contracts/zipball/2d19b12caccbd80cf0c85624dc87b7021a0df1d5",
+                "reference": "2d19b12caccbd80cf0c85624dc87b7021a0df1d5",
                 "shasum": ""
             },
             "require": {
@@ -3778,7 +3778,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-05-28T07:50:59+00:00"
+            "time": "2019-06-05T13:28:50+00:00"
         },
         {
             "name": "symfony/debug",
@@ -5729,16 +5729,16 @@
         },
         {
             "name": "symfony/security-csrf",
-            "version": "v4.2.9",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/security-csrf.git",
-                "reference": "385dcfcd6cf02e0b8d10524bd072169be2d5494b"
+                "reference": "e7e3509ef7de66ea4970c75f9a0a72bf132d452e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/security-csrf/zipball/385dcfcd6cf02e0b8d10524bd072169be2d5494b",
-                "reference": "385dcfcd6cf02e0b8d10524bd072169be2d5494b",
+                "url": "https://api.github.com/repos/symfony/security-csrf/zipball/e7e3509ef7de66ea4970c75f9a0a72bf132d452e",
+                "reference": "e7e3509ef7de66ea4970c75f9a0a72bf132d452e",
                 "shasum": ""
             },
             "require": {
@@ -5757,7 +5757,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -5784,7 +5784,7 @@
             ],
             "description": "Symfony Security Component - CSRF Library",
             "homepage": "https://symfony.com",
-            "time": "2019-01-16T20:31:39+00:00"
+            "time": "2019-05-30T16:10:05+00:00"
         },
         {
             "name": "symfony/security-guard",
