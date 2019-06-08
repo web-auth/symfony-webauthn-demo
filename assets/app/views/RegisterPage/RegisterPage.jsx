@@ -119,7 +119,8 @@ class RegisterPage extends Component {
           .catch(this.registrationFailureHandler);
   };
 
-  registrationFailureHandler = () => {
+  registrationFailureHandler = error => {
+      console.log(error);
       this.props.enqueueSnackbar({
           message:
         'An error occurred during the registration process. Please try again later.',

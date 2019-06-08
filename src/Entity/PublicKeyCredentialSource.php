@@ -16,6 +16,7 @@ namespace App\Entity;
 use Assert\Assertion;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
+use Ramsey\Uuid\UuidInterface;
 use Webauthn\AttestedCredentialData;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\PublicKeyCredential;
@@ -49,7 +50,7 @@ class PublicKeyCredentialSource extends BasePublicKeyCredentialSource
      */
     private $name;
 
-    public function __construct(string $publicKeyCredentialId, string $type, array $transports, string $attestationType, TrustPath $trustPath, string $aaguid, string $credentialPublicKey, string $userHandle, int $counter)
+    public function __construct(string $publicKeyCredentialId, string $type, array $transports, string $attestationType, TrustPath $trustPath, UuidInterface $aaguid, string $credentialPublicKey, string $userHandle, int $counter)
     {
         $this->id = Uuid::uuid4()->toString();
         $this->createdAt = new \DateTimeImmutable();

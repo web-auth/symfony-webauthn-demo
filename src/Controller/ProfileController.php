@@ -61,7 +61,7 @@ final class ProfileController
         $credentials = $this->keyCredentialSourceRepository->findAllForUserEntity($userEntity);
         $credentials = array_map(static function(PublicKeyCredentialSource $source) {
             $data = $source->jsonSerialize();
-            $data['aaguid'] = $source->getAaguidAsUuid();
+            $data['aaguid'] = $source->getAaguid()->toString();
 
             return $data;
         }, $credentials);

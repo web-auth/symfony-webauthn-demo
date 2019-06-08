@@ -1,7 +1,7 @@
 webauthn:
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
     user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'
-    token_binding_support_handler: 'Webauthn\TokenBinding\TokenBindingNotSupportedHandler'
+    token_binding_support_handler: 'Webauthn\TokenBinding\IgnoreTokenBindingHandler'
     android_safetynet:
         enabled: true
         api_key: '%env(API_KEY)%'
@@ -9,8 +9,8 @@ webauthn:
     creation_profiles:
         default:
             public_key_credential_parameters: #Mandatory
-                - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_ES256 #Order is important. Preferred algorithms go first
-                - !php/const Webauthn\PublicKeyCredentialParameters::ALGORITHM_RS256
+                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES256 #Order is important. Preferred algorithms go first
+                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS256
             rp:
                 name: 'Webauthn Demo'
                 #id: '%env(RP_ID)%'
