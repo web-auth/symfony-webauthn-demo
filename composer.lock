@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "598d96f77f720fd859e667940c024093",
+    "content-hash": "a92bf4543830cc0e4ae884edc1ef5841",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -6459,29 +6459,29 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v4.2.9",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "32cc317e980da350ea73dde9d64729146048ef20"
+                "reference": "ea74d2843fd8a9f2d4800136c985d13da586a405"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/32cc317e980da350ea73dde9d64729146048ef20",
-                "reference": "32cc317e980da350ea73dde9d64729146048ef20",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/ea74d2843fd8a9f2d4800136c985d13da586a405",
+                "reference": "ea74d2843fd8a9f2d4800136c985d13da586a405",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1.3",
-                "symfony/contracts": "^1.0.2",
                 "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-mbstring": "~1.0"
+                "symfony/polyfill-mbstring": "~1.0",
+                "symfony/translation-contracts": "^1.1"
             },
             "conflict": {
                 "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0",
                 "symfony/dependency-injection": "<3.4",
                 "symfony/http-kernel": "<3.4",
-                "symfony/intl": "<4.1",
+                "symfony/intl": "<4.3",
                 "symfony/translation": "<4.2",
                 "symfony/yaml": "<3.4"
             },
@@ -6493,10 +6493,12 @@
                 "symfony/config": "~3.4|~4.0",
                 "symfony/dependency-injection": "~3.4|~4.0",
                 "symfony/expression-language": "~3.4|~4.0",
+                "symfony/http-client": "^4.3",
                 "symfony/http-foundation": "~4.1",
                 "symfony/http-kernel": "~3.4|~4.0",
-                "symfony/intl": "~4.1",
+                "symfony/intl": "^4.3",
                 "symfony/property-access": "~3.4|~4.0",
+                "symfony/property-info": "~3.4|~4.0",
                 "symfony/translation": "~4.2",
                 "symfony/var-dumper": "~3.4|~4.0",
                 "symfony/yaml": "~3.4|~4.0"
@@ -6511,13 +6513,14 @@
                 "symfony/http-foundation": "",
                 "symfony/intl": "",
                 "symfony/property-access": "For accessing properties within comparison constraints",
+                "symfony/property-info": "To automatically add NotNull and Type constraints",
                 "symfony/translation": "For translating validation errors.",
                 "symfony/yaml": ""
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -6544,7 +6547,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "https://symfony.com",
-            "time": "2019-05-09T13:04:55+00:00"
+            "time": "2019-06-03T20:27:40+00:00"
         },
         {
             "name": "symfony/var-exporter",
