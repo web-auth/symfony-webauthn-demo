@@ -1,7 +1,7 @@
 {
     "devDependencies": {
         "@symfony/webpack-encore": "^0.27",
-        "babel-eslint": "^10.0.1",
+        "babel-eslint": "^10.0.2",
         "bootstrap": "^4.2.1",
         "bootstrap-material-design": "^4.1.1",
         "eslint": "^5.13.0",
