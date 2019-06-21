@@ -42,7 +42,7 @@ final class PublicKeyCredentialFakeUserEntityProvider implements FakePublicKeyCr
         $fakeUserEntity = $this->generateFakeUserEntityFor($username);
         $cacheItem->set($fakeUserEntity);
         $this->cacheItemPool->save($cacheItem);
-
+dump($fakeUserEntity);
         return $fakeUserEntity;
     }
 

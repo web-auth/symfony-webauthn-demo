@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 use App\Controller\AttestationRequestController;
 use App\Controller\AttestationResponseController;
+use App\Controller\ChangeDisplayNameController;
 use App\Controller\LogoutController;
 use App\Controller\ProfileController;
 use Symfony\Component\Routing\Route;
@@ -35,6 +36,11 @@ $routes->add('api_attestation_response', new Route('/api/register',
 $routes->add('api_profile', new Route('/api/profile',
     ['_controller' => ProfileController::class],
     [],[],null,[],['GET']
+));
+
+$routes->add('api_change_display_name', new Route('/api/change_display_name',
+    ['_controller' => ChangeDisplayNameController::class],
+    [],[],null,[],['PUT']
 ));
 
 // Logout API

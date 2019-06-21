@@ -102,7 +102,7 @@ final class AttestationRequestController
 
             return new JsonResponse($data);
         } catch (\Throwable $throwable) {
-            return new JsonResponse(['status' => 'failed', 'errorMessage' => $throwable->getMessage()], 400);
+            return new JsonResponse(['status' => 'failed', 'errorMessage' => 'An error occurred'], 400);
         }
     }
 

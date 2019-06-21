@@ -45,4 +45,9 @@ class UserEntity extends PublicKeyCredentialUserEntity
     {
         return $this->created_at;
     }
+
+    public function setDisplayName(string $displayName): void
+    {
+        $this->displayName = $displayName;
+    }
 }

@@ -52,8 +52,9 @@ class ProfilePage extends Component {
 
         let credentials = 'No credentials have been registered.'
         if (this.state.profile !== null) {
-            credentials = this.state.profile.credentials.map((item, id) => (
-                <Fragment key={item.publicKeyCredentialId}>
+            credentials = this.state.profile.credentials.map((item, id) => {
+                const {type, ...tpData} = item.trustPath
+                return (<Fragment key={item.publicKeyCredentialId}>
                     <dt>ID: <pre>{ item.publicKeyCredentialId }</pre></dt>
                     <dd>
                         <ul>
@@ -61,11 +62,13 @@ class ProfilePage extends Component {
                             <li>Public Key: { item.credentialPublicKey }</li>
                             <li>Counter: { item.counter }</li>
                             <li>Attestation type: { item.attestationType }</li>
-                            <li>Trust path: { item.trustPath.type }</li>
+                            <li>Trust path: <pre>{JSON.stringify(tpData)}</pre>
+                            </li>
                         </ul>
                     </dd>
-                </Fragment>
-            ))
+                </Fragment>)
+            }
+            )
         }
 
         return (

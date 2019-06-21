@@ -10,6 +10,7 @@ import Homepage from 'app/views/Homepage/Homepage.jsx'
 import ProfilePage from 'app/views/ProfilePage/ProfilePage.jsx'
 import RegisterPage from 'app/views/RegisterPage/RegisterPage.jsx'
 import LoginPage from 'app/views/LoginPage/LoginPage.jsx'
+import LogoutPage from 'app/views/LogoutPage/LogoutPage.jsx'
 import { createBrowserHistory } from 'history'
 
 const hist = createBrowserHistory(),
@@ -25,6 +26,11 @@ const hist = createBrowserHistory(),
                             component={ RegisterPage }
                             exact
                             path="/register"
+                        />
+                        <Route
+                            component={ LogoutPage }
+                            exact
+                            path="/logout"
                         />
                         <Route component={ LoginPage } exact path="/login" />
                         <Route path="/" exact component={ Homepage } />
