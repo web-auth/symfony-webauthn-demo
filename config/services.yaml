@@ -29,6 +29,7 @@ services:
 
     App\Security\UserProvider: ~
     App\Security\LogoutSuccessHandler: ~
+    App\Security\AuthenticationFailureHandler: ~
     App\Security\AuthenticationSuccessHandler: ~
     App\Validator\Constraints\UniqueUsernameValidator: ~
     App\EventListener\LastLoginAt:

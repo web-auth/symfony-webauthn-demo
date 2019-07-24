@@ -16,6 +16,7 @@ security:
                 options_path: /api/login/options
                 profile: 'default'
                 success_handler: App\Security\AuthenticationSuccessHandler
+                failure_handler: App\Security\AuthenticationFailureHandler
                 http_message_factory: 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory'
                 fake_user_entity_provider: 'App\Provider\PublicKeyCredentialFakeUserEntityProvider'
             logout:

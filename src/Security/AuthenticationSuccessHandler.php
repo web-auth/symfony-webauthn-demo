@@ -13,21 +13,29 @@ declare(strict_types=1);
 
 namespace App\Security;
 
-use App\Entity\User;
-use App\Repository\UserRepository;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 use Webauthn\Bundle\Security\Authentication\Token\WebauthnToken;
 
 final class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterface
 {
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+
     public function onAuthenticationSuccess(Request $request, TokenInterface $token): JsonResponse
     {
+        $this->logger->info($request->getContent());
+
         $data = [
             'status' => 'ok',
             'errorMessage' => '',
