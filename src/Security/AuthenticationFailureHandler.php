@@ -34,9 +34,9 @@ final class AuthenticationFailureHandler implements AuthenticationFailureHandler
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): JsonResponse
     {
-        $this->logger->debug($request->getContent());
-        $this->logger->debug($exception->getFile().'/'.$exception->getLine().': '.$exception->getMessage());
-        $this->logger->debug($exception->getTraceAsString());
+        $this->logger->error($request->getContent());
+        $this->logger->error($exception->getFile().'/'.$exception->getLine().': '.$exception->getMessage());
+        $this->logger->error($exception->getTraceAsString());
 
         $data = [
             'status' => 'error',
