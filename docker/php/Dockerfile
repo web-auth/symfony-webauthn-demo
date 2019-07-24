@@ -1,6 +1,6 @@
 FROM composer
 
-FROM php:7.3-fpm-alpine
+FROM php:7-fpm-alpine
 
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
@@ -47,6 +47,7 @@ RUN echo "xdebug.remote_port=9000" >> /usr/local/etc/php/php.ini
 RUN echo "date.timezone = Europe/Paris" >> /usr/local/etc/php/conf.d/symfony.ini
 RUN echo "opcache.max_accelerated_files = 20000" >> /usr/local/etc/php/conf.d/symfony.ini
 RUN echo "realpath_cache_size=4096K" >> /usr/local/etc/php/conf.d/symfony.ini
+RUN echo "memory_limit=-1" >> /usr/local/etc/php/conf.d/symfony.ini
 RUN echo "realpath_cache_ttl=600" >> /usr/local/etc/php/conf.d/symfony.ini
 
 RUN runDeps="$( \
