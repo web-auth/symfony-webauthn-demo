@@ -8,8 +8,9 @@ function handlePublicKeyRequestOptions(data, successCallback, failureCallback) {
         body: JSON.stringify(data),
     })
         .then(response => {
-            console.log(response.json());
-            return response.json();
+            const json = response.json();
+            console.log(json);
+            return json;
         })
         .then(json => successCallback(json))
         .catch(err => failureCallback(err));
@@ -25,8 +26,9 @@ function handlePublicKeyRequestResult(data, successCallback, failureCallback) {
         body: JSON.stringify(data),
     })
         .then(response => {
-            console.log(response.json());
-            return response.json()
+            const json = response.json();
+            console.log(json);
+            return json;
         })
         .then(json => successCallback(json))
         .catch(err => failureCallback(err));
