@@ -125,11 +125,12 @@ class LoginPage extends Component {
           .catch(this.loginFailureHandler);
   };
 
-  loginFailureHandler = () => {
+  loginFailureHandler = error => {
       this.props.enqueueSnackbar({
           message:
         'An error occurred during the login process. Please try again later.',
       });
+      console.log(error);
       this.setState({
           isDeviceInteractionEnabled: false,
       });
@@ -140,6 +141,7 @@ class LoginPage extends Component {
           this.props.enqueueSnackbar({
               message: 'Your are now logged in!',
           });
+          console.log(json);
           this.props.authSuccess(json);
           this.setState({
               isDeviceInteractionEnabled: false,
