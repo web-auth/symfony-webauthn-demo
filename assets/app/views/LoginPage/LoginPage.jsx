@@ -69,6 +69,7 @@ class LoginPage extends Component {
   };
 
   handlePublicKeyRequestOptions__ = publicKeyRequestOptions => {
+      console.log(publicKeyRequestOptions);
       this.setState({
           isDeviceInteractionEnabled: true,
       });
@@ -94,6 +95,7 @@ class LoginPage extends Component {
               }
           );
       }
+      console.log(publicKeyRequestOptions);
       navigator.credentials
           .get({publicKey: publicKeyRequestOptions})
           .then(data => {
@@ -126,22 +128,22 @@ class LoginPage extends Component {
   };
 
   loginFailureHandler = error => {
+      console.log(error);
       this.props.enqueueSnackbar({
           message:
         'An error occurred during the login process. Please try again later.',
       });
-      console.log(error);
       this.setState({
           isDeviceInteractionEnabled: false,
       });
   };
 
   loginSuccessHandler = json => {
+      console.log(json);
       if (json.status !== undefined && json.status === 'ok') {
           this.props.enqueueSnackbar({
               message: 'Your are now logged in!',
           });
-          console.log(json);
           this.props.authSuccess(json);
           this.setState({
               isDeviceInteractionEnabled: false,
