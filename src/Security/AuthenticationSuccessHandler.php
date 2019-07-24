@@ -34,7 +34,7 @@ final class AuthenticationSuccessHandler implements AuthenticationSuccessHandler
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token): JsonResponse
     {
-        $this->logger->info($request->getContent());
+        $this->logger->debug($request->getContent());
 
         $data = [
             'status' => 'ok',
