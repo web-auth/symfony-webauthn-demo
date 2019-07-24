@@ -43,7 +43,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="array")
      */
-    private $roles;
+    private $roles = [];
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -58,7 +58,6 @@ class User implements UserInterface
     public function __construct()
     {
         $this->id = Uuid::uuid4()->toString();
-        $this->roles = new ArrayCollection();
         $this->created_at = new \DateTimeImmutable();
     }
 
@@ -69,7 +68,7 @@ class User implements UserInterface
 
     public function getRoles(): array
     {
-        return array_unique($this->roles->toArray() + ['ROLE_USER']);
+        return array_unique($this->roles + ['ROLE_USER']);
     }
 
     public function getPassword()
