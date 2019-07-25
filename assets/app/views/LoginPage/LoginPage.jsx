@@ -95,7 +95,7 @@ class LoginPage extends Component {
               }
           );
       }
-      console.log(publicKeyRequestOptions);
+      console.log({publicKey: publicKeyRequestOptions});
       navigator.credentials
           .get({publicKey: publicKeyRequestOptions})
           .then(data => {

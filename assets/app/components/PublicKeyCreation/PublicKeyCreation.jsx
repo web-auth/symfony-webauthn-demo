@@ -11,8 +11,9 @@ function handlePublicKeyCreationOptions(
         },
         body: JSON.stringify(data),
     })
-        .then(response => {
-            return response.json();
+        .then(response => response.json())
+        .then(json => {
+            console.log(json); return json;
         })
         .then(json => successCallback(json))
         .catch(err => failureCallback(err));
@@ -27,8 +28,9 @@ function handlePublicKeyCreationResult(data, successCallback, failureCallback) {
         },
         body: JSON.stringify(data),
     })
-        .then(response => {
-            return response.json();
+        .then(response => response.json())
+        .then(json => {
+            console.log(json); return json;
         })
         .then(json => successCallback(json))
         .catch(err => failureCallback(err));

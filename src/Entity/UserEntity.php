@@ -25,7 +25,7 @@ class UserEntity extends PublicKeyCredentialUserEntity
 {
     /**
      * @ORM\Id
-     * @ORM\Column(name="string")
+     * @ORM\Column(type="string")
      * @ORM\GeneratedValue(strategy="NONE")
      */
     protected $id;
