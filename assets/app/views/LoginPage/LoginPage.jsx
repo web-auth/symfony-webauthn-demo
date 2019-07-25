@@ -69,7 +69,7 @@ class LoginPage extends Component {
   };
 
   handlePublicKeyRequestOptions__ = publicKeyRequestOptions => {
-      console.log(publicKeyRequestOptions);
+      console.log({publicKeyRequestOptions});
       this.setState({
           isDeviceInteractionEnabled: true,
       });
@@ -78,19 +78,13 @@ class LoginPage extends Component {
       }
 
       publicKeyRequestOptions.challenge = Uint8Array.from(
-          window.atob(publicKeyRequestOptions.challenge),
-          c => {
-              return c.charCodeAt(0);
-          }
-      );
+          window.atob(publicKeyRequestOptions.challenge), c => c.charCodeAt(0));
       if (publicKeyRequestOptions.allowCredentials !== undefined) {
           publicKeyRequestOptions.allowCredentials = publicKeyRequestOptions.allowCredentials.map(
               data => {
                   return {
                       type: data.type,
-                      id: Uint8Array.from(atob(data.id), c => {
-                          return c.charCodeAt(0);
-                      }),
+                      id: Uint8Array.from(atob(data.id), c => c.charCodeAt(0)),
                   };
               }
           );
