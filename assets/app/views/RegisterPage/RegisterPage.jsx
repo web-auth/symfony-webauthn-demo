@@ -69,6 +69,22 @@ class RegisterPage extends Component {
           return btoa(String.fromCharCode(...a));
       }
 
+      function base64UrlDecode(input) {
+          input = input
+              .replace(/-/g, '+')
+              .replace(/_/g, '/');
+
+          let pad = input.length % 4;
+          if (pad) {
+              if (pad === 1) {
+                  throw new Error('InvalidLengthError: Input base64url string is the wrong length to determine padding');
+              }
+              input += new Array(5-pad).join('=');
+          }
+
+          return window.atob(input);
+      }
+
       publicKeyCreationOptions.challenge = Uint8Array.from(
           window.atob(publicKeyCreationOptions.challenge),
           c => {
@@ -85,9 +101,10 @@ class RegisterPage extends Component {
       if (publicKeyCreationOptions.excludeCredentials !== undefined) {
           publicKeyCreationOptions.excludeCredentials = publicKeyCreationOptions.excludeCredentials.map(
               data => {
+                  const id = base64UrlDecode(data.id);
                   return {
                       type: data.type,
-                      id: Uint8Array.from(atob(data.id), c => {
+                      id: Uint8Array.from(id, c => {
                           return c.charCodeAt(0);
                       }),
                   };
