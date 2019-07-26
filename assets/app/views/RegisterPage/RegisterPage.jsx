@@ -64,14 +64,13 @@ class RegisterPage extends Component {
       this.setState({
           isDeviceInteractionEnabled: true,
       });
-      const options = {publicKeyCreationOptions};
 
       function base64UrlDecode(input) {
           input = input
               .replace(/-/g, '+')
               .replace(/_/g, '/');
 
-          let pad = input.length % 4;
+          const pad = input.length % 4;
           if (pad) {
               if (pad === 1) {
                   throw new Error('InvalidLengthError: Input base64url string is the wrong length to determine padding');
