@@ -61,13 +61,10 @@ class RegisterPage extends Component {
   };
 
   handlePublicKeyCreationOptions__ = publicKeyCreationOptions => {
-      console.log(publicKeyCreationOptions);
-      this.setState({
+      /*this.setState({
           isDeviceInteractionEnabled: true,
       });
-      function arrayToBase64String(a) {
-          return btoa(String.fromCharCode(...a));
-      }
+      const options = {publicKeyCreationOptions};
 
       function base64UrlDecode(input) {
           input = input
@@ -110,11 +107,15 @@ class RegisterPage extends Component {
                   };
               }
           );
-      }
+      }*/
 
       navigator.credentials
           .create({publicKey: publicKeyCreationOptions})
           .then(data => {
+              function arrayToBase64String(a) {
+                  return btoa(String.fromCharCode(...a));
+              }
+
               const publicKeyCredential = {
                   id: data.id,
                   type: data.type,
