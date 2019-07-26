@@ -101,7 +101,7 @@ class LoginPage extends Component {
                   const id = base64UrlDecode(data.id);
                   return {
                       type: data.type,
-                      id: Uint8Array.from(atob(data.id), c => c.charCodeAt(0)),
+                      id: Uint8Array.from(id, c => c.charCodeAt(0)),
                   };
               }
           );
