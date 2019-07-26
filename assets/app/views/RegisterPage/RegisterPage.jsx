@@ -61,10 +61,10 @@ class RegisterPage extends Component {
   };
 
   handlePublicKeyCreationOptions__ = publicKeyCreationOptions => {
-      /*this.setState({
+      this.setState({
           isDeviceInteractionEnabled: true,
       });
-      const options = {publicKeyCreationOptions};
+      /*const options = {publicKeyCreationOptions};
 
       function base64UrlDecode(input) {
           input = input
@@ -80,7 +80,7 @@ class RegisterPage extends Component {
           }
 
           return window.atob(input);
-      }
+      }*/
 
       publicKeyCreationOptions.challenge = Uint8Array.from(
           window.atob(publicKeyCreationOptions.challenge),
@@ -107,7 +107,7 @@ class RegisterPage extends Component {
                   };
               }
           );
-      }*/
+      }
 
       navigator.credentials
           .create({publicKey: publicKeyCreationOptions})

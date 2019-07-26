@@ -77,11 +77,28 @@ class LoginPage extends Component {
           return btoa(String.fromCharCode(...a));
       }
 
+      function base64UrlDecode(input) {
+          input = input
+              .replace(/-/g, '+')
+              .replace(/_/g, '/');
+
+          let pad = input.length % 4;
+          if (pad) {
+              if (pad === 1) {
+                  throw new Error('InvalidLengthError: Input base64url string is the wrong length to determine padding');
+              }
+              input += new Array(5-pad).join('=');
+          }
+
+          return window.atob(input);
+      }
+
       publicKeyRequestOptions.challenge = Uint8Array.from(
           window.atob(publicKeyRequestOptions.challenge), c => c.charCodeAt(0));
       if (publicKeyRequestOptions.allowCredentials !== undefined) {
           publicKeyRequestOptions.allowCredentials = publicKeyRequestOptions.allowCredentials.map(
               data => {
+                  const id = base64UrlDecode(data.id);
                   return {
                       type: data.type,
                       id: Uint8Array.from(atob(data.id), c => c.charCodeAt(0)),
