@@ -45,9 +45,9 @@ return function (RoutingConfigurator $routes) {
     ;
 
 // Home
-    $routes->add('app_home', '/{reactRouting}')
+    /*$routes->add('app_home', '/{reactRouting}')
         ->controller(HomepageController::class)
         ->requirements(['reactRouting' => '^(?!_).*$'])
         ->defaults(['reactRouting' => null])
-    ;
+    ;*/
 };
