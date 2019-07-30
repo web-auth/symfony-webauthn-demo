@@ -9,6 +9,7 @@ webauthn:
     creation_profiles:
         default:
             public_key_credential_parameters: #Mandatory
+                - !php/const Cose\Algorithms::COSE_ALGORITHM_EdDSA
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_ES256 #Order is important. Preferred algorithms go first
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_ES384
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_ES512
@@ -18,7 +19,6 @@ webauthn:
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_PS256
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_PS384
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_PS512
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_EdDSA
             rp:
                 name: 'Webauthn Demo'
                 #id: '%env(RP_ID)%'
