@@ -1,5 +1,5 @@
 function handlePublicKeyRequestOptions(data, successCallback, failureCallback) {
-    fetch('/api/login/options', {
+    fetch('/assertion/options', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
@@ -16,7 +16,7 @@ function handlePublicKeyRequestOptions(data, successCallback, failureCallback) {
 }
 
 function handlePublicKeyRequestResult(data, successCallback, failureCallback) {
-    fetch('/api/login', {
+    fetch('/assertion/result', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {

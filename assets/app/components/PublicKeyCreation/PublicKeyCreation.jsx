@@ -3,7 +3,7 @@ function handlePublicKeyCreationOptions(
     successCallback,
     failureCallback
 ) {
-    fetch('/api/register/options', {
+    fetch('/attestation/options', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
@@ -20,7 +20,7 @@ function handlePublicKeyCreationOptions(
 }
 
 function handlePublicKeyCreationResult(data, successCallback, failureCallback) {
-    fetch('/api/register', {
+    fetch('/attestation/result', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {

@@ -13,12 +13,12 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 return function (RoutingConfigurator $routes) {
     $routes->import('.', 'webauthn');
 
-    $routes->add('api_attestation_request', '/api/register/options')
+    $routes->add('api_attestation_request', '/attestation/options')
         ->controller(AttestationRequestController::class)
         ->methods(['POST'])
         ->schemes(['https'])
     ;
-    $routes->add('api_attestation_response', '/api/register')
+    $routes->add('api_attestation_response', '/attestation/result')
         ->controller(AttestationResponseController::class)
         ->methods(['POST'])
         ->schemes(['https'])
@@ -45,9 +45,9 @@ return function (RoutingConfigurator $routes) {
     ;
 
 // Home
-    /*$routes->add('app_home', '/{reactRouting}')
+    $routes->add('app_home', '/{reactRouting}')
         ->controller(HomepageController::class)
         ->requirements(['reactRouting' => '^(?!_).*$'])
         ->defaults(['reactRouting' => null])
-    ;*/
+    ;
 };
