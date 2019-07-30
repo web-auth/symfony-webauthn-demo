@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class HomepageController extends AbstractController
 {
-    public function home(): Response
+    public function __invoke(): Response
     {
         return $this->render('homepage.html.twig');
     }
