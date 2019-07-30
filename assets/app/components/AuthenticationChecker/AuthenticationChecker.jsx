@@ -7,7 +7,7 @@ class AuthenticationChecker extends Component {
   checkAuthenticationStatus = () => {
       const data = sessionStorage.getItem('authentication_data');
       if (data) {
-          fetch('/api/profile', {
+          fetch('/profile', {
               method: 'GET',
               credentials: 'same-origin',
               headers: {

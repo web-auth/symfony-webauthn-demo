@@ -20,7 +20,7 @@ security:
                 http_message_factory: 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory'
                 #fake_user_entity_provider: 'App\Provider\PublicKeyCredentialFakeUserEntityProvider'
             logout:
-                path: /api/logout
+                path: /logout
                 success_handler: App\Security\LogoutSuccessHandler
 
     # Easy way to control access for large sections of your site
@@ -28,8 +28,6 @@ security:
     access_control:
         - { path: ^/attestation,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
         - { path: ^/assertion,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
-        - { path: ^/api/logout,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
-        - { path: ^/api/login,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
-        - { path: ^/api/register,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
-        - { path: ^/api/profile, roles: ROLE_USER, requires_channel: 'https' }
+        - { path: ^/logout,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
+        - { path: ^/profile, roles: ROLE_USER, requires_channel: 'https' }
         - { path: ^/,       roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }

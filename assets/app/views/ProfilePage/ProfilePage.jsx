@@ -26,7 +26,7 @@ class ProfilePage extends Component {
         profile: null,
     };
     componentDidMount = () => {
-        fetch('/api/profile', {
+        fetch('/profile', {
             method: 'GET',
             credentials: 'same-origin',
             headers: {
