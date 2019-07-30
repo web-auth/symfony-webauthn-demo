@@ -9,7 +9,6 @@ use App\Controller\HomepageController;
 use App\Controller\LogoutController;
 use App\Controller\ProfileController;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
-use Symfony\Component\Routing\Route;
 
 return function (RoutingConfigurator $routes) {
     $routes->import('.', 'webauthn');
