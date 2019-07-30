@@ -632,8 +632,14 @@
     "web-token/jwt-encryption-algorithm-rsa": {
         "version": "v1.3.3"
     },
+    "web-token/jwt-key-mgmt": {
+        "version": "v2.0.9"
+    },
     "web-token/jwt-signature": {
         "version": "v1.3.2"
+    },
+    "web-token/jwt-signature-algorithm-ecdsa": {
+        "version": "v2.0.9"
     },
     "web-token/jwt-signature-algorithm-eddsa": {
         "version": "v1.3.2"
