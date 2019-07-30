@@ -8,7 +8,7 @@ import {connect} from 'react-redux';
 
 class LogoutPage extends Component {
   componentDidMount = () => {
-      fetch('/logout', {
+      fetch('/api/logout', {
           method: 'GET',
           credentials: 'same-origin',
           headers: {
