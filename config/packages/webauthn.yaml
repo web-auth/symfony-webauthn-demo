@@ -15,6 +15,10 @@ webauthn:
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_RS256
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_RS384
                 - !php/const Cose\Algorithms::COSE_ALGORITHM_RS512
+                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS256
+                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS384
+                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS512
+                - !php/const Cose\Algorithms::COSE_ALGORITHM_EdDSA
             rp:
                 name: 'Webauthn Demo'
                 #id: '%env(RP_ID)%'
