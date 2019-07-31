@@ -53,6 +53,8 @@ webauthn:
     transport_binding_profile:
         creation:
             default:
+                user_entity_repository: App\Repository\ConformancePublicKeyCredentialUserEntityRepository
+                credential_source_repository: App\Repository\ConformancePublicKeyCredentialSourceRepository
                 profile_name: 'default'
                 request_path: '/attestation/options'
                 response_path: '/attestation/result'
@@ -60,6 +62,8 @@ webauthn:
                 session_parameter_name: '__WEBAUTHN_ATTESTATION_REQUEST__1'
         request:
             default:
+                user_entity_repository: App\Repository\ConformancePublicKeyCredentialUserEntityRepository
+                credential_source_repository: App\Repository\ConformancePublicKeyCredentialSourceRepository
                 profile_name: 'default'
                 request_path: '/assertion/options'
                 response_path: '/assertion/result'
