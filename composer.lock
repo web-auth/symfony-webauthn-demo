@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "da3214554c1ffe316f41874bb0f0c85c",
+    "content-hash": "477c90f75171bb29f98bca3e6befbf6b",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -7284,16 +7284,16 @@
         },
         {
             "name": "web-auth/webauthn-framework",
-            "version": "v2.0.x-dev",
+            "version": "v2.1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "0cfc5ceb8d89a369d2075bd40ccab6e74061e411"
+                "reference": "5494e36598eb5e3f13907f68c56e30055b5a1a7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/0cfc5ceb8d89a369d2075bd40ccab6e74061e411",
-                "reference": "0cfc5ceb8d89a369d2075bd40ccab6e74061e411",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/5494e36598eb5e3f13907f68c56e30055b5a1a7e",
+                "reference": "5494e36598eb5e3f13907f68c56e30055b5a1a7e",
                 "shasum": ""
             },
             "require": {
@@ -7390,7 +7390,7 @@
             ],
             "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
             "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2019-07-31T20:08:43+00:00"
+            "time": "2019-08-01T13:05:01+00:00"
         },
         {
             "name": "web-token/jwt-core",
