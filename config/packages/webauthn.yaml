@@ -8,18 +8,18 @@ webauthn:
         #http_client: 'httplug.client.app'
     creation_profiles:
         default:
-            public_key_credential_parameters: #Mandatory
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_EdDSA #Order is important. Preferred algorithms go first
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES256
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES256K
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES384
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES512
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS256
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS384
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS512
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS256
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS384
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS512
+            #public_key_credential_parameters:
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_EdDSA #Order is important. Preferred algorithms go first
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_ES256
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_ES256K
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_ES384
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_ES512
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_RS256
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_RS384
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_RS512
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_PS256
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_PS384
+                #- !php/const Cose\Algorithms::COSE_ALGORITHM_PS512
             rp:
                 name: 'Webauthn Demo'
                 #id: '%env(RP_ID)%'
@@ -39,7 +39,7 @@ webauthn:
             #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT
             #extensions: ~
     request_profiles:
-        default:
+        default: ~
             #rp_id: '%env(RP_ID)%'
             #challenge_length: 32
             #timeout: 60000
