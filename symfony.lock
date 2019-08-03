@@ -356,6 +356,9 @@
     "symfony/http-client": {
         "version": "v4.3.0"
     },
+    "symfony/http-client-contracts": {
+        "version": "v1.1.5"
+    },
     "symfony/http-foundation": {
         "version": "v4.2.3"
     },
@@ -632,11 +635,20 @@
     "web-token/jwt-encryption-algorithm-rsa": {
         "version": "v1.3.3"
     },
+    "web-token/jwt-key-mgmt": {
+        "version": "v2.0.9"
+    },
     "web-token/jwt-signature": {
         "version": "v1.3.2"
     },
+    "web-token/jwt-signature-algorithm-ecdsa": {
+        "version": "v2.0.9"
+    },
     "web-token/jwt-signature-algorithm-eddsa": {
         "version": "v1.3.2"
+    },
+    "web-token/jwt-signature-algorithm-experimental": {
+        "version": "v2.0.9"
     },
     "web-token/jwt-signature-algorithm-hmac": {
         "version": "v1.3.2"
@@ -649,6 +661,9 @@
     },
     "web-token/jwt-util-ecc": {
         "version": "v1.3.3"
+    },
+    "web-token/signature-pack": {
+        "version": "v2.0.9"
     },
     "webmozart/assert": {
         "version": "1.4.0"
