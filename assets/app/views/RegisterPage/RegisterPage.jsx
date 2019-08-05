@@ -82,7 +82,7 @@ class RegisterPage extends Component {
       }
 
       publicKeyCreationOptions.challenge = Uint8Array.from(
-          window.atob(publicKeyCreationOptions.challenge),
+          base64UrlDecode(publicKeyCreationOptions.challenge),
           c => {
               return c.charCodeAt(0);
           }

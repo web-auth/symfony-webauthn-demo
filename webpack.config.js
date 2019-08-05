@@ -13,6 +13,7 @@ Encore.setOutputPath('public/build/')
     .enableReactPreset()
 
     .addEntry('react', './assets/index.jsx')
+    .addEntry('static', './assets/static.js')
 
     .enableSassLoader()
 

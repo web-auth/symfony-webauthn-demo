@@ -21,7 +21,7 @@ webauthn:
 #                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS512
             rp:
                 name: 'Webauthn Demo'
-                #id: '%env(RP_ID)%'
+                id: '%env(RP_ID)%'
                 #icon: null
             #challenge_length: 32
             #timeout: 60000
@@ -38,8 +38,8 @@ webauthn:
             #attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT
             #extensions: ~
     request_profiles:
-        default: ~
-            #rp_id: '%env(RP_ID)%'
+        default:
+            rp_id: '%env(RP_ID)%'
             #challenge_length: 32
             #timeout: 60000
             #user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED
