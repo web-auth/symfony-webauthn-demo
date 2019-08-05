@@ -90,7 +90,7 @@ class LoginPage extends Component {
       }
 
       publicKeyRequestOptions.challenge = Uint8Array.from(
-          window.atob(publicKeyRequestOptions.challenge),
+          base64UrlDecode(publicKeyRequestOptions.challenge),
           c => c.charCodeAt(0)
       );
 
