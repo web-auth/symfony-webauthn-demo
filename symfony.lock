@@ -101,6 +101,27 @@
     "lcobucci/jwt": {
         "version": "3.2.5"
     },
+    "league/uri": {
+        "version": "5.3.0"
+    },
+    "league/uri-components": {
+        "version": "1.8.2"
+    },
+    "league/uri-hostname-parser": {
+        "version": "1.1.1"
+    },
+    "league/uri-interfaces": {
+        "version": "1.1.1"
+    },
+    "league/uri-manipulations": {
+        "version": "1.5.0"
+    },
+    "league/uri-parser": {
+        "version": "1.4.1"
+    },
+    "league/uri-schemes": {
+        "version": "1.2.1"
+    },
     "lexik/jwt-authentication-bundle": {
         "version": "2.5",
         "recipe": {
@@ -220,6 +241,9 @@
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "psr/simple-cache": {
+        "version": "1.0.1"
     },
     "ramsey/uuid": {
         "version": "3.8.0"
