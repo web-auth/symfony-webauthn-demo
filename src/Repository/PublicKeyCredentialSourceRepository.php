@@ -17,6 +17,7 @@ use App\Entity\PublicKeyCredentialSource;
 use App\Entity\User;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Webauthn\Bundle\Repository\PublicKeyCredentialSourceRepository as BasePublicKeyCredentialSourceRepository;
+use Webauthn\PublicKeyCredentialSource as BasePublicKeyCredentialSource;
 
 final class PublicKeyCredentialSourceRepository extends BasePublicKeyCredentialSourceRepository
 {
@@ -39,5 +40,23 @@ final class PublicKeyCredentialSourceRepository extends BasePublicKeyCredentialS
             ->getQuery()
             ->execute()
         ;
+    }
+
+    public function saveCredentialSource(BasePublicKeyCredentialSource $publicKeyCredentialSource, bool $flush = true): void
+    {
+        if (!$publicKeyCredentialSource instanceof PublicKeyCredentialSource) {
+            $publicKeyCredentialSource = new BasePublicKeyCredentialSource(
+                $publicKeyCredentialSource->getPublicKeyCredentialId(),
+                $publicKeyCredentialSource->getType(),
+                $publicKeyCredentialSource->getTransports(),
+                $publicKeyCredentialSource->getAttestationType(),
+                $publicKeyCredentialSource->getTrustPath(),
+                $publicKeyCredentialSource->getAaguid(),
+                $publicKeyCredentialSource->getCredentialPublicKey(),
+                $publicKeyCredentialSource->getUserHandle(),
+                $publicKeyCredentialSource->getCounter()
+            );
+        }
+        parent::saveCredentialSource($publicKeyCredentialSource, $flush);
     }
 }
