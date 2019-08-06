@@ -45,7 +45,7 @@ final class PublicKeyCredentialSourceRepository extends BasePublicKeyCredentialS
     public function saveCredentialSource(BasePublicKeyCredentialSource $publicKeyCredentialSource, bool $flush = true): void
     {
         if (!$publicKeyCredentialSource instanceof PublicKeyCredentialSource) {
-            $publicKeyCredentialSource = new BasePublicKeyCredentialSource(
+            $publicKeyCredentialSource = new PublicKeyCredentialSource(
                 $publicKeyCredentialSource->getPublicKeyCredentialId(),
                 $publicKeyCredentialSource->getType(),
                 $publicKeyCredentialSource->getTransports(),
