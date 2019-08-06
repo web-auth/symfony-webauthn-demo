@@ -7930,12 +7930,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "22f3786eec4e3bb78ef996f0d17754224d004784"
+                "reference": "88cae516f0b5cf039baa6a015f8a89a549aaeb36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/22f3786eec4e3bb78ef996f0d17754224d004784",
-                "reference": "22f3786eec4e3bb78ef996f0d17754224d004784",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/88cae516f0b5cf039baa6a015f8a89a549aaeb36",
+                "reference": "88cae516f0b5cf039baa6a015f8a89a549aaeb36",
                 "shasum": ""
             },
             "require": {
@@ -8037,7 +8037,7 @@
             ],
             "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
             "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2019-08-06T22:22:28+00:00"
+            "time": "2019-08-06T22:45:43+00:00"
         },
         {
             "name": "web-token/jwt-core",
