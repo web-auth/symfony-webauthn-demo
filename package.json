@@ -29,7 +29,7 @@
         "react-redux": "^7.0",
         "react-router-dom": "^5.0",
         "react-scripts": "^3.0",
-        "react-slick": "^0.24",
+        "react-slick": "^0.25",
         "react-swipeable-views": "^0.13.1",
         "redux": "^4.0.1",
         "sass-loader": "^7.1.0",
