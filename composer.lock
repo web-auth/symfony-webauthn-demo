@@ -44,13 +44,13 @@
             "authors": [
                 {
                     "name": "Benjamin Eberlei",
-                    "email": "kontakt@beberlei.de",
-                    "role": "Lead Developer"
+                    "role": "Lead Developer",
+                    "email": "kontakt@beberlei.de"
                 },
                 {
                     "name": "Richard Quadling",
-                    "email": "rquadling@gmail.com",
-                    "role": "Collaborator"
+                    "role": "Collaborator",
+                    "email": "rquadling@gmail.com"
                 }
             ],
             "description": "Thin assertion library for input validation in business models.",
@@ -1415,9 +1415,9 @@
             "authors": [
                 {
                     "name": "Friedrich Große",
+                    "role": "Author",
                     "email": "friedrich.grosse@gmail.com",
-                    "homepage": "https://github.com/FGrosse",
-                    "role": "Author"
+                    "homepage": "https://github.com/FGrosse"
                 },
                 {
                     "name": "All contributors",
@@ -1780,13 +1780,13 @@
             "authors": [
                 {
                     "name": "Jeremy Kendall",
-                    "homepage": "http://about.me/jeremykendall",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://about.me/jeremykendall"
                 },
                 {
                     "name": "Ignace Nyamagana Butera",
-                    "homepage": "http://nyamsprod.com",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://nyamsprod.com"
                 },
                 {
                     "name": "Contributors",
@@ -2208,16 +2208,16 @@
         },
         {
             "name": "nyholm/psr7",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nyholm/psr7.git",
-                "reference": "701fe7ea8c12c07b985b156d589134d328160cf7"
+                "reference": "27c828a165ff936f9fe9056baa9cabe0c70a423c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/701fe7ea8c12c07b985b156d589134d328160cf7",
-                "reference": "701fe7ea8c12c07b985b156d589134d328160cf7",
+                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/27c828a165ff936f9fe9056baa9cabe0c70a423c",
+                "reference": "27c828a165ff936f9fe9056baa9cabe0c70a423c",
                 "shasum": ""
             },
             "require": {
@@ -2266,7 +2266,7 @@
                 "psr-17",
                 "psr-7"
             ],
-            "time": "2019-02-16T17:20:43+00:00"
+            "time": "2019-08-22T18:22:08+00:00"
         },
         {
             "name": "ocramius/package-versions",
@@ -3843,25 +3843,23 @@
         },
         {
             "name": "spomky-labs/cbor-php",
-            "version": "v1.0.4",
+            "version": "v1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Spomky-Labs/cbor-php.git",
-                "reference": "20913abb88d26a936d10b3e6b59608aacf0699c1"
+                "reference": "f937d527b05bb3ec3f6b8670ece38ccaf9a0eddd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Spomky-Labs/cbor-php/zipball/20913abb88d26a936d10b3e6b59608aacf0699c1",
-                "reference": "20913abb88d26a936d10b3e6b59608aacf0699c1",
+                "url": "https://api.github.com/repos/Spomky-Labs/cbor-php/zipball/f937d527b05bb3ec3f6b8670ece38ccaf9a0eddd",
+                "reference": "f937d527b05bb3ec3f6b8670ece38ccaf9a0eddd",
                 "shasum": ""
             },
             "require": {
                 "beberlei/assert": "^3.2",
-                "ext-bcmath": "*",
                 "ext-gmp": "*",
                 "php": "^7.1|^8.0",
-                "spomky-labs/base64url": "^1.0|^2.0",
-                "thecodingmachine/safe": "^0.1.13"
+                "spomky-labs/base64url": "^1.0|^2.0"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.0",
@@ -3870,9 +3868,11 @@
                 "phpstan/phpstan-deprecation-rules": "^0.11",
                 "phpstan/phpstan-phpunit": "^0.11",
                 "phpstan/phpstan-strict-rules": "^0.11",
-                "phpunit/phpunit": "^8.0",
-                "rector/rector": "^0.5",
-                "thecodingmachine/phpstan-safe-rule": "^0.1.2"
+                "phpunit/phpunit": "^7.5|^8.0",
+                "rector/rector": "^0.5"
+            },
+            "suggest": {
+                "ext-bcmath": "BCMath extension needed to handle the Big Float and Decimal Fraction Tags"
             },
             "type": "library",
             "extra": {
@@ -3905,7 +3905,7 @@
                 "RFC7049",
                 "cbor"
             ],
-            "time": "2019-07-24T15:38:30+00:00"
+            "time": "2019-08-15T14:53:55+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7671,138 +7671,6 @@
             "time": "2019-07-24T14:47:54+00:00"
         },
         {
-            "name": "thecodingmachine/safe",
-            "version": "v0.1.16",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thecodingmachine/safe.git",
-                "reference": "4e8f840f0a0a2ea167813c3994a7fc527c3c2182"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/safe/zipball/4e8f840f0a0a2ea167813c3994a7fc527c3c2182",
-                "reference": "4e8f840f0a0a2ea167813c3994a7fc527c3c2182",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^0.10.3",
-                "squizlabs/php_codesniffer": "^3.2",
-                "thecodingmachine/phpstan-strict-rules": "^0.10.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Safe\\": [
-                        "lib/",
-                        "generated/"
-                    ]
-                },
-                "files": [
-                    "generated/apache.php",
-                    "generated/apc.php",
-                    "generated/apcu.php",
-                    "generated/array.php",
-                    "generated/bzip2.php",
-                    "generated/classobj.php",
-                    "generated/com.php",
-                    "generated/cubrid.php",
-                    "generated/curl.php",
-                    "generated/datetime.php",
-                    "generated/dir.php",
-                    "generated/eio.php",
-                    "generated/errorfunc.php",
-                    "generated/exec.php",
-                    "generated/fileinfo.php",
-                    "generated/filesystem.php",
-                    "generated/filter.php",
-                    "generated/fpm.php",
-                    "generated/ftp.php",
-                    "generated/funchand.php",
-                    "generated/gmp.php",
-                    "generated/gnupg.php",
-                    "generated/hash.php",
-                    "generated/ibase.php",
-                    "generated/ibmDb2.php",
-                    "generated/iconv.php",
-                    "generated/image.php",
-                    "generated/imap.php",
-                    "generated/info.php",
-                    "generated/ingres-ii.php",
-                    "generated/inotify.php",
-                    "generated/json.php",
-                    "generated/ldap.php",
-                    "generated/libevent.php",
-                    "generated/libxml.php",
-                    "generated/lzf.php",
-                    "generated/mailparse.php",
-                    "generated/mbstring.php",
-                    "generated/misc.php",
-                    "generated/msql.php",
-                    "generated/mssql.php",
-                    "generated/mysql.php",
-                    "generated/mysqli.php",
-                    "generated/mysqlndMs.php",
-                    "generated/mysqlndQc.php",
-                    "generated/network.php",
-                    "generated/oci8.php",
-                    "generated/opcache.php",
-                    "generated/openssl.php",
-                    "generated/outcontrol.php",
-                    "generated/password.php",
-                    "generated/pcntl.php",
-                    "generated/pcre.php",
-                    "generated/pdf.php",
-                    "generated/pgsql.php",
-                    "generated/posix.php",
-                    "generated/ps.php",
-                    "generated/pspell.php",
-                    "generated/readline.php",
-                    "generated/rrd.php",
-                    "generated/sem.php",
-                    "generated/session.php",
-                    "generated/shmop.php",
-                    "generated/simplexml.php",
-                    "generated/sockets.php",
-                    "generated/sodium.php",
-                    "generated/solr.php",
-                    "generated/spl.php",
-                    "generated/sqlsrv.php",
-                    "generated/ssdeep.php",
-                    "generated/ssh2.php",
-                    "generated/stats.php",
-                    "generated/stream.php",
-                    "generated/strings.php",
-                    "generated/swoole.php",
-                    "generated/uodbc.php",
-                    "generated/uopz.php",
-                    "generated/url.php",
-                    "generated/var.php",
-                    "generated/xdiff.php",
-                    "generated/xml.php",
-                    "generated/xmlrpc.php",
-                    "generated/yaml.php",
-                    "generated/yaz.php",
-                    "generated/zip.php",
-                    "generated/zlib.php",
-                    "lib/special_cases.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHP core functions that throw exceptions instead of returning FALSE on error",
-            "time": "2019-06-25T08:45:33+00:00"
-        },
-        {
             "name": "twig/extensions",
             "version": "v1.5.4",
             "source": {
@@ -7902,19 +7770,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
+                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org",
-                    "role": "Lead Developer"
+                    "homepage": "http://fabien.potencier.org"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com",
-                    "role": "Project Founder"
+                    "role": "Project Founder",
+                    "email": "armin.ronacher@active-4.com"
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://twig.symfony.com/contributors",
-                    "role": "Contributors"
+                    "role": "Contributors",
+                    "homepage": "https://twig.symfony.com/contributors"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -7930,12 +7798,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "8dd9078a13cf0b80ede6677c0239c0a4d73f4482"
+                "reference": "5ad5a7b810e908c4713881bd4edd4a8c25d68cd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/8dd9078a13cf0b80ede6677c0239c0a4d73f4482",
-                "reference": "8dd9078a13cf0b80ede6677c0239c0a4d73f4482",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/5ad5a7b810e908c4713881bd4edd4a8c25d68cd7",
+                "reference": "5ad5a7b810e908c4713881bd4edd4a8c25d68cd7",
                 "shasum": ""
             },
             "require": {
@@ -7961,7 +7829,6 @@
                 "symfony/psr-http-message-bridge": "^1.1",
                 "symfony/security-bundle": "^4.3",
                 "symfony/twig-bundle": "^4.3",
-                "thecodingmachine/safe": "^0.1",
                 "web-token/jwt-key-mgmt": "^2.0.9",
                 "web-token/jwt-signature": "^2.0.9",
                 "web-token/signature-pack": "^2.0.9"
@@ -7969,7 +7836,6 @@
             "replace": {
                 "web-auth/conformance-toolset": "self.version",
                 "web-auth/cose-lib": "self.version",
-                "web-auth/u2f-lib": "self.version",
                 "web-auth/webauthn-lib": "self.version",
                 "web-auth/webauthn-symfony-bundle": "self.version"
             },
@@ -7987,15 +7853,14 @@
                 "phpstan/phpstan-phpunit": "^0.11",
                 "phpstan/phpstan-strict-rules": "^0.11",
                 "phpunit/phpcov": "^6.0",
-                "phpunit/phpunit": "8.2.5",
+                "phpunit/phpunit": "^8.2.5",
                 "ramsey/uuid": "^3.8",
                 "symfony/browser-kit": "^4.3",
                 "symfony/phpunit-bridge": "^4.3",
                 "symfony/serializer": "^4.3",
                 "symfony/translation": "^4.3",
                 "symfony/validator": "^4.3",
-                "symfony/var-dumper": "^4.3",
-                "thecodingmachine/phpstan-safe-rule": "^0.1.0"
+                "symfony/var-dumper": "^4.3"
             },
             "suggest": {
                 "symfony/security-bundle": "Symfony firewall using a JSON API (perfect for script applications)"
@@ -8013,12 +7878,10 @@
             "autoload": {
                 "psr-4": {
                     "Cose\\": "src/cose/src/",
-                    "U2F\\": "src/u2f/src/",
                     "Webauthn\\": "src/webauthn/src/",
                     "Webauthn\\Bundle\\": "src/symfony/src/",
                     "Webauthn\\MetadataService\\": "src/metadata-service/src/",
-                    "Webauthn\\ConformanceToolset\\": "src/conformance-toolset/src/",
-                    "Webauthn\\SecurityBundle\\": "src/symfony-security/src/"
+                    "Webauthn\\ConformanceToolset\\": "src/conformance-toolset/src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8037,11 +7900,11 @@
             ],
             "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
             "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2019-08-10T22:45:40+00:00"
+            "time": "2019-08-22T19:21:19+00:00"
         },
         {
             "name": "web-token/jwt-core",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-core.git",
@@ -8120,16 +7983,16 @@
         },
         {
             "name": "web-token/jwt-key-mgmt",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-key-mgmt.git",
-                "reference": "d4a44482ab3e32916a651f688c357c3caa7ea9bf"
+                "reference": "10ecf48c9597d83115d649ddf2f8441aabc20f67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-key-mgmt/zipball/d4a44482ab3e32916a651f688c357c3caa7ea9bf",
-                "reference": "d4a44482ab3e32916a651f688c357c3caa7ea9bf",
+                "url": "https://api.github.com/repos/web-token/jwt-key-mgmt/zipball/10ecf48c9597d83115d649ddf2f8441aabc20f67",
+                "reference": "10ecf48c9597d83115d649ddf2f8441aabc20f67",
                 "shasum": ""
             },
             "require": {
@@ -8145,6 +8008,7 @@
                 "phpunit/phpunit": "^8.0"
             },
             "suggest": {
+                "ext-sodium": "Sodium is required for OKP key creation, EdDSA signature algorithm and ECDH-ES key encryption with OKP keys",
                 "php-http/httplug": "To enable JKU/X5U support.",
                 "php-http/message-factory": "To enable JKU/X5U support.",
                 "web-token/jwt-util-ecc": "To use EC key analyzers."
@@ -8198,11 +8062,11 @@
                 "jwt",
                 "symfony"
             ],
-            "time": "2019-07-10T10:08:49+00:00"
+            "time": "2019-08-21T20:38:31+00:00"
         },
         {
             "name": "web-token/jwt-signature",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature.git",
@@ -8281,7 +8145,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-ecdsa",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-ecdsa.git",
@@ -8352,19 +8216,20 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-eddsa",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-eddsa.git",
-                "reference": "383c0e741d50a4bd5402e00230b3625cb1d489b1"
+                "reference": "4ce3459e6ff59b03672c566b52a08ada382a938d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-eddsa/zipball/383c0e741d50a4bd5402e00230b3625cb1d489b1",
-                "reference": "383c0e741d50a4bd5402e00230b3625cb1d489b1",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-eddsa/zipball/4ce3459e6ff59b03672c566b52a08ada382a938d",
+                "reference": "4ce3459e6ff59b03672c566b52a08ada382a938d",
                 "shasum": ""
             },
             "require": {
+                "ext-sodium": "*",
                 "web-token/jwt-signature": "^2.0"
             },
             "require-dev": {
@@ -8419,11 +8284,11 @@
                 "jwt",
                 "symfony"
             ],
-            "time": "2019-06-22T12:34:09+00:00"
+            "time": "2019-08-21T20:38:31+00:00"
         },
         {
             "name": "web-token/jwt-signature-algorithm-experimental",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-experimental.git",
@@ -8495,7 +8360,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-hmac",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-hmac.git",
@@ -8566,7 +8431,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-none",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-none.git",
@@ -8637,7 +8502,7 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-rsa",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-rsa.git",
@@ -8711,7 +8576,7 @@
         },
         {
             "name": "web-token/signature-pack",
-            "version": "v2.0.9",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/signature-pack.git",
@@ -9271,16 +9136,16 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.12.0",
+            "version": "v1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "201d0e050dca336c44f93657ce1f34f3b3868432"
+                "reference": "c4388410e2fb6321e77c5dd6e3cb2dba821f9fe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/201d0e050dca336c44f93657ce1f34f3b3868432",
-                "reference": "201d0e050dca336c44f93657ce1f34f3b3868432",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/c4388410e2fb6321e77c5dd6e3cb2dba821f9fe6",
+                "reference": "c4388410e2fb6321e77c5dd6e3cb2dba821f9fe6",
                 "shasum": ""
             },
             "require": {
@@ -9335,7 +9200,7 @@
                 "scaffold",
                 "scaffolding"
             ],
-            "time": "2019-07-09T22:19:18+00:00"
+            "time": "2019-08-18T17:34:03+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",

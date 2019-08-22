@@ -593,9 +593,6 @@
     "symfony/yaml": {
         "version": "v4.2.3"
     },
-    "thecodingmachine/safe": {
-        "version": "v0.1.13"
-    },
     "twig/extensions": {
         "version": "1.0",
         "recipe": {
