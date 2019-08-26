@@ -7,7 +7,7 @@
         "@material-ui/icons": "^4.0",
         "@material-ui/system": "^4.0",
         "@symfony/webpack-encore": "^0.27.0",
-        "babel-eslint": "^10.0.1",
+        "babel-eslint": "^10.0.3",
         "babel-loader": "^8.0.5",
         "classnames": "^2.2",
         "eslint": "^5.13.0",
