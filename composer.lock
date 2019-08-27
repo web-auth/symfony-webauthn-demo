@@ -3971,16 +3971,16 @@
         },
         {
             "name": "symfony/asset",
-            "version": "v4.3.3",
+            "version": "v4.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/asset.git",
-                "reference": "eecf6d6c952c2c80c9b4fa3ec089d222420f1569"
+                "reference": "3f97e57596884f7b9158d564a533112a0d19dbdd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/asset/zipball/eecf6d6c952c2c80c9b4fa3ec089d222420f1569",
-                "reference": "eecf6d6c952c2c80c9b4fa3ec089d222420f1569",
+                "url": "https://api.github.com/repos/symfony/asset/zipball/3f97e57596884f7b9158d564a533112a0d19dbdd",
+                "reference": "3f97e57596884f7b9158d564a533112a0d19dbdd",
                 "shasum": ""
             },
             "require": {
@@ -4023,7 +4023,7 @@
             ],
             "description": "Symfony Asset Component",
             "homepage": "https://symfony.com",
-            "time": "2019-05-30T16:10:05+00:00"
+            "time": "2019-08-03T21:50:52+00:00"
         },
         {
             "name": "symfony/cache",
@@ -7798,12 +7798,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "5ad5a7b810e908c4713881bd4edd4a8c25d68cd7"
+                "reference": "c9799791276936d1c667cdea9efae2fbad75f5da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/5ad5a7b810e908c4713881bd4edd4a8c25d68cd7",
-                "reference": "5ad5a7b810e908c4713881bd4edd4a8c25d68cd7",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/c9799791276936d1c667cdea9efae2fbad75f5da",
+                "reference": "c9799791276936d1c667cdea9efae2fbad75f5da",
                 "shasum": ""
             },
             "require": {
@@ -7900,7 +7900,7 @@
             ],
             "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
             "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2019-08-22T19:21:19+00:00"
+            "time": "2019-08-22T23:23:42+00:00"
         },
         {
             "name": "web-token/jwt-core",
