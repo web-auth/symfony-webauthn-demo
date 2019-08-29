@@ -101,27 +101,6 @@
     "lcobucci/jwt": {
         "version": "3.2.5"
     },
-    "league/uri": {
-        "version": "5.3.0"
-    },
-    "league/uri-components": {
-        "version": "1.8.2"
-    },
-    "league/uri-hostname-parser": {
-        "version": "1.1.1"
-    },
-    "league/uri-interfaces": {
-        "version": "1.1.1"
-    },
-    "league/uri-manipulations": {
-        "version": "1.5.0"
-    },
-    "league/uri-parser": {
-        "version": "1.4.1"
-    },
-    "league/uri-schemes": {
-        "version": "1.2.1"
-    },
     "lexik/jwt-authentication-bundle": {
         "version": "2.5",
         "recipe": {
@@ -241,9 +220,6 @@
     },
     "psr/log": {
         "version": "1.1.0"
-    },
-    "psr/simple-cache": {
-        "version": "1.0.1"
     },
     "ramsey/uuid": {
         "version": "3.8.0"
@@ -378,10 +354,10 @@
         }
     },
     "symfony/http-client": {
-        "version": "v4.3.0"
+        "version": "v4.3.4"
     },
     "symfony/http-client-contracts": {
-        "version": "v1.1.5"
+        "version": "v1.1.6"
     },
     "symfony/http-foundation": {
         "version": "v4.2.3"
@@ -605,11 +581,14 @@
     "twig/twig": {
         "version": "v2.6.2"
     },
+    "web-auth/conformance-toolset": {
+        "version": "v2.1.0"
+    },
     "web-auth/cose-lib": {
         "version": "v1.1.0-alpha1"
     },
-    "web-auth/webauthn-framework": {
-        "version": "v1.1.x-dev"
+    "web-auth/metadata-service": {
+        "version": "v2.1.0"
     },
     "web-auth/webauthn-lib": {
         "version": "v1.1.0-alpha1"
@@ -656,35 +635,14 @@
     "web-token/jwt-encryption-algorithm-rsa": {
         "version": "v1.3.3"
     },
-    "web-token/jwt-key-mgmt": {
-        "version": "v2.0.9"
-    },
     "web-token/jwt-signature": {
         "version": "v1.3.2"
     },
-    "web-token/jwt-signature-algorithm-ecdsa": {
-        "version": "v2.0.9"
-    },
-    "web-token/jwt-signature-algorithm-eddsa": {
-        "version": "v1.3.2"
-    },
-    "web-token/jwt-signature-algorithm-experimental": {
-        "version": "v2.0.9"
-    },
-    "web-token/jwt-signature-algorithm-hmac": {
-        "version": "v1.3.2"
-    },
-    "web-token/jwt-signature-algorithm-none": {
-        "version": "v1.3.2"
-    },
     "web-token/jwt-signature-algorithm-rsa": {
-        "version": "v1.3.2"
+        "version": "v2.0.12"
     },
     "web-token/jwt-util-ecc": {
         "version": "v1.3.3"
-    },
-    "web-token/signature-pack": {
-        "version": "v2.0.9"
     },
     "webmozart/assert": {
         "version": "1.4.0"
