@@ -44,13 +44,13 @@
             "authors": [
                 {
                     "name": "Benjamin Eberlei",
-                    "role": "Lead Developer",
-                    "email": "kontakt@beberlei.de"
+                    "email": "kontakt@beberlei.de",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Richard Quadling",
-                    "role": "Collaborator",
-                    "email": "rquadling@gmail.com"
+                    "email": "rquadling@gmail.com",
+                    "role": "Collaborator"
                 }
             ],
             "description": "Thin assertion library for input validation in business models.",
@@ -1415,9 +1415,9 @@
             "authors": [
                 {
                     "name": "Friedrich Große",
-                    "role": "Author",
                     "email": "friedrich.grosse@gmail.com",
-                    "homepage": "https://github.com/FGrosse"
+                    "homepage": "https://github.com/FGrosse",
+                    "role": "Author"
                 },
                 {
                     "name": "All contributors",
@@ -1780,13 +1780,13 @@
             "authors": [
                 {
                     "name": "Jeremy Kendall",
-                    "role": "Developer",
-                    "homepage": "http://about.me/jeremykendall"
+                    "homepage": "http://about.me/jeremykendall",
+                    "role": "Developer"
                 },
                 {
                     "name": "Ignace Nyamagana Butera",
-                    "role": "Developer",
-                    "homepage": "http://nyamsprod.com"
+                    "homepage": "http://nyamsprod.com",
+                    "role": "Developer"
                 },
                 {
                     "name": "Contributors",
@@ -4227,16 +4227,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.3.3",
+            "version": "v4.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "8b0ae5742ce9aaa8b0075665862c1ca397d1c1d9"
+                "reference": "929ddf360d401b958f611d44e726094ab46a7369"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/8b0ae5742ce9aaa8b0075665862c1ca397d1c1d9",
-                "reference": "8b0ae5742ce9aaa8b0075665862c1ca397d1c1d9",
+                "url": "https://api.github.com/repos/symfony/console/zipball/929ddf360d401b958f611d44e726094ab46a7369",
+                "reference": "929ddf360d401b958f611d44e726094ab46a7369",
                 "shasum": ""
             },
             "require": {
@@ -4298,7 +4298,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-07-24T17:13:59+00:00"
+            "time": "2019-10-07T12:36:49+00:00"
         },
         {
             "name": "symfony/debug",
@@ -6850,16 +6850,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v1.1.5",
+            "version": "v1.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "f391a00de78ec7ec8cf5cdcdae59ec7b883edb8d"
+                "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/f391a00de78ec7ec8cf5cdcdae59ec7b883edb8d",
-                "reference": "f391a00de78ec7ec8cf5cdcdae59ec7b883edb8d",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
+                "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
                 "shasum": ""
             },
             "require": {
@@ -6904,7 +6904,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-06-13T11:15:36+00:00"
+            "time": "2019-09-17T11:12:18+00:00"
         },
         {
             "name": "symfony/stopwatch",
@@ -7770,19 +7770,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "role": "Lead Developer",
                     "email": "fabien@symfony.com",
-                    "homepage": "http://fabien.potencier.org"
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
                     "name": "Armin Ronacher",
-                    "role": "Project Founder",
-                    "email": "armin.ronacher@active-4.com"
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
                 },
                 {
                     "name": "Twig Team",
-                    "role": "Contributors",
-                    "homepage": "https://twig.symfony.com/contributors"
+                    "homepage": "https://twig.symfony.com/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -7798,12 +7798,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "5ad5a7b810e908c4713881bd4edd4a8c25d68cd7"
+                "reference": "deef4d352ecce2c89ef5742bc859138d1e5e435d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/5ad5a7b810e908c4713881bd4edd4a8c25d68cd7",
-                "reference": "5ad5a7b810e908c4713881bd4edd4a8c25d68cd7",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/deef4d352ecce2c89ef5742bc859138d1e5e435d",
+                "reference": "deef4d352ecce2c89ef5742bc859138d1e5e435d",
                 "shasum": ""
             },
             "require": {
@@ -7863,7 +7863,10 @@
                 "symfony/var-dumper": "^4.3"
             },
             "suggest": {
-                "symfony/security-bundle": "Symfony firewall using a JSON API (perfect for script applications)"
+                "symfony/security-bundle": "Symfony firewall using a JSON API (perfect for script applications)",
+                "web-token/jwt-signature-algorithm-ecdsa": "Recommended for the AndroidSafetyNet Attestation Statement support",
+                "web-token/jwt-signature-algorithm-eddsa": "Recommended for the AndroidSafetyNet Attestation Statement support",
+                "web-token/jwt-signature-algorithm-rsa": "Mandatory for the AndroidSafetyNet Attestation Statement support"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -7900,7 +7903,7 @@
             ],
             "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
             "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2019-08-22T19:21:19+00:00"
+            "time": "2019-09-09T12:04:09+00:00"
         },
         {
             "name": "web-token/jwt-core",
