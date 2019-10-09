@@ -14,17 +14,17 @@ declare(strict_types=1);
 namespace App\EventListener;
 
 use App\Entity\User;
-use App\Repository\UserRepository;
+use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class LastLoginAt
 {
     /**
-     * @var UserRepository
+     * @var PublicKeyCredentialUserEntityRepository
      */
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(PublicKeyCredentialUserEntityRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }

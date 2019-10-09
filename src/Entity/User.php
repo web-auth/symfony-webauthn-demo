@@ -2,68 +2,63 @@
 
 declare(strict_types=1);
 
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2014-2019 Spomky-Labs
- *
- * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
- */
-
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Validator\Constraints as Assert;
+use Webauthn\PublicKeyCredentialUserEntity;
 
 /**
  * @ORM\Table(name="users")
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity("username")
+ * @ORM\Entity(repositoryClass="App\Repository\PublicKeyCredentialUserEntityRepository")
+ * @UniqueEntity("name")
  */
-class User implements UserInterface
+class User extends PublicKeyCredentialUserEntity implements UserInterface
 {
     /**
+     * @var string
+     *
      * @ORM\Id
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
      * @ORM\GeneratedValue(strategy="NONE")
      */
-    private $id;
+    protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(max=100)
-     */
-    private $username;
-
-    /**
+     * @var string[]
+     *
      * @ORM\Column(type="array")
      */
-    private $roles = [];
+    protected $roles;
 
     /**
+     * @var DateTimeImmutable
+     *
      * @ORM\Column(type="datetime_immutable")
      */
     private $created_at;
 
     /**
+     * @var DateTimeImmutable|null
+     *
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $last_login_at;
 
-    public function __construct()
+    public function __construct(string $name, string $displayName, array $roles = [], ?string $icon = null)
     {
         $this->id = Uuid::uuid4()->toString();
-        $this->created_at = new \DateTimeImmutable();
+        parent::__construct($name, $this->id, $displayName, $icon);
+        $this->roles = $roles;
+        $this->created_at = new DateTimeImmutable();
     }
 
     public function getId(): string
     {
-        return $this->id;
+        return parent::getId();
     }
 
     public function getRoles(): array
@@ -71,42 +66,48 @@ class User implements UserInterface
         return array_unique($this->roles + ['ROLE_USER']);
     }
 
-    public function getPassword()
+    public function getPassword(): void
     {
-        return '';
     }
 
-    public function getSalt()
+    public function getSalt(): void
     {
-        return '';
     }
 
     public function getUsername(): ?string
     {
-        return $this->username;
+        return $this->getName();
     }
 
-    public function setUsername(string $username): void
+    public function eraseCredentials(): void
     {
-        $this->username = $username;
     }
 
-    public function getCreatedAt(): \DateTimeImmutable
+    public function getCreatedAt(): DateTimeImmutable
     {
         return $this->created_at;
     }
 
-    public function getLastLoginAt(): ?\DateTimeImmutable
+    public function getLastLoginAt(): ?DateTimeImmutable
     {
         return $this->last_login_at;
     }
 
-    public function setLastLoginAt(\DateTimeImmutable $last_login_at): void
+    public function setLastLoginAt(DateTimeImmutable $last_login_at): void
     {
         $this->last_login_at = $last_login_at;
     }
 
-    public function eraseCredentials()
+    public static function createFrom(PublicKeyCredentialUserEntity $userEntity): User
     {
+        $user = new self(
+            $userEntity->getName(),
+            $userEntity->getDisplayName(),
+            [],
+            $userEntity->getIcon()
+        );
+        $user->id = $userEntity->getId();
+
+        return $user;
     }
 }

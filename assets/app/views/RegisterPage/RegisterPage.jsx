@@ -35,6 +35,12 @@ class RegisterPage extends Component {
       isDeviceInteractionEnabled: false,
   };
 
+  handleKeyPressed = event => {
+    if (event.which === 13) {
+      this.handleFormValidation(event)
+    }
+  };
+
   handleUsernameChanged = event => {
       this.setState({
           username: event.target.value,
@@ -138,7 +144,6 @@ class RegisterPage extends Component {
   };
 
   registrationFailureHandler = error => {
-      console.log(error);
       this.props.enqueueSnackbar({
           message:
         'An error occurred during the registration process. Please try again later.',
@@ -182,6 +187,7 @@ class RegisterPage extends Component {
                           fullWidth: true,
                       }}
                       inputProps={{
+                          onKeyPress: event => this.handleKeyPressed(event),
                           onChange: event => this.handleUsernameChanged(event),
                           type: 'text',
                           value: this.state.username,
@@ -199,6 +205,7 @@ class RegisterPage extends Component {
                           fullWidth: true,
                       }}
                       inputProps={{
+                          onKeyPress: event => this.handleKeyPressed(event),
                           onChange: event => this.handleDisplayNameChanged(event),
                           type: 'text',
                           value: this.state.displayName,
@@ -220,6 +227,7 @@ class RegisterPage extends Component {
                       color="primary"
                       size="lg"
                       disabled={!this.state.isFormValid}
+                      onKeyPress={this.handleKeyPressed}
                       onClick={this.handleFormValidation}
                   >
             Get started

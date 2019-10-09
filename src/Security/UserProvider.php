@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace App\Security;
 
 use App\Entity\User;
-use App\Repository\UserRepository;
+use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -22,11 +22,11 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 final class UserProvider implements UserProviderInterface
 {
     /**
-     * @var UserRepository
+     * @var PublicKeyCredentialUserEntityRepository
      */
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(PublicKeyCredentialUserEntityRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }

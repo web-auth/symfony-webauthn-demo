@@ -13,27 +13,43 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\UserEntity;
+use App\Entity\User;
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Doctrine\ORM\EntityManagerInterface;
-use Ramsey\Uuid\Uuid;
 use Webauthn\Bundle\Repository\AbstractPublicKeyCredentialUserEntityRepository;
 use Webauthn\PublicKeyCredentialUserEntity;
 
 final class PublicKeyCredentialUserEntityRepository extends AbstractPublicKeyCredentialUserEntityRepository
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $manager;
-
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, UserEntity::class);
+        parent::__construct($registry, User::class);
     }
 
     public function createUserEntity(string $username, string $displayName, ?string $icon): PublicKeyCredentialUserEntity
     {
-        return new UserEntity($username, Uuid::uuid4()->toString(), $displayName, $icon);
+        return new User($username, $displayName, [], $icon);
+    }
+
+    public function saveUserEntity(PublicKeyCredentialUserEntity $userEntity): void
+    {
+        if (!$userEntity instanceof User) {
+            $userEntity =  User::createFrom($userEntity);
+        }
+
+        parent::saveUserEntity($userEntity);
+    }
+
+    public function find(string $username): ?User
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+
+        return $qb->select('u')
+            ->from(User::class, 'u')
+            ->where('u.name = :name')
+            ->setParameter(':name', $username)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
 }

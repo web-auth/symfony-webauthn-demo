@@ -14,15 +14,13 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\PublicKeyCredentialSource;
-use App\Entity\User;
-use App\Repository\UserRepository;
+use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Assert\Assertion;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Webauthn\AuthenticatorAttestationResponse;
 use Webauthn\AuthenticatorAttestationResponseValidator;
-use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository;
 use Webauthn\PublicKeyCredentialCreationOptions;
 use Webauthn\PublicKeyCredentialLoader;
 use Webauthn\PublicKeyCredentialSourceRepository;
@@ -58,12 +56,7 @@ final class AttestationResponseController
      */
     private $sessionParameterName;
 
-    /**
-     * @var UserRepository
-     */
-    private $userRepository;
-
-    public function __construct(HttpMessageFactoryInterface $httpMessageFactory, PublicKeyCredentialLoader $publicKeyCredentialLoader, AuthenticatorAttestationResponseValidator $attestationResponseValidator, PublicKeyCredentialUserEntityRepository $userEntityRepository, PublicKeyCredentialSourceRepository $credentialSourceRepository, UserRepository $userRepository)
+    public function __construct(HttpMessageFactoryInterface $httpMessageFactory, PublicKeyCredentialLoader $publicKeyCredentialLoader, AuthenticatorAttestationResponseValidator $attestationResponseValidator, PublicKeyCredentialUserEntityRepository $userEntityRepository, PublicKeyCredentialSourceRepository $credentialSourceRepository)
     {
         $this->attestationResponseValidator = $attestationResponseValidator;
         $this->userEntityRepository = $userEntityRepository;
@@ -71,7 +64,6 @@ final class AttestationResponseController
         $this->publicKeyCredentialLoader = $publicKeyCredentialLoader;
         $this->httpMessageFactory = $httpMessageFactory;
         $this->sessionParameterName = 'API_REGISTRATION_OPTIONS';
-        $this->userRepository = $userRepository;
     }
 
     public function __invoke(Request $request): JsonResponse
@@ -94,10 +86,6 @@ final class AttestationResponseController
                 $publicKeyCredentialCreationOptions->getUser()->getId()
             );
             $this->credentialSourceRepository->saveCredentialSource($credentialSource);
-
-            $user = new User();
-            $user->setUsername($publicKeyCredentialCreationOptions->getUser()->getName());
-            $this->userRepository->save($user);
 
             return new JsonResponse(['status' => 'ok', 'errorMessage' => '']);
         } catch (\Throwable $throwable) {

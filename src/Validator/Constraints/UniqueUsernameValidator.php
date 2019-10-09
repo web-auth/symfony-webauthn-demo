@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace App\Validator\Constraints;
 
-use App\Repository\UserRepository;
+use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
@@ -22,7 +22,7 @@ class UniqueUsernameValidator extends ConstraintValidator
 {
     private $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(PublicKeyCredentialUserEntityRepository $userRepository)
     {
         $this->userRepository = $userRepository;
     }

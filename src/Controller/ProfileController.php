@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\UserEntity;
 use App\Repository\PublicKeyCredentialSourceRepository;
 use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -32,16 +31,11 @@ final class ProfileController
      * @var PublicKeyCredentialSourceRepository
      */
     private $keyCredentialSourceRepository;
-    /**
-     * @var PublicKeyCredentialUserEntityRepository
-     */
-    private $keyCredentialUserEntityRepository;
 
-    public function __construct(TokenStorageInterface $tokenStorage, PublicKeyCredentialUserEntityRepository $keyCredentialUserEntityRepository, PublicKeyCredentialSourceRepository $keyCredentialSourceRepository)
+    public function __construct(TokenStorageInterface $tokenStorage, PublicKeyCredentialSourceRepository $keyCredentialSourceRepository)
     {
         $this->tokenStorage = $tokenStorage;
         $this->keyCredentialSourceRepository = $keyCredentialSourceRepository;
-        $this->keyCredentialUserEntityRepository = $keyCredentialUserEntityRepository;
     }
 
     public function __invoke(): JsonResponse
@@ -54,11 +48,7 @@ final class ProfileController
         if (!$user instanceof User) {
             return new JsonResponse([], JsonResponse::HTTP_UNAUTHORIZED);
         }
-        $userEntity = $this->keyCredentialUserEntityRepository->findOneByUsername($user->getUsername());
-        if (!$userEntity instanceof UserEntity) {
-            return new JsonResponse([], JsonResponse::HTTP_UNAUTHORIZED);
-        }
-        $credentials = $this->keyCredentialSourceRepository->findAllForUserEntity($userEntity);
+        $credentials = $this->keyCredentialSourceRepository->findAllForUserEntity($user);
         $credentials = array_map(static function(PublicKeyCredentialSource $source) {
             $data = $source->jsonSerialize();
             $data['aaguid'] = $source->getAaguid()->toString();
@@ -70,7 +60,7 @@ final class ProfileController
             'isUserPresent' => $token->isUserPresent(),
             'isUserVerified' => $token->isUserVerified(),
             'userForAuthentication' => $token->getCredentials(),
-            'user' => $userEntity,
+            'user' => $user,
             'created_at' => $user->getCreatedAt()->format('c'),
             'last_login_at' => $user->getLastLoginAt() ? $user->getLastLoginAt()->format('c') : null,
             'credentials' => $credentials,
