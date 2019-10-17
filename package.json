@@ -21,7 +21,7 @@
         "node-sass": "^4.11.0",
         "notistack": "^0.9",
         "nouislider": "^14.0",
-        "popper.js": "^1.14.6",
+        "popper.js": "^1.16.0",
         "prop-types": "^15.7.2",
         "react": "^16.8.4",
         "react-datetime": "^2.16.3",
