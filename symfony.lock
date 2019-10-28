@@ -638,19 +638,16 @@
         "version": "v2.1.x-dev"
     },
     "web-auth/cose-lib": {
-        "version": "v2.1.x-dev"
+        "version": "v2.2.x-dev"
     },
     "web-auth/metadata-service": {
-        "version": "v2.1.x-dev"
-    },
-    "web-auth/webauthn-framework": {
-        "version": "v2.1.x-dev"
+        "version": "v2.2.x-dev"
     },
     "web-auth/webauthn-lib": {
-        "version": "v2.1.x-dev"
+        "version": "v2.2.x-dev"
     },
     "web-auth/webauthn-symfony-bundle": {
-        "version": "v2.1.x-dev"
+        "version": "v2.2.x-dev"
     },
     "web-token/jwt-core": {
         "version": "v2.0.13"

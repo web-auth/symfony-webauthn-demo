@@ -38,11 +38,11 @@
         "symfony/webpack-encore-bundle": "^1.1",
         "symfony/yaml": "4.3.*",
         "twig/extensions": "^1.5",
-        "web-auth/conformance-toolset": "v2.1.x-dev",
-        "web-auth/cose-lib": "v2.1.x-dev",
-        "web-auth/webauthn-lib": "v2.1.x-dev",
-        "web-auth/metadata-service": "v2.1.x-dev",
-        "web-auth/webauthn-symfony-bundle": "v2.1.x-dev",
+        "web-auth/conformance-toolset": "v2.2.x-dev",
+        "web-auth/cose-lib": "v2.2.x-dev",
+        "web-auth/webauthn-lib": "v2.2.x-dev",
+        "web-auth/metadata-service": "v2.2.x-dev",
+        "web-auth/webauthn-symfony-bundle": "v2.2.x-dev",
         "web-token/jwt-signature-algorithm-rsa": "^2.0"
     },
     "require-dev": {
