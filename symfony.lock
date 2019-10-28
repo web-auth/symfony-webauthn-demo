@@ -652,6 +652,9 @@
     "web-token/jwt-core": {
         "version": "v2.0.13"
     },
+    "web-token/jwt-key-mgmt": {
+        "version": "v2.0.13"
+    },
     "web-token/jwt-signature": {
         "version": "v2.0.13"
     },
