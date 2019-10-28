@@ -7287,15 +7287,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/conformance-toolset.git",
-                "reference": "2a72a02a4d7986ce691ff89072ec6430a26d69b2"
+                "reference": "93e51fda558a33bee160cacacf1978777b6fda7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/conformance-toolset/zipball/2a72a02a4d7986ce691ff89072ec6430a26d69b2",
-                "reference": "2a72a02a4d7986ce691ff89072ec6430a26d69b2",
+                "url": "https://api.github.com/repos/web-auth/conformance-toolset/zipball/93e51fda558a33bee160cacacf1978777b6fda7d",
+                "reference": "93e51fda558a33bee160cacacf1978777b6fda7d",
                 "shasum": ""
             },
             "require": {
+                "beberlei/assert": "^3.0",
                 "symfony/psr-http-message-bridge": "^1.1",
                 "web-auth/webauthn-symfony-bundle": "self.version"
             },
@@ -7336,7 +7337,7 @@
                 "fido",
                 "webauthn"
             ],
-            "time": "2019-09-24T10:30:07+00:00"
+            "time": "2019-10-28T19:45:41+00:00"
         },
         {
             "name": "web-auth/cose-lib",
@@ -7404,15 +7405,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
-                "reference": "64743ff5ca01b19a196635fd51ba09f0b4c4e066"
+                "reference": "44d9f9df933824945f3bff661d8d5a5fda3c149e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/64743ff5ca01b19a196635fd51ba09f0b4c4e066",
-                "reference": "64743ff5ca01b19a196635fd51ba09f0b4c4e066",
+                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/44d9f9df933824945f3bff661d8d5a5fda3c149e",
+                "reference": "44d9f9df933824945f3bff661d8d5a5fda3c149e",
                 "shasum": ""
             },
             "require": {
+                "beberlei/assert": "^3.0",
                 "ext-json": "*",
                 "php": "^7.1",
                 "psr/http-client": "^1.0",
@@ -7451,7 +7453,7 @@
                 "fido",
                 "webauthn"
             ],
-            "time": "2019-09-24T10:30:07+00:00"
+            "time": "2019-10-28T19:45:41+00:00"
         },
         {
             "name": "web-auth/webauthn-lib",
@@ -7459,12 +7461,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "c029db80e885cbee8ddd95b034d7adbc900b48a8"
+                "reference": "d40526eef6879c7683f0866aa107b0a31769c3f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/c029db80e885cbee8ddd95b034d7adbc900b48a8",
-                "reference": "c029db80e885cbee8ddd95b034d7adbc900b48a8",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/d40526eef6879c7683f0866aa107b0a31769c3f6",
+                "reference": "d40526eef6879c7683f0866aa107b0a31769c3f6",
                 "shasum": ""
             },
             "require": {
@@ -7525,7 +7527,7 @@
                 "fido",
                 "webauthn"
             ],
-            "time": "2019-10-17T21:03:56+00:00"
+            "time": "2019-10-28T19:45:41+00:00"
         },
         {
             "name": "web-auth/webauthn-symfony-bundle",
@@ -7533,12 +7535,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
-                "reference": "e1f0355eed72d1f4f0ff476e8b28e3464941b241"
+                "reference": "ad311bb558325e8e9b87cb6323536b4bdf34e456"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/e1f0355eed72d1f4f0ff476e8b28e3464941b241",
-                "reference": "e1f0355eed72d1f4f0ff476e8b28e3464941b241",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/ad311bb558325e8e9b87cb6323536b4bdf34e456",
+                "reference": "ad311bb558325e8e9b87cb6323536b4bdf34e456",
                 "shasum": ""
             },
             "require": {
@@ -7594,7 +7596,7 @@
                 "fido",
                 "webauthn"
             ],
-            "time": "2019-10-20T19:26:28+00:00"
+            "time": "2019-10-28T19:45:41+00:00"
         },
         {
             "name": "web-token/jwt-core",
