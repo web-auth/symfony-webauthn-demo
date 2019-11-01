@@ -28,6 +28,8 @@ webauthn:
                 response_path: '/assertion/result'
                 session_parameter_name: '__WEBAUTHN_ASSERTION_REQUEST__'
     metadata_service:
+        enabled: true
+        enforce_verification: true
         request_factory: 'nyholm.psr7.psr17_factory'
         services:
             fido_alliance_test1:
