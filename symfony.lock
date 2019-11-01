@@ -111,6 +111,27 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "league/uri": {
+        "version": "6.0.0"
+    },
+    "league/uri-components": {
+        "version": "1.8.2"
+    },
+    "league/uri-hostname-parser": {
+        "version": "1.1.1"
+    },
+    "league/uri-interfaces": {
+        "version": "2.0.0"
+    },
+    "league/uri-manipulations": {
+        "version": "1.5.0"
+    },
+    "league/uri-parser": {
+        "version": "1.4.1"
+    },
+    "league/uri-schemes": {
+        "version": "1.2.1"
+    },
     "monolog/monolog": {
         "version": "1.25.1"
     },
@@ -215,6 +236,9 @@
     },
     "psr/log": {
         "version": "1.1.0"
+    },
+    "psr/simple-cache": {
+        "version": "1.0.1"
     },
     "ramsey/uuid": {
         "version": "3.8.0"
@@ -656,6 +680,9 @@
         "version": "v2.0.13"
     },
     "web-token/jwt-signature": {
+        "version": "v2.0.13"
+    },
+    "web-token/jwt-signature-algorithm-ecdsa": {
         "version": "v2.0.13"
     },
     "web-token/jwt-signature-algorithm-rsa": {

@@ -9,6 +9,7 @@
         "ext-sodium": "*",
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "fzaninotto/faker": "^1.8",
+        "league/uri": "^5.3",
         "nelmio/cors-bundle": "^1.5",
         "nyholm/psr7": "^1.1",
         "php-http/curl-client": "^2.0",
@@ -40,11 +41,12 @@
         "twig/extensions": "^1.5",
         "web-auth/conformance-toolset": "v2.2.x-dev",
         "web-auth/cose-lib": "v2.2.x-dev",
-        "web-auth/webauthn-lib": "v2.2.x-dev",
         "web-auth/metadata-service": "v2.2.x-dev",
+        "web-auth/webauthn-lib": "v2.2.x-dev",
         "web-auth/webauthn-symfony-bundle": "v2.2.x-dev",
         "web-token/jwt-key-mgmt": "^2.0",
-        "web-token/jwt-signature-algorithm-rsa": "^2.0"
+        "web-token/jwt-signature-algorithm-rsa": "^2.0",
+        "web-token/jwt-signature-algorithm-ecdsa": "^2.0"
     },
     "require-dev": {
         "symfony/debug-pack": "^1.0",
