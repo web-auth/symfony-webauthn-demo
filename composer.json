@@ -9,6 +9,8 @@
         "ext-sodium": "*",
         "doctrine/doctrine-migrations-bundle": "^2.0",
         "fzaninotto/faker": "^1.8",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "league/flysystem-bundle": "^1.2",
         "league/uri": "^5.3",
         "nelmio/cors-bundle": "^1.5",
         "nyholm/psr7": "^1.1",

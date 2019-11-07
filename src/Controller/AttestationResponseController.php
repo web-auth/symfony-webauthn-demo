@@ -79,12 +79,8 @@ final class AttestationResponseController
             $publicKeyCredentialCreationOptions = $request->getSession()->get($this->sessionParameterName);
             $request->getSession()->remove($this->sessionParameterName);
             Assertion::isInstanceOf($publicKeyCredentialCreationOptions, PublicKeyCredentialCreationOptions::class, 'Unable to find the public key credential creation options');
-            $this->attestationResponseValidator->check($response, $publicKeyCredentialCreationOptions, $psr7Request);
+            $credentialSource = $this->attestationResponseValidator->check($response, $publicKeyCredentialCreationOptions, $psr7Request);
             $this->userEntityRepository->saveUserEntity($publicKeyCredentialCreationOptions->getUser());
-            $credentialSource = PublicKeyCredentialSource::createFromPublicKeyCredential(
-                $publicKeyCredential,
-                $publicKeyCredentialCreationOptions->getUser()->getId()
-            );
             $this->credentialSourceRepository->saveCredentialSource($credentialSource);
 
             return new JsonResponse(['status' => 'ok', 'errorMessage' => '']);

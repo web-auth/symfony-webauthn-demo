@@ -48,6 +48,19 @@ services:
             - '@Nyholm\Psr7\Factory\Psr17Factory'
             - '@Nyholm\Psr7\Factory\Psr17Factory'
 
-    App\Provider\PublicKeyCredentialFakeUserEntityProvider:
-        autowire: true
-        autoconfigure: true
+    App\Provider\PublicKeyCredentialFakeUserEntityProvider: ~
+    App\Repository\MetadataStatementRepository:
+        calls:
+            - method: 'addService'
+              arguments:
+                  - 'fido_alliance_real'
+                  - 'https://mds2.fidoalliance.org'
+                  - 'additional_query_strings':
+                        'token': '%env(FIDO_MDS_TOKEN)%'
+
+    scaleway_client:
+        class: Aws\S3\S3Client
+        factory: ['@App\Service\ScalewayClientFactory', 'create']
+        arguments:
+            - "%env(S3_KEY)%"
+            - "%env(S3_SECRET)%"
