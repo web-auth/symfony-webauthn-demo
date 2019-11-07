@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17f464b8827841986a9d896fda63fd5f",
+    "content-hash": "b46c9fd8f1beb0335cae5309cc6b2cc6",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -9618,16 +9618,16 @@
         },
         {
             "name": "symfony/maker-bundle",
-            "version": "v1.14.2",
+            "version": "v1.14.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/maker-bundle.git",
-                "reference": "5dfcbc400b168943f15a21d4283ad848605d9bc2"
+                "reference": "c864e7f9b8d1e1f5f60acc3beda11299f637aded"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/5dfcbc400b168943f15a21d4283ad848605d9bc2",
-                "reference": "5dfcbc400b168943f15a21d4283ad848605d9bc2",
+                "url": "https://api.github.com/repos/symfony/maker-bundle/zipball/c864e7f9b8d1e1f5f60acc3beda11299f637aded",
+                "reference": "c864e7f9b8d1e1f5f60acc3beda11299f637aded",
                 "shasum": ""
             },
             "require": {
@@ -9682,7 +9682,7 @@
                 "scaffold",
                 "scaffolding"
             ],
-            "time": "2019-11-04T13:50:13+00:00"
+            "time": "2019-11-07T00:56:03+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
