@@ -20,6 +20,8 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Throwable;
+use Webauthn\MetadataService\AuthenticatorStatus;
+use Webauthn\MetadataService\StatusReport;
 
 final class UpdateMetadataStatementRepository extends Command
 {
@@ -78,6 +80,14 @@ final class UpdateMetadataStatementRepository extends Command
                     count($toc->getEntries()) + $progressBar->getMaxSteps()
                 );
                 foreach ($toc->getEntries() as $entry) {
+                    $statusReports = $entry->getStatusReports();
+                    if (0 !== count($statusReports)) {
+                        /** @var StatusReport $lastReport */
+                        $lastReport = reset($statusReports);
+                        if (in_array($lastReport->getStatus(), [AuthenticatorStatus::ATTESTATION_KEY_COMPROMISE, AuthenticatorStatus::USER_KEY_PHYSICAL_COMPROMISE, AuthenticatorStatus::USER_KEY_REMOTE_COMPROMISE, AuthenticatorStatus::USER_VERIFICATION_BYPASS])) {
+                            $this->errors[] = sprintf('The statement "%s" from service "%s" cannot be added as compromised. Last status is: %s', $entry->getAaguid(), $name, $lastReport->getStatus());
+                        }
+                    }
                     if ($entry->getAaguid()) {
                         if ($this->filesystemStorage->has($entry->getAaguid())) {
                             $this->filesystemStorage->delete($entry->getAaguid());

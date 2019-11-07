@@ -16,6 +16,7 @@ namespace App\Repository;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
+use Throwable;
 use Webauthn\MetadataService\DistantSingleMetadata;
 use Webauthn\MetadataService\MetadataService;
 use Webauthn\MetadataService\MetadataStatement;
@@ -72,11 +73,11 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
     private function addServices(): void
     {
         $services = [
-            'fido_alliance_test1' => ['url' => 'https://fidoalliance.co.nz/mds/execute/0ab57df429bd2a277c1e87ce705099d134219af5e2e2577ff287afa073c963ad'],
-            'fido_alliance_test2' => ['url' => 'https://fidoalliance.co.nz/mds/execute/39fa5b56ba6d5186e1f384d3fd880499ef9647086b2e7419cc01e12211ca16dd'],
-            'fido_alliance_test3' => ['url' => 'https://fidoalliance.co.nz/mds/execute/3d559152a328ae5c934de1005f53a376a03f5ef6f61ec4c318ca5552a9c4ebf7'],
-            'fido_alliance_test4' => ['url' => 'https://fidoalliance.co.nz/mds/execute/d7eac3e12c24a05edbb3eef1cd757c3fa670a348e29e35285046f1173b77d7c0'],
-            'fido_alliance_test5' => ['url' => 'https://fidoalliance.co.nz/mds/execute/d7f47b1a5d510bd440874b7d89e3b42347413cdd5a311059ee53cf5dc688526b'],
+            'fido_alliance_test1' => ['url' => 'https://fidoalliance.co.nz/mds/execute/67ecfea1afe12486cdae3adfa1681db113cdbe07d368ada7c08741e6e22bf0f6'],
+            'fido_alliance_test2' => ['url' => 'https://fidoalliance.co.nz/mds/execute/a3fbad0a3f5674f6fc338804fc28cacfad36a108e3ffbbffc827ebed44c24596'],
+            'fido_alliance_test3' => ['url' => 'https://fidoalliance.co.nz/mds/execute/b5735855ae1483ac7945552d152a5a9d8316eea499956203cf12fa6f7754f2a7'],
+            'fido_alliance_test4' => ['url' => 'https://fidoalliance.co.nz/mds/execute/b9a0a70b3cbbf1d909d02f5abe20195484270939004dd3c855eaa10892f516da'],
+            'fido_alliance_test5' => ['url' => 'https://fidoalliance.co.nz/mds/execute/dc77c8adc743b8b736ef643b8f58b2d4d60b8e543e45a31f3a396b25559d0bd0'],
         ];
         foreach ($services as $name => $service) {
             $this->services[$name] = new MetadataService(
@@ -148,12 +149,16 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
 
     public function findOneByAAGUID(string $aaguid): ?MetadataStatement
     {
-        $data = $this->filesystemStorage->read($aaguid);
-        if (false === $data) {
+        try {
+            $data = $this->filesystemStorage->read($aaguid);
+            if (false === $data) {
+                return null;
+            }
+            $json = json_decode($data, true);
+
+            return MetadataStatement::createFromArray($json);
+        } catch (Throwable $throwable) {
             return null;
         }
-
-        $json = json_decode($data, true);
-        return MetadataStatement::createFromArray($json);
     }
 }
