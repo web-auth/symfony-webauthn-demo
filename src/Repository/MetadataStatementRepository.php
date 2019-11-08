@@ -20,8 +20,10 @@ use Throwable;
 use Webauthn\MetadataService\DistantSingleMetadata;
 use Webauthn\MetadataService\MetadataService;
 use Webauthn\MetadataService\MetadataStatement;
-use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
+use Webauthn\MetadataService\MetadataStatementStatusReportRepository as MetadataStatementRepositoryInterface;
+use Webauthn\MetadataService\MetadataTOCPayloadEntry;
 use Webauthn\MetadataService\SingleMetadata;
+use Webauthn\MetadataService\StatusReport;
 
 final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
@@ -150,15 +152,36 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
     public function findOneByAAGUID(string $aaguid): ?MetadataStatement
     {
         try {
-            $data = $this->filesystemStorage->read($aaguid);
+            $data = $this->filesystemStorage->read(sprintf('/mds/%s', $aaguid));
             if (false === $data) {
                 return null;
             }
             $json = json_decode($data, true);
+            if (!is_array($json)) {
+                return null;
+            }
 
             return MetadataStatement::createFromArray($json);
         } catch (Throwable $throwable) {
             return null;
+        }
+    }
+
+    public function findStatusReportsByAAGUID(string $aaguid): array
+    {
+        try {
+            $data = $this->filesystemStorage->read(sprintf('/entries/%s', $aaguid));
+            if (false === $data) {
+                return null;
+            }
+            $json = json_decode($data, true);
+            if (!is_array($json)) {
+                return null;
+            }
+
+            return MetadataTOCPayloadEntry::createFromArray($json)->getStatusReports();
+        } catch (Throwable $throwable) {
+            return [];
         }
     }
 }

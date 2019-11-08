@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.114.1",
+            "version": "3.115.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "94d8df3d2de310df8475d76a729c88c6c1348be4"
+                "reference": "43407075f446c202d9520498d4ebcbc5de439690"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/94d8df3d2de310df8475d76a729c88c6c1348be4",
-                "reference": "94d8df3d2de310df8475d76a729c88c6c1348be4",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/43407075f446c202d9520498d4ebcbc5de439690",
+                "reference": "43407075f446c202d9520498d4ebcbc5de439690",
                 "shasum": ""
             },
             "require": {
@@ -87,7 +87,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2019-11-06T23:05:00+00:00"
+            "time": "2019-11-08T19:17:23+00:00"
         },
         {
             "name": "beberlei/assert",
@@ -7539,16 +7539,16 @@
         },
         {
             "name": "symfony/swiftmailer-bundle",
-            "version": "v3.3.0",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/swiftmailer-bundle.git",
-                "reference": "6b895bc0a5e815d1bf2d444869415a7c752516aa"
+                "reference": "defa9bdfc0191ed70b389cb93c550c6c82cf1745"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/6b895bc0a5e815d1bf2d444869415a7c752516aa",
-                "reference": "6b895bc0a5e815d1bf2d444869415a7c752516aa",
+                "url": "https://api.github.com/repos/symfony/swiftmailer-bundle/zipball/defa9bdfc0191ed70b389cb93c550c6c82cf1745",
+                "reference": "defa9bdfc0191ed70b389cb93c550c6c82cf1745",
                 "shasum": ""
             },
             "require": {
@@ -7600,7 +7600,7 @@
             ],
             "description": "Symfony SwiftmailerBundle",
             "homepage": "http://symfony.com",
-            "time": "2019-10-20T12:05:18+00:00"
+            "time": "2019-11-07T21:01:35+00:00"
         },
         {
             "name": "symfony/translation",
@@ -8498,12 +8498,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
-                "reference": "f99386ef049755cb63420359aa25ad190555ad9f"
+                "reference": "f2bf2d700cdac1501bf63b06c1a09fbce07adeae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/f99386ef049755cb63420359aa25ad190555ad9f",
-                "reference": "f99386ef049755cb63420359aa25ad190555ad9f",
+                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/f2bf2d700cdac1501bf63b06c1a09fbce07adeae",
+                "reference": "f2bf2d700cdac1501bf63b06c1a09fbce07adeae",
                 "shasum": ""
             },
             "require": {
@@ -8547,7 +8547,7 @@
                 "fido",
                 "webauthn"
             ],
-            "time": "2019-11-06T20:24:33+00:00"
+            "time": "2019-11-08T20:03:30+00:00"
         },
         {
             "name": "web-auth/webauthn-lib",
@@ -8555,12 +8555,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "d89b7d65e49d5ba8c5f2981ef9edcf6b6bd353fd"
+                "reference": "b8e96cb36c1657eadd0b7eb7afac975730494aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/d89b7d65e49d5ba8c5f2981ef9edcf6b6bd353fd",
-                "reference": "d89b7d65e49d5ba8c5f2981ef9edcf6b6bd353fd",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/b8e96cb36c1657eadd0b7eb7afac975730494aa8",
+                "reference": "b8e96cb36c1657eadd0b7eb7afac975730494aa8",
                 "shasum": ""
             },
             "require": {
@@ -8622,7 +8622,7 @@
                 "fido",
                 "webauthn"
             ],
-            "time": "2019-11-01T14:12:20+00:00"
+            "time": "2019-11-08T20:03:30+00:00"
         },
         {
             "name": "web-auth/webauthn-symfony-bundle",
@@ -8630,12 +8630,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
-                "reference": "1ad875eb084dbdfa30f87e7ee71b444e8eab3c94"
+                "reference": "0c16617eb50e9322db76fc86774a28ce81efc029"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/1ad875eb084dbdfa30f87e7ee71b444e8eab3c94",
-                "reference": "1ad875eb084dbdfa30f87e7ee71b444e8eab3c94",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/0c16617eb50e9322db76fc86774a28ce81efc029",
+                "reference": "0c16617eb50e9322db76fc86774a28ce81efc029",
                 "shasum": ""
             },
             "require": {
@@ -8691,7 +8691,7 @@
                 "fido",
                 "webauthn"
             ],
-            "time": "2019-11-06T11:56:20+00:00"
+            "time": "2019-11-08T20:03:30+00:00"
         },
         {
             "name": "web-token/jwt-core",
@@ -9297,16 +9297,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.2.5",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2"
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
-                "reference": "b76bbc3c51f22c570648de48e8c2d941ed5e2cf2",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/9a9981c347c5c49d6dfe5cf826bb882b824080dc",
+                "reference": "9a9981c347c5c49d6dfe5cf826bb882b824080dc",
                 "shasum": ""
             },
             "require": {
@@ -9314,7 +9314,7 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.4",
+                "ircmaxell/php-yacc": "0.0.5",
                 "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
             },
             "bin": [
@@ -9323,7 +9323,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.2-dev"
+                    "dev-master": "4.3-dev"
                 }
             },
             "autoload": {
@@ -9345,7 +9345,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2019-10-25T18:33:07+00:00"
+            "time": "2019-11-08T13:50:10+00:00"
         },
         {
             "name": "symfony/browser-kit",
