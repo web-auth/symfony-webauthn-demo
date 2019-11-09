@@ -20,8 +20,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Throwable;
-use Webauthn\MetadataService\AuthenticatorStatus;
-use Webauthn\MetadataService\StatusReport;
 
 final class UpdateMetadataStatementRepository extends Command
 {
@@ -59,11 +57,11 @@ final class UpdateMetadataStatementRepository extends Command
             try {
                 $statement = $singleStatement->getMetadataStatement();
                 if ($statement->getAaguid()) {
-                    if ($this->filesystemStorage->has($statement->getAaguid())) {
-                        $this->filesystemStorage->delete($statement->getAaguid());
+                    if ($this->filesystemStorage->has(sprintf('/mds/%s', $statement->getAaguid()))) {
+                        $this->filesystemStorage->delete(sprintf('/mds/%s', $statement->getAaguid()));
                     }
                     $this->filesystemStorage->put(
-                        $statement->getAaguid(),
+                        sprintf('/mds/%s', $statement->getAaguid()),
                         json_encode($statement, JSON_UNESCAPED_SLASHES)
                     );
                 }
@@ -76,27 +74,33 @@ final class UpdateMetadataStatementRepository extends Command
         foreach ($this->metadataStatementRepository->getServices() as $name => $service) {
             try {
                 $toc = $service->getMetadataTOCPayload();
+                if ($this->filesystemStorage->has(sprintf('/toc/%s', $name))) {
+                    $this->filesystemStorage->delete(sprintf('/toc/%s', $name));
+                }
+                $this->filesystemStorage->put(
+                    sprintf('/toc/%s', $name),
+                    json_encode($toc, JSON_UNESCAPED_SLASHES)
+                );
                 $progressBar->setMaxSteps(
                     count($toc->getEntries()) + $progressBar->getMaxSteps()
                 );
                 foreach ($toc->getEntries() as $entry) {
-                    $statusReports = $entry->getStatusReports();
-                    if (0 !== count($statusReports)) {
-                        /** @var StatusReport $lastReport */
-                        $lastReport = reset($statusReports);
-                        if (in_array($lastReport->getStatus(), [AuthenticatorStatus::ATTESTATION_KEY_COMPROMISE, AuthenticatorStatus::USER_KEY_PHYSICAL_COMPROMISE, AuthenticatorStatus::USER_KEY_REMOTE_COMPROMISE, AuthenticatorStatus::USER_VERIFICATION_BYPASS])) {
-                            $this->errors[] = sprintf('The statement "%s" from service "%s" cannot be added as compromised. Last status is: %s', $entry->getAaguid(), $name, $lastReport->getStatus());
-                        }
-                    }
                     if ($entry->getAaguid()) {
-                        if ($this->filesystemStorage->has($entry->getAaguid())) {
-                            $this->filesystemStorage->delete($entry->getAaguid());
+                        if ($this->filesystemStorage->has(sprintf('/mds/%s', $entry->getAaguid()))) {
+                            $this->filesystemStorage->delete(sprintf('/mds/%s', $entry->getAaguid()));
+                        }
+                        if ($this->filesystemStorage->has(sprintf('/entries/%s', $entry->getAaguid()))) {
+                            $this->filesystemStorage->delete(sprintf('/entries/%s', $entry->getAaguid()));
                         }
                         try {
                             $statement = $service->getMetadataStatementFor($entry);
                             $this->filesystemStorage->put(
-                                $statement->getAaguid(),
+                                sprintf('/mds/%s', $statement->getAaguid()),
                                 json_encode($statement, JSON_UNESCAPED_SLASHES)
+                            );
+                            $this->filesystemStorage->put(
+                                sprintf('/entries/%s', $statement->getAaguid()),
+                                json_encode($entry, JSON_UNESCAPED_SLASHES)
                             );
                             $progressBar->advance();
                         } catch (Throwable $throwable) {
