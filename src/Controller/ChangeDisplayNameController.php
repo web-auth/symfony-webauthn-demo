@@ -15,7 +15,6 @@ namespace App\Controller;
 
 use App\Dto\ChangeDisplayNameRequest;
 use App\Entity\User;
-use App\Entity\UserEntity;
 use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Assert\Assertion;
 use RuntimeException;
@@ -68,18 +67,14 @@ final class ChangeDisplayNameController
         if (!$user instanceof User) {
             return new JsonResponse([], JsonResponse::HTTP_UNAUTHORIZED);
         }
-        $userEntity = $this->keyCredentialUserEntityRepository->findOneByUsername($user->getUsername());
-        if (!$userEntity instanceof UserEntity) {
-            return new JsonResponse([], JsonResponse::HTTP_UNAUTHORIZED);
-        }
 
         try {
             Assertion::eq('json', $request->getContentType(), 'Only JSON content type allowed');
             $content = $request->getContent();
             Assertion::string($content, 'Invalid data');
             $changeDisplayName = $this->getChangeDisplayNameRequest($content);
-            $userEntity->setDisplayName($changeDisplayName->displayName);
-            $this->keyCredentialUserEntityRepository->saveUserEntity($userEntity);
+            $user->setDisplayName($changeDisplayName->displayName);
+            $this->keyCredentialUserEntityRepository->saveUserEntity($user);
         } catch (Throwable $throwable) {
             return new JsonResponse(['status' => 'failed', 'errorMessage' => 'An error occurred'], 400);
         }

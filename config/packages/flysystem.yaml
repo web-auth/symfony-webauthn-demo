@@ -6,7 +6,7 @@ flysystem:
             options:
                 client: 'scaleway_client'
                 bucket: 'webauthn'
-        local.storage:
-            adapter: 'local'
-            options:
-                directory: '%kernel.project_dir%/var/storage/default'
+#        default.storage:
+#            adapter: 'local'
+#            options:
+#                directory: '%kernel.project_dir%/var/storage/default'

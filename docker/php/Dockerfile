@@ -5,8 +5,8 @@ FROM php:7-fpm-alpine
 COPY --from=composer /usr/bin/composer /usr/local/bin/composer
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
-ENV APCU_VERSION 5.1.17
-ENV XDEBUG_VERSION 2.7.1
+ENV APCU_VERSION 5.1.18
+ENV XDEBUG_VERSION 2.8.0
 
 RUN apk add --no-cache \
         ca-certificates \
@@ -27,7 +27,7 @@ RUN apk add --no-cache --virtual .build-deps \
 		postgresql-dev \
         zlib-dev \
         icu-dev
-RUN docker-php-ext-configure zip --with-libzip;
+RUN docker-php-ext-configure zip;
 RUN docker-php-ext-install -j$(nproc) \
         pdo_pgsql \
         intl \

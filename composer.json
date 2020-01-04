@@ -11,41 +11,36 @@
         "fzaninotto/faker": "^1.8",
         "league/flysystem-aws-s3-v3": "^1.0",
         "league/flysystem-bundle": "^1.2",
-        "league/uri": "^5.3",
-        "nelmio/cors-bundle": "^1.5",
+        "nelmio/cors-bundle": "^2.0",
         "nyholm/psr7": "^1.1",
         "php-http/curl-client": "^2.0",
         "php-http/httplug-bundle": "^1.14",
         "ramsey/uuid": "^3.8",
         "sensio/framework-extra-bundle": "^5.2",
-        "symfony/asset": "4.3.*",
-        "symfony/console": "4.3.*",
-        "symfony/dotenv": "4.3.*",
-        "symfony/expression-language": "4.3.*",
+        "symfony/asset": "5.0.*",
+        "symfony/console": "5.0.*",
+        "symfony/dotenv": "5.0.*",
+        "symfony/expression-language": "5.0.*",
         "symfony/flex": "^1.1",
-        "symfony/form": "4.3.*",
-        "symfony/framework-bundle": "4.3.*",
-        "symfony/http-client": "4.3.*",
+        "symfony/form": "5.0.*",
+        "symfony/framework-bundle": "5.0.*",
+        "symfony/http-client": "5.0.*",
         "symfony/monolog-bundle": "^3.1",
         "symfony/orm-pack": "^1.0",
-        "symfony/process": "4.3.*",
-        "symfony/psr-http-message-bridge": "^1.2",
-        "symfony/security-bundle": "4.3.*",
-        "symfony/security-csrf": "^4.0",
+        "symfony/process": "5.0.*",
+        "symfony/psr-http-message-bridge": "^2.0",
+        "symfony/security-bundle": "5.0.*",
+        "symfony/security-csrf": "5.0.*",
         "symfony/serializer-pack": "^1.0",
         "symfony/swiftmailer-bundle": "^3.2",
-        "symfony/translation": "4.3.*",
-        "symfony/twig-bundle": "4.3.*",
-        "symfony/validator": "4.3.*",
-        "symfony/web-link": "4.3.*",
+        "symfony/translation": "5.0.*",
+        "symfony/twig-bundle": "5.0.*",
+        "symfony/validator": "5.0.*",
+        "symfony/web-link": "5.0.*",
         "symfony/webpack-encore-bundle": "^1.1",
-        "symfony/yaml": "4.3.*",
+        "symfony/yaml": "5.0.*",
         "twig/extensions": "^1.5",
-        "web-auth/conformance-toolset": "v2.2.x-dev",
-        "web-auth/cose-lib": "v2.2.x-dev",
-        "web-auth/metadata-service": "v2.2.x-dev",
-        "web-auth/webauthn-lib": "v2.2.x-dev",
-        "web-auth/webauthn-symfony-bundle": "v2.2.x-dev",
+        "web-auth/webauthn-framework": "v3.0.x-dev",
         "web-token/jwt-key-mgmt": "^2.0",
         "web-token/jwt-signature-algorithm-rsa": "^2.0",
         "web-token/jwt-signature-algorithm-ecdsa": "^2.0"
@@ -55,7 +50,7 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "^1.0",
         "symfony/test-pack": "^1.0",
-        "symfony/web-server-bundle": "4.3.*"
+        "symfony/web-server-bundle": "4.4.*"
     },
     "config": {
         "preferred-install": {
@@ -102,7 +97,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "4.3.*"
+            "require": "5.0.*"
         }
     }
 }

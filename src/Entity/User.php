@@ -93,6 +93,11 @@ class User extends PublicKeyCredentialUserEntity implements UserInterface
         return $this->last_login_at;
     }
 
+    public function setDisplayName(string $displayName): void
+    {
+        $this->displayName = $displayName;
+    }
+
     public function setLastLoginAt(DateTimeImmutable $last_login_at): void
     {
         $this->last_login_at = $last_login_at;

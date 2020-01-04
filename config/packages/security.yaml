@@ -1,5 +1,4 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         default:
             id: App\Security\UserProvider
@@ -10,21 +9,25 @@ security:
             security: false
         main:
             anonymous: true
-
-            webauthn_json:
-                login_path: /api/login
-                options_path: /api/login/options
-                profile: 'default'
-                success_handler: App\Security\AuthenticationSuccessHandler
-                failure_handler: App\Security\AuthenticationFailureHandler
-                http_message_factory: 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory'
-                #fake_user_entity_provider: 'App\Provider\PublicKeyCredentialFakeUserEntityProvider'
+            webauthn:
+                failure_handler: 'App\Security\AuthenticationFailureHandler'
+                success_handler: 'App\Security\AuthenticationSuccessHandler'
+                creation:
+                    enabled: true
+                    profile: default
+                    routes:
+                        options_path: '/api/register/options'
+                        result_path: '/api/register'
+                request:
+                    enabled: true
+                    profile: default
+                    routes:
+                        options_path: '/api/login/options'
+                        result_path: '/api/login'
             logout:
-                path: /api/logout
-                success_handler: App\Security\LogoutSuccessHandler
+                path: '/api/logout'
+                success_handler: 'App\Security\LogoutSuccessHandler'
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/attestation,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }
         - { path: ^/assertion,  roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: 'https' }

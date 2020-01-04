@@ -144,6 +144,7 @@ class LoginPage extends Component {
   };
 
   loginFailureHandler = error => {
+    console.log(error)
       this.props.enqueueSnackbar({
           message:
         'An error occurred during the login process. Please try again later.',

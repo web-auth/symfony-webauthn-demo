@@ -20,7 +20,7 @@ use Throwable;
 use Webauthn\MetadataService\DistantSingleMetadata;
 use Webauthn\MetadataService\MetadataService;
 use Webauthn\MetadataService\MetadataStatement;
-use Webauthn\MetadataService\MetadataStatementStatusReportRepository as MetadataStatementRepositoryInterface;
+use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
 use Webauthn\MetadataService\MetadataTOCPayloadEntry;
 use Webauthn\MetadataService\SingleMetadata;
 use Webauthn\MetadataService\StatusReport;

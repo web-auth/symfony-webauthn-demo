@@ -26,6 +26,7 @@ import {
 import loginPageStyle from 'assets/jss/material-kit-react/views/loginPage.jsx';
 
 import SecurityKey from 'app/img/securitykey.min.svg';
+import {authSuccess} from 'app/store/actions/authenticationActions';
 
 class RegisterPage extends Component {
   state = {
@@ -155,6 +156,7 @@ class RegisterPage extends Component {
 
   registrationSuccessHandler = json => {
       if (json.status !== undefined && json.status === 'ok') {
+          this.props.authSuccess(json)
           this.props.enqueueSnackbar({
               message: 'Your account have been successfully created!',
           });
@@ -260,6 +262,11 @@ class RegisterPage extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({enqueueSnackbar}, dispatch);
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    enqueueSnackbar,
+    authSuccess,
+  }, dispatch);
+};
 
 export default connect(null, mapDispatchToProps)(withStyles(loginPageStyle)(RegisterPage));

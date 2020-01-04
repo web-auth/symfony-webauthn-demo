@@ -36,19 +36,6 @@ services:
         tags:
             - { name: 'kernel.event_listener', event: 'security.interactive_login' }
 
-    Nyholm\Psr7\Factory\Psr17Factory: ~
-
-    Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface:
-        alias: 'Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory'
-
-    Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory:
-        arguments:
-            - '@Nyholm\Psr7\Factory\Psr17Factory'
-            - '@Nyholm\Psr7\Factory\Psr17Factory'
-            - '@Nyholm\Psr7\Factory\Psr17Factory'
-            - '@Nyholm\Psr7\Factory\Psr17Factory'
-
-    App\Provider\PublicKeyCredentialFakeUserEntityProvider: ~
     App\Repository\MetadataStatementRepository:
         calls:
             - method: 'addService'
@@ -64,3 +51,9 @@ services:
         arguments:
             - "%env(S3_KEY)%"
             - "%env(S3_SECRET)%"
+
+
+    App\Service\Logger:
+        arguments: ['@logger']
+        tags:
+            - { name: 'monolog.logger', channel: 'webauthn' }

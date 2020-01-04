@@ -22,7 +22,10 @@ function handlePublicKeyRequestResult(data, successCallback, failureCallback) {
         body: JSON.stringify(data),
     })
         .then(response => response.json())
-        .then(json => successCallback(json))
+        .then(json => {
+          console.log(json)
+          return successCallback(json)
+        })
         .catch(err => failureCallback(err));
 }
 

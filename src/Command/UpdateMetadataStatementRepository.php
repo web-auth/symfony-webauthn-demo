@@ -47,7 +47,7 @@ final class UpdateMetadataStatementRepository extends Command
         $this->filesystemStorage = $defaultStorage;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $progressBar = new ProgressBar($output);
         $progressBar->start();
@@ -121,5 +121,7 @@ final class UpdateMetadataStatementRepository extends Command
                 $output->writeln($error);
             }
         }
+
+        return 0;
     }
 }

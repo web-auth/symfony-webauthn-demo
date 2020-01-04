@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Controller\AttestationRequestController;
-use App\Controller\AttestationResponseController;
 use App\Controller\ChangeDisplayNameController;
 use App\Controller\HomepageController;
 use App\Controller\LogoutController;
@@ -12,17 +10,6 @@ use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return function (RoutingConfigurator $routes) {
     $routes->import('.', 'webauthn');
-
-    $routes->add('api_attestation_request', '/api/register/options')
-        ->controller(AttestationRequestController::class)
-        ->methods(['POST'])
-        ->schemes(['https'])
-    ;
-    $routes->add('api_attestation_response', '/api/register')
-        ->controller(AttestationResponseController::class)
-        ->methods(['POST'])
-        ->schemes(['https'])
-    ;
 
 // Profile API
     $routes->add('api_profile', '/api/profile')
