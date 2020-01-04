@@ -15,7 +15,20 @@ Encore.setOutputPath('public/build/')
     .addEntry('react', './assets/index.jsx')
     .addEntry('static', './assets/static.js')
 
-    .enableSassLoader()
+    .enableSassLoader((options) => {
+        delete options.outputStyle;
+        options.sourceMap = true;
+        options.sassOptions = {
+            outputStyle: 'compressed',
+            sourceComments: !Encore.isProduction(),
+        };
+    }, {})
+    .configureCssLoader((options) => {
+        delete options.localIdentName;
+        options.modules = {
+            localIdentName: '[local]_[hash:base64:5]'
+        };
+    })
 
     .configureBabel(babelConfig => {
         babelConfig.plugins.push('@babel/plugin-proposal-class-properties')
