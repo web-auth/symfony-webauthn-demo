@@ -4,30 +4,30 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ff6104ef8688d2f906a86745bfb92e3",
+    "content-hash": "b8cf61cb66c42326eb04f1cc886e5e58",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.130.3",
+            "version": "3.132.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "916356edb5c30fa564d02de94bde51a9c0bb4469"
+                "reference": "d1ea3332539a07d122e5cf397c0eb3a1fb75eede"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/916356edb5c30fa564d02de94bde51a9c0bb4469",
-                "reference": "916356edb5c30fa564d02de94bde51a9c0bb4469",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d1ea3332539a07d122e5cf397c0eb3a1fb75eede",
+                "reference": "d1ea3332539a07d122e5cf397c0eb3a1fb75eede",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
-                "guzzlehttp/guzzle": "^5.3.3|^6.2.1",
-                "guzzlehttp/promises": "~1.0",
+                "guzzlehttp/guzzle": "^5.3.3|^6.2.1|^7.0",
+                "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.4.1",
-                "mtdowling/jmespath.php": "~2.2",
+                "mtdowling/jmespath.php": "^2.5",
                 "php": ">=5.5"
             },
             "require-dev": {
@@ -88,7 +88,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-01-02T19:13:50+00:00"
+            "time": "2020-01-07T19:13:51+00:00"
         },
         {
             "name": "beberlei/assert",
@@ -8101,17 +8101,75 @@
             "time": "2019-12-28T07:12:03+00:00"
         },
         {
-            "name": "web-auth/webauthn-framework",
-            "version": "v3.0.x-dev",
+            "name": "web-auth/conformance-toolset",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "59521266a071b55a9704e6cd1be7012b416d96b2"
+                "url": "https://github.com/web-auth/conformance-toolset.git",
+                "reference": "c13ecad082a75283906d49efddcec54c92faf13c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/59521266a071b55a9704e6cd1be7012b416d96b2",
-                "reference": "59521266a071b55a9704e6cd1be7012b416d96b2",
+                "url": "https://api.github.com/repos/web-auth/conformance-toolset/zipball/c13ecad082a75283906d49efddcec54c92faf13c",
+                "reference": "c13ecad082a75283906d49efddcec54c92faf13c",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.0",
+                "symfony/psr-http-message-bridge": "^2.0",
+                "web-auth/webauthn-symfony-bundle": "self.version"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev",
+                    "v1.2": "1.2.x-dev",
+                    "v2.0": "2.0.x-dev",
+                    "v2.1": "2.1.x-dev",
+                    "v3.0": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webauthn\\ConformanceToolset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-auth/conformance-toolset/contributors"
+                }
+            ],
+            "description": "FIDO2/Webauthn Conformance Toolset",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "FIDO2",
+                "fido",
+                "webauthn"
+            ],
+            "time": "2020-01-02T23:13:49+00:00"
+        },
+        {
+            "name": "web-auth/cose-lib",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/cose-lib.git",
+                "reference": "db6bbed10f45be572454ba854c38e9e081dd2e7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-auth/cose-lib/zipball/db6bbed10f45be572454ba854c38e9e081dd2e7c",
+                "reference": "db6bbed10f45be572454ba854c38e9e081dd2e7c",
                 "shasum": ""
             },
             "require": {
@@ -8120,66 +8178,212 @@
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
                 "fgrosse/phpasn1": "^2.1",
+                "php": "^7.2"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev",
+                    "v1.2": "1.2.x-dev",
+                    "v2.0": "2.0.x-dev",
+                    "v2.1": "2.1.x-dev",
+                    "v3.0": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cose\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-auth/cose/contributors"
+                }
+            ],
+            "description": "CBOR Object Signing and Encryption (COSE) For PHP",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "COSE",
+                "RFC8152"
+            ],
+            "time": "2020-01-02T23:13:49+00:00"
+        },
+        {
+            "name": "web-auth/metadata-service",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/webauthn-metadata-service.git",
+                "reference": "b4139b4caf08d6b3a4f200b8ce96890527e69404"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/b4139b4caf08d6b3a4f200b8ce96890527e69404",
+                "reference": "b4139b4caf08d6b3a4f200b8ce96890527e69404",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.0",
+                "ext-json": "*",
                 "league/uri": "^6.0",
                 "league/uri-components": "^2.1",
-                "nyholm/psr7": "^1.1",
+                "php": "^7.1",
+                "psr/http-client": "^1.0",
+                "psr/http-factory": "^1.0",
+                "psr/log": "^1.1"
+            },
+            "suggest": {
+                "psr/log-implementation": "Recommended to receive logs from the library"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v2.1": "2.1.x-dev",
+                    "v3.0": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webauthn\\MetadataService\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-auth/metadata-service/contributors"
+                }
+            ],
+            "description": "Metadata Service for FIDO2/Webauthn",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "FIDO2",
+                "fido",
+                "webauthn"
+            ],
+            "time": "2020-01-04T12:32:26+00:00"
+        },
+        {
+            "name": "web-auth/webauthn-lib",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/webauthn-lib.git",
+                "reference": "217933e741f8fcea8cb77c1578419d65e45a3e35"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/217933e741f8fcea8cb77c1578419d65e45a3e35",
+                "reference": "217933e741f8fcea8cb77c1578419d65e45a3e35",
+                "shasum": ""
+            },
+            "require": {
+                "beberlei/assert": "^3.0",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
                 "php": "^7.2",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
                 "psr/http-message": "^1.0",
                 "psr/log": "^1.1",
-                "sensio/framework-extra-bundle": "^5.2",
+                "ramsey/uuid": "^3.8",
                 "spomky-labs/base64url": "^2.0",
+                "spomky-labs/cbor-php": "^1.0.2",
+                "web-auth/cose-lib": "self.version",
+                "web-auth/metadata-service": "self.version"
+            },
+            "suggest": {
+                "psr/log-implementation": "Recommended to receive logs from the library",
+                "web-token/jwt-key-mgmt": "Mandatory for the AndroidSafetyNet Attestation Statement support",
+                "web-token/jwt-signature-algorithm-ecdsa": "Recommended for the AndroidSafetyNet Attestation Statement support",
+                "web-token/jwt-signature-algorithm-eddsa": "Recommended for the AndroidSafetyNet Attestation Statement support",
+                "web-token/jwt-signature-algorithm-rsa": "Mandatory for the AndroidSafetyNet Attestation Statement support"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "v1.0": "1.0.x-dev",
+                    "v1.1": "1.1.x-dev",
+                    "v1.2": "1.2.x-dev",
+                    "v2.0": "2.0.x-dev",
+                    "v2.1": "2.1.x-dev",
+                    "v3.0": "3.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Webauthn\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-auth/webauthn-library/contributors"
+                }
+            ],
+            "description": "FIDO2/Webauthn Support For PHP",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "FIDO2",
+                "fido",
+                "webauthn"
+            ],
+            "time": "2020-01-07T12:56:26+00:00"
+        },
+        {
+            "name": "web-auth/webauthn-symfony-bundle",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
+                "reference": "c747ee0001248df79ece1fd8c2b14ac9539a40c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/c747ee0001248df79ece1fd8c2b14ac9539a40c6",
+                "reference": "c747ee0001248df79ece1fd8c2b14ac9539a40c6",
+                "shasum": ""
+            },
+            "require": {
                 "spomky-labs/cbor-bundle": "^2.0",
                 "symfony/config": "^5.0",
                 "symfony/dependency-injection": "^5.0",
                 "symfony/framework-bundle": "^5.0",
-                "symfony/process": "^5.0",
-                "symfony/psr-http-message-bridge": "^2.0",
-                "symfony/security-bundle": "^5.0",
-                "symfony/twig-bundle": "^5.0",
-                "web-token/jwt-key-mgmt": "^2.0.9",
-                "web-token/jwt-signature": "^2.0.9",
-                "web-token/signature-pack": "^2.0.9"
-            },
-            "replace": {
-                "web-auth/conformance-toolset": "self.version",
-                "web-auth/cose-lib": "self.version",
-                "web-auth/metadata-service": "self.version",
                 "web-auth/webauthn-lib": "self.version",
-                "web-auth/webauthn-symfony-bundle": "self.version"
+                "web-token/jwt-signature": "^2.0.3"
             },
             "require-dev": {
-                "doctrine/dbal": "^2.9",
-                "doctrine/doctrine-bundle": "^2.0",
-                "doctrine/orm": "^2.6",
                 "fzaninotto/faker": "^1.8",
-                "monolog/monolog": "^2.0",
-                "php-http/curl-client": "^2.0",
-                "php-http/mock-client": "^1.0",
-                "phpstan/phpstan": "^0.12",
-                "phpstan/phpstan-beberlei-assert": "^0.12",
-                "phpstan/phpstan-deprecation-rules": "^0.12",
-                "phpstan/phpstan-phpunit": "^0.12",
-                "phpstan/phpstan-strict-rules": "^0.12",
-                "phpunit/phpunit": "^8.2.5",
+                "nyholm/psr7": "^1.1",
                 "ramsey/uuid": "^3.8",
-                "symfony/browser-kit": "^5.0",
-                "symfony/http-client": "^5.0",
-                "symfony/monolog-bundle": "^3.5",
-                "symfony/phpunit-bridge": "^5.0",
-                "symfony/serializer": "^5.0",
-                "symfony/translation": "^5.0",
-                "symfony/validator": "^5.0",
-                "symfony/var-dumper": "^5.0",
-                "symfony/yaml": "^5.0"
-            },
-            "suggest": {
-                "psr/log-implementation": "Recommended to receive logs from the library",
-                "symfony/security-bundle": "Symfony firewall using a JSON API (perfect for script applications)",
-                "web-token/jwt-signature-algorithm-ecdsa": "Recommended for the AndroidSafetyNet Attestation Statement support",
-                "web-token/jwt-signature-algorithm-eddsa": "Recommended for the AndroidSafetyNet Attestation Statement support",
-                "web-token/jwt-signature-algorithm-rsa": "Mandatory for the AndroidSafetyNet Attestation Statement support"
+                "symfony/psr-http-message-bridge": "^2.0",
+                "symfony/security-bundle": "^5.0"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -8194,11 +8398,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Cose\\": "src/cose/src/",
-                    "Webauthn\\": "src/webauthn/src/",
-                    "Webauthn\\Bundle\\": "src/symfony/src/",
-                    "Webauthn\\MetadataService\\": "src/metadata-service/src/",
-                    "Webauthn\\ConformanceToolset\\": "src/conformance-toolset/src/"
+                    "Webauthn\\Bundle\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -8212,12 +8412,17 @@
                 },
                 {
                     "name": "All contributors",
-                    "homepage": "https://github.com/web-auth/webauthn-framework/contributors"
+                    "homepage": "https://github.com/web-auth/webauthn-symfony-bundle/contributors"
                 }
             ],
-            "description": "FIDO2/Webauthn library for PHP and Symfony Bundle.",
-            "homepage": "https://github.com/web-auth/webauthn-framework",
-            "time": "2020-01-04T22:30:38+00:00"
+            "description": "FIDO2/Webauthn Security Bundle For Symfony",
+            "homepage": "https://github.com/web-auth",
+            "keywords": [
+                "FIDO2",
+                "fido",
+                "webauthn"
+            ],
+            "time": "2020-01-07T21:29:46+00:00"
         },
         {
             "name": "web-token/jwt-core",
@@ -8536,296 +8741,6 @@
             "time": "2019-12-27T22:22:20+00:00"
         },
         {
-            "name": "web-token/jwt-signature-algorithm-eddsa",
-            "version": "v2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-signature-algorithm-eddsa.git",
-                "reference": "8421039c8f4729a98385a7074d960c6ecb1d0bbb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-eddsa/zipball/8421039c8f4729a98385a7074d960c6ecb1d0bbb",
-                "reference": "8421039c8f4729a98385a7074d960c6ecb1d0bbb",
-                "shasum": ""
-            },
-            "require": {
-                "ext-sodium": "*",
-                "web-token/jwt-signature": "^2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "v1.0": "1.0.x-dev",
-                    "v1.1": "1.1.x-dev",
-                    "v1.2": "1.2.x-dev",
-                    "v1.3": "1.3.x-dev",
-                    "v2.0": "2.0.x-dev",
-                    "v2.1": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Signature\\Algorithm\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "EdDSA Signature Algorithm the JWT Framework.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "time": "2019-12-27T22:22:20+00:00"
-        },
-        {
-            "name": "web-token/jwt-signature-algorithm-experimental",
-            "version": "v2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-signature-algorithm-experimental.git",
-                "reference": "3e6da6fd2d675ebe0b500170dfd6e540972197c3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-experimental/zipball/3e6da6fd2d675ebe0b500170dfd6e540972197c3",
-                "reference": "3e6da6fd2d675ebe0b500170dfd6e540972197c3",
-                "shasum": ""
-            },
-            "require": {
-                "web-token/jwt-signature-algorithm-hmac": "^2.1",
-                "web-token/jwt-signature-algorithm-rsa": "^2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "v1.0": "1.0.x-dev",
-                    "v1.1": "1.1.x-dev",
-                    "v1.2": "1.2.x-dev",
-                    "v1.3": "1.3.x-dev",
-                    "v2.0": "2.0.x-dev",
-                    "v2.1": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Signature\\Algorithm\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "Experimental Signature Algorithms the JWT Framework.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "time": "2019-12-27T22:22:20+00:00"
-        },
-        {
-            "name": "web-token/jwt-signature-algorithm-hmac",
-            "version": "v2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-signature-algorithm-hmac.git",
-                "reference": "bcffed1172ecdc9b3b216a051d9ff1089ca45e0e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-hmac/zipball/bcffed1172ecdc9b3b216a051d9ff1089ca45e0e",
-                "reference": "bcffed1172ecdc9b3b216a051d9ff1089ca45e0e",
-                "shasum": ""
-            },
-            "require": {
-                "web-token/jwt-signature": "^2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "v1.0": "1.0.x-dev",
-                    "v1.1": "1.1.x-dev",
-                    "v1.2": "1.2.x-dev",
-                    "v1.3": "1.3.x-dev",
-                    "v2.0": "2.0.x-dev",
-                    "v2.1": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Signature\\Algorithm\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "HMAC Based Signature Algorithms the JWT Framework.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "time": "2019-12-27T22:22:20+00:00"
-        },
-        {
-            "name": "web-token/jwt-signature-algorithm-none",
-            "version": "v2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/jwt-signature-algorithm-none.git",
-                "reference": "9af9beade5981c1880ee0f3b66dc5815398432af"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-none/zipball/9af9beade5981c1880ee0f3b66dc5815398432af",
-                "reference": "9af9beade5981c1880ee0f3b66dc5815398432af",
-                "shasum": ""
-            },
-            "require": {
-                "web-token/jwt-signature": "^2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "v1.0": "1.0.x-dev",
-                    "v1.1": "1.1.x-dev",
-                    "v1.2": "1.2.x-dev",
-                    "v1.3": "1.3.x-dev",
-                    "v2.0": "2.0.x-dev",
-                    "v2.1": "2.1.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Jose\\Component\\Signature\\Algorithm\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Florent Morselli",
-                    "homepage": "https://github.com/Spomky"
-                },
-                {
-                    "name": "All contributors",
-                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
-                }
-            ],
-            "description": "None Signature Algorithm the JWT Framework.",
-            "homepage": "https://github.com/web-token",
-            "keywords": [
-                "JOSE",
-                "JWE",
-                "JWK",
-                "JWKSet",
-                "JWS",
-                "Jot",
-                "RFC7515",
-                "RFC7516",
-                "RFC7517",
-                "RFC7518",
-                "RFC7519",
-                "RFC7520",
-                "bundle",
-                "jwa",
-                "jwt",
-                "symfony"
-            ],
-            "time": "2019-12-27T22:22:20+00:00"
-        },
-        {
             "name": "web-token/jwt-signature-algorithm-rsa",
             "version": "v2.1.4",
             "source": {
@@ -8901,36 +8816,6 @@
                 "symfony"
             ],
             "time": "2019-12-27T22:22:20+00:00"
-        },
-        {
-            "name": "web-token/signature-pack",
-            "version": "v2.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/web-token/signature-pack.git",
-                "reference": "13fd2709a95a8a6a0943e33a537af8088760c6c0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/web-token/signature-pack/zipball/13fd2709a95a8a6a0943e33a537af8088760c6c0",
-                "reference": "13fd2709a95a8a6a0943e33a537af8088760c6c0",
-                "shasum": ""
-            },
-            "require": {
-                "web-token/jwt-signature-algorithm-ecdsa": "^2.0",
-                "web-token/jwt-signature-algorithm-eddsa": "^2.0",
-                "web-token/jwt-signature-algorithm-experimental": "^2.0",
-                "web-token/jwt-signature-algorithm-hmac": "^2.0",
-                "web-token/jwt-signature-algorithm-none": "^2.0",
-                "web-token/jwt-signature-algorithm-rsa": "^2.0"
-            },
-            "type": "symfony-pack",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A pack with all signature algorithms for the web-token/jwt-signature package",
-            "time": "2019-06-22T12:27:33+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -9781,9 +9666,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "web-auth/webauthn-framework": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

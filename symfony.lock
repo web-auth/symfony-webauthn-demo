@@ -683,6 +683,18 @@
     "web-auth/conformance-toolset": {
         "version": "v2.1.x-dev"
     },
+    "web-auth/cose-lib": {
+        "version": "v3.0.0"
+    },
+    "web-auth/metadata-service": {
+        "version": "v3.0.0"
+    },
+    "web-auth/webauthn-lib": {
+        "version": "v3.0.0"
+    },
+    "web-auth/webauthn-symfony-bundle": {
+        "version": "v3.0.0"
+    },
     "web-token/jwt-core": {
         "version": "v2.0.13"
     },
@@ -695,23 +707,8 @@
     "web-token/jwt-signature-algorithm-ecdsa": {
         "version": "v2.0.13"
     },
-    "web-token/jwt-signature-algorithm-eddsa": {
-        "version": "v2.1.4"
-    },
-    "web-token/jwt-signature-algorithm-experimental": {
-        "version": "v2.1.4"
-    },
-    "web-token/jwt-signature-algorithm-hmac": {
-        "version": "v2.1.4"
-    },
-    "web-token/jwt-signature-algorithm-none": {
-        "version": "v2.1.4"
-    },
     "web-token/jwt-signature-algorithm-rsa": {
         "version": "v2.0.13"
-    },
-    "web-token/signature-pack": {
-        "version": "v2.1.4"
     },
     "webmozart/assert": {
         "version": "1.5.0"

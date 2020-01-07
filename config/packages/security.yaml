@@ -12,13 +12,13 @@ security:
             webauthn:
                 failure_handler: 'App\Security\AuthenticationFailureHandler'
                 success_handler: 'App\Security\AuthenticationSuccessHandler'
-                creation:
+                registration:
                     enabled: true
                     profile: default
                     routes:
                         options_path: '/api/register/options'
                         result_path: '/api/register'
-                request:
+                authentication:
                     enabled: true
                     profile: default
                     routes:
