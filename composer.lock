@@ -9148,7 +9148,7 @@
         },
         {
             "name": "web-auth/conformance-toolset",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/conformance-toolset.git",
@@ -9208,7 +9208,7 @@
         },
         {
             "name": "web-auth/cose-lib",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/cose-lib.git",
@@ -9280,7 +9280,7 @@
         },
         {
             "name": "web-auth/metadata-service",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
@@ -9344,16 +9344,16 @@
         },
         {
             "name": "web-auth/webauthn-lib",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "9afd85ad47e5a3e64ef8691c9287bcb3a39791c7"
+                "reference": "1d925f2cc85d2628884eab473a947d0ca125842b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/9afd85ad47e5a3e64ef8691c9287bcb3a39791c7",
-                "reference": "9afd85ad47e5a3e64ef8691c9287bcb3a39791c7",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/1d925f2cc85d2628884eab473a947d0ca125842b",
+                "reference": "1d925f2cc85d2628884eab473a947d0ca125842b",
                 "shasum": ""
             },
             "require": {
@@ -9428,11 +9428,11 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-05-02T11:38:46+00:00"
+            "time": "2020-05-02T20:10:21+00:00"
         },
         {
             "name": "web-auth/webauthn-symfony-bundle",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
