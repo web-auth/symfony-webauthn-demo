@@ -9148,7 +9148,7 @@
         },
         {
             "name": "web-auth/conformance-toolset",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/conformance-toolset.git",
@@ -9208,7 +9208,7 @@
         },
         {
             "name": "web-auth/cose-lib",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/cose-lib.git",
@@ -9280,7 +9280,7 @@
         },
         {
             "name": "web-auth/metadata-service",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
@@ -9344,16 +9344,16 @@
         },
         {
             "name": "web-auth/webauthn-lib",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "1d925f2cc85d2628884eab473a947d0ca125842b"
+                "reference": "bffba9d8b6309b7f846bc15c8cbf7453ec3b4188"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/1d925f2cc85d2628884eab473a947d0ca125842b",
-                "reference": "1d925f2cc85d2628884eab473a947d0ca125842b",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/bffba9d8b6309b7f846bc15c8cbf7453ec3b4188",
+                "reference": "bffba9d8b6309b7f846bc15c8cbf7453ec3b4188",
                 "shasum": ""
             },
             "require": {
@@ -9428,20 +9428,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-05-02T20:10:21+00:00"
+            "time": "2020-05-02T21:12:39+00:00"
         },
         {
             "name": "web-auth/webauthn-symfony-bundle",
-            "version": "v3.2.1",
+            "version": "v3.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
-                "reference": "ea75b85aa4d182b5cfa78f2aec9c5b66cbfa9771"
+                "reference": "024beb39006683f7f4b0f217c9b36d3e5a119a7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/ea75b85aa4d182b5cfa78f2aec9c5b66cbfa9771",
-                "reference": "ea75b85aa4d182b5cfa78f2aec9c5b66cbfa9771",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/024beb39006683f7f4b0f217c9b36d3e5a119a7d",
+                "reference": "024beb39006683f7f4b0f217c9b36d3e5a119a7d",
                 "shasum": ""
             },
             "require": {
@@ -9507,7 +9507,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-05-02T11:38:46+00:00"
+            "time": "2020-05-02T21:12:39+00:00"
         },
         {
             "name": "web-token/jwt-core",
