@@ -15,7 +15,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\PublicKeyCredentialSourceRepository;
-use App\Repository\PublicKeyCredentialUserEntityRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Webauthn\Bundle\Security\Authentication\Token\WebauthnToken;
@@ -49,7 +48,7 @@ final class ProfileController
             return new JsonResponse([], JsonResponse::HTTP_UNAUTHORIZED);
         }
         $credentials = $this->keyCredentialSourceRepository->findAllForUserEntity($user);
-        $credentials = array_map(static function(PublicKeyCredentialSource $source) {
+        $credentials = array_map(static function (PublicKeyCredentialSource $source) {
             $data = $source->jsonSerialize();
             $data['aaguid'] = $source->getAaguid()->toString();
 

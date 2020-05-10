@@ -56,7 +56,6 @@ final class ChangeDisplayNameController
         $this->validator = $validator;
     }
 
-
     public function __invoke(Request $request): JsonResponse
     {
         $token = $this->tokenStorage->getToken();

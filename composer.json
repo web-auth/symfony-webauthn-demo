@@ -47,6 +47,7 @@
         "web-token/jwt-signature-algorithm-ecdsa": "^2.0"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "^1.0",

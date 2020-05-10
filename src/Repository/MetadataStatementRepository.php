@@ -23,7 +23,6 @@ use Webauthn\MetadataService\MetadataStatement;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
 use Webauthn\MetadataService\MetadataTOCPayloadEntry;
 use Webauthn\MetadataService\SingleMetadata;
-use Webauthn\MetadataService\StatusReport;
 
 final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
@@ -157,7 +156,7 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
                 return null;
             }
             $json = json_decode($data, true);
-            if (!is_array($json)) {
+            if (!\is_array($json)) {
                 return null;
             }
 
@@ -172,11 +171,11 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
         try {
             $data = $this->filesystemStorage->read(sprintf('/entries/%s', $aaguid));
             if (false === $data) {
-                return null;
+                return [];
             }
             $json = json_decode($data, true);
-            if (!is_array($json)) {
-                return null;
+            if (!\is_array($json)) {
+                return [];
             }
 
             return MetadataTOCPayloadEntry::createFromArray($json)->getStatusReports();

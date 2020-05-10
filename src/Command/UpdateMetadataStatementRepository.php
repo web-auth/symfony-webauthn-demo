@@ -16,9 +16,9 @@ namespace App\Command;
 use App\Repository\MetadataStatementRepository;
 use League\Flysystem\FilesystemInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Helper\ProgressBar;
 use Throwable;
 
 final class UpdateMetadataStatementRepository extends Command
@@ -52,7 +52,7 @@ final class UpdateMetadataStatementRepository extends Command
         $progressBar = new ProgressBar($output);
         $progressBar->start();
         $singleStatements = $this->metadataStatementRepository->getSingleStatements();
-        $progressBar->setMaxSteps(count($singleStatements));
+        $progressBar->setMaxSteps(\count($singleStatements));
         foreach ($singleStatements as $name => $singleStatement) {
             try {
                 $statement = $singleStatement->getMetadataStatement();
@@ -82,7 +82,7 @@ final class UpdateMetadataStatementRepository extends Command
                     json_encode($toc, JSON_UNESCAPED_SLASHES)
                 );
                 $progressBar->setMaxSteps(
-                    count($toc->getEntries()) + $progressBar->getMaxSteps()
+                    \count($toc->getEntries()) + $progressBar->getMaxSteps()
                 );
                 foreach ($toc->getEntries() as $entry) {
                     if ($entry->getAaguid()) {
@@ -115,7 +115,7 @@ final class UpdateMetadataStatementRepository extends Command
         }
         $progressBar->finish();
 
-        if (0 !== count($this->errors)) {
+        if (0 !== \count($this->errors)) {
             $output->writeln('---ERRORS---');
             foreach ($this->errors as $error) {
                 $output->writeln($error);

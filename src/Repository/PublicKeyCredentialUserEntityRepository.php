@@ -33,7 +33,7 @@ final class PublicKeyCredentialUserEntityRepository extends AbstractPublicKeyCre
     public function saveUserEntity(PublicKeyCredentialUserEntity $userEntity): void
     {
         if (!$userEntity instanceof User) {
-            $userEntity =  User::createFrom($userEntity);
+            $userEntity = User::createFrom($userEntity);
         }
 
         parent::saveUserEntity($userEntity);
