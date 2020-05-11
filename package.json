@@ -32,10 +32,11 @@
         "react-slick": "^0.25",
         "react-swipeable-views": "^0.13.1",
         "redux": "^4.0.1",
-        "sass-loader": "^8.0",
+        "sass-loader": "^7.0",
         "styled-components": "^5.0",
         "uuid": "^8.0",
-        "uuid-parse": "^1.1.0"
+        "uuid-parse": "^1.1.0",
+        "webauthn-helper": "^0.0.6"
     },
     "license": "UNLICENSED",
     "private": true,

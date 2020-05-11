@@ -14,11 +14,6 @@ import CardHeader from 'components/Card/CardHeader.jsx';
 import CardFooter from 'components/Card/CardFooter.jsx';
 import CustomInput from 'components/CustomInput/CustomInput.jsx';
 
-import {
-    handlePublicKeyRequestOptions,
-    handlePublicKeyRequestResult,
-} from 'app/components/PublicKeyRequest/PublicKeyRequest.jsx';
-
 import loginPageStyle from 'assets/jss/material-kit-react/views/loginPage.jsx';
 
 import {bindActionCreators} from 'redux';
@@ -27,214 +22,145 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import SecurityKey from 'app/img/securitykey.min.svg';
 
+import {useLogin} from 'webauthn-helper';
+
 class LoginPage extends Component {
   state = {
-      cardAnimation: 'cardHidden',
-      isFormValid: false,
-      username: '',
-      isDeviceInteractionEnabled: false,
+    cardAnimation: 'cardHidden',
+    isFormValid: false,
+    username: '',
+    isDeviceInteractionEnabled: false,
   };
 
   handleUsernameChanged = event => {
-      event.preventDefault()
-      this.setState({
-          username: event.target.value,
-          isFormValid: event.target.value !== '',
-      });
+    event.preventDefault()
+    this.setState({
+      username: event.target.value,
+      isFormValid: event.target.value !== '',
+    });
   };
 
   cardAnimation = () => {
-      this.setState({cardAnimation: ''});
+    this.setState({cardAnimation: ''});
   };
 
   componentDidMount = () => {
-      setTimeout(this.cardAnimation, 700);
+    setTimeout(this.cardAnimation, 700);
   };
 
-    handleKeyPressed = event => {
-        if (event.which === 13) {
-            this.handleFormValidation(event)
-        }
-    };
-
-  handleFormValidation = event => {
-      event.preventDefault()
-      handlePublicKeyRequestOptions(
-          {
-              username: this.state.username,
-          },
-          this.handlePublicKeyRequestOptions__,
-          this.loginFailureHandler
-      );
+  handleKeyPressed = event => {
+    if (event.which === 13) {
+      this.handleFormValidation(event)
+    }
   };
 
-  handlePublicKeyRequestOptions__ = publicKeyRequestOptions => {
-      this.setState({
-          isDeviceInteractionEnabled: true,
-      });
 
-      function base64UrlDecode(input) {
-          input = input
-              .replace(/-/g, '+')
-              .replace(/_/g, '/');
-
-          const pad = input.length % 4;
-          if (pad) {
-              if (pad === 1) {
-                  throw new Error('InvalidLengthError: Input base64url string is the wrong length to determine padding');
-              }
-              input += new Array(5-pad).join('=');
-          }
-
-          return window.atob(input);
-      }
-
-      publicKeyRequestOptions.challenge = Uint8Array.from(
-          base64UrlDecode(publicKeyRequestOptions.challenge),
-          c => c.charCodeAt(0)
-      );
-
-      /*publicKeyRequestOptions.challenge = Uint8Array.from(
-          window.atob(publicKeyRequestOptions.challenge), c => c.charCodeAt(0));*/
-      if (publicKeyRequestOptions.allowCredentials !== undefined) {
-          publicKeyRequestOptions.allowCredentials = publicKeyRequestOptions.allowCredentials.map(
-              data => {
-                  const id = base64UrlDecode(data.id);
-                  return {
-                      type: data.type,
-                      id: Uint8Array.from(id, c => c.charCodeAt(0)),
-                  };
-              }
-          );
-      }
-
-      navigator.credentials
-          .get({publicKey: publicKeyRequestOptions})
-          .then(data => {
-              function arrayToBase64String(a) {
-                  return btoa(String.fromCharCode(...a));
-              }
-
-              const publicKeyCredential = {
-                  id: data.id,
-                  type: data.type,
-                  rawId: arrayToBase64String(new Uint8Array(data.rawId)),
-                  response: {
-                      authenticatorData: arrayToBase64String(
-                          new Uint8Array(data.response.authenticatorData)
-                      ),
-                      clientDataJSON: arrayToBase64String(
-                          new Uint8Array(data.response.clientDataJSON)
-                      ),
-                      signature: arrayToBase64String(
-                          new Uint8Array(data.response.signature)
-                      ),
-                      userHandle: data.response.userHandle
-                          ? arrayToBase64String(new Uint8Array(data.response.userHandle))
-                          : null,
-                  },
-              };
-              handlePublicKeyRequestResult(
-                  publicKeyCredential,
-                  this.loginSuccessHandler,
-                  this.loginFailureHandler
-              );
-          })
-          .catch(this.loginFailureHandler);
-  };
-
-  loginFailureHandler = error => {
-    console.log(error)
-      this.props.enqueueSnackbar({
-          message:
+  loginFailureHandler = () => {
+    this.props.enqueueSnackbar({
+      message:
         'An error occurred during the login process. Please try again later.',
-      });
-      this.setState({
-          isDeviceInteractionEnabled: false,
-      });
+    });
+    this.setState({
+      isDeviceInteractionEnabled: false,
+    });
   };
 
   loginSuccessHandler = json => {
-      if (json.status !== undefined && json.status === 'ok') {
-          this.props.enqueueSnackbar({
-              message: 'Your are now logged in!',
-          });
-          this.props.authSuccess(json);
-          this.setState({
-              isDeviceInteractionEnabled: false,
-          });
-          this.props.history.push('/');
-      } else {
-          this.loginFailureHandler();
-      }
+    if (json.status !== undefined && json.status === 'ok') {
+      this.props.enqueueSnackbar({
+        message: 'Your are now logged in!',
+      });
+      this.props.authSuccess(json);
+      this.setState({
+        isDeviceInteractionEnabled: false,
+      });
+      this.props.history.push('/');
+    } else {
+      this.loginFailureHandler(json.errorMessage);
+    }
+  };
+
+  handleLoginProcess = useLogin({
+    actionUrl: '/api/login',
+    optionsUrl: '/api/login/options',
+  });
+
+  handleFormValidation = event => {
+    event.preventDefault()
+    this.handleLoginProcess({
+      username: this.state.username,
+    })
+      .then(json => this.loginSuccessHandler(json))
+      .catch(err => this.loginFailureHandler(err));
+    ;
   };
 
   render() {
-      const {classes, ...rest} = this.props;
-      let cardBody = (
-          <form className={classes.form}>
-              <CardHeader color="primary" className={classes.cardHeader}>
-                  <h4>Authentication</h4>
-              </CardHeader>
-              <CardBody>
-                  <p>
-                      Please enter your username and submit the form.
-                  </p>
-                  <CustomInput
-                      labelText="Username"
-                      id="username"
-                      formControlProps={{
-                          fullWidth: true,
-                      }}
-                      inputProps={{
-                          onKeyPress: event => this.handleKeyPressed(event),
-                          onChange: event => this.handleUsernameChanged(event),
-                          type: 'text',
-                          value: this.state.username,
-                          endAdornment: (
-                              <InputAdornment position="end">
-                                  <Lock className={classes.inputIconsColor} />
-                              </InputAdornment>
-                          ),
-                      }}
-                  />
-              </CardBody>
-              <CardFooter className={classes.cardFooter}>
-                  <Button simple color="primary" size="lg" disabled={!this.state.isFormValid} onClick={event => this.handleFormValidation(event)}>
-                      Submit
-                  </Button>
-              </CardFooter>
-          </form>
+    const {classes} = this.props;
+    let cardBody = (
+      <form className={classes.form}>
+        <CardHeader color="primary" className={classes.cardHeader}>
+          <h4>Authentication</h4>
+        </CardHeader>
+        <CardBody>
+          <p>
+            Please enter your username and submit the form.
+          </p>
+          <CustomInput
+            labelText="Username"
+            id="username"
+            formControlProps={{
+              fullWidth: true,
+            }}
+            inputProps={{
+              onKeyPress: event => this.handleKeyPressed(event),
+              onChange: event => this.handleUsernameChanged(event),
+              type: 'text',
+              value: this.state.username,
+              endAdornment: (
+                <InputAdornment position="end">
+                  <Lock className={classes.inputIconsColor} />
+                </InputAdornment>
+              ),
+            }}
+          />
+        </CardBody>
+        <CardFooter className={classes.cardFooter}>
+          <Button simple color="primary" size="lg" disabled={!this.state.isFormValid} onClick={event => this.handleFormValidation(event)}>
+            Submit
+          </Button>
+        </CardFooter>
+      </form>
+    );
+    if (this.state.isDeviceInteractionEnabled) {
+      cardBody = (
+        <div>
+          <CardHeader color="primary" className={classes.cardHeader}>
+            <h4>Authentication</h4>
+          </CardHeader>
+          <CardBody>
+            <p>
+              You should now be notified to tap your security device (button,
+              bluetooth, NFC, fingerprint…).
+            </p>
+            <img src={SecurityKey} alt="Tap your device" width="100%" />
+          </CardBody>
+        </div>
       );
-      if (this.state.isDeviceInteractionEnabled) {
-          cardBody = (
-              <div>
-                  <CardHeader color="primary" className={classes.cardHeader}>
-                      <h4>Authentication</h4>
-                  </CardHeader>
-                  <CardBody>
-                      <p>
-                          You should now be notified to tap your security device (button,
-                          bluetooth, NFC, fingerprint…).
-                      </p>
-                      <img src={SecurityKey} alt="Tap your device" width="100%" />
-                  </CardBody>
-              </div>
-          );
-      }
-      return (
-          <SecurityLayout>
-              { cardBody }
-          </SecurityLayout>
-      );
+    }
+    return (
+      <SecurityLayout>
+        { cardBody }
+      </SecurityLayout>
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => {
-    return bindActionCreators({
-        enqueueSnackbar,
-        authSuccess,
-    }, dispatch);
+  return bindActionCreators({
+    enqueueSnackbar,
+    authSuccess,
+  }, dispatch);
 };
 
 export default withRouter(connect(null, mapDispatchToProps)(withStyles(loginPageStyle)(LoginPage)));
