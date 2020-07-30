@@ -74,11 +74,11 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
     private function addServices(): void
     {
         $services = [
-            'fido_alliance_test1' => ['url' => 'https://fidoalliance.co.nz/mds/execute/67ecfea1afe12486cdae3adfa1681db113cdbe07d368ada7c08741e6e22bf0f6'],
-            'fido_alliance_test2' => ['url' => 'https://fidoalliance.co.nz/mds/execute/a3fbad0a3f5674f6fc338804fc28cacfad36a108e3ffbbffc827ebed44c24596'],
-            'fido_alliance_test3' => ['url' => 'https://fidoalliance.co.nz/mds/execute/b5735855ae1483ac7945552d152a5a9d8316eea499956203cf12fa6f7754f2a7'],
-            'fido_alliance_test4' => ['url' => 'https://fidoalliance.co.nz/mds/execute/b9a0a70b3cbbf1d909d02f5abe20195484270939004dd3c855eaa10892f516da'],
-            'fido_alliance_test5' => ['url' => 'https://fidoalliance.co.nz/mds/execute/dc77c8adc743b8b736ef643b8f58b2d4d60b8e543e45a31f3a396b25559d0bd0'],
+            'fido_alliance_test1' => ['url' => 'https://fidoalliance.co.nz/mds/execute/0246d3ec6b1463f5d63b200ffc3c1d1b802f1cde1b10788e02208902127dbbce'],
+            'fido_alliance_test2' => ['url' => 'https://fidoalliance.co.nz/mds/execute/1323cc994c463752fd60e111defe1fe2187ce344925a5f2282acbbcff6d55a0e'],
+            'fido_alliance_test3' => ['url' => 'https://fidoalliance.co.nz/mds/execute/309a94da23dc596fe4e4c2e2528bfaecc3cd95bf0ce2a369eb29a72b08dd680c'],
+            'fido_alliance_test4' => ['url' => 'https://fidoalliance.co.nz/mds/execute/b1d139dbe31d0fc2be43b0584c555f9a3b0548ed397b7dbb123875b4c2335e7b'],
+            'fido_alliance_test5' => ['url' => 'https://fidoalliance.co.nz/mds/execute/ce2d088e0e35c6196c9e158b09313453f32a44e7e59fb554ac266e33efdd86e5'],
         ];
         foreach ($services as $name => $service) {
             $this->services[$name] = new MetadataService(

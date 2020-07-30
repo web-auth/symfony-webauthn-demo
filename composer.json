@@ -40,8 +40,7 @@
         "symfony/webpack-encore-bundle": "^1.1",
         "symfony/yaml": "^5.0",
         "twig/extensions": "^1.5",
-        "web-auth/webauthn-symfony-bundle": "^3.0",
-        "web-auth/conformance-toolset": "^3.0",
+        "web-auth/webauthn-framework": "dev-CompleteCertificateChainVerification",
         "web-token/jwt-key-mgmt": "^2.0",
         "web-token/jwt-signature-algorithm-rsa": "^2.0",
         "web-token/jwt-signature-algorithm-ecdsa": "^2.0"
