@@ -11,6 +11,9 @@
     "clue/stream-filter": {
         "version": "v1.4.1"
     },
+    "composer/package-versions-deprecated": {
+        "version": "1.10.99"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -712,6 +715,9 @@
     },
     "web-auth/metadata-service": {
         "version": "v3.2.4"
+    },
+    "web-auth/webauthn-framework": {
+        "version": "dev-completecertificatechainverification"
     },
     "web-token/jwt-core": {
         "version": "v2.0.13"
