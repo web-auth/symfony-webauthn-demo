@@ -119,7 +119,6 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
         foreach ($statements as $name => $statement) {
             $this->singleStatements[$name] = new SingleMetadata($statement, false);
         }
-        dump($this->singleStatements);
     }
 
     /**
