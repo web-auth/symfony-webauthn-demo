@@ -22,7 +22,7 @@ import loginPageStyle from 'assets/jss/material-kit-react/views/loginPage.jsx';
 
 import SecurityKey from 'app/img/securitykey.min.svg';
 import {authSuccess} from 'app/store/actions/authenticationActions';
-import {useRegistration} from 'webauthn-helper';
+import {useRegistration} from '@web-auth/webauthn-helper';
 
 class RegisterPage extends Component {
   state = {

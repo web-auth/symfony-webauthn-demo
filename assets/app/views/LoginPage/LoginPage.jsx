@@ -22,7 +22,7 @@ import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 import SecurityKey from 'app/img/securitykey.min.svg';
 
-import {useLogin} from 'webauthn-helper';
+import {useLogin} from '@web-auth/webauthn-helper';
 
 class LoginPage extends Component {
   state = {

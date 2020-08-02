@@ -1740,6 +1740,11 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@web-auth/webauthn-helper@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@web-auth/webauthn-helper/-/webauthn-helper-0.0.10.tgz#6de92705235322c6652041930ccbc7537595aeeb"
+  integrity sha512-qb7F5byO/sn9rtsri7baDsucxCtSZ6TfeyNM9vo2ftiVsXEO03tqcSUKlwyObdI5hgwZ+kgNOP+TAk9fU4NQHQ==
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
@@ -11821,11 +11826,6 @@ wbuf@^1.1.0, wbuf@^1.7.3:
   integrity sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==
   dependencies:
     minimalistic-assert "^1.0.0"
-
-webauthn-helper@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/webauthn-helper/-/webauthn-helper-0.0.6.tgz#9f960a348da33653f4e46e811fc7fb31e9bf36c4"
-  integrity sha512-2YW3gJ8eOR0aF7Pr9GN3qlFL/J5Xc3CSWh8yAHGdNs+BRsm/T22zX3h/RB237XzS9m8FA4xRqTUewf53FPYQJw==
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

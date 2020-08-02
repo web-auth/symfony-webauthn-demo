@@ -35,8 +35,7 @@
         "sass-loader": "^7.0",
         "styled-components": "^5.0",
         "uuid": "^8.0",
-        "uuid-parse": "^1.1.0",
-        "webauthn-helper": "^0.0.6"
+        "uuid-parse": "^1.1.0"
     },
     "license": "UNLICENSED",
     "private": true,
@@ -56,5 +55,8 @@
         "not dead",
         "not ie <= 11",
         "not op_mini all"
-    ]
+    ],
+    "dependencies": {
+        "@web-auth/webauthn-helper": "^0.0.10"
+    }
 }
