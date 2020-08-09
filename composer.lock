@@ -9968,12 +9968,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "1d9d55143bd5995054d797e2dc725b0659729911"
+                "reference": "37e3ea74c9ad645114bf61ea85e706e47e619477"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/1d9d55143bd5995054d797e2dc725b0659729911",
-                "reference": "1d9d55143bd5995054d797e2dc725b0659729911",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/37e3ea74c9ad645114bf61ea85e706e47e619477",
+                "reference": "37e3ea74c9ad645114bf61ea85e706e47e619477",
                 "shasum": ""
             },
             "require": {
@@ -10025,7 +10025,6 @@
                 "phpstan/phpstan-phpunit": "^0.12",
                 "phpstan/phpstan-strict-rules": "^0.12",
                 "phpunit/phpunit": "^9.0",
-                "rector/rector": "^0.7",
                 "symfony/browser-kit": "^4.4|^5.0",
                 "symfony/http-client": "^4.4|^5.0",
                 "symfony/monolog-bundle": "^3.5",
@@ -10087,7 +10086,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-08-09T15:48:31+00:00"
+            "time": "2020-08-09T22:43:04+00:00"
         },
         {
             "name": "web-token/jwt-core",
