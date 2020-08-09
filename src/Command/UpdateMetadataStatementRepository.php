@@ -51,26 +51,6 @@ final class UpdateMetadataStatementRepository extends Command
     {
         $progressBar = new ProgressBar($output);
         $progressBar->start();
-        $singleStatements = $this->metadataStatementRepository->getSingleStatements();
-        $progressBar->setMaxSteps(\count($singleStatements));
-        foreach ($singleStatements as $name => $singleStatement) {
-            try {
-                $statement = $singleStatement->getMetadataStatement();
-                if ($statement->getAaguid()) {
-                    if ($this->filesystemStorage->has(sprintf('/mds/%s', $statement->getAaguid()))) {
-                        $this->filesystemStorage->delete(sprintf('/mds/%s', $statement->getAaguid()));
-                    }
-                    $this->filesystemStorage->put(
-                        sprintf('/mds/%s', $statement->getAaguid()),
-                        json_encode($statement, JSON_UNESCAPED_SLASHES)
-                    );
-                }
-            } catch (Throwable $throwable) {
-                $progressBar->advance();
-                $this->errors[] = sprintf('Unable to store single statement "%s". Error is: %s. Data is: %s', $name, $throwable->getMessage(), json_encode($statement));
-            }
-            $progressBar->advance();
-        }
         foreach ($this->metadataStatementRepository->getServices() as $name => $service) {
             try {
                 $toc = $service->getMetadataTOCPayload();
