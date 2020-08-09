@@ -43,7 +43,7 @@ services:
                   - 'fido_alliance_real'
                   - 'https://mds2.fidoalliance.org'
                   - additional_query_strings:
-                        'token': '%env(FIDO_MDS_TOKEN)%'
+                      - 'token': '%env(FIDO_MDS_TOKEN)%'
             - method: 'addService'
               arguments:
                   - 'conformance_test_1'
@@ -51,19 +51,19 @@ services:
             - method: 'addService'
               arguments:
                   - 'conformance_test_2'
-                  - 'https://fidoalliance.co.nz/mds//execute/1323cc994c463752fd60e111defe1fe2187ce344925a5f2282acbbcff6d55a0e'
+                  - 'https://fidoalliance.co.nz/mds/execute/1323cc994c463752fd60e111defe1fe2187ce344925a5f2282acbbcff6d55a0e'
             - method: 'addService'
               arguments:
                   - 'conformance_test_3'
-                  - 'https://fidoalliance.co.nz/mds//execute/309a94da23dc596fe4e4c2e2528bfaecc3cd95bf0ce2a369eb29a72b08dd680c'
+                  - 'https://fidoalliance.co.nz/mds/execute/309a94da23dc596fe4e4c2e2528bfaecc3cd95bf0ce2a369eb29a72b08dd680c'
             - method: 'addService'
               arguments:
                   - 'conformance_test_4'
-                  - 'https://fidoalliance.co.nz/mds//execute/b1d139dbe31d0fc2be43b0584c555f9a3b0548ed397b7dbb123875b4c2335e7b'
+                  - 'https://fidoalliance.co.nz/mds/execute/b1d139dbe31d0fc2be43b0584c555f9a3b0548ed397b7dbb123875b4c2335e7b'
             - method: 'addService'
               arguments:
                   - 'conformance_test_5'
-                  - 'https://fidoalliance.co.nz/mds//execute/ce2d088e0e35c6196c9e158b09313453f32a44e7e59fb554ac266e33efdd86e5''
+                  - 'https://fidoalliance.co.nz/mds/execute/ce2d088e0e35c6196c9e158b09313453f32a44e7e59fb554ac266e33efdd86e5'
 
     scaleway_client:
         class: Aws\S3\S3Client
