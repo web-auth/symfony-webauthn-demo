@@ -46,3 +46,7 @@ webauthn:
     metadata_service:
         enabled: true
         repository: 'App\Repository\MetadataStatementRepository'
+    certificate_chain_checker:
+        enabled: true
+        http_client: '@nyholm.psr7.psr17_factory'
+        request_factory: '@nyholm.psr7.psr18_factory'

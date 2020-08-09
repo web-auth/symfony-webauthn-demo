@@ -9916,12 +9916,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "fff563f8f0d5baa8c5c99fc7dbc62030fcf4b69f"
+                "reference": "1d9d55143bd5995054d797e2dc725b0659729911"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/fff563f8f0d5baa8c5c99fc7dbc62030fcf4b69f",
-                "reference": "fff563f8f0d5baa8c5c99fc7dbc62030fcf4b69f",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/1d9d55143bd5995054d797e2dc725b0659729911",
+                "reference": "1d9d55143bd5995054d797e2dc725b0659729911",
                 "shasum": ""
             },
             "require": {
@@ -10035,7 +10035,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-08-09T05:57:32+00:00"
+            "time": "2020-08-09T15:48:31+00:00"
         },
         {
             "name": "web-token/jwt-core",
@@ -10726,16 +10726,16 @@
         },
         {
             "name": "nikic/php-parser",
-            "version": "v4.7.0",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300"
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
-                "reference": "21dce06dfbf0365c6a7cc8fdbdc995926c6a9300",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
+                "reference": "8c58eb4cd4f3883f82611abeac2efbc3dbed787e",
                 "shasum": ""
             },
             "require": {
@@ -10743,8 +10743,8 @@
                 "php": ">=7.0"
             },
             "require-dev": {
-                "ircmaxell/php-yacc": "0.0.5",
-                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0"
+                "ircmaxell/php-yacc": "^0.0.6",
+                "phpunit/phpunit": "^6.5 || ^7.0 || ^8.0 || ^9.0"
             },
             "bin": [
                 "bin/php-parse"
@@ -10752,7 +10752,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.7-dev"
+                    "dev-master": "4.8-dev"
                 }
             },
             "autoload": {
@@ -10774,7 +10774,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2020-07-25T13:18:53+00:00"
+            "time": "2020-08-09T10:23:20+00:00"
         },
         {
             "name": "symfony/browser-kit",
