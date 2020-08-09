@@ -154,6 +154,9 @@
             "var/storage/.gitignore"
         ]
     },
+    "league/mime-type-detection": {
+        "version": "1.4.0"
+    },
     "league/uri": {
         "version": "6.0.0"
     },
