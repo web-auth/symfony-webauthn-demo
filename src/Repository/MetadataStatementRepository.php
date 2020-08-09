@@ -16,15 +16,16 @@ namespace App\Repository;
 use League\Flysystem\FilesystemInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
+use Webauthn\MetadataService\MetadataStatementInterface;
 use function Safe\file_get_contents;
 use function Safe\scandir;
 use Throwable;
-use Webauthn\MetadataService\DistantSingleMetadata;
-use Webauthn\MetadataService\MetadataService;
-use Webauthn\MetadataService\MetadataStatement;
+use Webauthn\MetadataService\Object\DistantSingleMetadata;
+use Webauthn\MetadataService\Object\MetadataService;
+use Webauthn\MetadataService\Object\MetadataStatement;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
-use Webauthn\MetadataService\MetadataTOCPayloadEntry;
-use Webauthn\MetadataService\SingleMetadata;
+use Webauthn\MetadataService\Object\MetadataTOCPayloadEntry;
+use Webauthn\MetadataService\Object\SingleMetadata;
 
 final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
@@ -137,7 +138,7 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
         return $this->singleStatements;
     }
 
-    public function findOneByAAGUID(string $aaguid): ?MetadataStatement
+    public function findOneByAAGUID(string $aaguid): ?MetadataStatementInterface
     {
         try {
             $data = $this->filesystemStorage->read(sprintf('/mds/%s', $aaguid));
