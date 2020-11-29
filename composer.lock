@@ -10366,12 +10366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "5278309bb5c29a42cb53945dc2f108dd91d2bc86"
+                "reference": "cb1990f219c731b033c3e5ee820cf0a2f24cc72b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/5278309bb5c29a42cb53945dc2f108dd91d2bc86",
-                "reference": "5278309bb5c29a42cb53945dc2f108dd91d2bc86",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/cb1990f219c731b033c3e5ee820cf0a2f24cc72b",
+                "reference": "cb1990f219c731b033c3e5ee820cf0a2f24cc72b",
                 "shasum": ""
             },
             "require": {
@@ -10409,22 +10409,21 @@
             },
             "require-dev": {
                 "doctrine/annotations": "^1.7",
-                "doctrine/dbal": "^2.9",
+                "doctrine/dbal": "^2.9|^3.0",
                 "doctrine/doctrine-bundle": "^2.0",
                 "doctrine/orm": "^2.6",
                 "friendsofphp/php-cs-fixer": "^2.16",
-                "infection/infection": "^0.18||^0.19||^0.20",
+                "infection/infection": "^0.15||^0.16||^0.17||^0.18||^0.19||^0.20",
                 "monolog/monolog": "^2.0",
                 "nyholm/psr7": "^1.1",
                 "php-http/curl-client": "^2.0",
                 "php-http/mock-client": "^1.3",
-                "phpspec/prophecy-phpunit": "^2.0",
                 "phpstan/phpstan": "^0.12",
                 "phpstan/phpstan-beberlei-assert": "^0.12",
                 "phpstan/phpstan-deprecation-rules": "^0.12",
                 "phpstan/phpstan-phpunit": "^0.12",
                 "phpstan/phpstan-strict-rules": "^0.12",
-                "phpunit/phpunit": "^9.4",
+                "phpunit/phpunit": "^8.0||^9.0",
                 "symfony/browser-kit": "^4.4|^5.0",
                 "symfony/http-client": "^4.4|^5.0",
                 "symfony/monolog-bundle": "^3.5",
@@ -10490,7 +10489,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-11-29T12:24:22+00:00"
+            "time": "2020-11-29T20:53:28+00:00"
         },
         {
             "name": "web-token/jwt-core",
