@@ -10366,12 +10366,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "cb1990f219c731b033c3e5ee820cf0a2f24cc72b"
+                "reference": "f9178c401924b2bb9c1ca6b7f731fcb767b31bdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/cb1990f219c731b033c3e5ee820cf0a2f24cc72b",
-                "reference": "cb1990f219c731b033c3e5ee820cf0a2f24cc72b",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/f9178c401924b2bb9c1ca6b7f731fcb767b31bdf",
+                "reference": "f9178c401924b2bb9c1ca6b7f731fcb767b31bdf",
                 "shasum": ""
             },
             "require": {
@@ -10489,7 +10489,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-11-29T20:53:28+00:00"
+            "time": "2020-11-29T21:10:31+00:00"
         },
         {
             "name": "web-token/jwt-core",
