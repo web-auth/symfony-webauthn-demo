@@ -17,14 +17,13 @@ use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 use Safe\DateTimeImmutable;
-use Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
 use Throwable;
 use Webauthn\MetadataService\MetadataService;
 use Webauthn\MetadataService\MetadataStatement;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
 use Webauthn\MetadataService\SingleMetadata;
 
-final class MetadataStatementRepository implements MetadataStatementRepositoryInterface, WarmableInterface
+final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
     /**
      * @var MetadataService[]
@@ -127,7 +126,7 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
         }
     }
 
-    public function warmUp(string $cacheDir)
+    public function warmUp(): void
     {
         foreach ($this->services as $name => $service) {
             $tocItem = $this->cacheItemPool->getItem(\Safe\sprintf('webauthn-toc-%s', hash('sha256', $name)));
