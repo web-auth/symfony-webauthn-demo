@@ -13,14 +13,18 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
+use Safe\DateTimeImmutable;
+use Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
+use Throwable;
 use Webauthn\MetadataService\MetadataService;
 use Webauthn\MetadataService\MetadataStatement;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
 use Webauthn\MetadataService\SingleMetadata;
 
-final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
+final class MetadataStatementRepository implements MetadataStatementRepositoryInterface, WarmableInterface
 {
     /**
      * @var MetadataService[]
@@ -42,10 +46,16 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
      */
     private $singleStatements;
 
-    public function __construct(ClientInterface $client, RequestFactoryInterface $requestFactory)
+    /**
+     * @var CacheItemPoolInterface
+     */
+    private $cacheItemPool;
+
+    public function __construct(ClientInterface $client, RequestFactoryInterface $requestFactory, CacheItemPoolInterface $cacheItemPool)
     {
         $this->client = $client;
         $this->requestFactory = $requestFactory;
+        $this->cacheItemPool = $cacheItemPool;
 
         $this->addSingleStatements();
     }
@@ -68,10 +78,10 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
                 return $metadataStatement->getMetadataStatement();
             }
         }
-        foreach ($this->services as $metadataService) {
-            if ($metadataService->has($aaguid)) {
-                return $metadataService->get($aaguid);
-            }
+
+        $mdsItem = $this->cacheItemPool->getItem(\Safe\sprintf('webauthn-mds-%s', $aaguid));
+        if ($mdsItem->isHit()) {
+            return $mdsItem->get();
         }
 
         return null;
@@ -114,6 +124,42 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
 
         foreach ($statements as $name => $statement) {
             $this->singleStatements[] = new SingleMetadata($statement, false);
+        }
+    }
+
+    public function warmUp(string $cacheDir)
+    {
+        foreach ($this->services as $name => $service) {
+            $tocItem = $this->cacheItemPool->getItem(\Safe\sprintf('webauthn-toc-%s', hash('sha256', $name)));
+            if ($tocItem->isHit()) {
+                continue;
+            }
+            try {
+                $toc = $service->getMetadataTOCPayload();
+                $tocItem->set($toc);
+                $tocItem->expiresAt(DateTimeImmutable::createFromFormat('Y-m-d', $toc->getNextUpdate()));
+                $this->cacheItemPool->save($tocItem);
+
+                foreach ($toc->getEntries() as $entry) {
+                    if ($entry->getAaguid() === null || $entry->getUrl() === null) {
+                        continue;
+                    }
+                    try {
+                        $mds = $service->getMetadataStatementFor($entry);
+                        $mds
+                            ->setStatusReports($entry->getStatusReports())
+                            ->setRootCertificates($toc->getRootCertificates())
+                        ;
+                        $mdsItem = $this->cacheItemPool->getItem(\Safe\sprintf('webauthn-mds-%s', $entry->getAaguid()));
+                        $mdsItem->set($mds);
+                        $this->cacheItemPool->save($mdsItem);
+                    } catch (Throwable $exception) {
+                        continue;
+                    }
+                }
+            } catch (Throwable $exception) {
+                continue;
+            }
         }
     }
 }
