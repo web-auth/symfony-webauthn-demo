@@ -15,11 +15,10 @@ namespace App\Repository;
 
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use Webauthn\MetadataService\MetadataStatementInterface;
-use Throwable;
-use Webauthn\MetadataService\Object\MetadataService;
+use Webauthn\MetadataService\MetadataService;
+use Webauthn\MetadataService\MetadataStatement;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
-use Webauthn\MetadataService\Object\SingleMetadata;
+use Webauthn\MetadataService\SingleMetadata;
 
 final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
@@ -39,7 +38,7 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
     private $requestFactory;
 
     /**
-     * @var MetadataStatementInterface[]
+     * @var SingleMetadata[]
      */
     private $singleStatements;
 
@@ -62,51 +61,27 @@ final class MetadataStatementRepository implements MetadataStatementRepositoryIn
         );
     }
 
-    public function findOneByAAGUID(string $aaguid): ?MetadataStatementInterface
+    public function findOneByAAGUID(string $aaguid): ?MetadataStatement
     {
-        if (isset($this->singleStatements[$aaguid])) {
-            return $this->singleStatements[$aaguid];
+        foreach ($this->singleStatements as $metadataStatement) {
+            if ($metadataStatement->getMetadataStatement()->getAaguid() === $aaguid) {
+                return $metadataStatement->getMetadataStatement();
+            }
         }
-
-        foreach ($this->services as $name => $service) {
-            try {
-                $toc = $service->getMetadataTOCPayload();
-                foreach ($toc->getEntries() as $entry) {
-                    if ($entry->getAaguid()) {
-                        try {
-                            return $service->getMetadataStatementFor($entry);
-                        } catch (Throwable $throwable) {
-                            continue;
-                        }
-                    }
-                }
-            } catch (Throwable $throwable) {
-                continue;
+        foreach ($this->services as $metadataService) {
+            if ($metadataService->has($aaguid)) {
+                return $metadataService->get($aaguid);
             }
         }
 
         return null;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function findStatusReportsByAAGUID(string $aaguid): array
     {
-        foreach ($this->services as $name => $service) {
-            try {
-                $toc = $service->getMetadataTOCPayload();
-                foreach ($toc->getEntries() as $entry) {
-                    if ($entry->getAaguid()) {
-                        try {
-                            return $entry->getStatusReports();
-                        } catch (Throwable $throwable) {
-                            continue;
-                        }
-                    }
-                }
-            } catch (Throwable $throwable) {
-                continue;
-            }
-        }
-
         return [];
     }
 

@@ -47,23 +47,23 @@ services:
             - method: 'addService'
               arguments:
                   - 'conformance_test_1'
-                  - 'https://fidoalliance.co.nz/mds/execute/0246d3ec6b1463f5d63b200ffc3c1d1b802f1cde1b10788e02208902127dbbce'
+                  - 'https://mds.certinfra.fidoalliance.org/execute/0fdcfc99b393efd496c165ee387e1f3949c3a16f85cfb0aa9c02bca979e75bdb'
             - method: 'addService'
               arguments:
                   - 'conformance_test_2'
-                  - 'https://fidoalliance.co.nz/mds/execute/1323cc994c463752fd60e111defe1fe2187ce344925a5f2282acbbcff6d55a0e'
+                  - 'https://mds.certinfra.fidoalliance.org/execute/4926abdc35e558244ceaea24a384dee5cc5bf97fb7fec060f184be4fed07d82e'
             - method: 'addService'
               arguments:
                   - 'conformance_test_3'
-                  - 'https://fidoalliance.co.nz/mds/execute/309a94da23dc596fe4e4c2e2528bfaecc3cd95bf0ce2a369eb29a72b08dd680c'
+                  - 'https://mds.certinfra.fidoalliance.org/execute/ba5a161e75d267f70c00c2546234dcb271a3b8e5c189e5b978e9e1c4ccc8f7a4'
             - method: 'addService'
               arguments:
                   - 'conformance_test_4'
-                  - 'https://fidoalliance.co.nz/mds/execute/b1d139dbe31d0fc2be43b0584c555f9a3b0548ed397b7dbb123875b4c2335e7b'
+                  - 'https://mds.certinfra.fidoalliance.org/execute/bd578e0ef8b075efa44400616e976a47aa56292d2e07c446d854e826b7451022'
             - method: 'addService'
               arguments:
                   - 'conformance_test_5'
-                  - 'https://fidoalliance.co.nz/mds/execute/ce2d088e0e35c6196c9e158b09313453f32a44e7e59fb554ac266e33efdd86e5'
+                  - 'https://mds.certinfra.fidoalliance.org/execute/cccf981a98027d2bef4376e5a8fca839db552f35dd1e87e874c32e04d8c95e81'
 
     scaleway_client:
         class: Aws\S3\S3Client
