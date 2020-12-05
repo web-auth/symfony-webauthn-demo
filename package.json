@@ -57,6 +57,6 @@
         "not op_mini all"
     ],
     "dependencies": {
-        "@web-auth/webauthn-helper": "^0.0.10"
+        "@web-auth/webauthn-helper": "^0.0.13"
     }
 }
