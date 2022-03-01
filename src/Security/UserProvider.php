@@ -2,15 +2,6 @@
 
 declare(strict_types=1);
 
-/*
- * The MIT License (MIT)
- *
- * Copyright (c) 2014-2019 Spomky-Labs
- *
- * This software may be modified and distributed under the terms
- * of the MIT license.  See the LICENSE file for details.
- */
-
 namespace App\Security;
 
 use App\Entity\User;
@@ -21,20 +12,15 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 final class UserProvider implements UserProviderInterface
 {
-    /**
-     * @var PublicKeyCredentialUserEntityRepository
-     */
-    private $userRepository;
-
-    public function __construct(PublicKeyCredentialUserEntityRepository $userRepository)
-    {
-        $this->userRepository = $userRepository;
+    public function __construct(
+        private PublicKeyCredentialUserEntityRepository $userRepository
+    ) {
     }
 
     public function loadUserByUsername($username)
     {
         $user = $this->userRepository->find($username);
-        if (!$user) {
+        if (! $user) {
             throw new UsernameNotFoundException(sprintf('User "%s" not found.', $username));
         }
 
@@ -48,6 +34,6 @@ final class UserProvider implements UserProviderInterface
 
     public function supportsClass($class)
     {
-        return User::class === $class;
+        return $class === User::class;
     }
 }
