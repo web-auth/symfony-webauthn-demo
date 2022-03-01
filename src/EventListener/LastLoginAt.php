@@ -16,7 +16,7 @@ class LastLoginAt
     ) {
     }
 
-    public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
+    public function onSecurityInteractiveLogin(InteractiveLoginEvent $event): void
     {
         /** @var User $user */
         $user = $event->getAuthenticationToken()

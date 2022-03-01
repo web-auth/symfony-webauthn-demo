@@ -23,6 +23,6 @@ final class PreloadMetadataStatementsCommand extends Command
     {
         $this->metadataStatementRepository->warmUp();
 
-        return 0;
+        return self::SUCCESS;
     }
 }

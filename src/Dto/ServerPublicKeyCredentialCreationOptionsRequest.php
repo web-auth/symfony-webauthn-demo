@@ -14,19 +14,16 @@ final class ServerPublicKeyCredentialCreationOptionsRequest
      */
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    public $username;
+    public string $username;
 
     /**
      * @var string
      */
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    public $displayName;
+    public string $displayName;
 
-    /**
-     * @var array|null
-     */
-    public $authenticatorSelection;
+    public ?array $authenticatorSelection;
 
     /**
      * @var string
@@ -37,10 +34,7 @@ final class ServerPublicKeyCredentialCreationOptionsRequest
         PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_DIRECT,
         PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_INDIRECT,
     ])]
-    public $attestation;
+    public string $attestation;
 
-    /**
-     * @var array|null
-     */
-    public $extensions;
+    public ?array $extensions;
 }

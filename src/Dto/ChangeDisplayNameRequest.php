@@ -13,5 +13,5 @@ final class ChangeDisplayNameRequest
      */
     #[Assert\Type('string')]
     #[Assert\NotBlank]
-    public $displayName;
+    public string $displayName;
 }

@@ -32,7 +32,7 @@ final class ProfileController
         $credentials = $this->keyCredentialSourceRepository->findAllForUserEntity($user);
         $credentials = array_map(static function (PublicKeyCredentialSource $source) {
             $data = $source->jsonSerialize();
-            $data['aaguid'] = $source->getAaguid()->toString();
+            $data['aaguid'] = $source->getAaguid()->toRfc4122();
 
             return $data;
         }, $credentials);
@@ -44,8 +44,8 @@ final class ProfileController
             'user' => $user,
             'created_at' => $user->getCreatedAt()
                 ->format('c'),
-            'last_login_at' => $user->getLastLoginAt() ? $user->getLastLoginAt()
-                ->format('c') : null,
+            'last_login_at' => $user->getLastLoginAt()
+                ?->format('c'),
             'credentials' => $credentials,
         ]);
     }

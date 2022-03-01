@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use DateTimeImmutable;
 use Psr\Cache\CacheItemPoolInterface;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
-use DateTimeImmutable;
-use Webauthn\AttestationStatement\CanSupportStatusReport;
 use function sprintf;
 use Throwable;
+use Webauthn\AttestationStatement\CanSupportStatusReport;
 use Webauthn\MetadataService\MetadataService;
 use Webauthn\MetadataService\MetadataStatement;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
