@@ -1,20 +1,52 @@
-const Encore = require('@symfony/webpack-encore')
-const path = require('path')
+const Encore = require('@symfony/webpack-encore');
+const path = require('path');
 
-Encore.setOutputPath('public/build/')
+// Manually configure the runtime environment if not already configured yet by the "encore" command.
+// It's useful when you use tools that rely on webpack.config.js file.
+if (!Encore.isRuntimeEnvironmentConfigured()) {
+    Encore.configureRuntimeEnvironment(process.env.NODE_ENV || 'dev');
+}
+
+Encore
+    // directory where compiled assets will be stored
+    .setOutputPath('public/build/')
+    // public path used by the web server to access the output path
     .setPublicPath('/build')
+    // only needed for CDN's or sub-directory deploy
+    //.setManifestKeyPrefix('build/')
+
+    /*
+     * ENTRY CONFIG
+     *
+     * Each entry will result in one JavaScript file (e.g. app.js)
+     * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
+     */
+    //.addEntry('app', './assets/app.js')
+    .addEntry('react', './assets/index.jsx')
+    .addEntry('static', './assets/static.js')
+
+    // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
+    .enableStimulusBridge('./assets/controllers.json')
+
+    // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
+    .splitEntryChunks()
 
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())
     .enableVersioning(Encore.isProduction())
 
-    .enableSingleRuntimeChunk()
+    .configureBabel((config) => {
+        config.plugins.push('@babel/plugin-proposal-class-properties');
+    })
 
-    .enableReactPreset()
+    // enables @babel/preset-env polyfills
+    .configureBabelPresetEnv((config) => {
+        config.useBuiltIns = 'usage';
+        config.corejs = 3;
+    })
 
-    .addEntry('react', './assets/index.jsx')
-    .addEntry('static', './assets/static.js')
-
+    // enables Sass/SCSS support
+    //.enableSassLoader()
     .enableSassLoader((options) => {
         delete options.outputStyle;
         options.sourceMap = true;
@@ -23,16 +55,29 @@ Encore.setOutputPath('public/build/')
             sourceComments: !Encore.isProduction(),
         };
     }, {})
+
+    // uncomment if you use TypeScript
+    //.enableTypeScriptLoader()
+
+    // uncomment if you use React
+    //.enableReactPreset()
+
+    // uncomment to get integrity="..." attributes on your script & link tags
+    // requires WebpackEncoreBundle 1.4 or higher
+    //.enableIntegrityHashes(Encore.isProduction())
+
+    // uncomment if you're having problems with a jQuery plugin
+    //.autoProvidejQuery()
     .configureCssLoader((options) => {
         delete options.localIdentName;
         options.modules = {
             localIdentName: '[local]_[hash:base64:5]'
         };
     })
-
     .configureBabel(babelConfig => {
         babelConfig.plugins.push('@babel/plugin-proposal-class-properties')
     })
+;
 
 const config = Encore.getWebpackConfig()
 config.resolve.alias.app = path.resolve(__dirname, './assets/app')
