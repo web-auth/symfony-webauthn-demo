@@ -217,12 +217,12 @@
         "version": "v2.0.0"
     },
     "php-http/httplug-bundle": {
-        "version": "1.6",
+        "version": "1.25",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
             "version": "1.6",
-            "ref": "4655962c64e2de96c418caf576c57215711c7877"
+            "ref": "87b3d491d593d2c6e3b90bf0689ac69a188bfa5f"
         },
         "files": [
             "config/packages/httplug.yaml"
