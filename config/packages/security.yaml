@@ -18,12 +18,12 @@ security:
                     enabled: true
                     routes:
                         options_path: '/attestation/options'
-                        result_path: '/attestation'
+                        result_path: '/attestation/result'
                 authentication:
                     enabled: true
                     routes:
                         options_path: '/assertion/options'
-                        result_path: '/assertion'
+                        result_path: '/assertion/result'
             logout:
                 path: '/logout'
 
