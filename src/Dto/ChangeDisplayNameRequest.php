@@ -8,9 +8,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 final class ChangeDisplayNameRequest
 {
-    /**
-     * @var string
-     */
     #[Assert\Type('string')]
     #[Assert\NotBlank]
     public string $displayName;

@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ path('app_homepage') }}">Webauthn Demo</a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+        <div class="nav-item text-nowrap">
+            <a class="nav-link px-3" href="{{ logout_path('main') }}">Sign out</a>
+        </div>
+    </div>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+            <div class="position-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ path('profile') }}">
+                            <span class="fa fa-home"></span>
+                            My Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('authenticators') }}">
+                            <span class="fa fa-key"></span>
+                            My Authenticators
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">Profile</h1>
+            </div>
+            <div class="card border-dark mb-3">
+                <div class="card-body text-dark">
+                    <h5 class="card-title">Account Information</h5>
+                    <dl>
+                        <dt>Identifier</dt>
+                        <dd>{{ app.user.getUserIdentifier() }}</dd>
+                        <dt>Username</dt>
+                        <dd>{{ app.user.getUsername() }}</dd>
+                        <dt>Display Name</dt>
+                        <dd>{{ app.user.getDisplayName() }}</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="card border-dark mb-3">
+                <div class="card-body text-info">
+                    <h5 class="card-title">Authenticator used for sign in / sign on</h5>
+                    <dl>
+                        <dt>Public Key Credential ID</dt>
+                        <dd>{{ token.publicKeyCredentialDescriptor.id|toBase64  }} / {{ token.publicKeyCredentialDescriptor.id|toHex }}</dd>
+                        <dt>User was present</dt>
+                        <dd>{% if token.isUserPresent %}Yes{% else %}No{% endif %}</dd>
+                        <dt>User was verified</dt>
+                        <dd>{% if token.isUserVerified %}Yes{% else %}No{% endif %}</dd>
+                        <dt>Signature counter</dt>
+                        <dd>{{ token.signCount }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock body %}

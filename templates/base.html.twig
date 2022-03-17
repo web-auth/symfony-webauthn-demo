@@ -1,12 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+<head>
+    {% block metas %}
+        {% include("partials/metas.html.twig") %}
+    {% endblock %}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+{% block body %}
+    <body data-turbo="false" class="bg-light {% block body_classes %}{% endblock body_classes %}" {% block body_tags %}{% endblock body_tags %}>
+    {% block body_navbar %}
+        {% include 'partials/navbar.html.twig' %}
+    {% endblock body_navbar %}
+    {% block body_header %}{% endblock body_header %}
+    {% block flash %}{% include("partials/flashes.html.twig") %}{% endblock flash %}
+    {% block body_content %}{% endblock body_content %}
+    {% block body_footer %}
+        {% include 'partials/footer.html.twig' %}
+    {% endblock body_footer %}
+    {% block toastContainer %}
+        <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+    {% endblock toastContainer %}
     </body>
+{% endblock body %}
 </html>

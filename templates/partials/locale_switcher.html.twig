@@ -1,0 +1,18 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set route_params = app.request.attributes.get('_route_params') %}
+{% set params = route_params|merge(app.request.query.all) %}
+{% set applocales=supported_locales|split('|') %}
+
+<div class="dropdown-menu dropdown-menu-md" aria-labelledby="navbarLocales">
+    <div class="list-group list-group-flush">
+{% for locale in applocales  %}
+    <a class="list-group-item" href="{{ path(route, params|merge({ _locale: locale })) }}">
+        <div class="ms-4">
+            <h6 class="fw-bold text-uppercase text-primary mb-0">
+                {{ locale|locale_name(locale) }}
+            </h6>
+        </div>
+    </a>
+{% endfor %}
+    </div>
+</div>

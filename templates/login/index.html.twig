@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body class="text-center">
+    <form {{ stimulus_controller(
+        'webauthn',
+        {
+            requestResultUrl: path('webauthn.controller.security.main.request.result'),
+            requestOptionsUrl: path('webauthn.controller.security.main.request.options'),
+            requestSuccessRedirectUri: path('profile')
+        }
+    ) }}>
+        <main class="form-signin">
+            <a href="{{ path('app_homepage') }}">
+                <img class="mb-4" src="{{ asset('build/images/icon.png') }}" width="64" height="64" alt="Demo">
+            </a>
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+            <div class="form-floating">
+                <input name="username" type="text" class="form-control" id="username" placeholder="Username">
+                <label for="username">Username</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit" {{ stimulus_action('webauthn', 'request') }}>
+                Sign in
+            </button>
+            <p>
+                <a href="{{ path('register') }}">Create an account</a>
+            </p>
+            <p class="mt-5 mb-3 text-muted">&copy; {{ 'now' | date('Y') }}, made with 💙💛 by <a href="https://www.spomky-labs.com/" target="_blank" rel="nofollow noopener noreferrer">Spomky-Labs</a></p>
+        </main>
+    </form>
+    </body>
+{% endblock body %}

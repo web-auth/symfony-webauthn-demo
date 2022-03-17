@@ -2,9 +2,10 @@
 # Files in the packages/ subdirectory configure your dependencies.
 
 # Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    locale: 'en'
+    app.supported_locales: 'en|fr'
+
 
 services:
     # default configuration for services in *this* file
@@ -15,65 +16,20 @@ services:
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
     App\:
-        resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
-
-    # controllers are imported separately to make sure services can be injected
-    # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Security\UserProvider: ~
-    App\Security\LogoutSuccessHandler: ~
-    App\Security\AuthenticationFailureHandler: ~
-    App\Security\AuthenticationSuccessHandler: ~
-    App\Validator\Constraints\UniqueUsernameValidator: ~
-    App\EventListener\LastLoginAt:
-        tags:
-            - { name: 'kernel.event_listener', event: 'security.interactive_login' }
+    ### MDS ###
+    Webauthn\MetadataService\Service\ChainedMetadataServices: ~
 
     App\Repository\MetadataStatementRepository:
-        calls:
-            - method: 'addService'
-              arguments:
-                  - 'fido_alliance_real'
-                  - 'https://mds2.fidoalliance.org'
-                  - additional_query_strings:
-                      - 'token': '%env(FIDO_MDS_TOKEN)%'
-            - method: 'addService'
-              arguments:
-                  - 'conformance_test_1'
-                  - 'https://mds.certinfra.fidoalliance.org/execute/0fdcfc99b393efd496c165ee387e1f3949c3a16f85cfb0aa9c02bca979e75bdb'
-            - method: 'addService'
-              arguments:
-                  - 'conformance_test_2'
-                  - 'https://mds.certinfra.fidoalliance.org/execute/4926abdc35e558244ceaea24a384dee5cc5bf97fb7fec060f184be4fed07d82e'
-            - method: 'addService'
-              arguments:
-                  - 'conformance_test_3'
-                  - 'https://mds.certinfra.fidoalliance.org/execute/ba5a161e75d267f70c00c2546234dcb271a3b8e5c189e5b978e9e1c4ccc8f7a4'
-            - method: 'addService'
-              arguments:
-                  - 'conformance_test_4'
-                  - 'https://mds.certinfra.fidoalliance.org/execute/bd578e0ef8b075efa44400616e976a47aa56292d2e07c446d854e826b7451022'
-            - method: 'addService'
-              arguments:
-                  - 'conformance_test_5'
-                  - 'https://mds.certinfra.fidoalliance.org/execute/cccf981a98027d2bef4376e5a8fca839db552f35dd1e87e874c32e04d8c95e81'
-
-    scaleway_client:
-        class: Aws\S3\S3Client
-        factory: ['@App\Service\ScalewayClientFactory', 'create']
         arguments:
-            - "%env(S3_KEY)%"
-            - "%env(S3_SECRET)%"
+            - '@Webauthn\MetadataService\Service\ChainedMetadataServices'
 
-
-    App\Service\Logger:
-        arguments: ['@logger']
-        tags:
-            - { name: 'monolog.logger', channel: 'webauthn' }
+    ### MDS ###

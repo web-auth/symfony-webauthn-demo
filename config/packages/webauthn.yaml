@@ -1,5 +1,4 @@
 webauthn:
-    logger: 'App\Service\Logger'
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
     user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'
     creation_profiles:
@@ -9,41 +8,16 @@ webauthn:
                 id: '%env(RP_ID)%'
             challenge_length: 32
             timeout: 60000
-            authenticator_selection_criteria:
-                attachment_mode: !php/const Webauthn\AuthenticatorSelectionCriteria::AUTHENTICATOR_ATTACHMENT_NO_PREFERENCE
-                require_resident_key: false
-                user_verification: !php/const Webauthn\AuthenticatorSelectionCriteria::USER_VERIFICATION_REQUIREMENT_PREFERRED
-            extensions: []
-            public_key_credential_parameters:
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_EdDSA
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES256
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES256K
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES384
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_ES512
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS256
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS384
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS512
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS256
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS384
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_PS512
-                - !php/const Cose\Algorithms::COSE_ALGORITHM_RS1
-            attestation_conveyance: !php/const Webauthn\PublicKeyCredentialCreationOptions::ATTESTATION_CONVEYANCE_PREFERENCE_NONE
     request_profiles:
         default:
             rp_id: '%env(RP_ID)%'
-#    transport_binding_profile:
-#        creation:
-#            default:
-#                profile_name: 'default'
-#                request_path: '/attestation/options'
-#                response_path: '/attestation/result'
-#                session_parameter_name: '__WEBAUTHN_ATTESTATION_REQUEST__'
-#        request:
-#            default:
-#                profile_name: 'default'
-#                request_path: '/assertion/options'
-#                response_path: '/assertion/result'
-#                session_parameter_name: '__WEBAUTHN_ASSERTION_REQUEST__'
+    controllers:
+        enabled: true
+        creation:
+            additional_authenticator:
+                options_path: '/profile/authenticators/add/options'
+                result_path: '/profile/authenticators/add'
+                user_entity_guesser: 'Webauthn\Bundle\Security\Guesser\CurrentUserEntityGuesser'
     metadata_service:
         enabled: true
         repository: 'App\Repository\MetadataStatementRepository'

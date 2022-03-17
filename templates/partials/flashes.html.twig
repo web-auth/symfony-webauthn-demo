@@ -1,0 +1,12 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        {{ include(
+            'partials/toast.html.twig',
+            {
+                label: label,
+                title: title|default(''),
+                body: message
+            }
+        ) }}
+    {% endfor %}
+{% endfor %}

@@ -1,5 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
-    debug: '%kernel.debug%'
-    strict_variables: '%kernel.debug%'
-    form_themes: ['theme/material_kit_layout.html.twig']
+    form_themes: ['bootstrap_5_layout.html.twig']
+    globals:
+        supported_locales: "%app.supported_locales%"
+
+when@test:
+    twig:
+        strict_variables: true

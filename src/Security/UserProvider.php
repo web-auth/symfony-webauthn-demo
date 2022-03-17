@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Security;
 
 use App\Entity\User;
-use App\Repository\PublicKeyCredentialUserEntityRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
@@ -13,15 +13,17 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 final class UserProvider implements UserProviderInterface
 {
     public function __construct(
-        private PublicKeyCredentialUserEntityRepository $userRepository
+        private UserRepository $userRepository
     ) {
     }
 
-    public function loadUserByUsername($username): UserInterface|User
+    public function loadUserByIdentifier(string $identifier): UserInterface|User
     {
-        $user = $this->userRepository->find($username);
-        if (! $user) {
-            throw new UserNotFoundException(sprintf('User "%s" not found.', $username));
+        $user = $this->userRepository->findOneBy([
+            'id' => $identifier,
+        ]);
+        if ($user === null) {
+            throw new UserNotFoundException(sprintf('User "%s" not found.', $identifier));
         }
 
         return $user;
@@ -29,7 +31,7 @@ final class UserProvider implements UserProviderInterface
 
     public function refreshUser(UserInterface $user): UserInterface|User|null
     {
-        return $this->userRepository->find($user->getUsername());
+        return $this->loadUserByIdentifier($user->getUserIdentifier());
     }
 
     public function supportsClass($class): bool

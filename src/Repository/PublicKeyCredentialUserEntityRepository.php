@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\User;
-use Doctrine\Persistence\ManagerRegistry;
-use Webauthn\Bundle\Repository\AbstractPublicKeyCredentialUserEntityRepository;
+use Symfony\Component\Uid\Ulid;
+use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository as PublicKeyCredentialUserEntityRepositoryInterface;
 use Webauthn\PublicKeyCredentialUserEntity;
 
-final class PublicKeyCredentialUserEntityRepository extends AbstractPublicKeyCredentialUserEntityRepository
+final class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(private UserRepository $userRepository)
     {
-        parent::__construct($registry, User::class);
     }
 
     public function createUserEntity(
@@ -21,31 +20,60 @@ final class PublicKeyCredentialUserEntityRepository extends AbstractPublicKeyCre
         string $displayName,
         ?string $icon
     ): PublicKeyCredentialUserEntity {
-        return new User($username, $displayName, [], $icon);
+        return new PublicKeyCredentialUserEntity($username, Ulid::generate(), $displayName, $icon);
     }
 
     public function saveUserEntity(PublicKeyCredentialUserEntity $userEntity): void
     {
-        if (! $userEntity instanceof User) {
-            $userEntity = User::createFrom($userEntity);
+        /** @var User|null $user */
+        $user = $this->userRepository->findOneBy([
+            'id' => $userEntity->getId(),
+        ]);
+        if ($user === null) {
+            $user = new User($userEntity->getId(), $userEntity->getName(), $userEntity->getDisplayName());
+        } else {
+            if ($user->getDisplayName() !== $userEntity->getDisplayName()) {
+                $user->setDisplayName($userEntity->getDisplayName());
+            }
+            if ($user->getUsername() !== $userEntity->getName()) {
+                $user->setUsername($userEntity->getName());
+            }
         }
 
-        parent::saveUserEntity($userEntity);
+        $this->userRepository->save($user);
     }
 
-    public function find(string $username): ?User
+    public function findOneByUsername(string $username): ?PublicKeyCredentialUserEntity
     {
-        $qb = $this->getEntityManager()
-            ->createQueryBuilder()
-        ;
+        /** @var User|null $user */
+        $user = $this->userRepository->findOneBy([
+            'username' => $username,
+        ]);
 
-        return $qb->select('u')
-            ->from(User::class, 'u')
-            ->where('u.name = :name')
-            ->setParameter(':name', $username)
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $this->getUserEntity($user);
+    }
+
+    public function findOneByUserHandle(string $userHandle): ?PublicKeyCredentialUserEntity
+    {
+        /** @var User|null $user */
+        $user = $this->userRepository->findOneBy([
+            'id' => $userHandle,
+        ]);
+
+        return $this->getUserEntity($user);
+    }
+
+    private function getUserEntity(null|User $user): ?PublicKeyCredentialUserEntity
+    {
+        if ($user === null) {
+            return null;
+        }
+
+        return new PublicKeyCredentialUserEntity(
+            $user->getUsername(),
+            $user->getUserIdentifier(),
+            $user->getDisplayName(),
+            null
+        );
     }
 }

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <body class="text-center">
+    <form {{ stimulus_controller(
+        'webauthn',
+        {
+            creationResultUrl: path('webauthn.controller.security.main.creation.result'),
+            creationOptionsUrl: path('webauthn.controller.security.main.creation.options'),
+            creationSuccessRedirectUri: path('profile')
+        }
+    ) }}>
+    <main class="form-signin">
+        <a href="{{ path('app_homepage') }}">
+            <img class="mb-4" src="{{ asset('build/images/icon.png') }}" width="64" height="64" alt="Demo">
+        </a>
+        <h1 class="h3 mb-3 fw-normal">Registration Form</h1>
+        <div class="form-floating">
+            <input name="username" required type="text" class="form-control" id="username" placeholder="Username">
+            <label for="username">Username</label>
+        </div>
+        <div class="form-floating">
+            <input name="displayName" required type="text" class="form-control" id="displayName" placeholder="Display Name">
+            <label for="displayName">Display Name</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" {{ stimulus_action('webauthn', 'create') }}>
+            Sign on
+        </button>
+        <p>
+            <a href="{{ path('login') }}">Back to the login page</a>
+        </p>
+        <p class="mt-5 mb-3 text-muted">&copy; {{ 'now' | date('Y') }}, made with 💙💛 by <a href="https://www.spomky-labs.com/" target="_blank" rel="nofollow noopener noreferrer">Spomky-Labs</a></p>
+    </main>
+    </form>
+    </body>
+{% endblock body %}

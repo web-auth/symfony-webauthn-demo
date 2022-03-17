@@ -4,16 +4,17 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
+use App\Repository\PublicKeyCredentialSourceRepository;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
+use Symfony\Component\Uid\AbstractUid;
+use Symfony\Component\Uid\Uuid;
 use Webauthn\PublicKeyCredentialSource as BasePublicKeyCredentialSource;
 use Webauthn\TrustPath\TrustPath;
 
-#[ORM\Table(name: 'public_key_credential_sources')]
-#[ORM\Entity(repositoryClass: 'App\Repository\PublicKeyCredentialSourceRepository')]
+#[ORM\Table(name: 'pk_credential_sources')]
+#[ORM\Entity(repositoryClass: PublicKeyCredentialSourceRepository::class)]
 class PublicKeyCredentialSource extends BasePublicKeyCredentialSource
 {
     #[ORM\Id]
@@ -30,12 +31,12 @@ class PublicKeyCredentialSource extends BasePublicKeyCredentialSource
         array $transports,
         string $attestationType,
         TrustPath $trustPath,
-        UuidInterface $aaguid,
+        AbstractUid $aaguid,
         string $credentialPublicKey,
         string $userHandle,
         int $counter
     ) {
-        $this->id = Uuid::uuid4()->toString();
+        $this->id = Uuid::v4()->toRfc4122();
         $this->createdAt = new DateTimeImmutable();
         parent::__construct($publicKeyCredentialId, $type, $transports, $attestationType, $trustPath, $aaguid, $credentialPublicKey, $userHandle, $counter);
     }
@@ -43,10 +44,5 @@ class PublicKeyCredentialSource extends BasePublicKeyCredentialSource
     public function getId(): string
     {
         return $this->id;
-    }
-
-    public function getCreatedAt(): DateTimeImmutable
-    {
-        return $this->createdAt;
     }
 }
