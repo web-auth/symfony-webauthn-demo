@@ -1,6 +1,6 @@
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" {{ stimulus_controller('toast') }}>
     <div class="toast-header bg-{{ label }} text-black">
-        <strong class="me-auto">{{ title|default('app.flash.title.default.'~label)|trans }}</strong>
+        <strong class="me-auto">Message</strong>
         <small>{{ when|default(date())|ago(locale=app.request.getLocale()) }}</small>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>

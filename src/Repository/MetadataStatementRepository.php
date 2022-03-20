@@ -4,38 +4,31 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use Webauthn\AttestationStatement\CanSupportStatusReport;
-use Webauthn\MetadataService\CanSupportImport;
+use Psr\Cache\CacheItemPoolInterface;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
-use Webauthn\MetadataService\Service\MetadataService;
 use Webauthn\MetadataService\Statement\MetadataStatement;
 
-final class MetadataStatementRepository implements MetadataStatementRepositoryInterface, CanSupportStatusReport, CanSupportImport
+final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
     public function __construct(
-        private MetadataService $service
+        private CacheItemPoolInterface $cacheItemPool,
     ) {
     }
 
     public function findOneByAAGUID(string $aaguid): ?MetadataStatement
     {
-        if (! $this->service->has($aaguid)) {
+        $item = $this->cacheItemPool->getItem(sprintf('mds-%s', $aaguid));
+        if (! $item->isHit()) {
             return null;
         }
 
-        return $this->service->get($aaguid);
+        return $item->get();
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function findStatusReportsByAAGUID(string $aaguid): array
+    public function save(MetadataStatement $mds): void
     {
-        return [];
-    }
-
-    public function import(MetadataStatement $metadataStatement): void
-    {
-        dd($metadataStatement);
+        $item = $this->cacheItemPool->getItem(sprintf('mds-%s', $mds->getAaguid()));
+        $item->set($mds);
+        $this->cacheItemPool->save($item);
     }
 }

@@ -11,20 +11,20 @@
                 {% if is_granted('ROLE_USER') %}
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('profile') }}">
-                        {{ 'navbar.link.profile.title'|trans }}
+                        My Profile' }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-outline-primary" href="{{ logout_path('main') }}">
                         <span class="fa fa-sign-out"></span>
-                        {{ 'navbar.link.logout.title'|trans }}
+                        Logout
                     </a>
                 </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="btn btn-outline-primary" href="{{ path('login') }}">
                             <span class="fa fa-user"></span>
-                            {{ 'navbar.link.login.title'|trans }}
+                            Login
                         </a>
                     </li>
                 {% endif %}

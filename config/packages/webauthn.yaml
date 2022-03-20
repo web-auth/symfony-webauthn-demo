@@ -1,4 +1,6 @@
 webauthn:
+    #http_client: ~
+    #request_factory: ~
     credential_repository: 'App\Repository\PublicKeyCredentialSourceRepository'
     user_repository: 'App\Repository\PublicKeyCredentialUserEntityRepository'
     creation_profiles:
@@ -18,10 +20,8 @@ webauthn:
                 options_path: '/profile/authenticators/add/options'
                 result_path: '/profile/authenticators/add'
                 user_entity_guesser: 'Webauthn\Bundle\Security\Guesser\CurrentUserEntityGuesser'
-    metadata_service:
+    metadata:
         enabled: true
-        repository: 'App\Repository\MetadataStatementRepository'
-    certificate_chain_checker:
-        enabled: true
-        http_client: '@nyholm.psr7.psr17_factory'
-        request_factory: '@nyholm.psr7.psr18_factory'
+        mds_repository: 'App\Repository\MetadataStatementRepository'
+        status_report_repository: 'App\Repository\StatusReportRepository'
+        #certificate_chain_checker: 'App\Security\CertificateChainChecker'
