@@ -7951,20 +7951,21 @@
         },
         {
             "name": "web-auth/webauthn-framework",
-            "version": "v4.0.0",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-framework.git",
-                "reference": "2a1034c970d15f3e6f43cdf7cf5d296a955ad00c"
+                "reference": "f7cb6e17104d5e43d8051ed3c0f656a6ad2ee4a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/2a1034c970d15f3e6f43cdf7cf5d296a955ad00c",
-                "reference": "2a1034c970d15f3e6f43cdf7cf5d296a955ad00c",
+                "url": "https://api.github.com/repos/web-auth/webauthn-framework/zipball/f7cb6e17104d5e43d8051ed3c0f656a6ad2ee4a8",
+                "reference": "f7cb6e17104d5e43d8051ed3c0f656a6ad2ee4a8",
                 "shasum": ""
             },
             "require": {
                 "beberlei/assert": "^3.2",
+                "brick/math": "^0.9",
                 "ext-json": "*",
                 "ext-mbstring": "*",
                 "ext-openssl": "*",
@@ -8066,7 +8067,7 @@
             "homepage": "https://github.com/web-auth/webauthn-framework",
             "support": {
                 "issues": "https://github.com/web-auth/webauthn-framework/issues",
-                "source": "https://github.com/web-auth/webauthn-framework/tree/v4.0.0"
+                "source": "https://github.com/web-auth/webauthn-framework/tree/v4.0.1"
             },
             "funding": [
                 {
@@ -8078,7 +8079,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-04-03T12:08:54+00:00"
+            "time": "2022-04-03T13:08:13+00:00"
         },
         {
             "name": "web-token/jwt-core",
