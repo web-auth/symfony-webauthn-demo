@@ -610,7 +610,7 @@
             "repo": "github.com/web-auth/recipes",
             "branch": "tree",
             "version": "3.0",
-            "ref": "a5bd0892e9492bc4af0ef46477b7c57bd83d1aaa"
+            "ref": "0f6e99c466f95ca9d38c04c9cf41f6283a0c529a"
         },
         "files": [
             "config/packages/webauthn.yaml",
