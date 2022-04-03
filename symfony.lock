@@ -608,11 +608,11 @@
             "repo": "github.com/web-auth/recipes",
             "branch": "tree",
             "version": "3.0",
-            "ref": "0f6e99c466f95ca9d38c04c9cf41f6283a0c529a"
+            "ref": "87191020f98c4b8271ccfa2a9d6bd2b458a5695f"
         },
         "files": [
             "config/packages/webauthn.yaml",
-            "config/routes/webauthn.php"
+            "config/routes/webauthn.yaml"
         ]
     },
     "web-token/jwt-core": {
