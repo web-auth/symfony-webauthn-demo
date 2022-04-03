@@ -589,6 +589,9 @@
     "symplify/easy-coding-standard": {
         "version": "10.1.0"
     },
+    "thecodingmachine/safe": {
+        "version": "v2.1.2"
+    },
     "theseer/tokenizer": {
         "version": "1.2.1"
     },
@@ -602,7 +605,17 @@
         "version": "v3.3.8"
     },
     "web-auth/webauthn-framework": {
-        "version": "dev-PIEEncoder"
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/web-auth/recipes",
+            "branch": "tree",
+            "version": "3.0",
+            "ref": "a5bd0892e9492bc4af0ef46477b7c57bd83d1aaa"
+        },
+        "files": [
+            "config/packages/webauthn.yaml",
+            "config/routes/webauthn.php"
+        ]
     },
     "web-token/jwt-core": {
         "version": "v3.0.0"

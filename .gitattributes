@@ -1,0 +1,6 @@
+* text=auto
+
+/tests export-ignore
+/ecs.php export-ignore
+/phpunit.xml.dist export-ignore
+/rector.php export-ignore
