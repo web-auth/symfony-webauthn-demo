@@ -14,7 +14,7 @@ final class CustomStorage implements OptionsStorage
     private const KEY = 'webauthn-options';
 
     public function __construct(
-        private CacheItemPoolInterface $cacheItemPool
+        private readonly CacheItemPoolInterface $cacheItemPool
     ) {
     }
 

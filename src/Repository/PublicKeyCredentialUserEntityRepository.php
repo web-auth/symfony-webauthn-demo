@@ -11,7 +11,7 @@ use Webauthn\PublicKeyCredentialUserEntity;
 
 final class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface
 {
-    public function __construct(private UserRepository $userRepository)
+    public function __construct(private readonly UserRepository $userRepository)
     {
     }
 
@@ -32,7 +32,7 @@ final class PublicKeyCredentialUserEntityRepository implements PublicKeyCredenti
             if ($user->getDisplayName() !== $userEntity->getDisplayName()) {
                 $user->setDisplayName($userEntity->getDisplayName());
             }
-            if ($user->getUsername() !== $userEntity->getName()) {
+            if ($user->getUserIdentifier() !== $userEntity->getName()) {
                 $user->setUsername($userEntity->getName());
             }
         }

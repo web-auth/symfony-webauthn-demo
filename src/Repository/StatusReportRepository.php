@@ -11,7 +11,7 @@ use Webauthn\MetadataService\StatusReportRepository as StatusReportRepositoryInt
 final class StatusReportRepository implements StatusReportRepositoryInterface
 {
     public function __construct(
-        private CacheItemPoolInterface $cacheItemPool,
+        private readonly CacheItemPoolInterface $cacheItemPool,
     ) {
     }
 

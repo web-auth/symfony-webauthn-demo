@@ -11,7 +11,7 @@ use Webauthn\MetadataService\Statement\MetadataStatement;
 final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
     public function __construct(
-        private CacheItemPoolInterface $cacheItemPool,
+        private readonly CacheItemPoolInterface $cacheItemPool,
     ) {
     }
 

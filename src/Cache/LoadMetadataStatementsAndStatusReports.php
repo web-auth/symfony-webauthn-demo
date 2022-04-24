@@ -17,9 +17,9 @@ class LoadMetadataStatementsAndStatusReports implements CacheWarmerInterface
      * @param MetadataService[] $services
      */
     public function __construct(
-        private MetadataStatementRepository $metadataStatementRepository,
-        private StatusReportRepository $statusReportRepository,
-        private iterable $services,
+        private readonly MetadataStatementRepository $metadataStatementRepository,
+        private readonly StatusReportRepository $statusReportRepository,
+        private readonly iterable $services,
     ) {
     }
 
@@ -28,7 +28,7 @@ class LoadMetadataStatementsAndStatusReports implements CacheWarmerInterface
         return false;
     }
 
-    public function warmUp(string $cacheDir): void
+    public function warmUp(string $cacheDir): array
     {
         foreach ($this->services as $service) {
             foreach ($service->list() as $aaguid) {
@@ -42,5 +42,7 @@ class LoadMetadataStatementsAndStatusReports implements CacheWarmerInterface
                 }
             }
         }
+
+        return [];
     }
 }

@@ -17,8 +17,8 @@ use Webauthn\PublicKeyCredentialSourceRepository;
 final class AuthenticatorsController extends AbstractController
 {
     public function __construct(
-        private PublicKeyCredentialUserEntityRepository $keyCredentialUserEntityRepository,
-        private PublicKeyCredentialSourceRepository $keyCredentialSourceRepository
+        private readonly PublicKeyCredentialUserEntityRepository $keyCredentialUserEntityRepository,
+        private readonly PublicKeyCredentialSourceRepository $keyCredentialSourceRepository
     ) {
     }
 
