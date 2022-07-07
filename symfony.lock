@@ -602,13 +602,25 @@
     "twig/twig": {
         "version": "v3.3.8"
     },
-    "web-auth/webauthn-framework": {
+    "web-auth/cose-lib": {
+        "version": "v4.0.3"
+    },
+    "web-auth/metadata-service": {
+        "version": "v4.0.x-dev"
+    },
+    "web-auth/webauthn-lib": {
+        "version": "v4.0.x-dev"
+    },
+    "web-auth/webauthn-stimulus": {
+        "version": "v4.0.x-dev"
+    },
+    "web-auth/webauthn-symfony-bundle": {
         "version": "4.0",
         "recipe": {
             "repo": "github.com/web-auth/recipes",
             "branch": "tree",
             "version": "3.0",
-            "ref": "87191020f98c4b8271ccfa2a9d6bd2b458a5695f"
+            "ref": "ac74101ab94238b58f06bf982d61b8f189343c62"
         },
         "files": [
             "config/packages/webauthn.yaml",

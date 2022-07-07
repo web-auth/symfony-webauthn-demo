@@ -50,10 +50,10 @@ Encore
     })*/
 
     // enables @babel/preset-env polyfills
-    /*.configureBabelPresetEnv((config) => {
+    .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
         config.corejs = 3;
-    })*/
+    })
 
     // enables Sass/SCSS support
     .enableSassLoader()
