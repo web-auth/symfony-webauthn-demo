@@ -5,8 +5,8 @@
     <form {{ stimulus_controller(
         '@web-auth/webauthn-stimulus/webauthn',
         {
-            requestResultUrl: 'https://localhost:8443/docs/api/login',
-            requestOptionsUrl: 'https://localhost:8443/docs/api/login/options',
+            requestResultUrl: path('webauthn.controller.security.main.request.result'),
+            requestOptionsUrl: path('webauthn.controller.security.main.request.options'),
             requestSuccessRedirectUri: path('profile')
         }
     ) }}>

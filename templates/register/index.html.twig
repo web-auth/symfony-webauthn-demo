@@ -5,8 +5,8 @@
     <form {{ stimulus_controller(
         '@web-auth/webauthn-stimulus/webauthn',
         {
-            creationResultUrl: 'https://localhost:8443/docs/api/register',
-            creationOptionsUrl: 'https://localhost:8443/docs/api/register/options',
+            creationResultUrl: path('webauthn.controller.security.main.creation.result'),
+            creationOptionsUrl: path('webauthn.controller.security.main.creation.options'),
             creationSuccessRedirectUri: path('profile')
         }
     ) }}>
