@@ -102,12 +102,12 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "rector/rector": "^0.12.16",
+        "rector/rector": "^0.13",
         "symfony/debug-bundle": "6.1.*",
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^6.0",
         "symfony/stopwatch": "6.1.*",
         "symfony/web-profiler-bundle": "6.1.*",
-        "symplify/easy-coding-standard": "^10.1"
+        "symplify/easy-coding-standard": "^11.0"
     }
 }

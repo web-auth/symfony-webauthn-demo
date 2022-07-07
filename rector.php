@@ -2,32 +2,36 @@
 
 declare(strict_types=1);
 
-use Rector\Core\Configuration\Option;
+use Rector\Config\RectorConfig;
+use Rector\Core\ValueObject\PhpVersion;
 use Rector\Doctrine\Set\DoctrineSetList;
-use Rector\Php74\Rector\Property\TypedPropertyRector;
+use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
+use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Set\SymfonyLevelSetList;
 use Rector\Symfony\Set\SymfonySetList;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    $containerConfigurator->import(SetList::DEAD_CODE);
-    $containerConfigurator->import(SetList::PHP_81);
-    $containerConfigurator->import(SymfonyLevelSetList::UP_TO_SYMFONY_60);
-    $containerConfigurator->import(SymfonySetList::SYMFONY_CODE_QUALITY);
-    $containerConfigurator->import(SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION);
-    $containerConfigurator->import(DoctrineSetList::DOCTRINE_CODE_QUALITY);
-    $containerConfigurator->import(DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES);
-    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_EXCEPTION);
-    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD);
-    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_91);
-    $containerConfigurator->import(PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER);
-    $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::PATHS, [__DIR__ . '/src', __DIR__ . '/tests']);
-    $parameters->set(Option::AUTO_IMPORT_NAMES, true);
-    $parameters->set(Option::IMPORT_SHORT_CLASSES, true);
-
-    $services = $containerConfigurator->services();
-    $services->set(TypedPropertyRector::class);
+return static function (RectorConfig $config): void {
+    $config->sets([
+        SetList::DEAD_CODE,
+        LevelSetList::UP_TO_PHP_81,
+        SymfonyLevelSetList::UP_TO_SYMFONY_60,
+        SymfonySetList::SYMFONY_CODE_QUALITY,
+        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
+        SymfonySetList::SYMFONY_STRICT,
+        DoctrineSetList::DOCTRINE_CODE_QUALITY,
+        DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
+        PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
+        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
+        PHPUnitSetList::PHPUNIT_EXCEPTION,
+        PHPUnitSetList::REMOVE_MOCKS,
+        PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
+    ]);
+    $config->phpVersion(PhpVersion::PHP_81);
+    $config->paths([__DIR__ . '/src', __DIR__ . '/tests']);
+    $config->parallel();
+    $config->importNames();
+    $config->importShortClasses();
 };
