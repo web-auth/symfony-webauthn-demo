@@ -38,7 +38,7 @@ services:
         arguments:
             - '@Psr\Http\Message\RequestFactoryInterface'
             - '@Psr\Http\Client\ClientInterface'
-            - 'https://mds3.certinfra.fidoalliance.org/execute/3d94aad084b1d3172ec32ec63f0233ffac2c550aee8456090e9989c695211f27'
+            - 'https://mds3.certinfra.fidoalliance.org/execute/26448d4dacea1f180278c7ee2255a22c0f198d50252a1b46127d0ef247fc0aa7'
 
     mds_localhost_2:
         class: Webauthn\MetadataService\Service\FidoAllianceCompliantMetadataService
@@ -47,7 +47,7 @@ services:
         arguments:
             - '@Psr\Http\Message\RequestFactoryInterface'
             - '@Psr\Http\Client\ClientInterface'
-            - 'https://mds3.certinfra.fidoalliance.org/execute/618dd531ead9d56900c0bacf8e70f32f43f0c773d6acc91192e22567611ad521'
+            - 'https://mds3.certinfra.fidoalliance.org/execute/36750a72e20751306dfabcbad9061e7b952b37c438efe916235fc8ada1e93fa2'
 
     mds_localhost_3:
         class: Webauthn\MetadataService\Service\FidoAllianceCompliantMetadataService
@@ -56,7 +56,7 @@ services:
         arguments:
             - '@Psr\Http\Message\RequestFactoryInterface'
             - '@Psr\Http\Client\ClientInterface'
-            - 'https://mds3.certinfra.fidoalliance.org/execute/c1cce271f96893dc6217906d67e27058230ee4948af9b944630fd6627bdaff7d'
+            - 'https://mds3.certinfra.fidoalliance.org/execute/8341670cecc6b6f8d32cfabcd1ba1aa16eeb6062934a171b706144dc379918e2'
 
     mds_localhost_4:
         class: Webauthn\MetadataService\Service\FidoAllianceCompliantMetadataService
@@ -65,7 +65,7 @@ services:
         arguments:
             - '@Psr\Http\Message\RequestFactoryInterface'
             - '@Psr\Http\Client\ClientInterface'
-            - 'https://mds3.certinfra.fidoalliance.org/execute/d52ecb96887dd3469953ee6a11aa28d14220d26fdd9d391cb9a7d7bf609e9866'
+            - 'https://mds3.certinfra.fidoalliance.org/execute/8654399fb85390b4f600a6c43088975dbdf74ca6c2dc17066657f01b0c722250'
 
     mds_localhost_5:
         class: Webauthn\MetadataService\Service\FidoAllianceCompliantMetadataService
@@ -74,7 +74,7 @@ services:
         arguments:
             - '@Psr\Http\Message\RequestFactoryInterface'
             - '@Psr\Http\Client\ClientInterface'
-            - 'https://mds3.certinfra.fidoalliance.org/execute/d78f9122ebebd02a30d9f82dea7e6fa0a7fabb8d7dcf0ac1b8f44982551f8862'
+            - 'https://mds3.certinfra.fidoalliance.org/execute/fafc34efeb5b350f76cb93b7b0cef6d017ee8d8286fa4ec66a1e998dee6707c6'
 
 #    mds_demo_1:
 #        class: Webauthn\MetadataService\Service\FidoAllianceCompliantMetadataService
