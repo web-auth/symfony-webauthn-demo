@@ -7876,12 +7876,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
-                "reference": "fdf567195f21acd884ed6fac074e679dd048963d"
+                "reference": "87126d5180b392712365eb28a12367719ac37e0c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/fdf567195f21acd884ed6fac074e679dd048963d",
-                "reference": "fdf567195f21acd884ed6fac074e679dd048963d",
+                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/87126d5180b392712365eb28a12367719ac37e0c",
+                "reference": "87126d5180b392712365eb28a12367719ac37e0c",
                 "shasum": ""
             },
             "require": {
@@ -7938,7 +7938,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-07T16:43:37+00:00"
+            "time": "2022-07-08T08:03:15+00:00"
         },
         {
             "name": "web-auth/webauthn-lib",
@@ -7946,12 +7946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "48c333f5d646b48fb605058772b9824a9c212dc3"
+                "reference": "52177a6d7c6e57e22710943435fb24dc5beeee6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/48c333f5d646b48fb605058772b9824a9c212dc3",
-                "reference": "48c333f5d646b48fb605058772b9824a9c212dc3",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/52177a6d7c6e57e22710943435fb24dc5beeee6e",
+                "reference": "52177a6d7c6e57e22710943435fb24dc5beeee6e",
                 "shasum": ""
             },
             "require": {
@@ -8019,7 +8019,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T06:35:24+00:00"
+            "time": "2022-07-08T08:03:15+00:00"
         },
         {
             "name": "web-auth/webauthn-stimulus",
