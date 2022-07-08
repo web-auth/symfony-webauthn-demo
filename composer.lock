@@ -8027,12 +8027,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/ux.git",
-                "reference": "6ef209aa6e034015fc86136dfc92269f64f02c57"
+                "reference": "f65dfadaa3db0550e49aac9f4449cd159e8837b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/ux/zipball/6ef209aa6e034015fc86136dfc92269f64f02c57",
-                "reference": "6ef209aa6e034015fc86136dfc92269f64f02c57",
+                "url": "https://api.github.com/repos/web-auth/ux/zipball/f65dfadaa3db0550e49aac9f4449cd159e8837b6",
+                "reference": "f65dfadaa3db0550e49aac9f4449cd159e8837b6",
                 "shasum": ""
             },
             "conflict": {
@@ -8074,7 +8074,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-07T18:47:30+00:00"
+            "time": "2022-07-07T19:52:53+00:00"
         },
         {
             "name": "web-auth/webauthn-symfony-bundle",
