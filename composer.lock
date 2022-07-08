@@ -7946,12 +7946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "b59591d7740ae613c6aea664b4b39d28fc721111"
+                "reference": "48c333f5d646b48fb605058772b9824a9c212dc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/b59591d7740ae613c6aea664b4b39d28fc721111",
-                "reference": "b59591d7740ae613c6aea664b4b39d28fc721111",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/48c333f5d646b48fb605058772b9824a9c212dc3",
+                "reference": "48c333f5d646b48fb605058772b9824a9c212dc3",
                 "shasum": ""
             },
             "require": {
@@ -8019,7 +8019,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T05:27:19+00:00"
+            "time": "2022-07-08T06:35:24+00:00"
         },
         {
             "name": "web-auth/webauthn-stimulus",
@@ -8082,12 +8082,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
-                "reference": "f6f95da63108cd2e33c927e01a5e391503d13e29"
+                "reference": "faa183e6bd6351e40cca44b1358c2f8d7571b18d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/f6f95da63108cd2e33c927e01a5e391503d13e29",
-                "reference": "f6f95da63108cd2e33c927e01a5e391503d13e29",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/faa183e6bd6351e40cca44b1358c2f8d7571b18d",
+                "reference": "faa183e6bd6351e40cca44b1358c2f8d7571b18d",
                 "shasum": ""
             },
             "require": {
@@ -8142,7 +8142,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T05:27:19+00:00"
+            "time": "2022-07-08T06:26:02+00:00"
         },
         {
             "name": "web-token/jwt-core",
