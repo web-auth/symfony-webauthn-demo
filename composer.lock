@@ -6969,16 +6969,16 @@
         },
         {
             "name": "symfony/ux-typed",
-            "version": "v2.2.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-typed.git",
-                "reference": "fc20173929888c63d08111b107c2c76416d7a896"
+                "reference": "11263c1788c2a7700aabc8606eb005752f3d6ea0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-typed/zipball/fc20173929888c63d08111b107c2c76416d7a896",
-                "reference": "fc20173929888c63d08111b107c2c76416d7a896",
+                "url": "https://api.github.com/repos/symfony/ux-typed/zipball/11263c1788c2a7700aabc8606eb005752f3d6ea0",
+                "reference": "11263c1788c2a7700aabc8606eb005752f3d6ea0",
                 "shasum": ""
             },
             "conflict": {
@@ -7011,7 +7011,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-typed/tree/v2.2.0"
+                "source": "https://github.com/symfony/ux-typed/tree/v2.3.0"
             },
             "funding": [
                 {
@@ -7027,7 +7027,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-06-16T10:38:59+00:00"
+            "time": "2022-07-04T12:52:51+00:00"
         },
         {
             "name": "symfony/validator",
@@ -7946,12 +7946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "aa0618825a0ebda42fd773ab15ed5e4a9867d103"
+                "reference": "d3a2cb08bcf22fbcabce506d05aa382e144dbe38"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/aa0618825a0ebda42fd773ab15ed5e4a9867d103",
-                "reference": "aa0618825a0ebda42fd773ab15ed5e4a9867d103",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/d3a2cb08bcf22fbcabce506d05aa382e144dbe38",
+                "reference": "d3a2cb08bcf22fbcabce506d05aa382e144dbe38",
                 "shasum": ""
             },
             "require": {
@@ -8019,7 +8019,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T14:15:02+00:00"
+            "time": "2022-07-08T19:16:28+00:00"
         },
         {
             "name": "web-auth/webauthn-stimulus",
