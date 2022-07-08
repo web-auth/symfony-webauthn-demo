@@ -7946,12 +7946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "52177a6d7c6e57e22710943435fb24dc5beeee6e"
+                "reference": "4fe4f9e6aeb4a2c7292d9e876d463feb4598d3c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/52177a6d7c6e57e22710943435fb24dc5beeee6e",
-                "reference": "52177a6d7c6e57e22710943435fb24dc5beeee6e",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/4fe4f9e6aeb4a2c7292d9e876d463feb4598d3c6",
+                "reference": "4fe4f9e6aeb4a2c7292d9e876d463feb4598d3c6",
                 "shasum": ""
             },
             "require": {
@@ -8019,7 +8019,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T08:03:15+00:00"
+            "time": "2022-07-08T08:50:20+00:00"
         },
         {
             "name": "web-auth/webauthn-stimulus",
