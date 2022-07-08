@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "586069c10bfe223e92c57f426e24d1e1",
+    "content-hash": "42a35ff74f7693479b13e60d2a1dd9ea",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -7946,12 +7946,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "32c75e0a26b7bff3192d70d6b553d1174e4d9b1a"
+                "reference": "b59591d7740ae613c6aea664b4b39d28fc721111"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/32c75e0a26b7bff3192d70d6b553d1174e4d9b1a",
-                "reference": "32c75e0a26b7bff3192d70d6b553d1174e4d9b1a",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/b59591d7740ae613c6aea664b4b39d28fc721111",
+                "reference": "b59591d7740ae613c6aea664b4b39d28fc721111",
                 "shasum": ""
             },
             "require": {
@@ -8019,7 +8019,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-07T16:43:37+00:00"
+            "time": "2022-07-08T05:27:19+00:00"
         },
         {
             "name": "web-auth/webauthn-stimulus",
@@ -8082,12 +8082,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
-                "reference": "95992002ee5a1076974affb8d582610cfa0de4ee"
+                "reference": "f6f95da63108cd2e33c927e01a5e391503d13e29"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/95992002ee5a1076974affb8d582610cfa0de4ee",
-                "reference": "95992002ee5a1076974affb8d582610cfa0de4ee",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/f6f95da63108cd2e33c927e01a5e391503d13e29",
+                "reference": "f6f95da63108cd2e33c927e01a5e391503d13e29",
                 "shasum": ""
             },
             "require": {
@@ -8142,7 +8142,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-07T16:43:37+00:00"
+            "time": "2022-07-08T05:27:19+00:00"
         },
         {
             "name": "web-token/jwt-core",
@@ -8436,6 +8436,145 @@
             ],
             "support": {
                 "source": "https://github.com/web-token/jwt-signature-algorithm-ecdsa/tree/v3.0.6"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/FlorentMorselli",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-02-27T09:13:59+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature-algorithm-experimental",
+            "version": "v3.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature-algorithm-experimental.git",
+                "reference": "193e7b720391d26de46c8926973955a2460daa89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-experimental/zipball/193e7b720391d26de46c8926973955a2460daa89",
+                "reference": "193e7b720391d26de46c8926973955a2460daa89",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "web-token/jwt-signature-algorithm-hmac": "^3.0",
+                "web-token/jwt-signature-algorithm-rsa": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\Algorithm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
+                }
+            ],
+            "description": "Experimental Signature Algorithms the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "support": {
+                "source": "https://github.com/web-token/jwt-signature-algorithm-experimental/tree/v3.0.6"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/FlorentMorselli",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-02-27T09:13:59+00:00"
+        },
+        {
+            "name": "web-token/jwt-signature-algorithm-hmac",
+            "version": "v3.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/web-token/jwt-signature-algorithm-hmac.git",
+                "reference": "99c393d838e2e882022faa442e467f7d49e01453"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-hmac/zipball/99c393d838e2e882022faa442e467f7d49e01453",
+                "reference": "99c393d838e2e882022faa442e467f7d49e01453",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "web-token/jwt-signature": "^3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jose\\Component\\Signature\\Algorithm\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Florent Morselli",
+                    "homepage": "https://github.com/Spomky"
+                },
+                {
+                    "name": "All contributors",
+                    "homepage": "https://github.com/web-token/jwt-framework/contributors"
+                }
+            ],
+            "description": "HMAC Based Signature Algorithms the JWT Framework.",
+            "homepage": "https://github.com/web-token",
+            "keywords": [
+                "JOSE",
+                "JWE",
+                "JWK",
+                "JWKSet",
+                "JWS",
+                "Jot",
+                "RFC7515",
+                "RFC7516",
+                "RFC7517",
+                "RFC7518",
+                "RFC7519",
+                "RFC7520",
+                "bundle",
+                "jwa",
+                "jwt",
+                "symfony"
+            ],
+            "support": {
+                "source": "https://github.com/web-token/jwt-signature-algorithm-hmac/tree/v3.0.6"
             },
             "funding": [
                 {

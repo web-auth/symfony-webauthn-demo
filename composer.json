@@ -49,6 +49,7 @@
         "web-auth/webauthn-symfony-bundle": "v4.1.x-dev",
         "web-token/jwt-key-mgmt": "^3.0",
         "web-token/jwt-signature-algorithm-ecdsa": "^3.0",
+        "web-token/jwt-signature-algorithm-experimental": "^3.0",
         "web-token/jwt-signature-algorithm-rsa": "^3.0"
     },
     "config": {
