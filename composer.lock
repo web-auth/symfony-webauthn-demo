@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "42a35ff74f7693479b13e60d2a1dd9ea",
+    "content-hash": "239e8bc41ac7030a8aad43174ef005a5",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -1727,6 +1727,67 @@
             "time": "2022-06-06T11:26:02+00:00"
         },
         {
+            "name": "lcobucci/clock",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/clock.git",
+                "reference": "fb533e093fd61321bfcbac08b131ce805fe183d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/fb533e093fd61321bfcbac08b131ce805fe183d3",
+                "reference": "fb533e093fd61321bfcbac08b131ce805fe183d3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0",
+                "stella-maris/clock": "^0.1.4"
+            },
+            "require-dev": {
+                "infection/infection": "^0.26",
+                "lcobucci/coding-standard": "^8.0",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\Clock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com"
+                }
+            ],
+            "description": "Yet another clock abstraction",
+            "support": {
+                "issues": "https://github.com/lcobucci/clock/issues",
+                "source": "https://github.com/lcobucci/clock/tree/2.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-04-19T19:34:17+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "3.1.0",
             "source": {
@@ -2549,6 +2610,143 @@
                 }
             ],
             "time": "2022-06-26T07:20:40+00:00"
+        },
+        {
+            "name": "spomky-labs/pki-framework",
+            "version": "v1.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Spomky-Labs/pki-framework.git",
+                "reference": "dabfe1768326cf727d0972ea2be6e692b19e5afe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Spomky-Labs/pki-framework/zipball/dabfe1768326cf727d0972ea2be6e692b19e5afe",
+                "reference": "dabfe1768326cf727d0972ea2be6e692b19e5afe",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gmp": "*",
+                "ext-intl": "*",
+                "ext-mbstring": "*",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "ekino/phpstan-banned-code": "^1.0",
+                "infection/infection": "^0.26",
+                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan-beberlei-assert": "^1.0",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpstan/phpstan-strict-rules": "^1.0",
+                "phpunit/phpunit": "^9.0",
+                "qossmic/deptrac-shim": "^0.19",
+                "rector/rector": "^0.12",
+                "roave/security-advisories": "dev-latest",
+                "symfony/phpunit-bridge": "^6.0",
+                "symfony/var-dumper": "^6.0",
+                "symplify/easy-coding-standard": "^10.0",
+                "thecodingmachine/phpstan-safe-rule": "^1.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SpomkyLabs\\Pki\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joni Eskelinen",
+                    "email": "jonieske@gmail.com",
+                    "role": "Original developer"
+                }
+            ],
+            "description": "A PHP framework for managing Public Key Infrastructures. It comprises X.509 public key certificates, attribute certificates, certification requests and certification path validation.",
+            "homepage": "https://github.com/spomky-labs/pki-framework",
+            "keywords": [
+                "DER",
+                "Private Key",
+                "ac",
+                "algorithm identifier",
+                "asn.1",
+                "asn1",
+                "attribute certificate",
+                "certificate",
+                "certification request",
+                "cryptography",
+                "csr",
+                "decrypt",
+                "ec",
+                "encrypt",
+                "pem",
+                "pkcs",
+                "public key",
+                "rsa",
+                "sign",
+                "signature",
+                "verify",
+                "x.509",
+                "x.690",
+                "x509",
+                "x690"
+            ],
+            "support": {
+                "issues": "https://github.com/Spomky-Labs/pki-framework/issues",
+                "source": "https://github.com/Spomky-Labs/pki-framework/tree/v1.0"
+            },
+            "time": "2022-07-09T21:10:49+00:00"
+        },
+        {
+            "name": "stella-maris/clock",
+            "version": "0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/stella-maris/clock.git",
+                "reference": "8a0a967896df4c63417385dc69328a0aec84d9cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/stella-maris%2Fclock/repository/archive.zip?sha=8a0a967896df4c63417385dc69328a0aec84d9cf",
+                "reference": "8a0a967896df4c63417385dc69328a0aec84d9cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "StellaMaris\\Clock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Heigl",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "A pre-release of the proposed PSR-20 Clock-Interface",
+            "homepage": "https://gitlab.com/stella-maris/clock",
+            "keywords": [
+                "clock",
+                "datetime",
+                "point in time",
+                "psr20"
+            ],
+            "support": {
+                "issues": "https://gitlab.com/stella-maris/clock/-/issues",
+                "source": "https://gitlab.com/stella-maris/clock/-/tree/0.1.4"
+            },
+            "time": "2022-04-17T14:12:26+00:00"
         },
         {
             "name": "symfony/asset",
@@ -7876,22 +8074,25 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
-                "reference": "87126d5180b392712365eb28a12367719ac37e0c"
+                "reference": "56fe1e3525569343bec442b584fe78c4abfbde94"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/87126d5180b392712365eb28a12367719ac37e0c",
-                "reference": "87126d5180b392712365eb28a12367719ac37e0c",
+                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/56fe1e3525569343bec442b584fe78c4abfbde94",
+                "reference": "56fe1e3525569343bec442b584fe78c4abfbde94",
                 "shasum": ""
             },
             "require": {
                 "beberlei/assert": "^3.2",
                 "ext-json": "*",
+                "lcobucci/clock": "^2.2",
                 "paragonie/constant_time_encoding": "^2.4",
                 "php": ">=8.1",
                 "psr/http-client": "^1.0",
                 "psr/http-factory": "^1.0",
-                "psr/log": "^2.0|^3.0"
+                "psr/log": "^2.0|^3.0",
+                "spomky-labs/pki-framework": "v1.0.x-dev",
+                "thecodingmachine/safe": "^2.0"
             },
             "suggest": {
                 "psr/log-implementation": "Recommended to receive logs from the library",
@@ -7938,7 +8139,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T08:03:15+00:00"
+            "time": "2022-07-11T10:48:00+00:00"
         },
         {
             "name": "web-auth/webauthn-lib",
@@ -7946,12 +8147,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "b459a82be5256b3b93a6c5ce837d4115df923880"
+                "reference": "ad1966b132286fb6ab73d8585d3cb21aa6f1e9a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/b459a82be5256b3b93a6c5ce837d4115df923880",
-                "reference": "b459a82be5256b3b93a6c5ce837d4115df923880",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/ad1966b132286fb6ab73d8585d3cb21aa6f1e9a5",
+                "reference": "ad1966b132286fb6ab73d8585d3cb21aa6f1e9a5",
                 "shasum": ""
             },
             "require": {
@@ -8019,7 +8220,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T19:58:55+00:00"
+            "time": "2022-07-11T10:48:00+00:00"
         },
         {
             "name": "web-auth/webauthn-stimulus",
@@ -8082,12 +8283,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
-                "reference": "faa183e6bd6351e40cca44b1358c2f8d7571b18d"
+                "reference": "39ff2c8bdc7e621916f83b2bddfd81fe7d63f9ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/faa183e6bd6351e40cca44b1358c2f8d7571b18d",
-                "reference": "faa183e6bd6351e40cca44b1358c2f8d7571b18d",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/39ff2c8bdc7e621916f83b2bddfd81fe7d63f9ff",
+                "reference": "39ff2c8bdc7e621916f83b2bddfd81fe7d63f9ff",
                 "shasum": ""
             },
             "require": {
@@ -8142,7 +8343,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-08T06:26:02+00:00"
+            "time": "2022-07-11T10:48:00+00:00"
         },
         {
             "name": "web-token/jwt-core",
@@ -11114,6 +11315,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "spomky-labs/pki-framework": 20,
         "web-auth/metadata-service": 20,
         "web-auth/webauthn-lib": 20,
         "web-auth/webauthn-stimulus": 20,

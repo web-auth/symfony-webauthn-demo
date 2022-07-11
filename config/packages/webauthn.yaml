@@ -37,4 +37,3 @@ webauthn:
         enabled: true
         mds_repository: 'App\Repository\MetadataStatementRepository'
         status_report_repository: 'App\Repository\StatusReportRepository'
-        #certificate_chain_checker: 'App\Security\CertificateChainChecker'
