@@ -8074,12 +8074,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
-                "reference": "73fa20316b11948707a880aa8a9550980173c53c"
+                "reference": "20c4c1e7accb58069f0b631cf8a082a26b1888c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/73fa20316b11948707a880aa8a9550980173c53c",
-                "reference": "73fa20316b11948707a880aa8a9550980173c53c",
+                "url": "https://api.github.com/repos/web-auth/webauthn-metadata-service/zipball/20c4c1e7accb58069f0b631cf8a082a26b1888c1",
+                "reference": "20c4c1e7accb58069f0b631cf8a082a26b1888c1",
                 "shasum": ""
             },
             "require": {
@@ -8139,7 +8139,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-07-12T09:16:19+00:00"
+            "time": "2022-07-12T09:39:58+00:00"
         },
         {
             "name": "web-auth/webauthn-lib",
