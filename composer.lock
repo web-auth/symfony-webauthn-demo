@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "587faa5be6d4cd9fe673ac8e3e8ba20f",
+    "content-hash": "7d65a099b9a32041fe78c55c4e3ad90b",
     "packages": [
         {
             "name": "beberlei/assert",
@@ -8093,7 +8093,7 @@
         },
         {
             "name": "web-auth/metadata-service",
-            "version": "4.1.0",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-metadata-service.git",
@@ -8150,7 +8150,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/webauthn-metadata-service/tree/4.1.0"
+                "source": "https://github.com/web-auth/webauthn-metadata-service/tree/4.1.2"
             },
             "funding": [
                 {
@@ -8166,16 +8166,16 @@
         },
         {
             "name": "web-auth/webauthn-lib",
-            "version": "4.1.0",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-lib.git",
-                "reference": "444b2196e25ef921420565122f4a2ad64d7fdde1"
+                "reference": "8fad67be1448d4271fce992b7bcca62ae371d3b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/444b2196e25ef921420565122f4a2ad64d7fdde1",
-                "reference": "444b2196e25ef921420565122f4a2ad64d7fdde1",
+                "url": "https://api.github.com/repos/web-auth/webauthn-lib/zipball/8fad67be1448d4271fce992b7bcca62ae371d3b9",
+                "reference": "8fad67be1448d4271fce992b7bcca62ae371d3b9",
                 "shasum": ""
             },
             "require": {
@@ -8231,7 +8231,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/webauthn-lib/tree/4.1.0"
+                "source": "https://github.com/web-auth/webauthn-lib/tree/4.1.2"
             },
             "funding": [
                 {
@@ -8243,20 +8243,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-08-29T17:23:55+00:00"
+            "time": "2022-08-29T20:33:38+00:00"
         },
         {
             "name": "web-auth/webauthn-stimulus",
-            "version": "4.1.0",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/ux.git",
-                "reference": "3fa53f1b3631207fb6c654b6ba4d8f8a60d2ccbd"
+                "reference": "358bfd306b0a0196230a330aa28c99ff08949d91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/ux/zipball/3fa53f1b3631207fb6c654b6ba4d8f8a60d2ccbd",
-                "reference": "3fa53f1b3631207fb6c654b6ba4d8f8a60d2ccbd",
+                "url": "https://api.github.com/repos/web-auth/ux/zipball/358bfd306b0a0196230a330aa28c99ff08949d91",
+                "reference": "358bfd306b0a0196230a330aa28c99ff08949d91",
                 "shasum": ""
             },
             "conflict": {
@@ -8286,7 +8286,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/ux/tree/4.1.0"
+                "source": "https://github.com/web-auth/ux/tree/4.1.2"
             },
             "funding": [
                 {
@@ -8298,20 +8298,20 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-08-29T17:23:55+00:00"
+            "time": "2022-08-29T21:14:50+00:00"
         },
         {
             "name": "web-auth/webauthn-symfony-bundle",
-            "version": "4.1.0",
+            "version": "4.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/webauthn-symfony-bundle.git",
-                "reference": "0a4ee73b2f08c945ea888562ad9e249a653857c5"
+                "reference": "5f9ab3f9f4c67b625afeebdc052a880248243268"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/0a4ee73b2f08c945ea888562ad9e249a653857c5",
-                "reference": "0a4ee73b2f08c945ea888562ad9e249a653857c5",
+                "url": "https://api.github.com/repos/web-auth/webauthn-symfony-bundle/zipball/5f9ab3f9f4c67b625afeebdc052a880248243268",
+                "reference": "5f9ab3f9f4c67b625afeebdc052a880248243268",
                 "shasum": ""
             },
             "require": {
@@ -8359,7 +8359,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/webauthn-symfony-bundle/tree/4.1.0"
+                "source": "https://github.com/web-auth/webauthn-symfony-bundle/tree/4.1.2"
             },
             "funding": [
                 {
@@ -8371,7 +8371,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-08-29T17:23:55+00:00"
+            "time": "2022-08-29T21:14:50+00:00"
         },
         {
             "name": "web-token/jwt-core",

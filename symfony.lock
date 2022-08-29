@@ -602,17 +602,8 @@
     "web-auth/cose-lib": {
         "version": "v4.0.3"
     },
-    "web-auth/metadata-service": {
-        "version": "v4.0.x-dev"
-    },
-    "web-auth/webauthn-lib": {
-        "version": "v4.0.x-dev"
-    },
-    "web-auth/webauthn-stimulus": {
-        "version": "v4.0.x-dev"
-    },
     "web-auth/webauthn-symfony-bundle": {
-        "version": "4.0",
+        "version": "4.1",
         "recipe": {
             "repo": "github.com/web-auth/recipes",
             "branch": "tree",
