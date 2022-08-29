@@ -986,10 +986,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
-"@simplewebauthn/browser@^5.0.0":
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/@simplewebauthn/browser/-/browser-5.3.0.tgz#64000235c9c92115849b0ee8ad35f6a7cf7ea612"
-  integrity sha512-CJAHHxKnqkgxti4j6GcBip6O0x5xEBR5MaAy2C0Dd54Q/Xb+HqdRbd2UztdC5ejTx4k/NCLXmgGhwOqkkDN2zg==
+"@simplewebauthn/browser@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@simplewebauthn/browser/-/browser-6.0.0.tgz#4c667042213799a4c6680bd9a7c8a8fb5512d31e"
+  integrity sha512-gaXZmNfBPFawVZLhDPHkArCt0ttUbNSQSq24muyFmUi/QfJIhvQfQH7kfqIwlAXKqs79qpJ4RCYsRUjVj0Yl6w==
 
 "@simplewebauthn/typescript-types@^5.0.0":
   version "5.3.0"
