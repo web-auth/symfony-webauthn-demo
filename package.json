@@ -25,6 +25,10 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
+    "engines" : {
+        "npm" : ">=8.0.0",
+        "node" : ">=16.0.0"
+    },
     "dependencies": {
         "@popperjs/core": "^2.11.2"
     }
