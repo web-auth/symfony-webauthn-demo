@@ -17,11 +17,13 @@ security:
                 options_storage: 'App\CustomStorage'
                 registration:
                     enabled: true
+                    profile: default
                     routes:
                         options_path: '/attestation/options'
                         result_path: '/attestation/result'
                 authentication:
                     enabled: true
+                    profile: default
                     routes:
                         options_path: '/assertion/options'
                         result_path: '/assertion/result'

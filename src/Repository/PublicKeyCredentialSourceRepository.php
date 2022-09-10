@@ -29,7 +29,7 @@ final class PublicKeyCredentialSourceRepository extends BasePublicKeyCredentialS
         return $qb->select('c')
             ->from($this->getClass(), 'c')
             ->where('c.userHandle = :user_handle')
-            ->setParameter(':user_handle', $user->getUserHandle())
+            ->setParameter(':user_handle', $user->getId())
             ->getQuery()
             ->execute()
         ;

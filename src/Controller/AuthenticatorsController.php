@@ -30,7 +30,7 @@ final class AuthenticatorsController extends AbstractController
             throw new AccessDeniedHttpException();
         }
 
-        $userEntity = $this->keyCredentialUserEntityRepository->findOneByUserHandle($user->getUserIdentifier());
+        $userEntity = $this->keyCredentialUserEntityRepository->findOneByUserHandle($user->getId());
         if ($userEntity === null) {
             throw new AccessDeniedHttpException();
         }

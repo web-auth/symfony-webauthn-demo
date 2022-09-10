@@ -10,6 +10,7 @@
             requestSuccessRedirectUri: path('profile')
         }
     ) }}>
+        <input type="hidden" name="userVerification" value="required">
         <main class="form-signin">
             <a href="{{ path('app_homepage') }}">
                 <img class="mb-4" src="{{ asset('build/images/icon.png') }}" width="64" height="64" alt="Demo">

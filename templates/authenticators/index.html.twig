@@ -59,7 +59,7 @@
                                 <h5 class="card-title">Authenticator details</h5>
                                 <dl>
                                     <dt>Public Key Credential ID</dt>
-                                    <dd>{{ credential.publicKeyCredentialId }}</dd>
+                                    <dd>Base64: {{ credential.publicKeyCredentialId }}</dd>
                                     <dt>Attestation Type</dt>
                                     <dd>{{ credential.attestationType }}</dd>
                                     <dt>AAGUID</dt>
@@ -69,6 +69,7 @@
                                     <dt>Counter</dt>
                                     <dd>{{ credential.counter }}</dd>
                                 </dl>
+                                {{ dump(credential) }}
                             </div>
                         </div>
                     {% endfor %}

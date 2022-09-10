@@ -19,8 +19,9 @@ final class UserProvider implements UserProviderInterface
 
     public function loadUserByIdentifier(string $identifier): UserInterface|User
     {
+        dump($identifier);
         $user = $this->userRepository->findOneBy([
-            'id' => $identifier,
+            'username' => $identifier,
         ]);
         if ($user === null) {
             throw new UserNotFoundException(sprintf('User "%s" not found.', $identifier));

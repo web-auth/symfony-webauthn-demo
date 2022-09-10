@@ -33,9 +33,14 @@ class User implements UserInterface
     ) {
     }
 
-    public function getUserIdentifier(): string
+    public function getId(): string
     {
         return $this->id;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->username;
     }
 
     public function getRoles(): array

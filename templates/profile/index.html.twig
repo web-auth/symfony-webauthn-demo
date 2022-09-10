@@ -56,7 +56,8 @@
                     <h5 class="card-title">Authenticator used for sign in / sign on</h5>
                     <dl>
                         <dt>Public Key Credential ID</dt>
-                        <dd>{{ token.publicKeyCredentialDescriptor.id|toBase64  }} / {{ token.publicKeyCredentialDescriptor.id|toHex }}</dd>
+                        <dd>Base64: {{ token.publicKeyCredentialDescriptor.id|toBase64 }}</dd>
+                        <dd>Hex: {{ token.publicKeyCredentialDescriptor.id|toHex }}</dd>
                         <dt>User was present</dt>
                         <dd>{% if token.isUserPresent %}Yes{% else %}No{% endif %}</dd>
                         <dt>User was verified</dt>
@@ -64,6 +65,8 @@
                         <dt>Signature counter</dt>
                         <dd>{{ token.signCount }}</dd>
                     </dl>
+                    {{ dump(token) }}
+                    {{ dump(app.user) }}
                 </div>
             </div>
         </main>

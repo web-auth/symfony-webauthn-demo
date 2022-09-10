@@ -67,8 +67,8 @@ final class PublicKeyCredentialUserEntityRepository implements PublicKeyCredenti
         }
 
         return new PublicKeyCredentialUserEntity(
-            $user->getUsername(),
             $user->getUserIdentifier(),
+            $user->getId(),
             $user->getDisplayName(),
             null
         );
