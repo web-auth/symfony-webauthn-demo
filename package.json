@@ -27,7 +27,8 @@
     },
     "engines" : {
         "npm" : ">=8.0.0",
-        "node" : ">=16.0.0"
+        "node" : ">=16.0.0",
+        "yarn": ">=1.22.0"
     },
     "dependencies": {
         "@popperjs/core": "^2.11.2"
