@@ -19,7 +19,6 @@ final class UserProvider implements UserProviderInterface
 
     public function loadUserByIdentifier(string $identifier): UserInterface|User
     {
-        dump($identifier);
         $user = $this->userRepository->findOneBy([
             'username' => $identifier,
         ]);
