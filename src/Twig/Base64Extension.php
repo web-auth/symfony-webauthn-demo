@@ -7,7 +7,7 @@ namespace App\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
-class Base64Extension extends AbstractExtension
+final class Base64Extension extends AbstractExtension
 {
     public function getFilters(): array
     {

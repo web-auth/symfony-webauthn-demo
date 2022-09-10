@@ -11,7 +11,7 @@ use Webauthn\MetadataService\Service\FidoAllianceCompliantMetadataService;
 use Webauthn\MetadataService\Service\MetadataService;
 use Webauthn\MetadataService\Statement\MetadataStatement;
 
-class LoadMetadataStatementsAndStatusReports implements CacheWarmerInterface
+final class LoadMetadataStatementsAndStatusReports implements CacheWarmerInterface
 {
     /**
      * @param MetadataService[] $services

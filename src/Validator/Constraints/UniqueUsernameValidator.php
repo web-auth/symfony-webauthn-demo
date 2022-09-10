@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-class UniqueUsernameValidator extends ConstraintValidator
+final class UniqueUsernameValidator extends ConstraintValidator
 {
     public function __construct(
         private readonly PublicKeyCredentialUserEntityRepository $userRepository
