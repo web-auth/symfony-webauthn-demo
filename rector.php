@@ -15,11 +15,10 @@ use Rector\Symfony\Set\SymfonySetList;
 return static function (RectorConfig $config): void {
     $config->sets([
         SetList::DEAD_CODE,
-        LevelSetList::UP_TO_PHP_81,
-        SymfonyLevelSetList::UP_TO_SYMFONY_60,
+        LevelSetList::UP_TO_PHP_82,
+        SymfonyLevelSetList::UP_TO_SYMFONY_62,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
-        SymfonySetList::SYMFONY_STRICT,
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
         PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
@@ -29,7 +28,7 @@ return static function (RectorConfig $config): void {
         PHPUnitSetList::REMOVE_MOCKS,
         PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
     ]);
-    $config->phpVersion(PhpVersion::PHP_81);
+    $config->phpVersion(PhpVersion::PHP_82);
     $config->paths([__DIR__ . '/src', __DIR__ . '/tests']);
     $config->parallel();
     $config->importNames();
