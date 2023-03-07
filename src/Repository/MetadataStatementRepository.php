@@ -8,10 +8,10 @@ use Psr\Cache\CacheItemPoolInterface;
 use Webauthn\MetadataService\MetadataStatementRepository as MetadataStatementRepositoryInterface;
 use Webauthn\MetadataService\Statement\MetadataStatement;
 
-final class MetadataStatementRepository implements MetadataStatementRepositoryInterface
+final readonly class MetadataStatementRepository implements MetadataStatementRepositoryInterface
 {
     public function __construct(
-        private readonly CacheItemPoolInterface $cacheItemPool,
+        private CacheItemPoolInterface $cacheItemPool,
     ) {
     }
 

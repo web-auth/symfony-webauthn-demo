@@ -34,8 +34,6 @@ final class Version20220403120305 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        $this->addSql('CREATE SCHEMA public');
-        $this->addSql('DROP TABLE pk_credential_sources');
-        $this->addSql('DROP TABLE users');
+        throw new \LogicException('Wild cats never go back!');
     }
 }

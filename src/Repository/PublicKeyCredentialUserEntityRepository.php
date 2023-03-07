@@ -9,10 +9,11 @@ use Symfony\Component\Uid\Ulid;
 use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository as PublicKeyCredentialUserEntityRepositoryInterface;
 use Webauthn\PublicKeyCredentialUserEntity;
 
-final class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface
+final readonly class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface
 {
-    public function __construct(private readonly UserRepository $userRepository)
-    {
+    public function __construct(
+        private UserRepository $userRepository
+    ) {
     }
 
     public function generateNextUserEntityId(): string

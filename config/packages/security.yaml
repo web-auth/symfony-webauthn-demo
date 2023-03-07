@@ -13,6 +13,7 @@ security:
             pattern: ^/(_(profiler|wdt|errors)|css|images|js)/
             security: false
         main:
+            pattern: ^/
             webauthn:
                 options_storage: 'App\CustomStorage'
                 registration:
@@ -43,6 +44,7 @@ security:
         - { path: ^/login,  roles: PUBLIC_ACCESS, requires_channel: 'https' }
         - { path: ^/register,  roles: PUBLIC_ACCESS, requires_channel: 'https' }
         - { path: ^/profile, roles: ROLE_USER, requires_channel: 'https' }
+        #- { path: ^/attestation/options, roles: PUBLIC_ACCESS, requires_channel: 'https' }
         - { path: ^/,       roles: PUBLIC_ACCESS, requires_channel: 'https' }
 
 #when@test:

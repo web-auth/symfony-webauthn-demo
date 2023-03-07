@@ -17,7 +17,7 @@
             </a>
             <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
             <div class="form-floating">
-                <input name="username" type="text" class="form-control" id="username" placeholder="Username">
+                <input name="username" type="text" class="form-control" id="username" placeholder="Username" autocomplete="webauthn username">
                 <label for="username">Username</label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit" {{ stimulus_action('@web-auth/webauthn-stimulus/webauthn', 'signin') }}>

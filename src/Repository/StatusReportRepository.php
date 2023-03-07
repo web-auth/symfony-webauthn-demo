@@ -8,10 +8,10 @@ use Psr\Cache\CacheItemPoolInterface;
 use Webauthn\MetadataService\Statement\StatusReport;
 use Webauthn\MetadataService\StatusReportRepository as StatusReportRepositoryInterface;
 
-final class StatusReportRepository implements StatusReportRepositoryInterface
+final readonly class StatusReportRepository implements StatusReportRepositoryInterface
 {
     public function __construct(
-        private readonly CacheItemPoolInterface $cacheItemPool,
+        private CacheItemPoolInterface $cacheItemPool,
     ) {
     }
 

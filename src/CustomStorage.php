@@ -9,12 +9,12 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Webauthn\Bundle\Security\Storage\Item;
 use Webauthn\Bundle\Security\Storage\OptionsStorage;
 
-final class CustomStorage implements OptionsStorage
+final readonly class CustomStorage implements OptionsStorage
 {
     private const KEY = 'webauthn-options';
 
     public function __construct(
-        private readonly CacheItemPoolInterface $cacheItemPool
+        private CacheItemPoolInterface $cacheItemPool
     ) {
     }
 

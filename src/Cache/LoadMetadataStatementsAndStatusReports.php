@@ -11,15 +11,15 @@ use Webauthn\MetadataService\Service\FidoAllianceCompliantMetadataService;
 use Webauthn\MetadataService\Service\MetadataService;
 use Webauthn\MetadataService\Statement\MetadataStatement;
 
-final class LoadMetadataStatementsAndStatusReports implements CacheWarmerInterface
+final readonly class LoadMetadataStatementsAndStatusReports implements CacheWarmerInterface
 {
     /**
      * @param MetadataService[] $services
      */
     public function __construct(
-        private readonly MetadataStatementRepository $metadataStatementRepository,
-        private readonly StatusReportRepository $statusReportRepository,
-        private readonly iterable $services,
+        private MetadataStatementRepository $metadataStatementRepository,
+        private StatusReportRepository $statusReportRepository,
+        private iterable $services,
     ) {
     }
 

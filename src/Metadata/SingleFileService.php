@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Metadata;
 
 use function array_key_exists;
+use InvalidArgumentException;
 use Symfony\Component\Finder\Finder;
 use Webauthn\MetadataService\Service\MetadataService;
 use Webauthn\MetadataService\Statement\MetadataStatement;
@@ -16,8 +17,9 @@ final class SingleFileService implements MetadataService
      */
     private array $statements;
 
-    public function __construct(private readonly string $rootPath)
-    {
+    public function __construct(
+        private readonly string $rootPath
+    ) {
     }
 
     public function list(): iterable
@@ -37,7 +39,10 @@ final class SingleFileService implements MetadataService
     public function get(string $aaguid): MetadataStatement
     {
         $this->loadMDS();
-        array_key_exists($aaguid, $this->statements) || throw new \InvalidArgumentException(sprintf('The MDS with the AAGUID "%s" does not exist.', $aaguid));
+        array_key_exists($aaguid, $this->statements) || throw new InvalidArgumentException(sprintf(
+            'The MDS with the AAGUID "%s" does not exist.',
+            $aaguid
+        ));
 
         return $this->statements[$aaguid];
     }
