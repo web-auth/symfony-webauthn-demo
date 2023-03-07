@@ -30,9 +30,9 @@
         "build": "encore production --progress"
     },
     "engines": {
-        "npm": ">=8.0.0",
-        "node": ">=16.0.0",
-        "yarn": ">=1.22.0"
+        "npm": "^9.0.0",
+        "node": "^19.0.0",
+        "yarn": "^1.22.0"
     },
     "dependencies": {
         "@popperjs/core": "^2.11.2"
