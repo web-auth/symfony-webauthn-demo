@@ -9,6 +9,7 @@
         "ext-ctype": "*",
         "ext-gmp": "*",
         "ext-iconv": "*",
+        "ext-intl": "*",
         "ext-sodium": "*",
         "doctrine/annotations": "^2.0",
         "doctrine/doctrine-bundle": "^2.5",
