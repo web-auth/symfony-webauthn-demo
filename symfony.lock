@@ -236,9 +236,6 @@
     "sebastian/recursion-context": {
         "version": "4.0.4"
     },
-    "sebastian/resource-operations": {
-        "version": "3.0.3"
-    },
     "sebastian/type": {
         "version": "2.3.4"
     },
@@ -392,6 +389,15 @@
     },
     "symfony/options-resolver": {
         "version": "v5.4.3"
+    },
+    "symfony/panther": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "877d853a05c6713665a2f4b954734592680abff6"
+        }
     },
     "symfony/password-hasher": {
         "version": "v5.4.3"
@@ -603,7 +609,7 @@
         "version": "v4.0.3"
     },
     "web-auth/webauthn-symfony-bundle": {
-        "version": "4.1",
+        "version": "4.5",
         "recipe": {
             "repo": "github.com/web-auth/recipes",
             "branch": "tree",
