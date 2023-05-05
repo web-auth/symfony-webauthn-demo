@@ -4501,16 +4501,16 @@
         },
         {
             "name": "symfony/intl",
-            "version": "v6.2.7",
+            "version": "v6.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
-                "reference": "e7346ea6d88ae22e1b5d489b7a60135e72527cec"
+                "reference": "860c99e53149d22df1900d3aefdaeb17adb7669d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/intl/zipball/e7346ea6d88ae22e1b5d489b7a60135e72527cec",
-                "reference": "e7346ea6d88ae22e1b5d489b7a60135e72527cec",
+                "url": "https://api.github.com/repos/symfony/intl/zipball/860c99e53149d22df1900d3aefdaeb17adb7669d",
+                "reference": "860c99e53149d22df1900d3aefdaeb17adb7669d",
                 "shasum": ""
             },
             "require": {
@@ -4551,7 +4551,7 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Provides a PHP replacement layer for the C intl extension that includes additional data from the ICU library",
+            "description": "Provides access to the localization data of the ICU library",
             "homepage": "https://symfony.com",
             "keywords": [
                 "i18n",
@@ -4562,7 +4562,7 @@
                 "localization"
             ],
             "support": {
-                "source": "https://github.com/symfony/intl/tree/v6.2.7"
+                "source": "https://github.com/symfony/intl/tree/v6.2.10"
             },
             "funding": [
                 {
@@ -4578,7 +4578,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-02-21T10:54:55+00:00"
+            "time": "2023-04-14T16:23:31+00:00"
         },
         {
             "name": "symfony/monolog-bridge",
