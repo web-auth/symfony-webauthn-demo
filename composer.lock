@@ -8084,16 +8084,16 @@
         },
         {
             "name": "web-token/jwt-core",
-            "version": "3.1.7",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-core.git",
-                "reference": "ec2580e8cdd17410016216fbf1b645052c35f644"
+                "reference": "db58b6ebbe1a7d5869688e989b1cf110c6ab888f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/ec2580e8cdd17410016216fbf1b645052c35f644",
-                "reference": "ec2580e8cdd17410016216fbf1b645052c35f644",
+                "url": "https://api.github.com/repos/web-token/jwt-core/zipball/db58b6ebbe1a7d5869688e989b1cf110c6ab888f",
+                "reference": "db58b6ebbe1a7d5869688e989b1cf110c6ab888f",
                 "shasum": ""
             },
             "require": {
@@ -8148,7 +8148,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-core/tree/3.1.7"
+                "source": "https://github.com/web-token/jwt-core/tree/3.2.0"
             },
             "funding": [
                 {
@@ -8156,7 +8156,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-02-02T17:25:26+00:00"
+            "time": "2023-02-02T17:35:17+00:00"
         },
         {
             "name": "web-token/jwt-key-mgmt",
@@ -8238,21 +8238,21 @@
         },
         {
             "name": "web-token/jwt-signature",
-            "version": "3.1.7",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature.git",
-                "reference": "14b71230d9632564e356b785366ad36880964190"
+                "reference": "86de941bd567af69e56e2f01f311062935957763"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/14b71230d9632564e356b785366ad36880964190",
-                "reference": "14b71230d9632564e356b785366ad36880964190",
+                "url": "https://api.github.com/repos/web-token/jwt-signature/zipball/86de941bd567af69e56e2f01f311062935957763",
+                "reference": "86de941bd567af69e56e2f01f311062935957763",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
-                "web-token/jwt-core": "^3.0"
+                "web-token/jwt-core": "^3.2"
             },
             "suggest": {
                 "web-token/jwt-signature-algorithm-ecdsa": "ECDSA Based Signature Algorithms",
@@ -8303,7 +8303,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature/tree/3.1.7"
+                "source": "https://github.com/web-token/jwt-signature/tree/3.2.0"
             },
             "funding": [
                 {
@@ -8311,7 +8311,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-02-02T17:25:26+00:00"
+            "time": "2023-05-18T13:21:23+00:00"
         },
         {
             "name": "web-token/jwt-signature-algorithm-ecdsa",
@@ -8455,21 +8455,21 @@
         },
         {
             "name": "web-token/jwt-signature-algorithm-hmac",
-            "version": "3.1.7",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-token/jwt-signature-algorithm-hmac.git",
-                "reference": "1d5fb68752fbf2fbc63f58892abce10d1be82597"
+                "reference": "570aba4e50545acc6f6cba4784cfc9e648acf5a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-hmac/zipball/1d5fb68752fbf2fbc63f58892abce10d1be82597",
-                "reference": "1d5fb68752fbf2fbc63f58892abce10d1be82597",
+                "url": "https://api.github.com/repos/web-token/jwt-signature-algorithm-hmac/zipball/570aba4e50545acc6f6cba4784cfc9e648acf5a7",
+                "reference": "570aba4e50545acc6f6cba4784cfc9e648acf5a7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1",
-                "web-token/jwt-signature": "^3.0"
+                "web-token/jwt-signature": "^3.2"
             },
             "type": "library",
             "autoload": {
@@ -8512,7 +8512,7 @@
                 "symfony"
             ],
             "support": {
-                "source": "https://github.com/web-token/jwt-signature-algorithm-hmac/tree/3.1.7"
+                "source": "https://github.com/web-token/jwt-signature-algorithm-hmac/tree/3.2.0"
             },
             "funding": [
                 {
@@ -8520,7 +8520,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-08-04T21:04:09+00:00"
+            "time": "2023-05-18T13:21:23+00:00"
         },
         {
             "name": "web-token/jwt-signature-algorithm-rsa",
