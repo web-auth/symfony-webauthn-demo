@@ -7955,16 +7955,16 @@
         },
         {
             "name": "web-auth/webauthn-stimulus",
-            "version": "4.5.1",
+            "version": "4.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/ux.git",
-                "reference": "29fe0aa440d210750609e7b8cbcdf423c49cc574"
+                "reference": "69847dbc64266b9994039e30109fa86069a96963"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/web-auth/ux/zipball/29fe0aa440d210750609e7b8cbcdf423c49cc574",
-                "reference": "29fe0aa440d210750609e7b8cbcdf423c49cc574",
+                "url": "https://api.github.com/repos/web-auth/ux/zipball/69847dbc64266b9994039e30109fa86069a96963",
+                "reference": "69847dbc64266b9994039e30109fa86069a96963",
                 "shasum": ""
             },
             "conflict": {
@@ -7994,7 +7994,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/ux/tree/4.5.1"
+                "source": "https://github.com/web-auth/ux/tree/4.5.2"
             },
             "funding": [
                 {
@@ -8006,7 +8006,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-01-02T13:00:15+00:00"
+            "time": "2023-05-12T18:26:01+00:00"
         },
         {
             "name": "web-auth/webauthn-symfony-bundle",
