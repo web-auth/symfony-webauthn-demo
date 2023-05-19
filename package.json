@@ -4,7 +4,7 @@
         "@babel/preset-env": "^7.16.0",
         "@fortawesome/fontawesome-free": "^6.0",
         "@hotwired/stimulus": "^3.0.0",
-        "@simplewebauthn/browser": "^6.0.0",
+        "@simplewebauthn/browser": "^7.0.0",
         "@simplewebauthn/typescript-types": "^7.0.0",
         "@symfony/stimulus-bridge": "^3.2.0",
         "@symfony/ux-typed": "file:vendor/symfony/ux-typed/assets",
