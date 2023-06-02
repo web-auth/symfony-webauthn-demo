@@ -38,7 +38,7 @@
         "symfony/twig-bundle": "6.2.*",
         "symfony/uid": "6.2.*",
         "symfony/ux-typed": "^2.2",
-        "symfony/validator": "6.2.*",
+        "symfony/validator": "6.2.* || 6.3.*",
         "symfony/webpack-encore-bundle": "^1.14",
         "symfony/yaml": "6.2.*",
         "twig/extra-bundle": "^2.12|^3.0",
