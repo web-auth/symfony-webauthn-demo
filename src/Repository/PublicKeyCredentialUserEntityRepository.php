@@ -6,10 +6,11 @@ namespace App\Repository;
 
 use App\Entity\User;
 use Symfony\Component\Uid\Ulid;
-use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository as PublicKeyCredentialUserEntityRepositoryInterface;
+use Webauthn\Bundle\Repository\CanRegisterUserEntity;
+use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepositoryInterface as PublicKeyCredentialUserEntityRepositoryInterface;
 use Webauthn\PublicKeyCredentialUserEntity;
 
-final readonly class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface
+final readonly class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface, CanRegisterUserEntity
 {
     public function __construct(
         private UserRepository $userRepository

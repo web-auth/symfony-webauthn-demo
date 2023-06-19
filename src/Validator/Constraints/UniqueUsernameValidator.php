@@ -17,7 +17,7 @@ final class UniqueUsernameValidator extends ConstraintValidator
     ) {
     }
 
-    public function validate($value, Constraint $constraint): void
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (! $constraint instanceof UniqueUsername) {
             throw new UnexpectedTypeException($constraint, UniqueUsername::class);
@@ -33,7 +33,7 @@ final class UniqueUsernameValidator extends ConstraintValidator
             throw new UnexpectedTypeException($value, 'string');
         }
 
-        if ($this->userRepository->find($value) !== null) {
+        if ($this->userRepository->findOneByUsername($value) !== null) {
             $this->context->buildViolation($constraint->message)
                 ->setParameter('{{ string }}', $value)
                 ->addViolation()

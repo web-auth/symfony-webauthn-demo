@@ -17,13 +17,13 @@ use Webauthn\TrustPath\TrustPath;
 #[ORM\Entity(repositoryClass: PublicKeyCredentialSourceRepository::class)]
 class PublicKeyCredentialSource extends BasePublicKeyCredentialSource
 {
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    public readonly DateTimeImmutable $createdAt;
+
     #[ORM\Id]
     #[ORM\Column(type: Types::STRING, length: 255)]
     #[ORM\GeneratedValue(strategy: 'NONE')]
     private string $id;
-
-    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
-    private DateTimeImmutable $createdAt;
 
     public function __construct(
         string $publicKeyCredentialId,

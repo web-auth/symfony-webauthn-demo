@@ -7,10 +7,10 @@ namespace App\Repository;
 use App\Entity\PublicKeyCredentialSource;
 use App\Entity\User;
 use Doctrine\Persistence\ManagerRegistry;
-use Webauthn\Bundle\Repository\PublicKeyCredentialSourceRepository as BasePublicKeyCredentialSourceRepository;
+use Webauthn\Bundle\Repository\DoctrineCredentialSourceRepository;
 use Webauthn\PublicKeyCredentialSource as BasePublicKeyCredentialSource;
 
-final class PublicKeyCredentialSourceRepository extends BasePublicKeyCredentialSourceRepository
+final class PublicKeyCredentialSourceRepository extends DoctrineCredentialSourceRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -52,6 +52,18 @@ final class PublicKeyCredentialSourceRepository extends BasePublicKeyCredentialS
                 $publicKeyCredentialSource->getCounter()
             );
         }
-        parent::saveCredentialSource($publicKeyCredentialSource, $flush);
+        parent::saveCredentialSource($publicKeyCredentialSource);
+    }
+
+    public function removeAllOfUser(User $user): void
+    {
+        $this->getEntityManager()
+            ->createQueryBuilder()
+            ->delete($this->getClass(), 'c')
+            ->where('c.userHandle = :user_handle')
+            ->setParameter(':user_handle', $user->getId())
+            ->getQuery()
+            ->execute()
+        ;
     }
 }

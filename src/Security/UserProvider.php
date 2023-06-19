@@ -22,7 +22,7 @@ final readonly class UserProvider implements UserProviderInterface
         $user = $this->userRepository->findOneBy([
             'username' => $identifier,
         ]);
-        if ($user === null) {
+        if (! $user instanceof User) {
             throw new UserNotFoundException(sprintf('User "%s" not found.', $identifier));
         }
 
@@ -34,7 +34,7 @@ final readonly class UserProvider implements UserProviderInterface
         return $this->loadUserByIdentifier($user->getUserIdentifier());
     }
 
-    public function supportsClass($class): bool
+    public function supportsClass(string $class): bool
     {
         return $class === User::class;
     }

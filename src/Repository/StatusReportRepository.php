@@ -16,7 +16,7 @@ final readonly class StatusReportRepository implements StatusReportRepositoryInt
     }
 
     /**
-     * {@inheritdoc}
+     * @return StatusReport[]
      */
     public function findStatusReportsByAAGUID(string $aaguid): array
     {
@@ -31,7 +31,7 @@ final readonly class StatusReportRepository implements StatusReportRepositoryInt
     /**
      * @param StatusReport[] $statusReports
      */
-    public function save(mixed $aaguid, iterable $statusReports)
+    public function save(string $aaguid, array $statusReports): void
     {
         $item = $this->cacheItemPool->getItem(sprintf('sr-%s', $aaguid));
         $item->set($statusReports);

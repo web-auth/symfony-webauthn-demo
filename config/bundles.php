@@ -16,4 +16,5 @@ return [
     Webauthn\Bundle\WebauthnBundle::class => ['all' => true],
     Symfony\UX\Typed\TypedBundle::class => ['all' => true],
     Webauthn\Stimulus\WebauthnStimulusBundle::class => ['all' => true],
+    Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
 ];

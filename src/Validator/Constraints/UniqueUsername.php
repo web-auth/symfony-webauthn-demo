@@ -11,5 +11,5 @@ use Symfony\Component\Validator\Constraint;
  */
 class UniqueUsername extends Constraint
 {
-    public $message = 'The username "{{ string }}" already exists. Please choose another one.';
+    public string $message = 'The username "{{ string }}" already exists. Please choose another one.';
 }

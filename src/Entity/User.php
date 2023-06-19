@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use App\Repository\PublicKeyCredentialUserEntityRepository;
+use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -12,24 +12,22 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Table(name: 'users')]
-#[ORM\Entity(repositoryClass: PublicKeyCredentialUserEntityRepository::class)]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity('username')]
 class User implements UserInterface
 {
-    /**
-     * @param string[] $roles
-     */
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    private null|DateTimeImmutable $lastLoginAt = null;
+
     public function __construct(
         #[ORM\Id]
         #[ORM\GeneratedValue(strategy: 'NONE')]
         #[ORM\Column(type: Types::STRING)]
-        private string $id,
+        private readonly string $id,
         #[ORM\Column(type: Types::STRING)]
         private string $username,
         #[ORM\Column(type: Types::STRING)]
         private string $displayName,
-        #[ORM\Column(type: Types::ARRAY)]
-        private array $roles = []
     ) {
     }
 
@@ -45,7 +43,7 @@ class User implements UserInterface
 
     public function getRoles(): array
     {
-        return array_unique($this->roles + ['ROLE_USER']);
+        return ['ROLE_USER'];
     }
 
     public function getUsername(): ?string
@@ -72,8 +70,13 @@ class User implements UserInterface
         $this->displayName = $displayName;
     }
 
-    public function setLastLoginAt(DateTimeImmutable $last_login_at): void
+    public function setLastLoginAt(DateTimeImmutable $lastLoginAt): void
     {
-        $this->last_login_at = $last_login_at;
+        $this->lastLoginAt = $lastLoginAt;
+    }
+
+    public function getLastLoginAt(): ?DateTimeImmutable
+    {
+        return $this->lastLoginAt;
     }
 }

@@ -33,6 +33,7 @@
         "symfony/security-bundle": "6.3.*",
         "symfony/security-csrf": "6.3.*",
         "symfony/serializer": "6.3.*",
+        "symfony/stimulus-bundle": "^2.9",
         "symfony/string": "6.3.*",
         "symfony/translation": "6.3.*",
         "symfony/twig-bundle": "6.3.*",
@@ -90,6 +91,9 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "compile": [
+            "php -d memory_limit=512M bin/console doctrine:migrations:migrate --no-interaction"
         ]
     },
     "conflict": {
