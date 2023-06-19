@@ -26,7 +26,6 @@ return static function (RectorConfig $config): void {
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::PHPUNIT_EXCEPTION,
         PHPUnitSetList::REMOVE_MOCKS,
-        PHPUnitSetList::PHPUNIT_YIELD_DATA_PROVIDER,
     ]);
     $config->phpVersion(PhpVersion::PHP_82);
     $config->paths([__DIR__ . '/src', __DIR__ . '/tests']);

@@ -14,4 +14,6 @@ return [
     SpomkyLabs\CborBundle\SpomkyLabsCborBundle::class => ['all' => true],
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Webauthn\Bundle\WebauthnBundle::class => ['all' => true],
+    Symfony\UX\Typed\TypedBundle::class => ['all' => true],
+    Webauthn\Stimulus\WebauthnStimulusBundle::class => ['all' => true],
 ];

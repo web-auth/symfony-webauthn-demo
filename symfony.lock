@@ -531,6 +531,9 @@
     "symfony/uid": {
         "version": "v5.4.3"
     },
+    "symfony/ux-typed": {
+        "version": "v2.9.1"
+    },
     "symfony/validator": {
         "version": "5.4",
         "recipe": {
@@ -604,6 +607,9 @@
     },
     "web-auth/cose-lib": {
         "version": "v4.0.3"
+    },
+    "web-auth/webauthn-stimulus": {
+        "version": "4.6.2"
     },
     "web-auth/webauthn-symfony-bundle": {
         "version": "4.5",
