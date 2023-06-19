@@ -3,7 +3,7 @@
 {% block body %}
     <body class="text-center">
     <form {{ stimulus_controller(
-        '@web-auth/webauthn-stimulus/webauthn',
+        '@web-auth/webauthn-stimulus',
         {
             creationResultUrl: path('webauthn.controller.security.main.creation.result'),
             creationOptionsUrl: path('webauthn.controller.security.main.creation.options'),
@@ -23,7 +23,7 @@
             <input name="displayName" required type="text" class="form-control" id="displayName" placeholder="Display Name">
             <label for="displayName">Display Name</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" {{ stimulus_action('@web-auth/webauthn-stimulus/webauthn', 'signup') }}>
+        <button class="w-100 btn btn-lg btn-primary" {{ stimulus_action('@web-auth/webauthn-stimulus', 'signup') }}>
             Sign on
         </button>
         <p>

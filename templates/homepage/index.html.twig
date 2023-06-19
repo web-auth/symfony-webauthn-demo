@@ -12,6 +12,23 @@
                 Get rid of the user passwords and quickly build an <br>
                 application supporting Webauthn without any effort.
             </p>
+            <p class="p-5" style="font-size: 1.3em;">
+                <span
+                    {{ stimulus_controller('symfony/ux-typed', {
+                        strings: [
+                            'I ❤️ Webauthn!',
+                            'Webauthn makes user happy',
+                            'Webauthn makes user safe',
+                            'Webauthn makes user secure',
+                            'Webauthn makes user confident',
+                            'Webauthn makes user free',
+                        ],
+                        loop: true,
+                        showCursor: true,
+                        cursorChar: '🔑',
+                    }) }}
+                ></span>
+            </p>
         </div>
     </div>
     <div class="container marketing">

@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Repository\PublicKeyCredentialSourceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepository;
+use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepositoryInterface;
 use Webauthn\PublicKeyCredentialSource;
-use Webauthn\PublicKeyCredentialSourceRepository;
 
 final class AuthenticatorsController extends AbstractController
 {
     public function __construct(
-        private readonly PublicKeyCredentialUserEntityRepository $keyCredentialUserEntityRepository,
+        private readonly PublicKeyCredentialUserEntityRepositoryInterface $keyCredentialUserEntityRepository,
         private readonly PublicKeyCredentialSourceRepository $keyCredentialSourceRepository
     ) {
     }
