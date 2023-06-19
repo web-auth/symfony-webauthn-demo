@@ -400,12 +400,12 @@
         "version": "v5.4.3"
     },
     "symfony/phpunit-bridge": {
-        "version": "6.2",
+        "version": "6.3",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
             "version": "5.3",
-            "ref": "819d3d2ffa4590eba0b8f4f3e5e89415ee4e45c3"
+            "ref": "1552413ad842623d23a33b3ed295e03eaaf0a332"
         },
         "files": [
             ".env.test",
