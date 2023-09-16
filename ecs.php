@@ -88,9 +88,9 @@ return static function (ECSConfig $config) use ($header): void {
         'import_functions' => true,
     ]);
 
-    $config->services()
-        ->remove(PhpUnitTestClassRequiresCoversFixer::class)
-    ;
+    $config->skip([
+        PhpUnitTestClassRequiresCoversFixer::class
+    ]);
 
     $config->parallel();
     $config->paths([

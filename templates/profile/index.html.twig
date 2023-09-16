@@ -58,10 +58,30 @@
                         <dt>Public Key Credential ID</dt>
                         <dd>Base64: {{ token.publicKeyCredentialDescriptor.id|toBase64 }}</dd>
                         <dd>Hex: {{ token.publicKeyCredentialDescriptor.id|toHex }}</dd>
-                        <dt>User was present</dt>
+                        <dt>User was present?</dt>
                         <dd>{% if token.isUserPresent %}Yes{% else %}No{% endif %}</dd>
-                        <dt>User was verified</dt>
+                        <dt>User was verified?</dt>
                         <dd>{% if token.isUserVerified %}Yes{% else %}No{% endif %}</dd>
+                        <dt>Is backup eligible?</dt>
+                        {#
+                        <dd>
+                            {% if token.isBackupEligible %}
+                                Yes
+                            {% else %}
+                                No, the credential is a single-device credential.
+                            {% endif %}
+                        </dd>
+                        {% if token.isBackupEligible %}
+                            <dt>Is backed up?</dt>
+                            <dd>
+                                {% if token.isBackedUp %}
+                                    Yes, the credential is a multi-device credential and is currently backed up.
+                                {% else %}
+                                    No, the credential is a multi-device credential and is not currently backed up.
+                                {% endif %}
+                            </dd>
+                        {% endif %}
+                        #}
                         <dt>Signature counter</dt>
                         <dd>{{ token.signCount }}</dd>
                     </dl>

@@ -16,16 +16,15 @@ return static function (RectorConfig $config): void {
     $config->sets([
         SetList::DEAD_CODE,
         LevelSetList::UP_TO_PHP_82,
-        SymfonyLevelSetList::UP_TO_SYMFONY_62,
+        SymfonyLevelSetList::UP_TO_SYMFONY_63,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
+        DoctrineSetList::DOCTRINE_ORM_214,
         DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
-        PHPUnitSetList::PHPUNIT_SPECIFIC_METHOD,
         PHPUnitLevelSetList::UP_TO_PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
-        PHPUnitSetList::PHPUNIT_EXCEPTION,
-        PHPUnitSetList::REMOVE_MOCKS,
+        PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
     ]);
     $config->phpVersion(PhpVersion::PHP_82);
     $config->paths([__DIR__ . '/src', __DIR__ . '/tests']);
