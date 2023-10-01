@@ -28,10 +28,14 @@ RUN set -eux; \
     install-php-extensions \
 		apcu \
 		intl \
+		ctype \
+		iconv \
+		sodium \
 		opcache \
 		zip \
 		pdo_pgsql \
 		gd \
+		gmp \
     ;
 
 ###> recipes ###
