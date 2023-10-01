@@ -15,3 +15,5 @@ make frontend
 ```
 
 Then open your browser at https://localhost
+
+This demo is live on https://webauthn.spomky-labs.com/
