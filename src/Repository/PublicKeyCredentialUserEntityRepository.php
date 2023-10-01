@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\User;
+use LogicException;
+use ParagonIE\ConstantTime\Base64UrlSafe;
 use Symfony\Component\Uid\Ulid;
+use Webauthn\Bundle\Repository\CanGenerateUserEntity;
 use Webauthn\Bundle\Repository\CanRegisterUserEntity;
 use Webauthn\Bundle\Repository\PublicKeyCredentialUserEntityRepositoryInterface as PublicKeyCredentialUserEntityRepositoryInterface;
 use Webauthn\PublicKeyCredentialUserEntity;
 
-final readonly class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface, CanRegisterUserEntity
+final readonly class PublicKeyCredentialUserEntityRepository implements PublicKeyCredentialUserEntityRepositoryInterface, CanRegisterUserEntity, CanGenerateUserEntity
 {
     public function __construct(
         private UserRepository $userRepository
@@ -19,7 +22,7 @@ final readonly class PublicKeyCredentialUserEntityRepository implements PublicKe
 
     public function generateNextUserEntityId(): string
     {
-        return Ulid::generate();
+        throw new LogicException('Should never be called');
     }
 
     public function saveUserEntity(PublicKeyCredentialUserEntity $userEntity): void
@@ -60,6 +63,17 @@ final readonly class PublicKeyCredentialUserEntityRepository implements PublicKe
         ]);
 
         return $this->getUserEntity($user);
+    }
+
+    public function generateUserEntity(?string $username, ?string $displayName): PublicKeyCredentialUserEntity
+    {
+        $randomUserData = Base64UrlSafe::encodeUnpadded(random_bytes(32));
+        return new PublicKeyCredentialUserEntity(
+            Ulid::generate(),
+            $username ?? $randomUserData,
+            $displayName ?? $randomUserData,
+            null
+        );
     }
 
     private function getUserEntity(null|User $user): ?PublicKeyCredentialUserEntity

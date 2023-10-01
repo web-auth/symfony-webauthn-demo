@@ -52,7 +52,7 @@ final class SingleFileService implements MetadataService
         foreach ($this->getFilenames() as $filename) {
             $data = file_get_contents($filename);
             $mds = MetadataStatement::createFromString($data);
-            if ($mds->getAaguid() === null) {
+            if ($mds->aaguid === null) {
                 continue;
             }
             $this->statements[$mds->getAaguid()] = $mds;
