@@ -19,7 +19,7 @@ Then open your browser at https://localhost
 Live Demo
 ---------
 
-This demo is live on https://webauthn.spomky-labs.com/
+This demo is live on https://webauthn.spomky-labs.com/ (or https://spomky-webauthn.herokuapp.com/ if the first link is down).
 
 It runs on a DigitalOcean Droplet. Please follow the steps from [dunglas/symfony-docker documentation](https://github.com/dunglas/symfony-docker/blob/main/docs/production.md).
 Then, run the following command:
