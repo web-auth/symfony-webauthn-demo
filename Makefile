@@ -61,6 +61,11 @@ watch: ## Watch assets
 	@$(SYMFONY) importmap:update
 	@$(SYMFONY) tailwind:build --watch
 
+frontend: ## Watch assets
+	@$(SYMFONY) importmap:update
+	@$(SYMFONY) tailwind:build --minify
+	@$(SYMFONY) asset-map:compile
+
 ## —— Phpunit 🎵 ———————————————————————————————————————————————————————————————
 test: ## Execute all tests
 	@$(PHPUNIT)
@@ -76,7 +81,3 @@ qa: ## Execute all Quality tools
 init: ## Initialization of DB and the data
 	@$(SYMFONY) d:d:c --if-not-exists
 	@$(SYMFONY) d:m:m -n
-	@$(SYMFONY) app:init:users
-	@$(SYMFONY) app:init:regions
-	@$(SYMFONY) app:init:departments
-	@$(SYMFONY) app:init:cities
