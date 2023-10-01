@@ -1,36 +1,71 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <body class="text-center">
-    <form {{ stimulus_controller(
-        '@web-auth/webauthn-stimulus',
-        {
-            creationResultUrl: path('webauthn.controller.security.main.creation.result'),
-            creationOptionsUrl: path('webauthn.controller.security.main.creation.options'),
-            creationSuccessRedirectUri: path('profile')
-        }
-    ) }}>
-    <main class="form-signin">
-        <a href="{{ path('app_homepage') }}">
-            <img class="mb-4" src="{{ asset('build/images/icon.png') }}" width="64" height="64" alt="Demo">
-        </a>
-        <h1 class="h3 mb-3 fw-normal">Registration Form</h1>
-        <div class="form-floating">
-            <input name="username" required type="text" class="form-control" id="username" placeholder="Username">
-            <label for="username">Username</label>
+    <section class="h-screen">
+        <div class="px-6 h-full text-gray-800">
+            <div class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
+                <div class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0">
+                    <img
+                            src="{{ asset('images/brett-jordan-MHS7g_q-6mE-unsplash.jpg') }}"
+                            class="w-5/6"
+                            alt="Sample image"
+                    />
+                </div>
+                <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+                    <form {{ stimulus_controller(
+                        '@web-auth/webauthn-stimulus',
+                        {
+                            creationResultUrl: path('webauthn.controller.security.main.creation.result'),
+                            creationOptionsUrl: path('webauthn.controller.security.main.creation.options'),
+                            creationSuccessRedirectUri: path('profile')
+                        }
+                    ) }}>
+                        <h1 class="text-4xl mb-8">Registration form</h1>
+                        <div class="mb-6">
+                            <label for="inputUsername">Username</label>
+                            <input
+                                    type="text"
+                                    name="username"
+                                    id="inputUsername" autocomplete="username" required autofocus
+                                    class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                    placeholder="Username"
+                            />
+                        </div>
+                        <div class="mb-6">
+                            <label for="inputDisplayName">Display name</label>
+                            <input
+                                    type="text"
+                                    name="displayName"
+                                    id="inputDisplayName" autocomplete="displayName" required autofocus
+                                    class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                    placeholder="Username"
+                            />
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <button
+                                    type="submit"
+                                    class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max"
+                                    {{ stimulus_action('@web-auth/webauthn-stimulus', 'signup') }}
+                            >
+                                <span class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Login</span>
+                            </button>
+                        </div>
+                        <div class="text-center lg:text-left">
+                            <p class="text-sm font-semibold mt-2 pt-1 mb-0">
+                                I already have an account.
+                                <a href="{{ path('login') }}" class="mr-4 text-pink-800 hover:underline md:mr-6">Go to the login page!</a>
+                            </p>
+                            <p class="text-sm font-semibold mt-4 pt-1">
+                                <a href="{{ path('app_homepage') }}" class="mr-4 text-pink-800 hover:underline md:mr-6">
+                                    <i class="fa-solid fa-home"></i>
+                                    &nbsp;
+                                    Go back home
+                                </a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-floating">
-            <input name="displayName" required type="text" class="form-control" id="displayName" placeholder="Display Name">
-            <label for="displayName">Display Name</label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" {{ stimulus_action('@web-auth/webauthn-stimulus', 'signup') }}>
-            Sign on
-        </button>
-        <p>
-            <a href="{{ path('login') }}">Back to the login page</a>
-        </p>
-        <p class="mt-5 mb-3 text-muted">&copy; {{ 'now' | date('Y') }}, made with 💙💛 by <a href="https://www.spomky-labs.com/" target="_blank" rel="nofollow noopener noreferrer">Spomky-Labs</a></p>
-    </main>
-    </form>
-    </body>
+    </section>
 {% endblock body %}

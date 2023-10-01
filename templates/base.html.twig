@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     {% block metas %}
         {% include("partials/metas.html.twig") %}
     {% endblock %}
     {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/inter@5.0.8/index.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
     {% block javascripts %}
+        {{ importmap() }}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>
 {% block body %}
-    <body data-turbo="false" class="bg-light {% block body_classes %}{% endblock body_classes %}" {% block body_tags %}{% endblock body_tags %}>
+    <body data-turbo="false" class="bg-white dark:bg-gray-900 {% block body_classes %}{% endblock body_classes %}" {% block body_tags %}{% endblock body_tags %}>
     {% block body_navbar %}
         {% include 'partials/navbar.html.twig' %}
     {% endblock body_navbar %}

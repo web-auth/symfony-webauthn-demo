@@ -1,89 +1,131 @@
 {% extends 'base.html.twig' %}
 
 {% block body_content %}
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-        <div class="col-md-5 p-lg-5 mx-auto my-5">
-            <h1 class="display-4 fw-normal">
-                WEBAUTHN + PHP<br>
-                =<br>
-                💖
-            </h1>
-            <p class="lead fw-normal">
-                Get rid of the user passwords and quickly build an <br>
-                application supporting Webauthn without any effort.
-            </p>
-            <p class="p-5" style="font-size: 1.3em;">
-                <span
+    <main class="space-y-40 mb-40">
+        <section class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+            <div class="relative" id="home">
+                <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+                    <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700">
+
+                    </div>
+                    <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600">
+
+                    </div>
+                </div>
+                <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                    <div class="relative pt-36 ml-auto">
+                        <div class="lg:w-2/3 text-center mx-auto">
+                            <h1 class="text-gray-900 dark:text-white font-bold text-5xl md:text-6xl xl:text-7xl">
+                                WEBAUTHN + PHP<br>
+                                =<br>
+                                💖</h1>
+                            <p class="mt-8 text-gray-700 dark:text-gray-300 text-1xl md:text-1xl xl:text-3xl">
+                                Get rid of the user passwords and quickly build an <br>
+                                application supporting Webauthn without any effort. <br>
+                            </p>
+                            <div class="py-8 mt-16 border-y border-gray-100 dark:border-gray-800">
+                                <p class="mt-2 text-gray-500 text-4xl">
+                                                                <span
                     {{ stimulus_controller('symfony/ux-typed', {
                         strings: [
                             'I ❤️ Webauthn!',
                             'Webauthn makes user happy',
-                            'Webauthn makes user safe',
-                            'Webauthn makes user secure',
-                            'Webauthn makes user confident',
-                            'Webauthn makes user free',
+                            'Webauthn is secure',
+                            'Webauthn is easy to use',
+                            'Webauthn is easy to implement',
+                            'Webauthn protects user’s privacy',
                         ],
                         loop: true,
                         showCursor: true,
                         cursorChar: '🔑',
                     }) }}
-                ></span>
-            </p>
-        </div>
-    </div>
-    <div class="container marketing">
-        <hr class="featurette-divider">
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">Have you troubles with <span class="text-primary">password?</span></h2>
-                <ul>
-                    <li>Do you remember it?</li>
-                    <li>Is your password secured enough?</li>
-                    <li>Does it include numbers, mixes caps and special chars?</li>
-                    <li>When did you changed it? How old is it?</li>
-                    <li>Is it the same as the one you used few months ago?</li>
-                    <li>Have you been <a href="https://haveibeenpwned.com/" target="_blank" rel="nofollow noopener noreferrer">PAWNED</a>?</li>
-                </ul>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Webauthn, <span class="text-primary">Easy+Secure</span></h2>
-                <p class="lead text-secondary">
-                    <strong>No password? No troubles.</strong>
-                </p>
-                <p class="lead">
-                    With Webauthn, you don’t have to care of all of the security problems induced by passwords as you don’t manage them.<br>
-                    No sensitive data is stored. You just need to store public keys, counters, certificate chains (optional). You or the users can decide anonymize the data you collect.<br>
-                    The data does not pose any risk if leaked.<br>
-                </p>
-            </div>
-            <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+                >
 
+                                                                </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <hr class="featurette-divider">
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">Available on <span class="text-primary">Github</span>!</h2>
-                <p class="lead">
-                <p>
-                    <strong>For free!</strong>
-                </p>
-                <a class="btn btn-primary btn-lg" href="https://github.com/web-auth" target="_blank" rel="nofollow noopener noreferrer">
-                    Download now!
-                </a>
-                </p>
+        </section>
+        <section class="space-y-40 mb-40">
+            <div>
+                <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                    <div class="space-y-6 justify-between text-gray-600 md:flex flex-row-reverse md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
+                        <div class="md:5/12 lg:w-1/2">
+                            <img src="{{ asset('images/elisa-ventur-bmJAXAz6ads-unsplash.jpg') }}" alt="image" loading="lazy" width="" height="" class="w-full">
+                        </div>
+                        <div class="md:7/12 lg:w-1/2">
+                            <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+                                Have you troubles with password?
+                            </h2>
+                            <p class="my-8 text-gray-600 dark:text-gray-300">
+                                Do you remember it?<br>
+                                Is your password secured enough?<br>
+                                Does it include numbers, mixes caps and special chars?<br>
+                                When did you changed it? How old is it?<br>
+                                Is it the same as the one you used few months ago?<br>
+                                Have you been PAWNED?<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+            <div class="text-gray-600 dark:text-gray-300" id="reviews">
+                <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                    <div class="mb-20 space-y-4 px-6 md:px-0">
+                        <h2 class="text-center text-3xl font-bold text-pink-800 dark:text-pink md:text-5xl">
+                            Webauthn, Easy+Secure
+                        </h2>
+                    </div>
+                </div>
             </div>
-        </div>
-        <hr class="featurette-divider">
-    </div>
+            <div>
+                <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                    <div class="space-y-6 justify-between text-gray-600 md:flex flex-row md:gap-6 md:space-y-0 lg:gap-12 lg:items-center">
+                        <div class="md:5/12 lg:w-1/2">
+                            <img src="{{ asset('images/linkedin-sales-solutions-Kfzfd8ksE10-unsplash.jpg') }}" alt="image" loading="lazy" width="" height="" class="w-full">
+                        </div>
+                        <div class="md:7/12 lg:w-1/2">
+                            <h2 class="text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
+                                No password? No troubles!
+                            </h2>
+                            <p class="my-8 text-gray-600 dark:text-gray-300">
+                                With Webauthn, you don’t have to care of all of the security problems induced by passwords as you don’t manage them.<br>
+                                No sensitive data is stored. You just need to store public keys, counters, certificate chains (optional).<br>
+                                You or the users can decide anonymize the data you collect.<br>
+                                The data does not pose any risk if leaked.<br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative py-16">
+                <div aria-hidden="true" class="absolute inset-0 h-max w-full m-auto grid grid-cols-2 -space-x-52 opacity-40 dark:opacity-20">
+                    <div class="blur-[106px] h-56 bg-gradient-to-br from-primary to-purple-400 dark:from-blue-700">
+
+                    </div>
+                    <div class="blur-[106px] h-32 bg-gradient-to-r from-cyan-400 to-sky-300 dark:to-indigo-600">
+
+                    </div>
+                </div>
+                <div class="max-w-7xl mx-auto px-6 md:px-12 xl:px-6">
+                    <div class="relative">
+                        <div class="mt-6 m-auto space-y-6 md:w-8/12 lg:w-7/12">
+                            <h1 class="text-center text-4xl font-bold text-gray-800 dark:text-white md:text-5xl">Available on Github</h1>
+                            <p class="text-center text-xl text-gray-600 dark:text-gray-300">
+                                For free!
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-6">
+                                <a href="#" class="relative flex h-12 w-full items-center justify-center px-8 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                                    <span class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Download now!</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}

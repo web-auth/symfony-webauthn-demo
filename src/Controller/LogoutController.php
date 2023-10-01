@@ -13,7 +13,7 @@ final class LogoutController
     /**
      * This route is intercepted by the firewall and never reached.
      */
-    #[Route('/logout', name: 'logout', methods: [Request::METHOD_GET])]
+    #[Route('/logout', name: 'logout', methods: [Request::METHOD_POST])]
     public function __invoke(): never
     {
         throw new NotFoundHttpException();

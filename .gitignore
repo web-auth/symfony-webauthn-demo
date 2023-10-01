@@ -7,13 +7,6 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-
-###> symfony/webpack-encore-bundle ###
-/node_modules/
-/public/build/
-npm-debug.log
-yarn-error.log
-###< symfony/webpack-encore-bundle ###
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
@@ -28,3 +21,7 @@ yarn-error.log
 /node_modules/
 /public/build/
 ###< symfony/webpack-encore-pack ###
+
+###> symfony/asset-mapper ###
+/public/assets/
+###< symfony/asset-mapper ###

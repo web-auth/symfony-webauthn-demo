@@ -1,9 +1,32 @@
-<div class="container">
-    <footer class="py-3 my-4">
-        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-            <li class="nav-item"><a href="{{ path('app_homepage') }}" class="nav-link px-2 text-muted">Home</a></li>
-            <li class="nav-item"><a href="https://www.spomky-labs.com/" target="_blank" rel="nofollow noopener noreferrer" class="nav-link px-2 text-muted">Download</a></li>
-        </ul>
-        <p class="text-center text-muted">&copy; {{ 'now' | date('Y') }}, made with 💙💛 by <a href="https://www.spomky-labs.com/" target="_blank" rel="nofollow noopener noreferrer">Spomky-Labs</a></p>
-    </footer>
-</div>
+<footer>
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a class="flex items-center mb-4 sm:mb-0 text-gray-800" href="{{ path('app_homepage') }}">
+                <i class="fa-solid fa-key"></i>
+                &nbsp;
+                <span class="self-center text-2xl font-semibold whitespace-nowrap">Webauthn Demo</span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="https://github.com/web-auth" rel="noreferrer noopener nofollow" target="_blank" class="mr-4 text-pink-800 hover:underline md:mr-6">Get the code</a>
+                </li>
+                <li>
+                    <a href="https://webauthn-doc.spomky-labs.com/" rel="noreferrer noopener nofollow" target="_blank" class="mr-4 text-pink-800 hover:underline md:mr-6">Read the documentation</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+                Made with ❤️,
+                <a href="https://symfony.com/" target="_blank" rel="noreferrer nofollow noopener" class="text-pink-800 no-underline hover:underline">
+                    Symfony
+                    <img src="https://symfony.com/logos/symfony_black_03.svg" alt="Symfony logo" width="32" height="32" class="inline-block">
+                </a>
+                and
+                <a href="https://frankenphp.dev/" target="_blank" rel="noreferrer nofollow noopener" class="text-pink-800 no-underline hover:underline">
+                    FrankenPHP
+                    <img src="https://frankenphp.dev/img/elephant_cover.svg" alt="FrankenPHP logo" width="32" height="32" class="inline-block">
+                </a>
+        </span>
+    </div>
+</footer>
