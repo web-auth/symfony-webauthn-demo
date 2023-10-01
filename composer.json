@@ -79,6 +79,7 @@
         }
     },
     "replace": {
+        "symfony/polyfill-mbstring": "*",
         "symfony/polyfill-ctype": "*",
         "symfony/polyfill-iconv": "*",
         "symfony/polyfill-php72": "*",
