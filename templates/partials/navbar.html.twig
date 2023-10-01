@@ -8,10 +8,11 @@
                     <span class="text-2xl font-bold text-gray-900 dark:text-white">Webauthn Demo</span>
                 </a>
                 <div class="relative flex max-h-10 items-center lg:hidden">
-                    <button aria-label="humburger" id="hamburger" class="relative -mr-6 p-6">
-                        <div aria-hidden="true" id="line" class="m-auto h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
-                        <div aria-hidden="true" id="line2" class="m-auto mt-2 h-0.5 w-5 rounded bg-sky-900 transition duration-300 dark:bg-gray-300"></div>
-                    </button>
+                    <div>
+                        <a href="{{ path('login') }}" class="relative flex h-9 w-full items-center justify-center px-4 before:absolute before:inset-0 before:rounded-full before:bg-primary before:transition before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 sm:w-max">
+                            <span class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Login</span>
+                        </a>
+                    </div>
                 </div>
             </div>
             <div id="navLayer" aria-hidden="true" class="fixed inset-0 z-10 h-screen w-screen origin-bottom scale-y-0 bg-white/70 backdrop-blur-2xl transition duration-500 dark:bg-gray-900/70 lg:hidden"></div>
