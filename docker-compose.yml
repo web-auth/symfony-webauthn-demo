@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     environment:
       SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
-      RELAYING_PARTY_ID: ${RELAYING_PARTY_ID:-localhost}
+      RELAYING_PARTY_ID: ${SERVER_NAME:-localhost}
       RELAYING_PARTY_NAME: ${RELAYING_PARTY_ID:-demo}
       MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
       MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
