@@ -34,7 +34,8 @@ if [ "$1" = 'frankenphp' ] || [ "$1" = 'php' ] || [ "$1" = 'bin/console' ]; then
 
 		if [ -d 'assets/' ]; then
 			php bin/console importmap:update
-			php bin/console tailwind:build
+			php bin/console tailwind:build --minify
+			php bin/console asset-map:compile
 		fi
 	fi
 
