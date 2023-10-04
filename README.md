@@ -28,7 +28,7 @@ Then, run the following command:
 RELYING_PARTY_NAME="My application" \
 SERVER_NAME=your-domain-name.example.com \
 APP_SECRET=ChangeMe \
-docker compose -f docker-compose.yml -f docker-compose.prod.yml up --wait
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up --detach --wait
 ```
 
 Be sure to replace the environment variable values by your actual configuration.
