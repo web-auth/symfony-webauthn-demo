@@ -68,7 +68,7 @@ final readonly class PublicKeyCredentialUserEntityRepository implements PublicKe
     public function generateUserEntity(?string $username, ?string $displayName): PublicKeyCredentialUserEntity
     {
         $randomUserData = Base64UrlSafe::encodeUnpadded(random_bytes(32));
-        return  PublicKeyCredentialUserEntity::create(
+        return PublicKeyCredentialUserEntity::create(
             $username ?? $randomUserData,
             Ulid::generate(),
             $displayName ?? $randomUserData,
