@@ -31,6 +31,6 @@ return [
     ],
     '@simplewebauthn/browser' => [
         'downloaded_to' => 'vendor/@simplewebauthn/browser.js',
-        'url' => 'https://cdn.jsdelivr.net/npm/@simplewebauthn/browser@8.2.1/+esm',
+        'url' => 'https://cdn.jsdelivr.net/npm/@simplewebauthn/browser@8.3.1/+esm',
     ],
 ];
