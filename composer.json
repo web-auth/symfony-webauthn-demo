@@ -50,7 +50,7 @@
         "web-auth/metadata-service": "^4.1.2",
         "web-auth/webauthn-lib": "^4.1.2",
         "web-auth/webauthn-stimulus": "^4.1.2",
-        "web-auth/webauthn-symfony-bundle": "^4.1.2",
+        "web-auth/webauthn-symfony-bundle": "^4.7.2",
         "web-token/jwt-key-mgmt": "^3.0",
         "web-token/jwt-signature-algorithm-ecdsa": "^3.0",
         "web-token/jwt-signature-algorithm-experimental": "^3.0",
