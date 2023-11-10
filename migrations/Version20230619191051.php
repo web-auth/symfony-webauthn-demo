@@ -6,6 +6,7 @@ namespace DoctrineMigrations;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
+use LogicException;
 
 final class Version20230619191051 extends AbstractMigration
 {
@@ -23,6 +24,6 @@ final class Version20230619191051 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        throw new \LogicException('Wild cats never go back!');
+        throw new LogicException('Wild cats never go back!');
     }
 }

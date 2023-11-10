@@ -10,6 +10,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/vendor/autoload_runtime.php';
 
 use App\Kernel;
+use App\Repository\PublicKeyCredentialSourceRepository;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Console\Output\StreamOutput;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -19,9 +20,9 @@ return function () {
     $k = new class('dev', true) extends Kernel implements CompilerPassInterface {
         use MicroKernelTrait;
 
-        public function process(ContainerBuilder $container)
+        public function process(ContainerBuilder $container): void
         {
-            $container->getAlias('logger')
+            $container->getDefinition(PublicKeyCredentialSourceRepository::class)
                 ->setPublic(true);
             $container->getDefinition('monolog.handler.console')
                 ->setPublic(true);
@@ -33,8 +34,9 @@ return function () {
     $c->get('monolog.handler.console')
         ->setOutput(new StreamOutput(fopen('php://stdout', 'w'), StreamOutput::VERBOSITY_VERY_VERBOSE));
 
-    $logger = $c->get('logger');
-    $em = $c->get('doctrine.orm.entity_manager');
-
     // Start of playground
+    $pksRepository = $c->get(PublicKeyCredentialSourceRepository::class);
+    $pks = $pksRepository->findAll();
+
+    dump($pks);
 };

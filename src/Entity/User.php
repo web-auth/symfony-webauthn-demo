@@ -58,6 +58,7 @@ class User implements UserInterface
 
     public function eraseCredentials(): void
     {
+        //Not needed in this case because we don't store plain-text passwords
     }
 
     public function getDisplayName(): string

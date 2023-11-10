@@ -27,7 +27,14 @@ return static function (RectorConfig $config): void {
         PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
     ]);
     $config->phpVersion(PhpVersion::PHP_82);
-    $config->paths([__DIR__ . '/src', __DIR__ . '/tests']);
+    $config->paths([__DIR__ . '/']);
+    $config->skip([
+        __DIR__ . '/.github',
+        __DIR__ . '/.phpunit.result.cache',
+        __DIR__ . '/config',
+        __DIR__ . '/var',
+        __DIR__ . '/vendor',
+    ]);
     $config->parallel();
     $config->importNames();
     $config->importShortClasses();
