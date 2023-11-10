@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "69b040938d098116e3bc743a87be77a0",
+    "content-hash": "6f6394c77a73102d1a1a1b9bdbb25cc2",
     "packages": [
         {
             "name": "brick/math",
@@ -7128,16 +7128,16 @@
         },
         {
             "name": "symfony/ux-typed",
-            "version": "v2.12.0",
+            "version": "v2.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/ux-typed.git",
-                "reference": "18d875201110186fd6a855948fe5ba9cc8b8895e"
+                "reference": "83b07e8d9e25818b7a919f1424ef0544ced05bdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/ux-typed/zipball/18d875201110186fd6a855948fe5ba9cc8b8895e",
-                "reference": "18d875201110186fd6a855948fe5ba9cc8b8895e",
+                "url": "https://api.github.com/repos/symfony/ux-typed/zipball/83b07e8d9e25818b7a919f1424ef0544ced05bdf",
+                "reference": "83b07e8d9e25818b7a919f1424ef0544ced05bdf",
                 "shasum": ""
             },
             "conflict": {
@@ -7175,7 +7175,7 @@
                 "symfony-ux"
             ],
             "support": {
-                "source": "https://github.com/symfony/ux-typed/tree/v2.12.0"
+                "source": "https://github.com/symfony/ux-typed/tree/v2.13.0"
             },
             "funding": [
                 {
@@ -7191,7 +7191,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-08-04T22:39:59+00:00"
+            "time": "2023-11-07T21:10:32+00:00"
         },
         {
             "name": "symfony/validator",
@@ -11517,5 +11517,5 @@
         "ext-sodium": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
