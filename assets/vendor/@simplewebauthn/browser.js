@@ -1,6 +1,6 @@
 /**
  * Bundled by jsDelivr using Rollup v2.79.1 and Terser v5.19.2.
- * Original file: /npm/@simplewebauthn/browser@8.3.1/dist/bundle/index.js
+ * Original file: /npm/@simplewebauthn/browser@8.3.4/dist/bundle/index.js
  *
  * Do NOT use SRI with dynamically generated files! More information: https://www.jsdelivr.com/using-sri-with-dynamic-files
  */
