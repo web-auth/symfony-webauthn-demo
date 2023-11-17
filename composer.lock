@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1d2c27bef9ffa681d3cdbb2a7d726172",
+    "content-hash": "b8e580d79f8edec4cb18b20273e458d2",
     "packages": [
         {
             "name": "brick/math",
@@ -8039,7 +8039,7 @@
         },
         {
             "name": "web-auth/webauthn-stimulus",
-            "version": "4.7.3",
+            "version": "4.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/web-auth/ux.git",
@@ -8090,7 +8090,7 @@
                 "webauthn"
             ],
             "support": {
-                "source": "https://github.com/web-auth/ux/tree/4.7.3"
+                "source": "https://github.com/web-auth/ux/tree/4.7.4"
             },
             "funding": [
                 {
@@ -11531,5 +11531,5 @@
         "ext-sodium": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
