@@ -15,7 +15,7 @@
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
-        "nyholm/psr7": "^1.5",
+        "nyholm/psr7": "^1.8",
         "runtime/frankenphp-symfony": "^0.1.1",
         "symfony/asset": "^6.3",
         "symfony/asset-mapper": "^6.3",
