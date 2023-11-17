@@ -40,7 +40,7 @@
         "symfony/translation": "6.3.*",
         "symfony/twig-bundle": "6.3.*",
         "symfony/uid": "6.3.*",
-        "symfony/ux-typed": "^2.12",
+        "symfony/ux-typed": "^2.13",
         "symfony/validator": "6.3.*",
         "symfony/yaml": "6.3.*",
         "symfonycasts/tailwind-bundle": "^0.2",
