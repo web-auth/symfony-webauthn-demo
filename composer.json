@@ -12,7 +12,7 @@
         "ext-intl": "*",
         "ext-sodium": "*",
         "doctrine/annotations": "^2.0",
-        "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.11",
         "nyholm/psr7": "^1.5",
