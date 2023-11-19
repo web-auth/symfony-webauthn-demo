@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Returns the import map for this application.
+ * Returns the importmap for this application.
  *
  * - "path" is a path inside the asset mapper system. Use the
  *     "debug:asset-map" command to see the full list of paths.
  *
- * - "preload" set to true for any modules that are loaded on the initial
- *     page load to help the browser download them earlier.
+ * - "entrypoint" (JavaScript only) set to true for any module that will
+ *     be used as an "entrypoint" (and passed to the importmap() Twig function).
  *
  * The "importmap:require" command can be used to add new entries to this file.
  *
@@ -16,21 +16,32 @@
 return [
     'app' => [
         'path' => 'app.js',
-        'preload' => true,
+        'entrypoint' => true,
     ],
     '@symfony/stimulus-bundle' => [
         'path' => '@symfony/stimulus-bundle/loader.js',
     ],
     '@hotwired/stimulus' => [
-        'downloaded_to' => 'vendor/@hotwired/stimulus.js',
-        'url' => 'https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm',
+        'version' => '3.2.2',
     ],
     'typed.js' => [
-        'downloaded_to' => 'vendor/typed.js.js',
-        'url' => 'https://cdn.jsdelivr.net/npm/typed.js@2.1.0/+esm',
+        'version' => '2.1.0',
     ],
     '@simplewebauthn/browser' => [
-        'downloaded_to' => 'vendor/@simplewebauthn/browser.js',
-        'url' => 'https://cdn.jsdelivr.net/npm/@simplewebauthn/browser@8.3.4/+esm',
+        'version' => '8.3.4',
+    ],
+    '@fontsource-variable/inter' => [
+        'version' => '5.0.15',
+    ],
+    '@fontsource-variable/inter/index.min.css' => [
+        'version' => '5.0.15',
+        'type' => 'css',
+    ],
+    'material-icons' => [
+        'version' => '1.13.12',
+    ],
+    'material-icons/iconfont/material-icons.min.css' => [
+        'version' => '1.13.12',
+        'type' => 'css',
     ],
 ];

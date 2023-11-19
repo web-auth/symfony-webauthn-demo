@@ -11,7 +11,9 @@
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
     {% block javascripts %}
-        {{ importmap() }}
+        {{ importmap('app', {
+            nonce: csp_nonce('script')
+        }) }}
         {{ encore_entry_script_tags('app') }}
     {% endblock %}
 </head>

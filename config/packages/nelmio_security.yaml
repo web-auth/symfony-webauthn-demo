@@ -1,0 +1,66 @@
+nelmio_security:
+    # prevents framing of the entire site
+    clickjacking:
+        paths:
+            '^/.*': DENY
+
+    # disables content type sniffing for script resources
+    content_type:
+        nosniff: true
+
+    # forces Microsoft's XSS-Protection with
+    # its block mode
+    xss_protection:
+        enabled: true
+        mode_block: true
+
+    # Send a full URL in the `Referer` header when performing a same-origin request,
+    # only send the origin of the document to secure destination (HTTPS->HTTPS),
+    # and send no header to a less secure destination (HTTPS->HTTP).
+    # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
+    # no referrer information is sent along with requests.
+    referrer_policy:
+        enabled: true
+        policies:
+            - 'no-referrer'
+            - 'strict-origin-when-cross-origin'
+
+    # Sign cookies to prevent tampering
+    signed_cookie:
+          secret: '%kernel.secret%'
+          names: []
+          hash_algo: sha256
+
+    # Force SSL on all pages and subdomains with HSTS (HTTP Strict Transport Security)
+    forced_ssl:
+        enabled: true
+        hsts_max_age: 31_536_000
+        hsts_preload: true
+        hsts_subdomains: true
+
+    # Prevents the browser from redirecting to potentially malicious URLs
+    external_redirects:
+        abort: true
+        allow_list: []
+
+    csp:
+        hash:
+            algorithm: 'sha256'
+        hosts: []
+        content_types: []
+        enforce:
+            level1_fallback: false
+            block-all-mixed-content: true
+            upgrade-insecure-requests: true
+            browser_adaptive:
+                enabled: false
+#            default-src:
+#                - 'self'
+#            img-src:
+#                - 'self'
+#                - 'data:'
+#                - 'https://symfony.com/logos/symfony_black_03.svg'
+#                - 'https://frankenphp.dev/img/elephant_cover.svg'
+#            script-src:
+#                - 'self'
+#                - 'https://ga.jspm.io/npm:es-module-shims@1.8.0/dist/es-module-shims.js'
