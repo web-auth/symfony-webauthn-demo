@@ -9318,16 +9318,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.42",
+            "version": "1.10.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "fc2316508de5453140b5cb3d3f8683a33e92f26a"
+                "reference": "90d3d25c5b98b8068916bbf08ce42d5cb6c54e70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/fc2316508de5453140b5cb3d3f8683a33e92f26a",
-                "reference": "fc2316508de5453140b5cb3d3f8683a33e92f26a",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/90d3d25c5b98b8068916bbf08ce42d5cb6c54e70",
+                "reference": "90d3d25c5b98b8068916bbf08ce42d5cb6c54e70",
                 "shasum": ""
             },
             "require": {
@@ -9376,7 +9376,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-11-17T15:26:57+00:00"
+            "time": "2023-11-28T14:57:26+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -9802,16 +9802,16 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.18.10",
+            "version": "0.18.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "f36bc0a707fd8af301df5108740ce41f9db8eded"
+                "reference": "9621124c860066f56a4ab841349cb7c284edfaee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/f36bc0a707fd8af301df5108740ce41f9db8eded",
-                "reference": "f36bc0a707fd8af301df5108740ce41f9db8eded",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/9621124c860066f56a4ab841349cb7c284edfaee",
+                "reference": "9621124c860066f56a4ab841349cb7c284edfaee",
                 "shasum": ""
             },
             "require": {
@@ -9846,7 +9846,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.18.10"
+                "source": "https://github.com/rectorphp/rector/tree/0.18.11"
             },
             "funding": [
                 {
@@ -9854,7 +9854,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-16T19:42:21+00:00"
+            "time": "2023-11-27T13:27:43+00:00"
         },
         {
             "name": "roave/security-advisories",
@@ -11928,5 +11928,5 @@
         "ext-sodium": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
