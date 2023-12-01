@@ -125,7 +125,7 @@
         "roave/security-advisories": "dev-latest",
         "symfony/debug-bundle": "6.4.*",
         "symfony/maker-bundle": "^1.0",
-        "symfony/phpunit-bridge": "6.4.*",
+        "symfony/phpunit-bridge": "7.0.*",
         "symfony/stopwatch": "6.4.*",
         "symfony/web-profiler-bundle": "6.4.*",
         "symplify/easy-coding-standard": "^12.0"
